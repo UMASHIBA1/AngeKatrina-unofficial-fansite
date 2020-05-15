@@ -16,10 +16,6 @@ const SingleMagicCircle: React.FC<Props> = ({
     top: calc(50% - ${Diameter / 2}px);
   `;
 
-  return (
-    <div>
-      <StyledSVG width={Diameter} height={Diameter} />
-    </div>
-  );
+  return <StyledSVG width={Diameter} height={Diameter} />;
 };
 export default SingleMagicCircle;
