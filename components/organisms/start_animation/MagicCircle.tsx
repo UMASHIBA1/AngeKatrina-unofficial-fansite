@@ -6,6 +6,7 @@ import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
 import styled from "styled-components";
 import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
 import { ANGE_WHITE } from "../../../constants/colors";
+import SummonText from "../../atomics/start_animation/SummonText";
 
 const Container = styled.div`
   position: absolute;
@@ -27,6 +28,7 @@ const MagicCircle: React.FC = () => {
       <SingleMagicCircle SvgElement={SecondIn} Diameter={SecondInDiameter} />
       <SingleMagicCircle SvgElement={ThirdIn} Diameter={ThirdInDiameter} />
       <SingleMagicCircle SvgElement={FourthIn} Diameter={FourthInDiameter} />
+      <SummonText />
     </Container>
   );
 };
