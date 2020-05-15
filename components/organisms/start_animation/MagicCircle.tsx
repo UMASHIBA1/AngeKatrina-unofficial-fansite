@@ -5,10 +5,14 @@ import ThirdIn from "../../../public/start_animation/svgs/third_in.svg";
 import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
 import styled from "styled-components";
 import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
+import { ANGE_WHITE } from "../../../constants/colors";
 
 const Container = styled.div`
   position: absolute;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: ${ANGE_WHITE};
 `;
 
 const MagicCircle: React.FC = () => {
