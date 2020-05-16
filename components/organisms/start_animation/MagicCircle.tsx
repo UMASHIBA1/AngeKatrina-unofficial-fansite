@@ -7,6 +7,7 @@ import styled from "styled-components";
 import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
 import { ANGE_WHITE } from "../../../constants/colors";
 import SummonText from "../../atomics/start_animation/SummonText";
+import { useTypedSelector } from "../../../redux/store";
 
 const Container = styled.div`
   position: absolute;
@@ -17,10 +18,31 @@ const Container = styled.div`
 `;
 
 const MagicCircle: React.FC = () => {
-  const mostInDiameter = 350;
-  const SecondInDiameter = 550;
-  const ThirdInDiameter = 700;
-  const FourthInDiameter = 900;
+  const sizes = useTypedSelector((state) => state.sizes);
+  let mostInDiameter;
+  let SecondInDiameter;
+  let ThirdInDiameter;
+  let FourthInDiameter;
+  let summonTextDiameter;
+  if (sizes === "sm") {
+    mostInDiameter = 120;
+    SecondInDiameter = 220;
+    ThirdInDiameter = 320;
+    FourthInDiameter = 420;
+    summonTextDiameter = 100;
+  } else if (sizes === "tablet") {
+    mostInDiameter = 220;
+    SecondInDiameter = 350;
+    ThirdInDiameter = 450;
+    FourthInDiameter = 570;
+    summonTextDiameter = 150;
+  } else {
+    SecondInDiameter = 550;
+    ThirdInDiameter = 700;
+    FourthInDiameter = 900;
+    summonTextDiameter = 280;
+    mostInDiameter = 350;
+  }
 
   return (
     <Container>
@@ -28,7 +50,7 @@ const MagicCircle: React.FC = () => {
       <SingleMagicCircle SvgElement={SecondIn} Diameter={SecondInDiameter} />
       <SingleMagicCircle SvgElement={ThirdIn} Diameter={ThirdInDiameter} />
       <SingleMagicCircle SvgElement={FourthIn} Diameter={FourthInDiameter} />
-      <SummonText />
+      <SummonText diameter={summonTextDiameter} />
     </Container>
   );
 };
