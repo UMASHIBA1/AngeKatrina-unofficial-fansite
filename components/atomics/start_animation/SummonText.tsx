@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { ANGE_BROWN, ANGE_RED } from "../../../constants/colors";
 import { HWT_MARDELL_FONT_PROP } from "../../../constants/cssProps";
@@ -6,7 +6,7 @@ import { toDeepInsetShadow } from "../../../styles/commonAnimation";
 
 const StyledSummonText = styled.div<{
   diameter: number;
-  isStartAnimation: boolean;
+  isPushedButton: boolean;
 }>`
   ${HWT_MARDELL_FONT_PROP}
   display: flex;
@@ -22,26 +22,26 @@ const StyledSummonText = styled.div<{
   left: calc(50% - ${({ diameter }) => diameter / 2}px);
   top: calc(50% - ${({ diameter }) => diameter / 2}px);
   font-size: ${({ diameter }) => diameter / 7}px;
-  animation: ${({ isStartAnimation }) =>
-    isStartAnimation
-      ? toDeepInsetShadow()
-      : "none"} 300ms linear forwards 100ms;
+  animation: ${({ isPushedButton }) =>
+    isPushedButton ? toDeepInsetShadow() : "none"} 300ms linear forwards 100ms;
   `;
 
 interface Props {
   diameter: number;
+  isPushedButton: boolean;
+  onClickFC?: () => void;
 }
 
-const SummonText: React.FC<Props> = ({ diameter: Diameter }: Props) => {
-  const [isStartAnimation, changeStartAnimation] = useState(false);
-  const startAnimation = () => {
-    changeStartAnimation(true);
-  };
+const SummonText: React.FC<Props> = ({
+  diameter: Diameter,
+  isPushedButton,
+  onClickFC,
+}: Props) => {
   return (
     <StyledSummonText
       diameter={Diameter}
-      isStartAnimation={isStartAnimation}
-      onClick={startAnimation}
+      isPushedButton={isPushedButton}
+      onClick={onClickFC}
     >
       <span>Summon</span>
     </StyledSummonText>

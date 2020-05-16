@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MostIn from "../../../public/start_animation/svgs/most_in.svg";
 import SecondIn from "../../../public/start_animation/svgs/second_in.svg";
 import ThirdIn from "../../../public/start_animation/svgs/third_in.svg";
@@ -48,6 +48,7 @@ const judgeEachDiameter = (size: SizeType) => {
 
 const MagicCircle: React.FC = () => {
   const size = useTypedSelector((state) => state.sizes);
+  const [isPushedSummonButton, changeIsPushedSummonButton] = useState(false);
   const {
     mostInDiameter,
     SecondInDiameter,
@@ -55,6 +56,10 @@ const MagicCircle: React.FC = () => {
     FourthInDiameter,
     summonTextDiameter,
   } = judgeEachDiameter(size);
+
+  const startSummonAnimation = () => {
+    changeIsPushedSummonButton(true);
+  };
 
   return (
     <Container>
@@ -78,7 +83,11 @@ const MagicCircle: React.FC = () => {
         Diameter={FourthInDiameter}
         rotateDirection="left"
       />
-      <SummonText diameter={summonTextDiameter} />
+      <SummonText
+        diameter={summonTextDiameter}
+        isPushedButton={isPushedSummonButton}
+        onClickFC={startSummonAnimation}
+      />
     </Container>
   );
 };
