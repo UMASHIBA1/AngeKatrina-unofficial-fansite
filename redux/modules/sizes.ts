@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-type SizeType = "sm" | "tablet" | "pc";
+import { SizeType } from "../../typing/SizeType";
 
 const sizeSlice = createSlice({
   name: "sizes",
