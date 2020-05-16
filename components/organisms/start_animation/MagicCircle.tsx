@@ -46,10 +46,26 @@ const MagicCircle: React.FC = () => {
 
   return (
     <Container>
-      <SingleMagicCircle SvgElement={MostIn} Diameter={mostInDiameter} />
-      <SingleMagicCircle SvgElement={SecondIn} Diameter={SecondInDiameter} />
-      <SingleMagicCircle SvgElement={ThirdIn} Diameter={ThirdInDiameter} />
-      <SingleMagicCircle SvgElement={FourthIn} Diameter={FourthInDiameter} />
+      <SingleMagicCircle
+        SvgElement={MostIn}
+        Diameter={mostInDiameter}
+        rotateDirection="right"
+      />
+      <SingleMagicCircle
+        SvgElement={SecondIn}
+        Diameter={SecondInDiameter}
+        rotateDirection="left"
+      />
+      <SingleMagicCircle
+        SvgElement={ThirdIn}
+        Diameter={ThirdInDiameter}
+        rotateDirection="right"
+      />
+      <SingleMagicCircle
+        SvgElement={FourthIn}
+        Diameter={FourthInDiameter}
+        rotateDirection="left"
+      />
       <SummonText diameter={summonTextDiameter} />
     </Container>
   );
