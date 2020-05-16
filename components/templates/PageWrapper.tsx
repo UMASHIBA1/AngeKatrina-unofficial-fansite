@@ -22,6 +22,17 @@ const useDispatchSize = (dispatch: DispatchType) => {
 
   useDidMount(() => {
     dispatchNowWindowSize();
+    let timer = 0;
+
+    window.addEventListener("resize", () => {
+      if (timer > 0) {
+        clearTimeout(timer);
+      }
+
+      timer = setTimeout(() => {
+        dispatchNowWindowSize();
+      }, 200);
+    });
   });
 };
 
