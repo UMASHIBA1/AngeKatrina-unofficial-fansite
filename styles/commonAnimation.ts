@@ -30,4 +30,9 @@ export const toDeepInsetShadow = (shadowSpreadRadius = 20) => keyframes`
     }
 `;
 
-export const expand = keyframes;
+export const expand = (diameter: number) => keyframes`
+    to {
+        width: ${diameter};
+        height: ${diameter};
+    }
+`;
