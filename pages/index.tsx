@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import MagicCircle from "../components/organisms/start_animation/MagicCircle";
+import PageWrapper from "../components/templates/PageWrapper";
 
 const Main = styled.main`
   width: 100%;
@@ -7,9 +8,11 @@ const Main = styled.main`
 `;
 
 const IndexPage = () => (
-  <Main>
-    <MagicCircle />
-  </Main>
+  <PageWrapper>
+    <Main>
+      <MagicCircle />
+    </Main>
+  </PageWrapper>
 );
 
 export default IndexPage;
