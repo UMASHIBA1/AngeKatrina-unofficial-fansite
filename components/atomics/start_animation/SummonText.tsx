@@ -11,7 +11,7 @@ const StyledSummonText = styled.div<{ diameter: number }>`
   height: ${({ diameter }) => diameter}px;
   left: calc(50% - ${({ diameter }) => diameter / 2}px);
   top: calc(50% - ${({ diameter }) => diameter / 2}px);
-  font-size: 36px;
+  font-size: ${({ diameter }) => diameter / 7}px;
   display: flex;
   justify-content: center;
   align-items: center;
