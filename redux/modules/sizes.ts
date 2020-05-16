@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type SizeType = "sm" | "tablet" | "pc";
+
 const sizeSlice = createSlice({
   name: "sizes",
-  initialState: "sm",
+  initialState: "sm" as SizeType,
   reducers: {
-    toSM: () => "sm",
-    toTablet: () => "tablet",
-    toPC: () => "pc",
+    toSM: () => "sm" as SizeType,
+    toTablet: () => "tablet" as SizeType,
+    toPC: () => "pc" as SizeType,
   },
 });
 
