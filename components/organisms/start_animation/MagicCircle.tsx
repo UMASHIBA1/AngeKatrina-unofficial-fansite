@@ -8,6 +8,7 @@ import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
 import { ANGE_WHITE } from "../../../constants/colors";
 import SummonText from "../../atomics/start_animation/SummonText";
 import { useTypedSelector } from "../../../redux/store";
+import { SizeType } from "../../../typing/SizeType";
 
 const Container = styled.div`
   position: absolute;
@@ -17,32 +18,43 @@ const Container = styled.div`
   background-color: ${ANGE_WHITE};
 `;
 
-const MagicCircle: React.FC = () => {
-  const sizes = useTypedSelector((state) => state.sizes);
-  let mostInDiameter;
-  let SecondInDiameter;
-  let ThirdInDiameter;
-  let FourthInDiameter;
-  let summonTextDiameter;
-  if (sizes === "sm") {
-    mostInDiameter = 120;
-    SecondInDiameter = 220;
-    ThirdInDiameter = 320;
-    FourthInDiameter = 420;
-    summonTextDiameter = 100;
-  } else if (sizes === "tablet") {
-    mostInDiameter = 220;
-    SecondInDiameter = 350;
-    ThirdInDiameter = 450;
-    FourthInDiameter = 570;
-    summonTextDiameter = 150;
+const judgeEachDiameter = (size: SizeType) => {
+  if (size === "sm") {
+    return {
+      mostInDiameter: 120,
+      SecondInDiameter: 220,
+      ThirdInDiameter: 320,
+      FourthInDiameter: 420,
+      summonTextDiameter: 100,
+    };
+  } else if (size === "tablet") {
+    return {
+      mostInDiameter: 220,
+      SecondInDiameter: 350,
+      ThirdInDiameter: 450,
+      FourthInDiameter: 570,
+      summonTextDiameter: 150,
+    };
   } else {
-    SecondInDiameter = 550;
-    ThirdInDiameter = 700;
-    FourthInDiameter = 900;
-    summonTextDiameter = 280;
-    mostInDiameter = 350;
+    return {
+      mostInDiameter: 350,
+      SecondInDiameter: 550,
+      ThirdInDiameter: 700,
+      FourthInDiameter: 900,
+      summonTextDiameter: 280,
+    };
   }
+};
+
+const MagicCircle: React.FC = () => {
+  const size = useTypedSelector((state) => state.sizes);
+  const {
+    mostInDiameter,
+    SecondInDiameter,
+    ThirdInDiameter,
+    FourthInDiameter,
+    summonTextDiameter,
+  } = judgeEachDiameter(size);
 
   return (
     <Container>
