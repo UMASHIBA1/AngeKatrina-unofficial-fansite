@@ -20,13 +20,14 @@ export const leftRotate = keyframes`
     }
 `;
 
-export const toDeepInsetShadow = keyframes`
+export const toDeepInsetShadow = (shadowSpreadRadius = 20) => keyframes`
     from {
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5) inset;
     }
 
     to {
-        box-shadow: 0 0 20px 0px rgba(0,0,0,0.5) inset;
+        box-shadow: 0 0 ${shadowSpreadRadius}px 0px rgba(0,0,0,0.5) inset;
     }
-
 `;
+
+export const expand = keyframes;

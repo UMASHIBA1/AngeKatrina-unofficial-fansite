@@ -23,7 +23,9 @@ const StyledSummonText = styled.div<{
   top: calc(50% - ${({ diameter }) => diameter / 2}px);
   font-size: ${({ diameter }) => diameter / 7}px;
   animation: ${({ isStartAnimation }) =>
-    isStartAnimation ? toDeepInsetShadow : "none"} 300ms linear forwards 100ms;
+    isStartAnimation
+      ? toDeepInsetShadow()
+      : "none"} 300ms linear forwards 100ms;
   `;
 
 interface Props {
