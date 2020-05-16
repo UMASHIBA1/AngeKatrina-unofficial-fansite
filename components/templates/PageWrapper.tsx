@@ -9,11 +9,8 @@ interface Props {
   children: ReactNode;
 }
 
-// 全てのページで必要な処理をまとめてあります。
-const PageWrapper: React.FC<Props> = (props: Props) => {
-  const dispatch: DispatchType = useDispatch();
-
-  useDidMount(() => {
+const useDispatchSize = (dispatch: DispatchType) => {
+  const dispatchNowWindowSize = () => {
     if (window.innerWidth < sm_breakpoint) {
       dispatch(toSM());
     } else if (window.innerWidth < tablet_breakpoint) {
@@ -21,7 +18,18 @@ const PageWrapper: React.FC<Props> = (props: Props) => {
     } else {
       dispatch(toPC());
     }
+  };
+
+  useDidMount(() => {
+    dispatchNowWindowSize();
   });
+};
+
+// 全てのページで必要な処理をまとめてあります。
+const PageWrapper: React.FC<Props> = (props: Props) => {
+  const dispatch: DispatchType = useDispatch();
+
+  useDispatchSize(dispatch);
 
   return <React.Fragment>{props.children}</React.Fragment>;
 };
