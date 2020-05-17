@@ -26,7 +26,7 @@ export const toDeepInsetShadow = (shadowSpreadRadius = 20) => keyframes`
     }
 
     to {
-        box-shadow: 0 0 ${shadowSpreadRadius}px 0px rgba(0,0,0,0.5) inset;
+        box-shadow: 0 0 0 ${shadowSpreadRadius}px rgba(0,0,0,0.5) inset;
     }
 `;
 
