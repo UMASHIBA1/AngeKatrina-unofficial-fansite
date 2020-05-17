@@ -64,21 +64,25 @@ const MagicCircle: React.FC = () => {
   return (
     <Container>
       <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
         SvgElement={MostIn}
         Diameter={mostInDiameter}
         rotateDirection="right"
       />
       <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
         SvgElement={SecondIn}
         Diameter={SecondInDiameter}
         rotateDirection="left"
       />
       <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
         SvgElement={ThirdIn}
         Diameter={ThirdInDiameter}
         rotateDirection="right"
       />
       <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
         SvgElement={FourthIn}
         Diameter={FourthInDiameter}
         rotateDirection="left"
