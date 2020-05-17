@@ -30,6 +30,19 @@ export const toDeepInsetShadow = (shadowSpreadRadius = 20) => keyframes`
     }
 `;
 
+export const toDeepDropShadow = (
+  shadowSpreadRadius = 20,
+  color = "rgba(0,0,0,0.5)"
+) => keyframes`
+    from {
+        filter: drop-shadow(0px 0px 0px rgba(0,0,0,0.5));
+    }
+
+    to {
+        filter: drop-shadow(0px 0px ${shadowSpreadRadius}px ${color});
+    }
+`;
+
 export const expand = (diameter: number) => keyframes`
     to {
         width: ${diameter};
