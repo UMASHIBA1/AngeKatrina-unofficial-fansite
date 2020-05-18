@@ -45,7 +45,7 @@ export const toDeepDropShadow = (
 
 export const expand = (diameter: number) => keyframes`
     to {
-        width: ${diameter};
-        height: ${diameter};
+        width: ${diameter}px;
+        height: ${diameter}px;
     }
 `;
