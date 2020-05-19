@@ -64,24 +64,60 @@ const MagicCircle: React.FC = () => {
   return (
     <Container>
       <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
         SvgElement={MostIn}
         Diameter={mostInDiameter}
         rotateDirection="right"
       />
       <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
+        SvgElement={MostIn}
+        Diameter={mostInDiameter}
+        rotateDirection="right"
+        scaleMagnification={2.0}
+      />
+      <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
         SvgElement={SecondIn}
         Diameter={SecondInDiameter}
         rotateDirection="left"
+        scaleMagnification={1.1}
       />
       <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
+        SvgElement={SecondIn}
+        Diameter={SecondInDiameter}
+        rotateDirection="left"
+        scaleMagnification={2.2}
+      />
+      {/*  */}
+      <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
         SvgElement={ThirdIn}
         Diameter={ThirdInDiameter}
         rotateDirection="right"
+        scaleMagnification={2.4}
       />
       <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
+        SvgElement={ThirdIn}
+        Diameter={ThirdInDiameter}
+        rotateDirection="right"
+        scaleMagnification={4.8}
+      />
+      <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
         SvgElement={FourthIn}
         Diameter={FourthInDiameter}
         rotateDirection="left"
+        scaleMagnification={2.85}
+      />
+      <SingleMagicCircle
+        isStartSummonAnimation={isPushedSummonButton}
+        SvgElement={FourthIn}
+        Diameter={FourthInDiameter}
+        rotateDirection="left"
+        scaleMagnification={5.8}
       />
       <SummonText
         diameter={summonTextDiameter}

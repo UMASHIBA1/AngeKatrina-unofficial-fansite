@@ -26,13 +26,25 @@ export const toDeepInsetShadow = (shadowSpreadRadius = 20) => keyframes`
     }
 
     to {
-        box-shadow: 0 0 ${shadowSpreadRadius}px 0px rgba(0,0,0,0.5) inset;
+        box-shadow: 0 0 0 ${shadowSpreadRadius}px rgba(0,0,0,0.5) inset;
     }
 `;
 
-export const expand = (diameter: number) => keyframes`
+export const toDeepDropShadow = (
+  shadowSpreadRadius = 20,
+  color = "rgba(0,0,0,0.5)"
+) => keyframes`
+    from {
+        filter: drop-shadow(0px 0px 0px rgba(0,0,0,0.5));
+    }
+
     to {
-        width: ${diameter};
-        height: ${diameter};
+        filter: drop-shadow(0px 0px ${shadowSpreadRadius}px ${color});
+    }
+`;
+
+export const scale = (magnification: number) => keyframes`
+    to {
+        transform: scale(${magnification})
     }
 `;
