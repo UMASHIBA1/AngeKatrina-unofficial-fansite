@@ -36,6 +36,11 @@ const createAnimateStyledSVG = ({
         animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards;
       `;
     }
+  } else {
+    // NOTE styledの中でReactHooksを使っているのかこの処理を加えないと「前と同じ回数のReactHooksを使え」ってエラーをReactがだす
+    StyledSVG = styled(StyledSVG)`
+      animation: none;
+    `;
   }
 
   return StyledSVG;
