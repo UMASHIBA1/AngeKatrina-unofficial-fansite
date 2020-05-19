@@ -15,15 +15,6 @@ interface Props {
   isStartSummonAnimation: boolean;
 }
 
-const changeTopLeft = (Diameter: Props["Diameter"]) => keyframes`
-  to {
-    transform: translate(
-      calc(50vw - ${Diameter / 2}px),
-      calc(50vh - ${Diameter / 2}px)
-    );
-  }
-`;
-
 const createAnimateStyledSVG = ({
   SvgElement,
   Diameter,
@@ -54,39 +45,22 @@ const createAnimateStyledSVG = ({
   }
 };
 
-const createWrapper = (
-  isStartSummonAnimation: Props["isStartSummonAnimation"],
-  Diameter: Props["Diameter"]
-) => {
-  if (!isStartSummonAnimation) {
-    return styled.span<{ Diameter: number }>`
-      position: absolute;
-      transform: translate(
-        calc(50vw - ${({ Diameter }) => Diameter / 2}px),
-        calc(50vh - ${({ Diameter }) => Diameter / 2}px)
-      );
-    `;
-  } else {
-    return styled.span<{ Diameter: number }>`
-      position: absolute;
-      transform: translate(
-        calc(50vw - ${({ Diameter }) => Diameter / 2}px),
-        calc(50vh - ${({ Diameter }) => Diameter / 2}px)
-      );
-      animation: ${changeTopLeft(Diameter * 1.2)} 875ms ease-in 900ms forwards;
-    `;
-  }
-};
+const Wrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const SingleMagicCircle: React.FC<Props> = (props: Props) => {
-  const { Diameter, isStartSummonAnimation } = props;
+  const { Diameter } = props;
 
   const AnimateStyledSVG = createAnimateStyledSVG(props);
 
-  const Wrapper = createWrapper(isStartSummonAnimation, Diameter);
-
   return (
-    <Wrapper Diameter={Diameter}>
+    <Wrapper>
       <AnimateStyledSVG width={Diameter} height={Diameter} />
     </Wrapper>
   );
