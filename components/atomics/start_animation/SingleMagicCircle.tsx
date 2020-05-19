@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { Keyframes, keyframes } from "styled-components";
+import styled, { Keyframes } from "styled-components";
 import {
   rightRotate,
   leftRotate,
@@ -28,21 +28,19 @@ const createAnimateStyledSVG = ({
     rotateKeyframe = leftRotate;
   }
 
-  const StyledSVG = styled(SvgElement)`
+  let StyledSVG = styled(SvgElement)`
     position: absolute;
   `;
 
   if (isStartSummonAnimation) {
-    return styled(StyledSVG)`
+    StyledSVG = styled(StyledSVG)`
       animation: ${rotateKeyframe} 20s linear infinite,
         ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards,
         ${expand(Diameter * 1.2)} 500ms ease-in 900ms forwards;
     `;
-  } else {
-    return styled(StyledSVG)`
-      animation: ${rotateKeyframe} 20s linear infinite;
-    `;
   }
+
+  return StyledSVG;
 };
 
 const Wrapper = styled.div`
@@ -54,14 +52,34 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
+const createRotateWrapper = (rotateDirection: Props["rotateDirection"]) => {
+  let rotateKeyframe: Keyframes;
+  if (rotateDirection === "right") {
+    rotateKeyframe = rightRotate;
+  } else {
+    rotateKeyframe = leftRotate;
+  }
+
+  return styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: ${rotateKeyframe} 20s linear infinite;
+  `;
+};
+
 const SingleMagicCircle: React.FC<Props> = (props: Props) => {
-  const { Diameter } = props;
+  const { Diameter, rotateDirection } = props;
+
+  const RotateWrapper = createRotateWrapper(rotateDirection);
 
   const AnimateStyledSVG = createAnimateStyledSVG(props);
 
   return (
     <Wrapper>
-      <AnimateStyledSVG width={Diameter} height={Diameter} />
+      <RotateWrapper>
+        <AnimateStyledSVG width={Diameter} height={Diameter} />
+      </RotateWrapper>
     </Wrapper>
   );
 };
