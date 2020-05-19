@@ -4,7 +4,7 @@ import {
   rightRotate,
   leftRotate,
   toDeepDropShadow,
-  expand,
+  scale,
 } from "../../../styles/commonAnimation";
 import { ANGE_RED } from "../../../constants/colors";
 
@@ -17,7 +17,6 @@ interface Props {
 
 const createAnimateStyledSVG = ({
   SvgElement,
-  Diameter,
   rotateDirection,
   isStartSummonAnimation,
 }: Props) => {
@@ -35,7 +34,7 @@ const createAnimateStyledSVG = ({
   if (isStartSummonAnimation) {
     StyledSVG = styled(StyledSVG)`
       animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards,
-        ${expand(Diameter * 1.2)} 500ms ease-in 900ms forwards;
+        ${scale(1.2)} 500ms ease-in 900ms forwards;
     `;
   }
 
