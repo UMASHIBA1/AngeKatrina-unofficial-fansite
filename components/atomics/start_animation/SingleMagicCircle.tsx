@@ -18,17 +18,9 @@ interface Props {
 
 const createAnimateStyledSVG = ({
   SvgElement,
-  rotateDirection,
   isStartSummonAnimation,
   scaleMagnification,
 }: Props) => {
-  let rotateKeyframe: Keyframes;
-  if (rotateDirection === "right") {
-    rotateKeyframe = rightRotate;
-  } else {
-    rotateKeyframe = leftRotate;
-  }
-
   let StyledSVG = styled(SvgElement)`
     position: absolute;
   `;
