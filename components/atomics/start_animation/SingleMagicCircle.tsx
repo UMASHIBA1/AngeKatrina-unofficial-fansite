@@ -10,7 +10,7 @@ import { ANGE_RED } from "../../../constants/colors";
 
 interface Props {
   SvgElement: React.StatelessComponent<React.SVGAttributes<SVGElement>>;
-  Diameter: number;
+  diameter: number;
   rotateDirection: "right" | "left";
   isStartSummonAnimation: boolean;
   scaleMagnification?: number;
@@ -75,7 +75,7 @@ const createRotateWrapper = (rotateDirection: Props["rotateDirection"]) => {
 };
 
 const SingleMagicCircle: React.FC<Props> = (props: Props) => {
-  const { Diameter, rotateDirection } = props;
+  const { diameter, rotateDirection } = props;
 
   const RotateWrapper = createRotateWrapper(rotateDirection);
 
@@ -84,7 +84,7 @@ const SingleMagicCircle: React.FC<Props> = (props: Props) => {
   return (
     <Wrapper>
       <RotateWrapper>
-        <AnimateStyledSVG width={Diameter} height={Diameter} />
+        <AnimateStyledSVG width={diameter} height={diameter} />
       </RotateWrapper>
     </Wrapper>
   );

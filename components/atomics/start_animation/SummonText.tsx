@@ -35,13 +35,13 @@ interface Props {
 }
 
 const SummonText: React.FC<Props> = ({
-  diameter: Diameter,
+  diameter: diameter,
   isPushedButton,
   onClickFC,
 }: Props) => {
   return (
     <StyledSummonText
-      diameter={Diameter}
+      diameter={diameter}
       isPushedButton={isPushedButton}
       onClick={onClickFC}
     >
