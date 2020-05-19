@@ -68,24 +68,28 @@ const MagicCircle: React.FC = () => {
         SvgElement={MostIn}
         Diameter={mostInDiameter}
         rotateDirection="right"
+        scaleMagnification={1.2}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={SecondIn}
         Diameter={SecondInDiameter}
         rotateDirection="left"
+        scaleMagnification={1.35}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={ThirdIn}
         Diameter={ThirdInDiameter}
         rotateDirection="right"
+        scaleMagnification={1.65}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={FourthIn}
         Diameter={FourthInDiameter}
         rotateDirection="left"
+        scaleMagnification={2.1}
       />
       <SummonText
         diameter={summonTextDiameter}

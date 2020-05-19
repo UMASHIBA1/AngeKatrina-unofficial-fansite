@@ -13,12 +13,14 @@ interface Props {
   Diameter: number;
   rotateDirection: "right" | "left";
   isStartSummonAnimation: boolean;
+  scaleMagnification?: number;
 }
 
 const createAnimateStyledSVG = ({
   SvgElement,
   rotateDirection,
   isStartSummonAnimation,
+  scaleMagnification,
 }: Props) => {
   let rotateKeyframe: Keyframes;
   if (rotateDirection === "right") {
@@ -34,7 +36,7 @@ const createAnimateStyledSVG = ({
   if (isStartSummonAnimation) {
     StyledSVG = styled(StyledSVG)`
       animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards,
-        ${scale(1.2)} 500ms ease-in 900ms forwards;
+        ${scale(scaleMagnification)} 300ms ease-in 1000ms forwards;
     `;
   }
 
