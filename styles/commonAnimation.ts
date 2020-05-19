@@ -43,9 +43,8 @@ export const toDeepDropShadow = (
     }
 `;
 
-export const expand = (diameter: number) => keyframes`
+export const scale = (magnification: number) => keyframes`
     to {
-        width: ${diameter}px;
-        height: ${diameter}px;
+        transform: scale(${magnification})
     }
 `;
