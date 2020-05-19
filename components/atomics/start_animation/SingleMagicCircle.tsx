@@ -34,8 +34,7 @@ const createAnimateStyledSVG = ({
 
   if (isStartSummonAnimation) {
     StyledSVG = styled(StyledSVG)`
-      animation: ${rotateKeyframe} 20s linear infinite,
-        ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards,
+      animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards,
         ${expand(Diameter * 1.2)} 500ms ease-in 900ms forwards;
     `;
   }
