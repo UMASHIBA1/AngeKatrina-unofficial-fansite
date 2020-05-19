@@ -33,11 +33,17 @@ const createAnimateStyledSVG = ({
     position: absolute;
   `;
 
-  if (isStartSummonAnimation && scaleMagnification !== undefined) {
-    StyledSVG = styled(StyledSVG)`
-      animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards,
-        ${scale(scaleMagnification)} 300ms ease-in 1000ms forwards;
-    `;
+  if (isStartSummonAnimation) {
+    if (scaleMagnification !== undefined) {
+      StyledSVG = styled(StyledSVG)`
+        animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards,
+          ${scale(scaleMagnification)} 300ms ease-in 1000ms forwards;
+      `;
+    } else {
+      StyledSVG = styled(StyledSVG)`
+        animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards;
+      `;
+    }
   }
 
   return StyledSVG;
