@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import SmallMagicCircle from "../../molecules/start_animation/SmallMagicCircle";
 import { useTypedSelector } from "../../../redux/store";
+import { smallMagicCircleMapZIndex } from "../../../constants/zindexs/start_animation";
 
 const Wrapper = styled.div`
   position: absolute;
   overflow: hidden;
   width: 100%;
   height: 100%;
+  z-index: ${smallMagicCircleMapZIndex};
 `;
 
 const SMVerMap: React.FC = () => {

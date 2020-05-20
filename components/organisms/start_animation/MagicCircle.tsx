@@ -8,12 +8,14 @@ import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
 import SummonText from "../../atomics/start_animation/SummonText";
 import { useTypedSelector } from "../../../redux/store";
 import { SizeType } from "../../../typing/SizeType";
+import { magicCircleZIndex } from "../../../constants/zindexs/start_animation";
 
 const Wrapper = styled.div`
   position: absolute;
   overflow: hidden;
   width: 100%;
   height: 100%;
+  z-index: ${magicCircleZIndex};
 `;
 
 const judgeEachDiameter = (size: SizeType) => {
