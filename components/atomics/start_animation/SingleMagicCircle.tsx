@@ -30,7 +30,7 @@ const createAnimateStyledSVG = ({
     if (scaleMagnification !== undefined) {
       StyledSVG = styled(StyledSVG)`
         animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards,
-          ${scale(scaleMagnification)} 300ms ease-out 1000ms forwards;
+          ${scale(scaleMagnification)} 300ms ease-out 1600ms forwards;
       `;
     } else {
       StyledSVG = styled(StyledSVG)`
