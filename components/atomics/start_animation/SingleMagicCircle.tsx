@@ -23,6 +23,7 @@ const createAnimateStyledSVG = ({
 }: Props) => {
   let StyledSVG = styled(SvgElement)`
     position: absolute;
+    will-change: animation;
   `;
 
   if (isStartSummonAnimation) {
