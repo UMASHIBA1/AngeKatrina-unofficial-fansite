@@ -25,7 +25,19 @@ const SMVerMap: React.FC = () => {
 };
 
 const TabletVerMap: React.FC = () => {
-  return <React.Fragment />;
+  return (
+    <React.Fragment>
+      <SmallMagicCircle top={-300} left={-200} diameter={80} circleNum={3} />
+      <SmallMagicCircle top={-370} left={200} diameter={100} circleNum={2} />
+      <SmallMagicCircle top={-160} left={370} diameter={70} circleNum={3} />
+      <SmallMagicCircle top={-380} left={-390} diameter={120} circleNum={3} />
+      <SmallMagicCircle top={-100} left={-300} diameter={60} circleNum={3} />
+      <SmallMagicCircle top={130} left={320} diameter={60} circleNum={3} />
+      <SmallMagicCircle top={360} left={300} diameter={140} circleNum={3} />
+      <SmallMagicCircle top={280} left={-200} diameter={100} circleNum={3} />
+      <SmallMagicCircle top={380} left={-30} diameter={60} circleNum={3} />
+    </React.Fragment>
+  );
 };
 
 const PCVerMap: React.FC = () => {
