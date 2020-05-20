@@ -10,7 +10,7 @@ import { ANGE_RED } from "../../../constants/colors";
 
 interface Props {
   SvgElement: React.StatelessComponent<React.SVGAttributes<SVGElement>>;
-  Diameter: number;
+  diameter: number;
   rotateDirection: "right" | "left";
   isStartSummonAnimation: boolean;
   scaleMagnification?: number;
@@ -18,17 +18,9 @@ interface Props {
 
 const createAnimateStyledSVG = ({
   SvgElement,
-  rotateDirection,
   isStartSummonAnimation,
   scaleMagnification,
 }: Props) => {
-  let rotateKeyframe: Keyframes;
-  if (rotateDirection === "right") {
-    rotateKeyframe = rightRotate;
-  } else {
-    rotateKeyframe = leftRotate;
-  }
-
   let StyledSVG = styled(SvgElement)`
     position: absolute;
   `;
@@ -44,6 +36,11 @@ const createAnimateStyledSVG = ({
         animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards;
       `;
     }
+  } else {
+    // NOTE styledの中でReactHooksを使っているのかこの処理を加えないと「前と同じ回数のReactHooksを使え」ってエラーをReactがだす
+    StyledSVG = styled(StyledSVG)`
+      animation: none;
+    `;
   }
 
   return StyledSVG;
@@ -75,7 +72,7 @@ const createRotateWrapper = (rotateDirection: Props["rotateDirection"]) => {
 };
 
 const SingleMagicCircle: React.FC<Props> = (props: Props) => {
-  const { Diameter, rotateDirection } = props;
+  const { diameter, rotateDirection } = props;
 
   const RotateWrapper = createRotateWrapper(rotateDirection);
 
@@ -84,7 +81,7 @@ const SingleMagicCircle: React.FC<Props> = (props: Props) => {
   return (
     <Wrapper>
       <RotateWrapper>
-        <AnimateStyledSVG width={Diameter} height={Diameter} />
+        <AnimateStyledSVG width={diameter} height={diameter} />
       </RotateWrapper>
     </Wrapper>
   );

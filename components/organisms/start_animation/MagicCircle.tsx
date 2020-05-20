@@ -5,26 +5,26 @@ import ThirdIn from "../../../public/start_animation/svgs/third_in.svg";
 import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
 import styled from "styled-components";
 import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
-import { ANGE_WHITE } from "../../../constants/colors";
 import SummonText from "../../atomics/start_animation/SummonText";
 import { useTypedSelector } from "../../../redux/store";
 import { SizeType } from "../../../typing/SizeType";
+import { magicCircleZIndex } from "../../../constants/zindexs/start_animation";
 
-const Container = styled.div`
+const Wrapper = styled.div`
   position: absolute;
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background-color: ${ANGE_WHITE};
+  z-index: ${magicCircleZIndex};
 `;
 
 const judgeEachDiameter = (size: SizeType) => {
   if (size === "sm") {
     return {
       mostInDiameter: 120,
-      SecondInDiameter: 220,
-      ThirdInDiameter: 320,
-      FourthInDiameter: 420,
+      SecondInDiameter: 200,
+      ThirdInDiameter: 280,
+      FourthInDiameter: 360,
       summonTextDiameter: 100,
     };
   } else if (size === "tablet") {
@@ -62,31 +62,31 @@ const MagicCircle: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Wrapper>
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={MostIn}
-        Diameter={mostInDiameter}
+        diameter={mostInDiameter}
         rotateDirection="right"
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={MostIn}
-        Diameter={mostInDiameter}
+        diameter={mostInDiameter}
         rotateDirection="right"
-        scaleMagnification={2.0}
+        scaleMagnification={size === "sm" ? 2.15 : 2.0}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={SecondIn}
-        Diameter={SecondInDiameter}
+        diameter={SecondInDiameter}
         rotateDirection="left"
         scaleMagnification={1.1}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={SecondIn}
-        Diameter={SecondInDiameter}
+        diameter={SecondInDiameter}
         rotateDirection="left"
         scaleMagnification={2.2}
       />
@@ -94,28 +94,28 @@ const MagicCircle: React.FC = () => {
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={ThirdIn}
-        Diameter={ThirdInDiameter}
+        diameter={ThirdInDiameter}
         rotateDirection="right"
         scaleMagnification={2.4}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={ThirdIn}
-        Diameter={ThirdInDiameter}
+        diameter={ThirdInDiameter}
         rotateDirection="right"
         scaleMagnification={4.8}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={FourthIn}
-        Diameter={FourthInDiameter}
+        diameter={FourthInDiameter}
         rotateDirection="left"
         scaleMagnification={2.85}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={FourthIn}
-        Diameter={FourthInDiameter}
+        diameter={FourthInDiameter}
         rotateDirection="left"
         scaleMagnification={5.8}
       />
@@ -124,7 +124,7 @@ const MagicCircle: React.FC = () => {
         isPushedButton={isPushedSummonButton}
         onClickFC={startSummonAnimation}
       />
-    </Container>
+    </Wrapper>
   );
 };
 
