@@ -22,9 +22,9 @@ const judgeEachDiameter = (size: SizeType) => {
   if (size === "sm") {
     return {
       mostInDiameter: 120,
-      SecondInDiameter: 220,
-      ThirdInDiameter: 320,
-      FourthInDiameter: 420,
+      SecondInDiameter: 200,
+      ThirdInDiameter: 280,
+      FourthInDiameter: 360,
       summonTextDiameter: 100,
     };
   } else if (size === "tablet") {
@@ -74,7 +74,7 @@ const MagicCircle: React.FC = () => {
         SvgElement={MostIn}
         diameter={mostInDiameter}
         rotateDirection="right"
-        scaleMagnification={2.0}
+        scaleMagnification={size === "sm" ? 2.15 : 2.0}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
