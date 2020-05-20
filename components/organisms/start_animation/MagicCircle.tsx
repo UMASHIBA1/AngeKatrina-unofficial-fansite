@@ -10,7 +10,7 @@ import SummonText from "../../atomics/start_animation/SummonText";
 import { useTypedSelector } from "../../../redux/store";
 import { SizeType } from "../../../typing/SizeType";
 
-const Container = styled.div`
+const Wrapper = styled.div`
   position: absolute;
   overflow: hidden;
   width: 100%;
@@ -62,7 +62,7 @@ const MagicCircle: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Wrapper>
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={MostIn}
@@ -124,7 +124,7 @@ const MagicCircle: React.FC = () => {
         isPushedButton={isPushedSummonButton}
         onClickFC={startSummonAnimation}
       />
-    </Container>
+    </Wrapper>
   );
 };
 
