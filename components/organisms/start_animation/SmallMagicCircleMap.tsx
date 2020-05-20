@@ -41,14 +41,32 @@ const TabletVerMap: React.FC = () => {
 };
 
 const PCVerMap: React.FC = () => {
-  return <React.Fragment />;
+  return (
+    <React.Fragment>
+      <SmallMagicCircle top={-400} left={-230} diameter={100} circleNum={3} />
+      <SmallMagicCircle top={-300} left={-500} diameter={150} circleNum={3} />
+      <SmallMagicCircle top={-430} left={-700} diameter={80} circleNum={3} />
+      <SmallMagicCircle top={-100} left={-600} diameter={60} circleNum={3} />
+      <SmallMagicCircle top={40} left={-500} diameter={80} circleNum={3} />
+      <SmallMagicCircle top={460} left={-700} diameter={80} circleNum={3} />
+      <SmallMagicCircle top={200} left={-600} diameter={130} circleNum={3} />
+      <SmallMagicCircle top={400} left={-400} diameter={100} circleNum={3} />
+      <SmallMagicCircle top={470} left={-100} diameter={100} circleNum={3} />
+      <SmallMagicCircle top={-450} left={200} diameter={120} circleNum={3} />
+      <SmallMagicCircle top={-400} left={400} diameter={50} circleNum={3} />
+      <SmallMagicCircle top={-420} left={700} diameter={160} circleNum={3} />
+      <SmallMagicCircle top={-200} left={500} diameter={120} circleNum={3} />
+      <SmallMagicCircle top={100} left={670} diameter={120} circleNum={3} />
+      <SmallMagicCircle top={-100} left={600} diameter={70} circleNum={3} />
+      <SmallMagicCircle top={0} left={460} diameter={100} circleNum={3} />
+      <SmallMagicCircle top={300} left={500} diameter={200} circleNum={3} />
+      <SmallMagicCircle top={400} left={650} diameter={60} circleNum={3} />
+    </React.Fragment>
+  );
 };
 
 const SmallMagicCircleMap: React.FC = () => {
   const size = useTypedSelector((state) => state.sizes);
-
-  // <SmallMagicCircle top={-250} left={-500} diameter={200} circleNum={3} />
-  // <SmallMagicCircle top={300} left={-560} diameter={100} circleNum={2} />
 
   return (
     <Wrapper>
