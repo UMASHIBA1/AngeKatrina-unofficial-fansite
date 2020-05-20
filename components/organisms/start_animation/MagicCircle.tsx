@@ -5,7 +5,6 @@ import ThirdIn from "../../../public/start_animation/svgs/third_in.svg";
 import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
 import styled from "styled-components";
 import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
-import { ANGE_WHITE } from "../../../constants/colors";
 import SummonText from "../../atomics/start_animation/SummonText";
 import { useTypedSelector } from "../../../redux/store";
 import { SizeType } from "../../../typing/SizeType";
@@ -15,7 +14,6 @@ const Wrapper = styled.div`
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background-color: ${ANGE_WHITE};
 `;
 
 const judgeEachDiameter = (size: SizeType) => {
