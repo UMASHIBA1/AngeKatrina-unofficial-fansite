@@ -49,6 +49,10 @@ const PCVerMap: React.FC = () => {
       <SmallMagicCircle top={-300} left={-500} diameter={150} circleNum={3} />
       <SmallMagicCircle top={-430} left={-700} diameter={80} circleNum={3} />
       <SmallMagicCircle top={-100} left={-600} diameter={60} circleNum={3} />
+      <SmallMagicCircle top={-300} left={-800} diameter={80} circleNum={3} />
+      <SmallMagicCircle top={-50} left={-850} diameter={160} circleNum={3} />
+      <SmallMagicCircle top={130} left={-800} diameter={50} circleNum={3} />
+      <SmallMagicCircle top={340} left={-870} diameter={100} circleNum={3} />
       <SmallMagicCircle top={40} left={-500} diameter={80} circleNum={3} />
       <SmallMagicCircle top={460} left={-700} diameter={80} circleNum={3} />
       <SmallMagicCircle top={200} left={-600} diameter={130} circleNum={3} />
@@ -63,6 +67,10 @@ const PCVerMap: React.FC = () => {
       <SmallMagicCircle top={0} left={460} diameter={100} circleNum={3} />
       <SmallMagicCircle top={300} left={500} diameter={200} circleNum={3} />
       <SmallMagicCircle top={400} left={650} diameter={60} circleNum={3} />
+      <SmallMagicCircle top={-220} left={800} diameter={140} circleNum={3} />
+      <SmallMagicCircle top={0} left={840} diameter={80} circleNum={3} />
+      <SmallMagicCircle top={300} left={820} diameter={100} circleNum={3} />
+      <SmallMagicCircle top={450} left={260} diameter={100} circleNum={3} />
     </React.Fragment>
   );
 };
