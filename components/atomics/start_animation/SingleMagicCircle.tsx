@@ -6,6 +6,7 @@ import {
   toDeepDropShadow,
   scale,
   fadeout,
+  removeDeepDropShadow,
 } from "../../../styles/commonAnimation";
 import { ANGE_RED } from "../../../constants/colors";
 
@@ -32,18 +33,21 @@ const createAnimateStyledSVG = ({
 }: Props) => {
   let StyledSVG = styled(SvgElement)`
     position: absolute;
-    will-change: animation;
+    filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
   `;
 
   if (isStartSummonAnimation) {
     StyledSVG = styled(StyledSVG)`
-      animation: ${doShadow ? toDeepDropShadow(3, ANGE_RED) : "none"} 500ms
-          linear 400ms forwards,
+      will-change: animation;
+      animation: ${doShadow ? toDeepDropShadow(4, ANGE_RED) : "none"} 500ms
+          linear 100ms forwards,
+        ${doShadow ? removeDeepDropShadow(4, ANGE_RED) : "none"} 500ms linear
+          750ms forwards,
         ${doExpand && scaleMagnification !== undefined
             ? scale(scaleMagnification)
             : "none"}
-          300ms ease-out 1600ms forwards,
-        ${doFadeout ? fadeout : "none"} 500ms linear 400ms forwards;
+          300ms ease-out 1800ms forwards,
+        forwards, ${doFadeout ? fadeout : "none"} 500ms linear 600ms forwards;
     `;
   } else {
     // NOTE styledの中でReactHooksを使っているのかこの処理を加えないと「前と同じ回数のReactHooksを使え」ってエラーをReactがだす

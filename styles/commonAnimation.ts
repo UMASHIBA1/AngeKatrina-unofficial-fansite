@@ -52,6 +52,19 @@ export const toDeepDropShadow = (
     }
 `;
 
+export const removeDeepDropShadow = (
+  shadowSpreadRadius = 20,
+  color = "rgba(0,0,0,0.5)"
+) => keyframes`
+    from {
+        filter: drop-shadow(0px 0px ${shadowSpreadRadius}px ${color});
+    }
+
+    to {
+        filter: drop-shadow(0px 0px 0px rgba(0,0,0,0.5));
+    }
+`;
+
 export const scale = (magnification: number) => keyframes`
     to {
         transform: scale(${magnification})
