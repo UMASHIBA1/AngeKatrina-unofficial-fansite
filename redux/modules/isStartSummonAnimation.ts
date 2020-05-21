@@ -4,11 +4,14 @@ const IsStartSummonAnimationSlice = createSlice({
   name: "isStartSummonAnimation",
   initialState: false,
   reducers: {
-    toTrue: () => true,
-    toFalse: () => false,
+    startSummonAnimation: () => true,
+    stopSummonAnimation: () => false,
   },
 });
 
-export const { toTrue, toFalse } = IsStartSummonAnimationSlice.actions;
+export const {
+  startSummonAnimation,
+  stopSummonAnimation,
+} = IsStartSummonAnimationSlice.actions;
 
 export default IsStartSummonAnimationSlice.reducer;
