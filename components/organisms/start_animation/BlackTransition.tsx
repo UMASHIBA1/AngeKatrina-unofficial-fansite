@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { blackTransitionZIndex } from "../../../constants/zindexs/start_animation";
+import BlackCircle from "../../atomics/start_animation/BlackCircle";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -11,7 +12,11 @@ const Wrapper = styled.div`
 `;
 
 const BlackTransition: React.FC = () => {
-  return <Wrapper></Wrapper>;
+  return (
+    <Wrapper>
+      <BlackCircle />
+    </Wrapper>
+  );
 };
 
 export default BlackTransition;
