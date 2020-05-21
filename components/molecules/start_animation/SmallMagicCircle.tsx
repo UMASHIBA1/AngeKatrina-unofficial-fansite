@@ -5,11 +5,12 @@ import SecondIn from "../../../public/start_animation/svgs/second_in.svg";
 import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
 import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
 
-interface Props {
+export interface SmallMagicCircleProps {
   top: number;
   left: number;
   diameter: number;
   circleNum: 1 | 2 | 3;
+  isStartSummonAnimation: boolean;
 }
 
 const Wrapper = styled.div<{ left: number; top: number }>`
@@ -21,14 +22,21 @@ const Wrapper = styled.div<{ left: number; top: number }>`
   align-items: center;
 `;
 
-const SmallMagicCircle: React.FC<Props> = ({
+const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
   top,
   left,
   diameter,
   circleNum,
-}: Props) => {
+  isStartSummonAnimation,
+}: SmallMagicCircleProps) => {
   const mostInDiameter = diameter * 0.5;
   const secondInDiameter = diameter * 0.78;
+
+  const doAnimations = {
+    doShadow: false,
+    doExpand: false,
+    doFadeout: true,
+  };
 
   return (
     <Wrapper top={top} left={left}>
@@ -37,7 +45,8 @@ const SmallMagicCircle: React.FC<Props> = ({
           SvgElement={MostIn}
           diameter={mostInDiameter}
           rotateDirection={"right"}
-          isStartSummonAnimation={false}
+          isStartSummonAnimation={isStartSummonAnimation}
+          doAnimations={doAnimations}
         />
       ) : null}
       {circleNum >= 2 ? (
@@ -45,14 +54,16 @@ const SmallMagicCircle: React.FC<Props> = ({
           SvgElement={SecondIn}
           diameter={secondInDiameter}
           rotateDirection={"left"}
-          isStartSummonAnimation={false}
+          isStartSummonAnimation={isStartSummonAnimation}
+          doAnimations={doAnimations}
         />
       ) : null}
       <SingleMagicCircle
         SvgElement={FourthIn}
         diameter={diameter}
         rotateDirection={"right"}
-        isStartSummonAnimation={false}
+        isStartSummonAnimation={isStartSummonAnimation}
+        doAnimations={doAnimations}
       />
     </Wrapper>
   );

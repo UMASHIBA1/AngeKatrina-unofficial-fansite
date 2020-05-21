@@ -20,6 +20,15 @@ export const leftRotate = keyframes`
     }
 `;
 
+export const fadeout = keyframes`
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+`;
+
 export const toDeepInsetShadow = (shadowSpreadRadius = 20) => keyframes`
     from {
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5) inset;
@@ -40,6 +49,19 @@ export const toDeepDropShadow = (
 
     to {
         filter: drop-shadow(0px 0px ${shadowSpreadRadius}px ${color});
+    }
+`;
+
+export const removeDeepDropShadow = (
+  shadowSpreadRadius = 20,
+  color = "rgba(0,0,0,0.5)"
+) => keyframes`
+    from {
+        filter: drop-shadow(0px 0px ${shadowSpreadRadius}px ${color});
+    }
+
+    to {
+        filter: drop-shadow(0px 0px 0px rgba(0,0,0,0.5));
     }
 `;
 
