@@ -13,7 +13,12 @@ const Wrapper = styled.div`
   z-index: ${smallMagicCircleMapZIndex};
 `;
 
-const SMVerData: SmallMagicCircleProps[] = [
+type SmallMagicCirclePropsData = Omit<
+  SmallMagicCircleProps,
+  "isStartSummonAnimation"
+>;
+
+const SMVerData: SmallMagicCirclePropsData[] = [
   { top: -250, left: 60, diameter: 80, circleNum: 3 },
   { top: -300, left: -70, diameter: 50, circleNum: 3 },
   { top: -200, left: -80, diameter: 30, circleNum: 2 },
@@ -23,7 +28,7 @@ const SMVerData: SmallMagicCircleProps[] = [
   { top: 350, left: -70, diameter: 40, circleNum: 3 },
 ];
 
-const TabletVerData: SmallMagicCircleProps[] = [
+const TabletVerData: SmallMagicCirclePropsData[] = [
   { top: -300, left: -200, diameter: 80, circleNum: 3 },
   { top: -370, left: 200, diameter: 100, circleNum: 2 },
   { top: -160, left: 370, diameter: 70, circleNum: 3 },
@@ -35,7 +40,7 @@ const TabletVerData: SmallMagicCircleProps[] = [
   { top: 380, left: -30, diameter: 60, circleNum: 3 },
 ];
 
-const PCVerData: SmallMagicCircleProps[] = [
+const PCVerData: SmallMagicCirclePropsData[] = [
   { top: -400, left: -230, diameter: 100, circleNum: 3 },
   { top: -300, left: -500, diameter: 150, circleNum: 3 },
   { top: -430, left: -700, diameter: 80, circleNum: 3 },
@@ -65,9 +70,12 @@ const PCVerData: SmallMagicCircleProps[] = [
 ];
 
 const SmallMagicCircleMap: React.FC = () => {
-  const size = useTypedSelector((state) => state.sizes);
+  const [size, isStartSummonAnimation] = useTypedSelector((state) => [
+    state.sizes,
+    state.isStartSummonAnimation,
+  ]);
 
-  let SmallMagicCirclePropData: SmallMagicCircleProps[];
+  let SmallMagicCirclePropData: SmallMagicCirclePropsData[];
   if (size === "sm") {
     SmallMagicCirclePropData = SMVerData;
   } else if (size === "tablet") {
@@ -84,6 +92,7 @@ const SmallMagicCircleMap: React.FC = () => {
           left={left}
           diameter={diameter}
           circleNum={circleNum}
+          isStartSummonAnimation={isStartSummonAnimation}
         />
       ))}
     </Wrapper>
