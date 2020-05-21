@@ -22,10 +22,10 @@ export const leftRotate = keyframes`
 
 export const fadeout = keyframes`
     from {
-        opacity: 1,
+        opacity: 1;
     }
     to {
-        opacity: 0,
+        opacity: 0;
     }
 `;
 
