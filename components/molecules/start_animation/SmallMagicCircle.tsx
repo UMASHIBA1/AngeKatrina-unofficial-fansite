@@ -5,7 +5,7 @@ import SecondIn from "../../../public/start_animation/svgs/second_in.svg";
 import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
 import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
 
-interface Props {
+export interface SmallMagicCircleProps {
   top: number;
   left: number;
   diameter: number;
@@ -21,12 +21,12 @@ const Wrapper = styled.div<{ left: number; top: number }>`
   align-items: center;
 `;
 
-const SmallMagicCircle: React.FC<Props> = ({
+const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
   top,
   left,
   diameter,
   circleNum,
-}: Props) => {
+}: SmallMagicCircleProps) => {
   const mostInDiameter = diameter * 0.5;
   const secondInDiameter = diameter * 0.78;
 
