@@ -61,6 +61,12 @@ const MagicCircle: React.FC = () => {
     changeIsPushedSummonButton(true);
   };
 
+  const runAnimations = {
+    doShadow: true,
+    doExpand: true,
+    doFadeout: false,
+  };
+
   return (
     <Wrapper>
       <SingleMagicCircle
@@ -68,6 +74,7 @@ const MagicCircle: React.FC = () => {
         SvgElement={MostIn}
         diameter={mostInDiameter}
         rotateDirection="right"
+        doAnimations={runAnimations}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
@@ -75,6 +82,7 @@ const MagicCircle: React.FC = () => {
         diameter={mostInDiameter}
         rotateDirection="right"
         scaleMagnification={size === "sm" ? 2.15 : 2.0}
+        doAnimations={runAnimations}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
@@ -82,6 +90,7 @@ const MagicCircle: React.FC = () => {
         diameter={SecondInDiameter}
         rotateDirection="left"
         scaleMagnification={1.1}
+        doAnimations={runAnimations}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
@@ -89,14 +98,15 @@ const MagicCircle: React.FC = () => {
         diameter={SecondInDiameter}
         rotateDirection="left"
         scaleMagnification={2.2}
+        doAnimations={runAnimations}
       />
-      {/*  */}
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
         SvgElement={ThirdIn}
         diameter={ThirdInDiameter}
         rotateDirection="right"
         scaleMagnification={2.4}
+        doAnimations={runAnimations}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
@@ -104,6 +114,7 @@ const MagicCircle: React.FC = () => {
         diameter={ThirdInDiameter}
         rotateDirection="right"
         scaleMagnification={4.8}
+        doAnimations={runAnimations}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
@@ -111,6 +122,7 @@ const MagicCircle: React.FC = () => {
         diameter={FourthInDiameter}
         rotateDirection="left"
         scaleMagnification={2.85}
+        doAnimations={runAnimations}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isPushedSummonButton}
@@ -118,6 +130,7 @@ const MagicCircle: React.FC = () => {
         diameter={FourthInDiameter}
         rotateDirection="left"
         scaleMagnification={5.8}
+        doAnimations={runAnimations}
       />
       <SummonText
         diameter={summonTextDiameter}

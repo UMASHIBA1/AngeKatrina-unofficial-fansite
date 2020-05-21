@@ -5,14 +5,22 @@ import {
   leftRotate,
   toDeepDropShadow,
   scale,
+  fadeout,
 } from "../../../styles/commonAnimation";
 import { ANGE_RED } from "../../../constants/colors";
+
+interface Animations {
+  doShadow: boolean;
+  doExpand: boolean;
+  doFadeout: boolean;
+}
 
 interface Props {
   SvgElement: React.StatelessComponent<React.SVGAttributes<SVGElement>>;
   diameter: number;
   rotateDirection: "right" | "left";
   isStartSummonAnimation: boolean;
+  doAnimations: Animations;
   scaleMagnification?: number;
 }
 
@@ -20,6 +28,7 @@ const createAnimateStyledSVG = ({
   SvgElement,
   isStartSummonAnimation,
   scaleMagnification,
+  doAnimations: { doShadow, doExpand, doFadeout },
 }: Props) => {
   let StyledSVG = styled(SvgElement)`
     position: absolute;
@@ -27,16 +36,15 @@ const createAnimateStyledSVG = ({
   `;
 
   if (isStartSummonAnimation) {
-    if (scaleMagnification !== undefined) {
-      StyledSVG = styled(StyledSVG)`
-        animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards,
-          ${scale(scaleMagnification)} 300ms ease-out 1600ms forwards;
-      `;
-    } else {
-      StyledSVG = styled(StyledSVG)`
-        animation: ${toDeepDropShadow(3, ANGE_RED)} 500ms linear 400ms forwards;
-      `;
-    }
+    StyledSVG = styled(StyledSVG)`
+      animation: ${doShadow ? toDeepDropShadow(3, ANGE_RED) : "none"} 500ms
+          linear 400ms forwards,
+        ${doExpand && scaleMagnification !== undefined
+            ? scale(scaleMagnification)
+            : "none"}
+          300ms ease-out 1600ms forwards,
+        ${doFadeout ? fadeout : "none"} 500ms linear 400ms forwards;
+    `;
   } else {
     // NOTE styledの中でReactHooksを使っているのかこの処理を加えないと「前と同じ回数のReactHooksを使え」ってエラーをReactがだす
     StyledSVG = styled(StyledSVG)`

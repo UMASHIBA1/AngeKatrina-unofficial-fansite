@@ -30,6 +30,12 @@ const SmallMagicCircle: React.FC<Props> = ({
   const mostInDiameter = diameter * 0.5;
   const secondInDiameter = diameter * 0.78;
 
+  const doAnimations = {
+    doShadow: false,
+    doExpand: false,
+    doFadeout: true,
+  };
+
   return (
     <Wrapper top={top} left={left}>
       {circleNum >= 3 ? (
@@ -38,6 +44,7 @@ const SmallMagicCircle: React.FC<Props> = ({
           diameter={mostInDiameter}
           rotateDirection={"right"}
           isStartSummonAnimation={false}
+          doAnimations={doAnimations}
         />
       ) : null}
       {circleNum >= 2 ? (
@@ -46,6 +53,7 @@ const SmallMagicCircle: React.FC<Props> = ({
           diameter={secondInDiameter}
           rotateDirection={"left"}
           isStartSummonAnimation={false}
+          doAnimations={doAnimations}
         />
       ) : null}
       <SingleMagicCircle
@@ -53,6 +61,7 @@ const SmallMagicCircle: React.FC<Props> = ({
         diameter={diameter}
         rotateDirection={"right"}
         isStartSummonAnimation={false}
+        doAnimations={doAnimations}
       />
     </Wrapper>
   );
