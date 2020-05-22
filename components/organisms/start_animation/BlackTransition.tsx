@@ -14,12 +14,16 @@ const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
 `;
 
 const BlackTransition: React.FC = () => {
-  const isStartSummonAnimation = useTypedSelector(
-    (state) => state.isStartSummonAnimation
-  );
+  const [size, isStartSummonAnimation] = useTypedSelector((state) => [
+    state.sizes,
+    state.isStartSummonAnimation,
+  ]);
   return (
     <Wrapper isStartSummonAnimation={isStartSummonAnimation}>
-      <BlackCircle isStartSummonAnimation={isStartSummonAnimation} />
+      <BlackCircle
+        isStartSummonAnimation={isStartSummonAnimation}
+        size={size}
+      />
     </Wrapper>
   );
 };

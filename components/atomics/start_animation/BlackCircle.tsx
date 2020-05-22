@@ -2,9 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { ANGE_BLACK } from "../../../constants/colors";
 import { scale } from "../../../styles/commonAnimation";
+import { SizeType } from "../../../typing/SizeType";
 
 interface Props {
   isStartSummonAnimation: boolean;
+  size: SizeType;
 }
 
 const Wrapper = styled.div`
@@ -29,10 +31,13 @@ const BlackCircleMain = styled.div<{ isStartSummonAnimation: boolean }>`
       isStartSummonAnimation ? scale(30) : "none"};
 `;
 
-const BlackCircle: React.FC<Props> = (props: Props) => {
+const BlackCircle: React.FC<Props> = ({
+  isStartSummonAnimation,
+  size,
+}: Props) => {
   return (
     <Wrapper>
-      <BlackCircleMain isStartSummonAnimation={props.isStartSummonAnimation} />
+      <BlackCircleMain isStartSummonAnimation={isStartSummonAnimation} />
     </Wrapper>
   );
 };
