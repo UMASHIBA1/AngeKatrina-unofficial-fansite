@@ -51,12 +51,9 @@ const BlackCircleMain = styled.div<{
   border-radius: 50%;
   background-color: ${ANGE_BLACK};
   transform: scale(0);
-  animation: ${({ isStartSummonAnimation, size }) =>
-        isStartSummonAnimation ? scale(calcScaleMagnification(size)) : "none"}
-      200ms cubic-bezier(0, 0, 0, 1.92) 2600ms forwards,
-    ${({ isStartSummonAnimation }) =>
-        isStartSummonAnimation ? scale(30) : "none"}
-      500ms ease-out 4500ms forwards;
+  animation: ${({ isStartSummonAnimation }) =>
+      isStartSummonAnimation ? scale(30) : "none"}
+    600ms ease-out 2600ms forwards;
 `;
 
 const calcTriangleWidthHeight = (size: SizeType) => {
