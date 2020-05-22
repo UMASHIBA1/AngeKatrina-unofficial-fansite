@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { blackTransitionZIndex } from "../../../constants/zindexs/start_animation";
+import { blackTransitionZIndex } from "../../../constants/start_animation/zindex";
 import BlackCircle from "../../atomics/start_animation/BlackCircle";
 import { useTypedSelector } from "../../../redux/store";
 

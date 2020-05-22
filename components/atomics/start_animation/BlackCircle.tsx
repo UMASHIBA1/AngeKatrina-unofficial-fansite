@@ -23,8 +23,10 @@ const BlackCircleMain = styled.div<{ isStartSummonAnimation: boolean }>`
   background-color: ${ANGE_BLACK};
   transform: scale(0);
   animation: ${({ isStartSummonAnimation }) =>
-      isStartSummonAnimation ? scale(30) : "none"}
-    500ms ease-out 2600ms forwards;
+        isStartSummonAnimation ? scale(30) : "none"}
+      500ms ease-out 2600ms forwards,
+    ${({ isStartSummonAnimation }) =>
+      isStartSummonAnimation ? scale(30) : "none"};
 `;
 
 const BlackCircle: React.FC<Props> = (props: Props) => {

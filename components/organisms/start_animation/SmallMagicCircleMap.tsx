@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SmallMagicCircle from "../../molecules/start_animation/SmallMagicCircle";
 import { useTypedSelector } from "../../../redux/store";
-import { smallMagicCircleMapZIndex } from "../../../constants/zindexs/start_animation";
+import { smallMagicCircleMapZIndex } from "../../../constants/start_animation/zindex";
 import { SmallMagicCircleProps } from "../../molecules/start_animation/SmallMagicCircle";
 
 const Wrapper = styled.div`

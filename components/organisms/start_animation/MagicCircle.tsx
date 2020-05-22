@@ -8,7 +8,7 @@ import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
 import SummonText from "../../atomics/start_animation/SummonText";
 import { useTypedSelector, DispatchType } from "../../../redux/store";
 import { SizeType } from "../../../typing/SizeType";
-import { magicCircleZIndex } from "../../../constants/zindexs/start_animation";
+import { magicCircleZIndex } from "../../../constants/start_animation/zindex";
 import { useDispatch } from "react-redux";
 import { startSummonAnimation } from "../../../redux/modules/isStartSummonAnimation";
 
