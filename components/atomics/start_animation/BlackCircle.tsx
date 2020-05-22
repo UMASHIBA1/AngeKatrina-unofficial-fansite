@@ -1,7 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { ANGE_BLACK } from "../../../constants/colors";
-import { scale } from "../../../styles/commonAnimation";
+import AngeTriangle from "../../../public/start_animation/svgs/ange_triangle.svg";
+import {
+  scale,
+  fadein,
+  toDeepDropShadow,
+  removeDeepDropShadow,
+} from "../../../styles/commonAnimation";
 import { SizeType } from "../../../typing/SizeType";
 import {
   smSummonTextDiameter,
@@ -34,10 +40,12 @@ const calcScaleMagnification = (size: SizeType) => {
     return pcSummonTextDiameter / circleDiameter;
   }
 };
+
 const BlackCircleMain = styled.div<{
   isStartSummonAnimation: boolean;
   size: SizeType;
 }>`
+  position: absolute;
   width: ${circleDiameter}px;
   height: ${circleDiameter}px;
   border-radius: 50%;
@@ -48,7 +56,47 @@ const BlackCircleMain = styled.div<{
       200ms cubic-bezier(0, 0, 0, 1.92) 2600ms forwards,
     ${({ isStartSummonAnimation }) =>
         isStartSummonAnimation ? scale(30) : "none"}
-      500ms ease-out 3600ms forwards;
+      500ms ease-out 4500ms forwards;
+`;
+
+const calcTriangleWidthHeight = (size: SizeType) => {
+  if (size === "sm") {
+    return smSummonTextDiameter * 0.6;
+  } else if (size === "tablet") {
+    return tabletSummonTextDiameter * 0.7;
+  } else {
+    return pcSummonTextDiameter * 0.5;
+  }
+};
+
+const judgeTriangleTop = (size: SizeType) => {
+  if (size === "sm") {
+    return 7;
+  } else if (size === "tablet") {
+    return 9;
+  } else {
+    return 15;
+  }
+};
+
+const StyledTriangle = styled(AngeTriangle)<{
+  isStartSummonAnimation: boolean;
+  size: SizeType;
+}>`
+  position: relative;
+  top ${({ size }) => judgeTriangleTop(size)}px;
+  width: ${({ size }) => calcTriangleWidthHeight(size)}px;
+  height: ${({ size }) => calcTriangleWidthHeight(size)}px;
+  opacity: 0;
+  animation: ${({ isStartSummonAnimation }) =>
+    isStartSummonAnimation ? fadein(0.7) : "none"}
+    600ms ease-in 3200ms forwards,
+    ${({ isStartSummonAnimation }) =>
+      isStartSummonAnimation ? toDeepDropShadow(10, "#FFFFFF") : "none"}
+    600ms linear 3200ms forwards,
+    ${({ isStartSummonAnimation }) =>
+      isStartSummonAnimation ? removeDeepDropShadow(10, "#FFFFFF") : "none"}
+    1000ms linear 3900ms forwards;
 `;
 
 const BlackCircle: React.FC<Props> = ({
@@ -61,6 +109,10 @@ const BlackCircle: React.FC<Props> = ({
         isStartSummonAnimation={isStartSummonAnimation}
         size={size}
       />
+      <StyledTriangle
+        isStartSummonAnimation={isStartSummonAnimation}
+        size={size}
+      ></StyledTriangle>
     </Wrapper>
   );
 };
