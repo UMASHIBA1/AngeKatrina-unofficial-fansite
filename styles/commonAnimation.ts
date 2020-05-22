@@ -20,12 +20,12 @@ export const leftRotate = keyframes`
     }
 `;
 
-export const fadein = keyframes`
+export const fadein = (to: number = 1) => keyframes`
     from {
         opacity: 0;
     }
     to {
-        opacity: 1;
+        opacity: ${to};
     }
 `;
 
