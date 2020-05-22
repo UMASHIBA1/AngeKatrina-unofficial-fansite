@@ -3,6 +3,11 @@ import styled from "styled-components";
 import { ANGE_BLACK } from "../../../constants/colors";
 import { scale } from "../../../styles/commonAnimation";
 import { SizeType } from "../../../typing/SizeType";
+import {
+  smSummonTextDiameter,
+  tabletSummonTextDiameter,
+  pcSummonTextDiameter,
+} from "../../../constants/start_animation/diameters";
 
 interface Props {
   isStartSummonAnimation: boolean;
@@ -18,17 +23,32 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const BlackCircleMain = styled.div<{ isStartSummonAnimation: boolean }>`
-  width: 100px;
-  height: 100px;
+const circleDiameter = 100;
+
+const calcScaleMagnification = (size: SizeType) => {
+  if (size === "sm") {
+    return smSummonTextDiameter / circleDiameter;
+  } else if (size === "tablet") {
+    return tabletSummonTextDiameter / circleDiameter;
+  } else {
+    return pcSummonTextDiameter / circleDiameter;
+  }
+};
+const BlackCircleMain = styled.div<{
+  isStartSummonAnimation: boolean;
+  size: SizeType;
+}>`
+  width: ${circleDiameter}px;
+  height: ${circleDiameter}px;
   border-radius: 50%;
   background-color: ${ANGE_BLACK};
   transform: scale(0);
-  animation: ${({ isStartSummonAnimation }) =>
-        isStartSummonAnimation ? scale(30) : "none"}
-      500ms ease-out 2600ms forwards,
+  animation: ${({ isStartSummonAnimation, size }) =>
+        isStartSummonAnimation ? scale(calcScaleMagnification(size)) : "none"}
+      200ms cubic-bezier(0, 0, 0, 1.92) 2600ms forwards,
     ${({ isStartSummonAnimation }) =>
-      isStartSummonAnimation ? scale(30) : "none"};
+        isStartSummonAnimation ? scale(30) : "none"}
+      500ms ease-out 3600ms forwards;
 `;
 
 const BlackCircle: React.FC<Props> = ({
@@ -37,7 +57,10 @@ const BlackCircle: React.FC<Props> = ({
 }: Props) => {
   return (
     <Wrapper>
-      <BlackCircleMain isStartSummonAnimation={isStartSummonAnimation} />
+      <BlackCircleMain
+        isStartSummonAnimation={isStartSummonAnimation}
+        size={size}
+      />
     </Wrapper>
   );
 };
