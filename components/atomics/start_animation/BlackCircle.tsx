@@ -31,16 +31,6 @@ const Wrapper = styled.div`
 
 const circleDiameter = 100;
 
-const calcScaleMagnification = (size: SizeType) => {
-  if (size === "sm") {
-    return smSummonTextDiameter / circleDiameter;
-  } else if (size === "tablet") {
-    return tabletSummonTextDiameter / circleDiameter;
-  } else {
-    return pcSummonTextDiameter / circleDiameter;
-  }
-};
-
 const BlackCircleMain = styled.div<{
   isStartSummonAnimation: boolean;
   size: SizeType;
