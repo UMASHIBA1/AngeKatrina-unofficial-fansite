@@ -88,6 +88,7 @@ const SmallMagicCircleMap: React.FC = () => {
     <Wrapper>
       {SmallMagicCirclePropData.map(({ top, left, diameter, circleNum }) => (
         <SmallMagicCircle
+          key={`${top}${left}${diameter}${circleNum}`}
           top={top}
           left={left}
           diameter={diameter}
