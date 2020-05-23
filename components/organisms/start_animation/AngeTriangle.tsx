@@ -40,10 +40,6 @@ const calcTriangleWidthHeight = (size: SizeType) => {
   );
 };
 
-const judgeTriangleTop = (size: SizeType) => {
-  return sizeTypeJudge(size)(7, 9, 15);
-};
-
 interface AnimationAndSizeType {
   isStartSummonAnimation: boolean;
   size: SizeType;
@@ -56,7 +52,7 @@ const createStyledTriangle = ({
   if (isStartSummonAnimation) {
     return styled(AngeTriangleSVG)`
         position: relative;
-        top ${judgeTriangleTop(size)}px;
+        top ${sizeTypeJudge(size)(7, 9, 15)}px;
         width: ${calcTriangleWidthHeight(size)}px;
         height: ${calcTriangleWidthHeight(size)}px;
         opacity: 0;
