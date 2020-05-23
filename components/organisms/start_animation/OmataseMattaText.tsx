@@ -6,6 +6,12 @@ import { omataseMattaTextZIndex } from "../../../constants/start_animation/zinde
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 import { omataseMattaFadeinOrder } from "../../../constants/start_animation/animation_order";
 import { fadein } from "../../../styles/commonAnimation";
+import {
+  smFontSize,
+  tabletFontSize,
+  pcFontSize,
+  omataseMattaLineHeight,
+} from "../../../constants/start_animation/omataseMattaSetting";
 
 const calcFlexDirection = (size: SizeType) => {
   if (size === "sm") {
@@ -38,9 +44,11 @@ const CharWrapper = styled.span<{
   font-family: kan412typos-std, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: ${({ size }) => sizeTypeJudge(size)("1.5rem", "3.3rem", "3.3rem")};
+  font-size: ${({ size }) =>
+    sizeTypeJudge(size)(smFontSize, tabletFontSize, pcFontSize)};
   color: #ffffff;
   opacity: 0;
+  line-height: ${omataseMattaLineHeight};
   animation: ${({ isStartSummonAnimation }) =>
       isStartSummonAnimation ? fadein() : "none"}
     ${omataseMattaFadeinOrder.duration}ms ease-out
