@@ -1,6 +1,6 @@
 // summmonText
 export const summonTextShadowOrder = {
-  duration: 300,
+  duration: 500,
   delay: 0,
 };
 

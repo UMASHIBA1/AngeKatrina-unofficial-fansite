@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ANGE_BROWN, ANGE_RED } from "../../../constants/colors";
+import { ANGE_BROWN, ANGE_RED, ANGE_BLACK } from "../../../constants/colors";
 import { HWT_MARDELL_FONT_PROP } from "../../../constants/cssProps";
 import { toDeepInsetShadow } from "../../../styles/commonAnimation";
 import { summonTextShadowOrder } from "../../../constants/start_animation/animation_order";
@@ -26,7 +26,7 @@ const StyledSummonText = styled.div<{
   font-size: ${({ diameter }) => diameter / 7}px;
   animation: ${({ isPushedButton }) =>
     isPushedButton
-      ? toDeepInsetShadow(200)
+      ? toDeepInsetShadow(200, ANGE_BLACK)
       : "none"} ${duration}ms linear forwards ${delay}ms;
   `;
 
