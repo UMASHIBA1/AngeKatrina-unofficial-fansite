@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { ANGE_BROWN, ANGE_RED } from "../../../constants/colors";
 import { HWT_MARDELL_FONT_PROP } from "../../../constants/cssProps";
 import { toDeepInsetShadow } from "../../../styles/commonAnimation";
+import { summonTextShadowOrder } from "../../../constants/start_animation/animation_order";
+const { duration, delay } = summonTextShadowOrder;
 
 const StyledSummonText = styled.div<{
   diameter: number;
@@ -25,7 +27,7 @@ const StyledSummonText = styled.div<{
   animation: ${({ isPushedButton }) =>
     isPushedButton
       ? toDeepInsetShadow(200)
-      : "none"} 300ms linear forwards 100ms;
+      : "none"} ${duration}ms linear forwards ${delay}ms;
   `;
 
 interface Props {

@@ -9,6 +9,12 @@ import {
   removeDeepDropShadow,
 } from "../../../styles/commonAnimation";
 import { ANGE_RED } from "../../../constants/colors";
+import {
+  magicCircleDropShadowOrder,
+  magicCircleRemoveDropShadowOrder,
+  magicCricleFadeoutOrder,
+  magicCircleExpandOrder,
+} from "../../../constants/start_animation/animation_order";
 
 interface Animations {
   doShadow: boolean;
@@ -39,15 +45,20 @@ const createAnimateStyledSVG = ({
   if (isStartSummonAnimation) {
     StyledSVG = styled(StyledSVG)`
       will-change: animation;
-      animation: ${doShadow ? toDeepDropShadow(4, ANGE_RED) : "none"} 500ms
-          linear 100ms forwards,
-        ${doShadow ? removeDeepDropShadow(4, ANGE_RED) : "none"} 500ms linear
-          750ms forwards,
+      animation: ${doShadow ? toDeepDropShadow(4, ANGE_RED) : "none"}
+          ${magicCircleDropShadowOrder.duration}ms linear
+          ${magicCircleDropShadowOrder.delay}ms forwards,
+        ${doShadow ? removeDeepDropShadow(4, ANGE_RED) : "none"}
+          ${magicCircleRemoveDropShadowOrder.duration}ms linear
+          ${magicCircleRemoveDropShadowOrder.delay}ms forwards,
         ${doExpand && scaleMagnification !== undefined
             ? scale(scaleMagnification)
             : "none"}
-          300ms ease-out 1800ms forwards,
-        forwards, ${doFadeout ? fadeout : "none"} 500ms linear 600ms forwards;
+          ${magicCircleExpandOrder.duration}ms ease-out
+          ${magicCircleExpandOrder.delay}ms forwards,
+        forwards,
+        ${doFadeout ? fadeout : "none"} ${magicCricleFadeoutOrder.duration}ms
+          linear ${magicCricleFadeoutOrder.delay}ms forwards;
     `;
   } else {
     // NOTE styledの中でReactHooksを使っているのかこの処理を加えないと「前と同じ回数のReactHooksを使え」ってエラーをReactがだす

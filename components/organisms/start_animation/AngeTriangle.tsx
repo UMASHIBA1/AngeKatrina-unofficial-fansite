@@ -14,6 +14,11 @@ import {
 } from "../../../constants/start_animation/diameters";
 import { useTypedSelector } from "../../../redux/store";
 import { angeTriangleZIndex } from "../../../constants/start_animation/zindex";
+import {
+  angeTriangleFadein,
+  angeTriangleDropShadow,
+  angeTriangleRemoveDropShadow,
+} from "../../../constants/start_animation/animation_order";
 
 const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
   position: absolute;
@@ -62,9 +67,15 @@ const createStyledTriangle = ({
         width: ${calcTriangleWidthHeight(size)}px;
         height: ${calcTriangleWidthHeight(size)}px;
         opacity: 0;
-        animation: ${fadein(0.7)} 600ms ease-in 3200ms forwards,
-          ${toDeepDropShadow(10, "#FFFFFF")} 600ms linear 3200ms forwards,
-          ${removeDeepDropShadow(10, "#FFFFFF")} 1000ms linear 3900ms forwards;
+        animation: ${fadein(0.7)} ${angeTriangleFadein.duration}ms ease-in ${
+      angeTriangleFadein.delay
+    }ms forwards,
+          ${toDeepDropShadow(10, "#FFFFFF")} ${
+      angeTriangleDropShadow.duration
+    }ms linear ${angeTriangleDropShadow.delay}ms forwards,
+          ${removeDeepDropShadow(10, "#FFFFFF")} ${
+      angeTriangleRemoveDropShadow.duration
+    }ms linear ${angeTriangleRemoveDropShadow.delay}ms forwards;
       `;
   } else {
     return styled(AngeTriangleSVG)`
