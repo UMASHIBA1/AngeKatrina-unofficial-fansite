@@ -21,6 +21,8 @@ const Wrapper = styled.div<{ size: SizeType; isStartSummonAnimation: boolean }>`
   flex-direction: ${({ size }) => calcFlexDirection(size)};
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   z-index: ${({ isStartSummonAnimation }) =>
     isStartSummonAnimation ? omataseMattaTextZIndex : 1};
 `;

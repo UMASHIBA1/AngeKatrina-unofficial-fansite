@@ -20,6 +20,8 @@ const Wrapper = styled.div<{ left: number; top: number }>`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 `;
 
 const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
