@@ -29,7 +29,7 @@ const CharWrapper = styled.span<{ size: SizeType }>`
   font-family: kan412typos-std, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: ${({ size }) => sizeTypeJudge(size)("2.3rem", "3.3rem", "4.3rem")};
+  font-size: ${({ size }) => sizeTypeJudge(size)("1.5rem", "3.3rem", "3.3rem")};
   color: #ffffff;
 `;
 
