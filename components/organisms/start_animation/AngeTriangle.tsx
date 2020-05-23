@@ -36,27 +36,27 @@ interface AnimationAndSizeType {
   size: SizeType;
 }
 
+const LocationAdjuster = styled.div<{ size: SizeType }>`
+  transform: translate(0, ${({ size }) => sizeTypeJudge(size)(7, 9, 15)}px);
+`;
+
 const createStyledTriangle = ({
   isStartSummonAnimation,
   size,
 }: AnimationAndSizeType) => {
   if (isStartSummonAnimation) {
     return styled(AngeTriangleSVG)`
-        position: relative;
-        top ${sizeTypeJudge(size)(7, 9, 15)}px;
-        width: ${calcTriangleWidthHeight(size)}px;
-        height: ${calcTriangleWidthHeight(size)}px;
-        opacity: 0;
-        animation: ${fadein(0.7)} ${angeTriangleFadein.duration}ms ease-in ${
-      angeTriangleFadein.delay
-    }ms forwards,
-          ${toDeepDropShadow(10, "#FFFFFF")} ${
-      angeTriangleDropShadow.duration
-    }ms linear ${angeTriangleDropShadow.delay}ms forwards,
-          ${removeDeepDropShadow(10, "#FFFFFF")} ${
-      angeTriangleRemoveDropShadow.duration
-    }ms linear ${angeTriangleRemoveDropShadow.delay}ms forwards;
-      `;
+      width: ${calcTriangleWidthHeight(size)}px;
+      height: ${calcTriangleWidthHeight(size)}px;
+      opacity: 0;
+      animation: ${fadein(0.7)} ${angeTriangleFadein.duration}ms ease-in
+          ${angeTriangleFadein.delay}ms forwards,
+        ${toDeepDropShadow(10, "#FFFFFF")} ${angeTriangleDropShadow.duration}ms
+          linear ${angeTriangleDropShadow.delay}ms forwards,
+        ${removeDeepDropShadow(10, "#FFFFFF")}
+          ${angeTriangleRemoveDropShadow.duration}ms linear
+          ${angeTriangleRemoveDropShadow.delay}ms forwards;
+    `;
   } else {
     return styled(AngeTriangleSVG)`
       position: relative;
@@ -74,7 +74,9 @@ const AngeTriangle: React.FC = () => {
 
   return (
     <Wrapper isStartSummonAnimation={isStartSummonAnimation}>
-      <StyledTriangle />
+      <LocationAdjuster size={size}>
+        <StyledTriangle />
+      </LocationAdjuster>
     </Wrapper>
   );
 };
