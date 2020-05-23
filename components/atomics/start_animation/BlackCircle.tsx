@@ -66,40 +66,37 @@ const judgeTriangleTop = (size: SizeType) => {
   }
 };
 
-const StyledTriangle = styled(AngeTriangle)<{
-  isStartSummonAnimation: boolean;
-  size: SizeType;
-}>`
-  position: relative;
-  top ${({ size }) => judgeTriangleTop(size)}px;
-  width: ${({ size }) => calcTriangleWidthHeight(size)}px;
-  height: ${({ size }) => calcTriangleWidthHeight(size)}px;
-  opacity: 0;
-  animation: ${({ isStartSummonAnimation }) =>
-    isStartSummonAnimation ? fadein(0.7) : "none"}
-    600ms ease-in 3200ms forwards,
-    ${({ isStartSummonAnimation }) =>
-      isStartSummonAnimation ? toDeepDropShadow(10, "#FFFFFF") : "none"}
-    600ms linear 3200ms forwards,
-    ${({ isStartSummonAnimation }) =>
-      isStartSummonAnimation ? removeDeepDropShadow(10, "#FFFFFF") : "none"}
-    1000ms linear 3900ms forwards;
-`;
+const createStyledTriangle = ({ isStartSummonAnimation, size }: Props) => {
+  if (isStartSummonAnimation) {
+    return styled(AngeTriangle)`
+      position: relative;
+      top ${judgeTriangleTop(size)}px;
+      width: ${calcTriangleWidthHeight(size)}px;
+      height: ${calcTriangleWidthHeight(size)}px;
+      opacity: 0;
+      animation: ${fadein(0.7)} 600ms ease-in 3200ms forwards,
+        ${toDeepDropShadow(10, "#FFFFFF")} 600ms linear 3200ms forwards,
+        ${removeDeepDropShadow(10, "#FFFFFF")} 1000ms linear 3900ms forwards;
+    `;
+  } else {
+    return styled(AngeTriangle)`
+      position: relative;
+      opacity: 0;
+    `;
+  }
+};
 
-const BlackCircle: React.FC<Props> = ({
-  isStartSummonAnimation,
-  size,
-}: Props) => {
+const BlackCircle: React.FC<Props> = (props: Props) => {
+  const { isStartSummonAnimation, size } = props;
+
+  const StyledTriangle = createStyledTriangle(props);
   return (
     <Wrapper>
       <BlackCircleMain
         isStartSummonAnimation={isStartSummonAnimation}
         size={size}
       />
-      <StyledTriangle
-        isStartSummonAnimation={isStartSummonAnimation}
-        size={size}
-      ></StyledTriangle>
+      <StyledTriangle />
     </Wrapper>
   );
 };
