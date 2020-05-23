@@ -1,19 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { ANGE_BLACK } from "../../../constants/colors";
-import AngeTriangle from "../../../public/start_animation/svgs/ange_triangle.svg";
-import {
-  scale,
-  fadein,
-  toDeepDropShadow,
-  removeDeepDropShadow,
-} from "../../../styles/commonAnimation";
+import { scale } from "../../../styles/commonAnimation";
 import { SizeType } from "../../../typing/SizeType";
-import {
-  smSummonTextDiameter,
-  tabletSummonTextDiameter,
-  pcSummonTextDiameter,
-} from "../../../constants/start_animation/diameters";
 
 interface Props {
   isStartSummonAnimation: boolean;
@@ -46,57 +35,16 @@ const BlackCircleMain = styled.div<{
     600ms ease-out 2600ms forwards;
 `;
 
-const calcTriangleWidthHeight = (size: SizeType) => {
-  if (size === "sm") {
-    return smSummonTextDiameter * 0.6;
-  } else if (size === "tablet") {
-    return tabletSummonTextDiameter * 0.7;
-  } else {
-    return pcSummonTextDiameter * 0.5;
-  }
-};
-
-const judgeTriangleTop = (size: SizeType) => {
-  if (size === "sm") {
-    return 7;
-  } else if (size === "tablet") {
-    return 9;
-  } else {
-    return 15;
-  }
-};
-
-const createStyledTriangle = ({ isStartSummonAnimation, size }: Props) => {
-  if (isStartSummonAnimation) {
-    return styled(AngeTriangle)`
-      position: relative;
-      top ${judgeTriangleTop(size)}px;
-      width: ${calcTriangleWidthHeight(size)}px;
-      height: ${calcTriangleWidthHeight(size)}px;
-      opacity: 0;
-      animation: ${fadein(0.7)} 600ms ease-in 3200ms forwards,
-        ${toDeepDropShadow(10, "#FFFFFF")} 600ms linear 3200ms forwards,
-        ${removeDeepDropShadow(10, "#FFFFFF")} 1000ms linear 3900ms forwards;
-    `;
-  } else {
-    return styled(AngeTriangle)`
-      position: relative;
-      opacity: 0;
-    `;
-  }
-};
-
-const BlackCircle: React.FC<Props> = (props: Props) => {
-  const { isStartSummonAnimation, size } = props;
-
-  const StyledTriangle = createStyledTriangle(props);
+const BlackCircle: React.FC<Props> = ({
+  isStartSummonAnimation,
+  size,
+}: Props) => {
   return (
     <Wrapper>
       <BlackCircleMain
         isStartSummonAnimation={isStartSummonAnimation}
         size={size}
       />
-      <StyledTriangle />
     </Wrapper>
   );
 };
