@@ -1,4 +1,5 @@
 import { keyframes } from "styled-components";
+import LocationXY from "../typing/LocationXY";
 
 export const rightRotate = keyframes`
     from {
@@ -79,6 +80,23 @@ export const removeDeepDropShadow = (
 
 export const scale = (magnification: number) => keyframes`
     to {
-        transform: scale(${magnification})
+        transform: scale(${magnification});
     }
 `;
+
+export const translate = (from: LocationXY, to: LocationXY) => {
+  const fromX = typeof from.x === "number" ? `${from.x}px` : from.x;
+  const fromY = typeof from.y === "number" ? `${from.y}px` : from.y;
+  const toX = typeof to.x === "number" ? `${to.x}px` : to.x;
+  const toY = typeof to.y === "number" ? `${to.y}px` : to.y;
+
+  return keyframes`
+    from {
+        transform: translate(${fromX}, ${fromY});
+    }
+
+    to {
+        transform: translate(${toX}, ${toY});
+    }
+`;
+};
