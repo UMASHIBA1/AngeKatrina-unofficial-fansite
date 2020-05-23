@@ -78,11 +78,7 @@ const SmallMagicCircleMap: React.FC = () => {
 
   const SmallMagicCirclePropData: SmallMagicCirclePropsData[] = sizeTypeJudge(
     size
-  )({
-    sm: SMVerData,
-    tablet: TabletVerData,
-    pc: PCVerData,
-  });
+  )(SMVerData, TabletVerData, PCVerData);
 
   return (
     <Wrapper>

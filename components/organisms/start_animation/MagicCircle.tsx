@@ -27,29 +27,29 @@ const Wrapper = styled.div`
 `;
 
 const judgeEachDiameter = (size: SizeType) => {
-  return sizeTypeJudge(size)({
-    sm: {
+  return sizeTypeJudge(size)(
+    {
       mostInDiameter: 120,
       SecondInDiameter: 200,
       ThirdInDiameter: 280,
       FourthInDiameter: 360,
       summonTextDiameter: smSummonTextDiameter,
     },
-    tablet: {
+    {
       mostInDiameter: 220,
       SecondInDiameter: 350,
       ThirdInDiameter: 450,
       FourthInDiameter: 570,
       summonTextDiameter: tabletSummonTextDiameter,
     },
-    pc: {
+    {
       mostInDiameter: 350,
       SecondInDiameter: 550,
       ThirdInDiameter: 700,
       FourthInDiameter: 900,
       summonTextDiameter: pcSummonTextDiameter,
-    },
-  });
+    }
+  );
 };
 
 const MagicCircle: React.FC = () => {

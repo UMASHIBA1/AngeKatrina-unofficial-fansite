@@ -33,19 +33,15 @@ const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
 `;
 
 const calcTriangleWidthHeight = (size: SizeType) => {
-  return sizeTypeJudge(size)({
-    sm: smSummonTextDiameter * 0.6,
-    tablet: tabletSummonTextDiameter * 0.7,
-    pc: pcSummonTextDiameter * 0.5,
-  });
+  return sizeTypeJudge(size)(
+    smSummonTextDiameter * 0.6,
+    tabletSummonTextDiameter * 0.7,
+    pcSummonTextDiameter * 0.5
+  );
 };
 
 const judgeTriangleTop = (size: SizeType) => {
-  return sizeTypeJudge(size)({
-    sm: 7,
-    tablet: 9,
-    pc: 15,
-  });
+  return sizeTypeJudge(size)(7, 9, 15);
 };
 
 interface AnimationAndSizeType {
