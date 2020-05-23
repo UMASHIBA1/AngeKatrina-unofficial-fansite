@@ -35,14 +35,12 @@ class MyDocument extends Document {
       sheet.seal();
     }
   }
+
   render() {
     return (
       <Html>
         <Head>
-          <link
-            rel="stylesheet"
-            href="https://use.typekit.net/kee1yxs.css"
-          ></link>
+          <script src="/load-adobe-fonts.js" />
         </Head>
         <body>
           <Main />
