@@ -16,6 +16,7 @@ import {
   tabletSummonTextDiameter,
   pcSummonTextDiameter,
 } from "../../../constants/start_animation/diameters";
+import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -26,31 +27,29 @@ const Wrapper = styled.div`
 `;
 
 const judgeEachDiameter = (size: SizeType) => {
-  if (size === "sm") {
-    return {
+  return sizeTypeJudge(size)({
+    sm: {
       mostInDiameter: 120,
       SecondInDiameter: 200,
       ThirdInDiameter: 280,
       FourthInDiameter: 360,
       summonTextDiameter: smSummonTextDiameter,
-    };
-  } else if (size === "tablet") {
-    return {
+    },
+    tablet: {
       mostInDiameter: 220,
       SecondInDiameter: 350,
       ThirdInDiameter: 450,
       FourthInDiameter: 570,
       summonTextDiameter: tabletSummonTextDiameter,
-    };
-  } else {
-    return {
+    },
+    pc: {
       mostInDiameter: 350,
       SecondInDiameter: 550,
       ThirdInDiameter: 700,
       FourthInDiameter: 900,
       summonTextDiameter: pcSummonTextDiameter,
-    };
-  }
+    },
+  });
 };
 
 const MagicCircle: React.FC = () => {

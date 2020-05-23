@@ -19,6 +19,7 @@ import {
   angeTriangleDropShadow,
   angeTriangleRemoveDropShadow,
 } from "../../../constants/start_animation/animation_order";
+import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 
 const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
   position: absolute;
@@ -32,23 +33,19 @@ const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
 `;
 
 const calcTriangleWidthHeight = (size: SizeType) => {
-  if (size === "sm") {
-    return smSummonTextDiameter * 0.6;
-  } else if (size === "tablet") {
-    return tabletSummonTextDiameter * 0.7;
-  } else {
-    return pcSummonTextDiameter * 0.5;
-  }
+  return sizeTypeJudge(size)({
+    sm: smSummonTextDiameter * 0.6,
+    tablet: tabletSummonTextDiameter * 0.7,
+    pc: pcSummonTextDiameter * 0.5,
+  });
 };
 
 const judgeTriangleTop = (size: SizeType) => {
-  if (size === "sm") {
-    return 7;
-  } else if (size === "tablet") {
-    return 9;
-  } else {
-    return 15;
-  }
+  return sizeTypeJudge(size)({
+    sm: 7,
+    tablet: 9,
+    pc: 15,
+  });
 };
 
 interface AnimationAndSizeType {

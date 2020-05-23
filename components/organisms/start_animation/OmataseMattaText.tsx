@@ -28,6 +28,7 @@ const CharWrapper = styled.li`
   font-family: kan412typos-std, sans-serif;
   font-style: normal;
   font-weight: 400;
+  font-size: 
   color: #ffffff;
 `;
 

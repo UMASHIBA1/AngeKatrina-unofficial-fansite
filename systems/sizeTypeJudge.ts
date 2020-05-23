@@ -4,8 +4,8 @@ type ResultType = {
   [k in SizeType]: any;
 };
 
-// styled-componentsを扱うにあたりsizeの値によって返す値を変える関数が余りに多いから
-// カリー化した関数を作成した。
+// NOTE styled-components等を扱うにあたりsizeの値によって返す値を
+// 変える関数が余りに多いためカリー化した関数を作成した。
 const sizeTypeJudge = (size: SizeType) => {
   return (result: ResultType) => {
     return result[size];
