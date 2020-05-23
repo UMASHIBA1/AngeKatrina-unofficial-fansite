@@ -13,7 +13,7 @@ const calcFlexDirection = (size: SizeType) => {
   }
 };
 
-const Wrapper = styled.ul<{ size: SizeType }>`
+const Wrapper = styled.div<{ size: SizeType }>`
   position: absolute;
   display: flex;
   flex-direction: ${({ size }) => calcFlexDirection(size)};
@@ -22,7 +22,7 @@ const Wrapper = styled.ul<{ size: SizeType }>`
   z-index: ${omataseMattaTextZIndex};
 `;
 
-const CharWrapper = styled.li<{ size: SizeType }>`
+const CharWrapper = styled.span<{ size: SizeType }>`
   display: flex;
   align-items: center;
   justify-content: center;
