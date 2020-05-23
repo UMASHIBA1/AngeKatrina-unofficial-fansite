@@ -7,11 +7,6 @@ import {
   removeDeepDropShadow,
 } from "../../../styles/commonAnimation";
 import AngeTriangleSVG from "../../../public/start_animation/svgs/ange_triangle.svg";
-import {
-  smSummonTextDiameter,
-  tabletSummonTextDiameter,
-  pcSummonTextDiameter,
-} from "../../../constants/start_animation/diameters";
 import { useTypedSelector } from "../../../redux/store";
 import { angeTriangleZIndex } from "../../../constants/start_animation/zindex";
 import {
@@ -33,11 +28,7 @@ const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
 `;
 
 const calcTriangleWidthHeight = (size: SizeType) => {
-  return sizeTypeJudge(size)(
-    smSummonTextDiameter * 0.6,
-    tabletSummonTextDiameter * 0.7,
-    pcSummonTextDiameter * 0.5
-  );
+  return sizeTypeJudge(size)(60, 80, 100);
 };
 
 interface AnimationAndSizeType {
