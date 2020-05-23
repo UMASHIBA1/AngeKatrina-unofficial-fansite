@@ -53,6 +53,14 @@ export const angeTriangleRemoveDropShadow = {
   delay: angeTriangleDropShadow.duration + angeTriangleDropShadow.delay,
 };
 
+export const angeTriangleUpLocationOrder = {
+  duration: 200,
+  delay:
+    angeTriangleRemoveDropShadow.duration +
+    angeTriangleRemoveDropShadow.delay +
+    100,
+};
+
 // omataseMattaText
 export const omataseMattaFadeinOrder = {
   duration: 180,

@@ -5,6 +5,7 @@ import {
   fadein,
   toDeepDropShadow,
   removeDeepDropShadow,
+  translate,
 } from "../../../styles/commonAnimation";
 import AngeTriangleSVG from "../../../public/start_animation/svgs/ange_triangle.svg";
 import { useTypedSelector } from "../../../redux/store";
@@ -13,8 +14,15 @@ import {
   angeTriangleFadein,
   angeTriangleDropShadow,
   angeTriangleRemoveDropShadow,
+  angeTriangleUpLocationOrder,
 } from "../../../constants/start_animation/animation_order";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
+import {
+  smFontSize,
+  tabletFontSize,
+  pcFontSize,
+  omataseMattaLineHeight,
+} from "../../../constants/start_animation/omataseMattaSetting";
 
 const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
   position: absolute;
@@ -36,9 +44,34 @@ interface AnimationAndSizeType {
   size: SizeType;
 }
 
-const LocationAdjuster = styled.div<{ size: SizeType }>`
-  transform: translate(0, ${({ size }) => sizeTypeJudge(size)(7, 9, 15)}px);
-`;
+const calcTopLocation = (size: SizeType) => {
+  return sizeTypeJudge(size)(7, 9, 15);
+};
+
+const calcTranlatedTopLocation = (size: SizeType) => {
+  const fontSize = sizeTypeJudge(size)(smFontSize, tabletFontSize, pcFontSize);
+  return `calc(${fontSize} * ${omataseMattaLineHeight} * -5)`;
+};
+
+const createLocationAdjuster = (
+  size: SizeType,
+  isStartSummonAnimation: boolean
+) => {
+  return styled.div`
+    transform: translate(0, ${calcTopLocation(size)}px);
+    animation: ${isStartSummonAnimation
+        ? translate(
+            { x: 0, y: calcTopLocation(size) },
+            {
+              x: 0,
+              y: `${calcTranlatedTopLocation(size)}`,
+            }
+          )
+        : "none"}
+      ${angeTriangleUpLocationOrder.duration}ms ease-out
+      ${angeTriangleUpLocationOrder.delay}ms forwards;
+  `;
+};
 
 const createStyledTriangle = ({
   isStartSummonAnimation,
@@ -71,10 +104,11 @@ const AngeTriangle: React.FC = () => {
     state.isStartSummonAnimation,
   ]);
   const StyledTriangle = createStyledTriangle({ size, isStartSummonAnimation });
+  const LocationAdjuster = createLocationAdjuster(size, isStartSummonAnimation);
 
   return (
     <Wrapper isStartSummonAnimation={isStartSummonAnimation}>
-      <LocationAdjuster size={size}>
+      <LocationAdjuster>
         <StyledTriangle />
       </LocationAdjuster>
     </Wrapper>
