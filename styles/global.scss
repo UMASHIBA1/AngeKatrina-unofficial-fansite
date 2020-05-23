@@ -1,16 +1,3 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-
-  div {
-    width: 100%;
-    height: 100%;
-  }
-}
-
 // CSS Reset(参考: https://github.com/hankchizljaw/modern-css-reset)
 /* Box sizing rules */
 *,
@@ -88,12 +75,16 @@ img:not([alt]) {
   filter: blur(10px);
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+// 独自の定義
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+
+  div {
+    width: 100%;
+    height: 100%;
   }
 }
