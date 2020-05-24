@@ -1,3 +1,5 @@
+import { omataseMattaContent } from "./omataseMattaSetting";
+
 interface AnimationProps {
   duration_ms: number;
   delay_ms: number;
@@ -73,8 +75,10 @@ export const angeTriangleMoveUpOrder: AnimationProps = {
     100,
 };
 
+const omataseMattaFadeinDuration_ms = 180;
+
 export const angeTriangleMoveDownOrder: AnimationProps = {
-  duration_ms: 1200,
+  duration_ms: omataseMattaFadeinDuration_ms * omataseMattaContent.length,
   delay_ms:
     angeTriangleMoveUpOrder.duration_ms +
     angeTriangleMoveUpOrder.delay_ms +
@@ -93,9 +97,6 @@ export const angeTriangleDownRotateOrder: AnimationProps = {
 
 // omataseMattaText
 export const omataseMattaFadeinOrder: AnimationProps = {
-  duration_ms: 180,
-  delay_ms:
-    angeTriangleUpRotateOrder.duration_ms +
-    angeTriangleUpRotateOrder.delay_ms +
-    100,
+  duration_ms: omataseMattaFadeinDuration_ms,
+  delay_ms: angeTriangleMoveDownOrder.delay_ms + 100,
 };
