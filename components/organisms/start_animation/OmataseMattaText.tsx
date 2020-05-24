@@ -14,18 +14,10 @@ import {
   omataseMattaContent,
 } from "../../../constants/start_animation/omataseMattaSetting";
 
-const calcFlexDirection = (size: SizeType) => {
-  if (size === "sm") {
-    return "column";
-  } else {
-    return "row";
-  }
-};
-
 const Wrapper = styled.div<{ size: SizeType; isStartSummonAnimation: boolean }>`
   position: absolute;
   display: flex;
-  flex-direction: ${({ size }) => calcFlexDirection(size)};
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
