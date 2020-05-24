@@ -40,7 +40,11 @@ const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
 `;
 
 const calcTriangleWidthHeight = (size: SizeType) => {
-  return sizeTypeJudge(size)(60, 80, 100);
+  return sizeTypeJudge(size)(
+    `calc(${smFontSize} * 1.5)`,
+    `calc(${tabletFontSize} * 1.5)`,
+    `calc(${pcFontSize} * 1.2)`
+  );
 };
 
 interface AnimationAndSizeType {
@@ -91,8 +95,8 @@ const createStyledTriangle = ({
 }: AnimationAndSizeType) => {
   if (isStartSummonAnimation) {
     return styled(AngeTriangleSVG)`
-      width: ${calcTriangleWidthHeight(size)}px;
-      height: ${calcTriangleWidthHeight(size)}px;
+      width: ${calcTriangleWidthHeight(size)};
+      height: ${calcTriangleWidthHeight(size)};
       opacity: 0;
       animation: ${fadein(0.7)} ${angeTriangleFadeinOrder.duration_ms}ms ease-in
           ${angeTriangleFadeinOrder.delay_ms}ms forwards,
