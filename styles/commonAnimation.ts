@@ -1,22 +1,29 @@
 import { keyframes } from "styled-components";
+import LocationXY from "../typing/LocationXY";
 
-export const rightRotate = keyframes`
+export const rightRotate = (
+  from: string = "0deg",
+  to: string = "360deg"
+) => keyframes`
     from {
-        transform: rotate(0deg);
+        transform: rotate(${from});
     }
 
     to {
-        transform: rotate(360deg);
+        transform: rotate(${to});
     }
 `;
 
-export const leftRotate = keyframes`
+export const leftRotate = (
+  from: string = "0deg",
+  to: string = "-360deg"
+) => keyframes`
     from {
-        transform: rotate(0deg);
+        transform: rotate(${from});
     }
 
     to {
-        transform: rotate(-360deg);
+        transform: rotate(${to});
     }
 `;
 
@@ -38,13 +45,16 @@ export const fadeout = keyframes`
     }
 `;
 
-export const toDeepInsetShadow = (shadowSpreadRadius = 20) => keyframes`
+export const toDeepInsetShadow = (
+  shadowSpreadRadius = 20,
+  color = "rgba(0,0,0,0.5)"
+) => keyframes`
     from {
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5) inset;
     }
 
     to {
-        box-shadow: 0 0 0 ${shadowSpreadRadius}px rgba(0,0,0,0.5) inset;
+        box-shadow: 0 0 0 ${shadowSpreadRadius}px ${color} inset;
     }
 `;
 
@@ -76,6 +86,23 @@ export const removeDeepDropShadow = (
 
 export const scale = (magnification: number) => keyframes`
     to {
-        transform: scale(${magnification})
+        transform: scale(${magnification});
     }
 `;
+
+export const translate = (from: LocationXY, to: LocationXY) => {
+  const fromX = typeof from.x === "number" ? `${from.x}px` : from.x;
+  const fromY = typeof from.y === "number" ? `${from.y}px` : from.y;
+  const toX = typeof to.x === "number" ? `${to.x}px` : to.x;
+  const toY = typeof to.y === "number" ? `${to.y}px` : to.y;
+
+  return keyframes`
+    from {
+        transform: translate(${fromX}, ${fromY});
+    }
+
+    to {
+        transform: translate(${toX}, ${toY});
+    }
+`;
+};

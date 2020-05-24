@@ -4,6 +4,7 @@ import SmallMagicCircle from "../../molecules/start_animation/SmallMagicCircle";
 import { useTypedSelector } from "../../../redux/store";
 import { smallMagicCircleMapZIndex } from "../../../constants/start_animation/zindex";
 import { SmallMagicCircleProps } from "../../molecules/start_animation/SmallMagicCircle";
+import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -75,19 +76,15 @@ const SmallMagicCircleMap: React.FC = () => {
     state.isStartSummonAnimation,
   ]);
 
-  let SmallMagicCirclePropData: SmallMagicCirclePropsData[];
-  if (size === "sm") {
-    SmallMagicCirclePropData = SMVerData;
-  } else if (size === "tablet") {
-    SmallMagicCirclePropData = TabletVerData;
-  } else {
-    SmallMagicCirclePropData = PCVerData;
-  }
+  const SmallMagicCirclePropData: SmallMagicCirclePropsData[] = sizeTypeJudge(
+    size
+  )(SMVerData, TabletVerData, PCVerData);
 
   return (
     <Wrapper>
       {SmallMagicCirclePropData.map(({ top, left, diameter, circleNum }) => (
         <SmallMagicCircle
+          key={`${top}${left}${diameter}${circleNum}`}
           top={top}
           left={left}
           diameter={diameter}

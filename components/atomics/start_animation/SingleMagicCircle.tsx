@@ -9,6 +9,12 @@ import {
   removeDeepDropShadow,
 } from "../../../styles/commonAnimation";
 import { ANGE_RED } from "../../../constants/colors";
+import {
+  magicCircleDropShadowOrder,
+  magicCircleRemoveDropShadowOrder,
+  magicCricleFadeoutOrder,
+  magicCircleExpandOrder,
+} from "../../../constants/start_animation/animation_order";
 
 interface Animations {
   doShadow: boolean;
@@ -39,15 +45,20 @@ const createAnimateStyledSVG = ({
   if (isStartSummonAnimation) {
     StyledSVG = styled(StyledSVG)`
       will-change: animation;
-      animation: ${doShadow ? toDeepDropShadow(4, ANGE_RED) : "none"} 500ms
-          linear 100ms forwards,
-        ${doShadow ? removeDeepDropShadow(4, ANGE_RED) : "none"} 500ms linear
-          750ms forwards,
+      animation: ${doShadow ? toDeepDropShadow(4, ANGE_RED) : "none"}
+          ${magicCircleDropShadowOrder.duration_ms}ms linear
+          ${magicCircleDropShadowOrder.delay_ms}ms forwards,
+        ${doShadow ? removeDeepDropShadow(4, ANGE_RED) : "none"}
+          ${magicCircleRemoveDropShadowOrder.duration_ms}ms linear
+          ${magicCircleRemoveDropShadowOrder.delay_ms}ms forwards,
         ${doExpand && scaleMagnification !== undefined
             ? scale(scaleMagnification)
             : "none"}
-          300ms ease-out 1800ms forwards,
-        forwards, ${doFadeout ? fadeout : "none"} 500ms linear 600ms forwards;
+          ${magicCircleExpandOrder.duration_ms}ms ease-out
+          ${magicCircleExpandOrder.delay_ms}ms forwards,
+        forwards,
+        ${doFadeout ? fadeout : "none"} ${magicCricleFadeoutOrder.duration_ms}ms
+          linear ${magicCricleFadeoutOrder.delay_ms}ms forwards;
     `;
   } else {
     // NOTE styledの中でReactHooksを使っているのかこの処理を加えないと「前と同じ回数のReactHooksを使え」ってエラーをReactがだす
@@ -71,9 +82,9 @@ const Wrapper = styled.div`
 const createRotateWrapper = (rotateDirection: Props["rotateDirection"]) => {
   let rotateKeyframe: Keyframes;
   if (rotateDirection === "right") {
-    rotateKeyframe = rightRotate;
+    rotateKeyframe = rightRotate();
   } else {
-    rotateKeyframe = leftRotate;
+    rotateKeyframe = leftRotate();
   }
 
   return styled.div`
