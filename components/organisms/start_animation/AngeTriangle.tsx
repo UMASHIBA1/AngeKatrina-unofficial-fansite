@@ -16,8 +16,9 @@ import {
   angeTriangleFadeinOrder,
   angeTriangleDropShadowOrder,
   angeTriangleRemoveDropShadowOrder,
-  angeTriangleMoveOrder,
+  angeTriangleMoveUpOrder,
   angeTriangleRotateOrder,
+  angeTriangleMoveDownOrder,
 } from "../../../constants/start_animation/animation_order";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 import {
@@ -47,9 +48,10 @@ const calcTriangleWidthHeight = (size: SizeType) => {
   );
 };
 
-interface AnimationAndSizeType {
+interface ForAnimationType {
   isStartSummonAnimation: boolean;
   size: SizeType;
+  isMoveToDown: boolean;
 }
 
 const calcTopLocation = (size: SizeType) => {
@@ -72,23 +74,29 @@ const createLocationAdjuster = (
   isStartSummonAnimation: boolean
 ) => {
   return styled.div`
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transform: translate(0, ${calcTopLocation(size)}px);
     animation: ${isStartSummonAnimation
         ? translate({ x: 0, y: calcTopLocation(size) }, calcMovedLocation(size))
         : "none"}
-      ${angeTriangleMoveOrder.duration_ms}ms ease-out
-      ${angeTriangleMoveOrder.delay_ms}ms forwards;
+      ${angeTriangleMoveUpOrder.duration_ms}ms ease-out
+      ${angeTriangleMoveUpOrder.delay_ms}ms forwards;
   `;
 };
 
 const createStyledTriangle = ({
   isStartSummonAnimation,
   size,
-}: AnimationAndSizeType) => {
+  isMoveToDown,
+}: ForAnimationType) => {
   if (isStartSummonAnimation) {
     return styled(AngeTriangleSVG)`
       width: ${calcTriangleWidthHeight(size)};
       height: ${calcTriangleWidthHeight(size)};
+      position: absolute;
       opacity: 0;
       animation: ${fadein(0.7)} ${angeTriangleFadeinOrder.duration_ms}ms ease-in
           ${angeTriangleFadeinOrder.delay_ms}ms forwards,
@@ -100,11 +108,14 @@ const createStyledTriangle = ({
           ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards,
         ${sizeTypeJudge(size)(rightRotate, leftRotate, leftRotate)}
           ${angeTriangleRotateOrder.duration_ms}ms linear
-          ${angeTriangleRotateOrder.delay_ms}ms forwards;
+          ${angeTriangleRotateOrder.delay_ms}ms forwards,
+        ${isMoveToDown ? rightRotate : "none"}
+          ${angeTriangleMoveDownOrder.duration_ms}ms linear
+          ${angeTriangleMoveDownOrder.delay_ms}ms forwards;
     `;
   } else {
     return styled(AngeTriangleSVG)`
-      position: relative;
+      position: absolute;
       opacity: 0;
     `;
   }
@@ -115,13 +126,23 @@ const AngeTriangle: React.FC = () => {
     state.sizes,
     state.isStartSummonAnimation,
   ]);
-  const StyledTriangle = createStyledTriangle({ size, isStartSummonAnimation });
+  const StyledTriangle = createStyledTriangle({
+    size,
+    isStartSummonAnimation,
+    isMoveToDown: false,
+  });
+  const MoveDownStyledTriangle = createStyledTriangle({
+    size,
+    isStartSummonAnimation,
+    isMoveToDown: true,
+  });
   const LocationAdjuster = createLocationAdjuster(size, isStartSummonAnimation);
 
   return (
     <Wrapper isStartSummonAnimation={isStartSummonAnimation}>
       <LocationAdjuster>
         <StyledTriangle />
+        <MoveDownStyledTriangle />
       </LocationAdjuster>
     </Wrapper>
   );
