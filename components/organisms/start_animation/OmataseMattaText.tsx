@@ -11,6 +11,7 @@ import {
   tabletFontSize,
   pcFontSize,
   omataseMattaLineHeight,
+  omataseMattaContent,
 } from "../../../constants/start_animation/omataseMattaSetting";
 
 const calcFlexDirection = (size: SizeType) => {
@@ -63,11 +64,10 @@ const OmataseMattaText = () => {
     state.sizes,
     state.isStartSummonAnimation,
   ]);
-  const omataseMatta = "おまたせ　待った？";
 
   return (
     <Wrapper size={size} isStartSummonAnimation={isStartSummonAnimation}>
-      {omataseMatta.split("").map((value, index) => (
+      {omataseMattaContent.split("").map((value, index) => (
         <CharWrapper
           key={`${value}${index}`}
           order={index}
