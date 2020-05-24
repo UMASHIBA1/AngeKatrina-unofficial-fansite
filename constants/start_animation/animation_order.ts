@@ -75,14 +75,14 @@ export const angeTriangleMoveUpOrder: AnimationProps = {
     100,
 };
 
-const omataseMattaFadeinDuration_ms = 180;
+const omataseMattaFadeinDuration_ms = 150;
 
 export const angeTriangleMoveDownOrder: AnimationProps = {
   duration_ms: omataseMattaFadeinDuration_ms * omataseMattaContent.length,
   delay_ms:
     angeTriangleMoveUpOrder.duration_ms +
     angeTriangleMoveUpOrder.delay_ms +
-    100,
+    300,
 };
 
 export const angeTriangleUpRotateOrder: AnimationProps = {
