@@ -72,9 +72,11 @@ const calcMovedUpLocation = (size: SizeType) => {
 const calcMovedDownLocation = (size: SizeType) => {
   const fontSize = sizeTypeJudge(size)(smFontSize, tabletFontSize, pcFontSize);
   const contentHalfLen = Math.ceil(omataseMattaContent.length / 2);
+  const multiple = omataseMattaLineHeight * contentHalfLen;
   const xyLocation = {
     x: 0,
-    y: `calc(${fontSize} * ${omataseMattaLineHeight} * ${contentHalfLen})`,
+    // NOTE「おまたせ　まった？」の?の後の隙間が狭かったから10px追加
+    y: `calc(${fontSize} * ${multiple} + 10px)`,
   };
 
   return xyLocation;
