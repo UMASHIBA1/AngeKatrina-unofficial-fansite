@@ -32,32 +32,33 @@ export const magicCircleExpandOrder = {
 };
 
 // blackCircle
-export const blackCircleExpand = {
+export const blackCircleExpandOrder = {
   duration: 600,
   delay: magicCircleExpandOrder.duration + magicCircleExpandOrder.delay + 500,
 };
 
 // angeTriangle
-export const angeTriangleFadein = {
+export const angeTriangleFadeinOrder = {
   duration: 600,
-  delay: blackCircleExpand.duration + blackCircleExpand.delay,
+  delay: blackCircleExpandOrder.duration + blackCircleExpandOrder.delay,
 };
 
-export const angeTriangleDropShadow = {
+export const angeTriangleDropShadowOrder = {
   duration: 600,
-  delay: blackCircleExpand.duration + blackCircleExpand.delay,
+  delay: blackCircleExpandOrder.duration + blackCircleExpandOrder.delay,
 };
 
-export const angeTriangleRemoveDropShadow = {
+export const angeTriangleRemoveDropShadowOrder = {
   duration: 1000,
-  delay: angeTriangleDropShadow.duration + angeTriangleDropShadow.delay,
+  delay:
+    angeTriangleDropShadowOrder.duration + angeTriangleDropShadowOrder.delay,
 };
 
 export const angeTriangleUpLocationOrder = {
   duration: 200,
   delay:
-    angeTriangleRemoveDropShadow.duration +
-    angeTriangleRemoveDropShadow.delay +
+    angeTriangleRemoveDropShadowOrder.duration +
+    angeTriangleRemoveDropShadowOrder.delay +
     100,
 };
 
@@ -65,7 +66,7 @@ export const angeTriangleUpLocationOrder = {
 export const omataseMattaFadeinOrder = {
   duration: 180,
   delay:
-    angeTriangleRemoveDropShadow.duration +
-    angeTriangleRemoveDropShadow.delay +
+    angeTriangleRemoveDropShadowOrder.duration +
+    angeTriangleRemoveDropShadowOrder.delay +
     100,
 };

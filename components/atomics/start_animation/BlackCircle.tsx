@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ANGE_BLACK } from "../../../constants/colors";
 import { scale } from "../../../styles/commonAnimation";
 import { SizeType } from "../../../typing/SizeType";
-import { blackCircleExpand } from "../../../constants/start_animation/animation_order";
+import { blackCircleExpandOrder } from "../../../constants/start_animation/animation_order";
 
 interface Props {
   isStartSummonAnimation: boolean;
@@ -33,8 +33,8 @@ const BlackCircleMain = styled.div<{
   transform: scale(0);
   animation: ${({ isStartSummonAnimation }) =>
       isStartSummonAnimation ? scale(30) : "none"}
-    ${blackCircleExpand.duration}ms ease-out ${blackCircleExpand.delay}ms
-    forwards;
+    ${blackCircleExpandOrder.duration}ms ease-out
+    ${blackCircleExpandOrder.delay}ms forwards;
 `;
 
 const BlackCircle: React.FC<Props> = ({

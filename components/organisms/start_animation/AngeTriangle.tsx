@@ -11,9 +11,9 @@ import AngeTriangleSVG from "../../../public/start_animation/svgs/ange_triangle.
 import { useTypedSelector } from "../../../redux/store";
 import { angeTriangleZIndex } from "../../../constants/start_animation/zindex";
 import {
-  angeTriangleFadein,
-  angeTriangleDropShadow,
-  angeTriangleRemoveDropShadow,
+  angeTriangleFadeinOrder,
+  angeTriangleDropShadowOrder,
+  angeTriangleRemoveDropShadowOrder,
   angeTriangleUpLocationOrder,
 } from "../../../constants/start_animation/animation_order";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
@@ -91,13 +91,14 @@ const createStyledTriangle = ({
       width: ${calcTriangleWidthHeight(size)}px;
       height: ${calcTriangleWidthHeight(size)}px;
       opacity: 0;
-      animation: ${fadein(0.7)} ${angeTriangleFadein.duration}ms ease-in
-          ${angeTriangleFadein.delay}ms forwards,
-        ${toDeepDropShadow(10, "#FFFFFF")} ${angeTriangleDropShadow.duration}ms
-          linear ${angeTriangleDropShadow.delay}ms forwards,
+      animation: ${fadein(0.7)} ${angeTriangleFadeinOrder.duration}ms ease-in
+          ${angeTriangleFadeinOrder.delay}ms forwards,
+        ${toDeepDropShadow(10, "#FFFFFF")}
+          ${angeTriangleDropShadowOrder.duration}ms linear
+          ${angeTriangleDropShadowOrder.delay}ms forwards,
         ${removeDeepDropShadow(10, "#FFFFFF")}
-          ${angeTriangleRemoveDropShadow.duration}ms linear
-          ${angeTriangleRemoveDropShadow.delay}ms forwards;
+          ${angeTriangleRemoveDropShadowOrder.duration}ms linear
+          ${angeTriangleRemoveDropShadowOrder.delay}ms forwards;
     `;
   } else {
     return styled(AngeTriangleSVG)`
