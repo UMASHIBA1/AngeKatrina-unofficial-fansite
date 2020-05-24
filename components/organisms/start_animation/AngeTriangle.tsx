@@ -48,9 +48,16 @@ const calcTopLocation = (size: SizeType) => {
   return sizeTypeJudge(size)(7, 9, 15);
 };
 
-const calcTranlatedTopLocation = (size: SizeType) => {
+const calcMovedLocation = (size: SizeType) => {
   const fontSize = sizeTypeJudge(size)(smFontSize, tabletFontSize, pcFontSize);
-  return `calc(${fontSize} * ${omataseMattaLineHeight} * -5)`;
+  const smXYLocation = {
+    x: 0,
+    y: `calc(${fontSize} * ${omataseMattaLineHeight} * -5)`,
+  };
+  const tabletXYLocation = { x: 0, y: calcTopLocation(size) };
+  const pcXYLocation = { x: 0, y: calcTopLocation(size) };
+
+  return sizeTypeJudge(size)(smXYLocation, tabletXYLocation, pcXYLocation);
 };
 
 const createLocationAdjuster = (
@@ -60,13 +67,7 @@ const createLocationAdjuster = (
   return styled.div`
     transform: translate(0, ${calcTopLocation(size)}px);
     animation: ${isStartSummonAnimation
-        ? translate(
-            { x: 0, y: calcTopLocation(size) },
-            {
-              x: 0,
-              y: `${calcTranlatedTopLocation(size)}`,
-            }
-          )
+        ? translate({ x: 0, y: calcTopLocation(size) }, calcMovedLocation(size))
         : "none"}
       ${angeTriangleUpLocationOrder.duration}ms ease-out
       ${angeTriangleUpLocationOrder.delay}ms forwards;
