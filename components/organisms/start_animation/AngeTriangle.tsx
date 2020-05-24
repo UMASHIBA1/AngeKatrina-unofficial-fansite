@@ -43,7 +43,7 @@ const calcTriangleWidthHeight = (size: SizeType) => {
   return sizeTypeJudge(size)(
     `calc(${smFontSize} * 1.5)`,
     `calc(${tabletFontSize} * 1.5)`,
-    `calc(${pcFontSize} * 1.2)`
+    `calc(${pcFontSize} * 1.5)`
   );
 };
 
@@ -59,20 +59,12 @@ const calcTopLocation = (size: SizeType) => {
 const calcMovedLocation = (size: SizeType) => {
   const fontSize = sizeTypeJudge(size)(smFontSize, tabletFontSize, pcFontSize);
   const contentHalfLen = Math.ceil(omataseMattaContent.length / 2);
-  const smXYLocation = {
+  const xyLocation = {
     x: 0,
     y: `calc(${fontSize} * ${omataseMattaLineHeight} * -${contentHalfLen})`,
   };
-  const tabletAndPCXYLocation = {
-    x: `calc(${fontSize} * -${contentHalfLen})`,
-    y: calcTopLocation(size),
-  };
 
-  return sizeTypeJudge(size)(
-    smXYLocation,
-    tabletAndPCXYLocation,
-    tabletAndPCXYLocation
-  );
+  return xyLocation;
 };
 
 const createLocationAdjuster = (
