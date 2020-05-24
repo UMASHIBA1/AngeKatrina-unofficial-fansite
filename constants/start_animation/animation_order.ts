@@ -81,16 +81,21 @@ export const angeTriangleMoveDownOrder: AnimationProps = {
     100,
 };
 
-export const angeTriangleRotateOrder: AnimationProps = {
+export const angeTriangleUpRotateOrder: AnimationProps = {
   duration_ms: angeTriangleMoveUpOrder.duration_ms,
   delay_ms: angeTriangleMoveUpOrder.delay_ms,
+};
+
+export const angeTriangleDownRotateOrder: AnimationProps = {
+  duration_ms: angeTriangleMoveDownOrder.duration_ms,
+  delay_ms: angeTriangleMoveDownOrder.delay_ms,
 };
 
 // omataseMattaText
 export const omataseMattaFadeinOrder: AnimationProps = {
   duration_ms: 180,
   delay_ms:
-    angeTriangleRotateOrder.duration_ms +
-    angeTriangleRotateOrder.delay_ms +
+    angeTriangleUpRotateOrder.duration_ms +
+    angeTriangleUpRotateOrder.delay_ms +
     100,
 };

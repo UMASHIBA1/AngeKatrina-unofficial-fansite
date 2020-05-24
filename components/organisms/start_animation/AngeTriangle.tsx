@@ -17,8 +17,9 @@ import {
   angeTriangleDropShadowOrder,
   angeTriangleRemoveDropShadowOrder,
   angeTriangleMoveUpOrder,
-  angeTriangleRotateOrder,
+  angeTriangleUpRotateOrder,
   angeTriangleMoveDownOrder,
+  angeTriangleDownRotateOrder,
 } from "../../../constants/start_animation/animation_order";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 import {
@@ -124,12 +125,11 @@ const createStyledTriangle = ({
         ${removeDeepDropShadow(10, "#FFFFFF")}
           ${angeTriangleRemoveDropShadowOrder.duration_ms}ms linear
           ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards,
-        ${sizeTypeJudge(size)(rightRotate, leftRotate, leftRotate)}
-          ${angeTriangleRotateOrder.duration_ms}ms linear
-          ${angeTriangleRotateOrder.delay_ms}ms forwards,
+        ${rightRotate} ${angeTriangleUpRotateOrder.duration_ms}ms linear
+          ${angeTriangleUpRotateOrder.delay_ms}ms forwards,
         ${isMoveToDown ? rightRotate : "none"}
-          ${angeTriangleMoveDownOrder.duration_ms}ms linear
-          ${angeTriangleMoveDownOrder.delay_ms}ms forwards;
+          ${angeTriangleDownRotateOrder.duration_ms}ms linear
+          ${angeTriangleDownRotateOrder.delay_ms}ms forwards;
     `;
   } else {
     return styled(AngeTriangleSVG)`
