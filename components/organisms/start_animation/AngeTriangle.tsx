@@ -6,6 +6,8 @@ import {
   toDeepDropShadow,
   removeDeepDropShadow,
   translate,
+  leftRotate,
+  rightRotate,
 } from "../../../styles/commonAnimation";
 import AngeTriangleSVG from "../../../public/start_animation/svgs/ange_triangle.svg";
 import { useTypedSelector } from "../../../redux/store";
@@ -15,6 +17,7 @@ import {
   angeTriangleDropShadowOrder,
   angeTriangleRemoveDropShadowOrder,
   angeTriangleMoveOrder,
+  angeTriangleRotateOrder,
 } from "../../../constants/start_animation/animation_order";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 import {
@@ -98,7 +101,10 @@ const createStyledTriangle = ({
           ${angeTriangleDropShadowOrder.delay_ms}ms forwards,
         ${removeDeepDropShadow(10, "#FFFFFF")}
           ${angeTriangleRemoveDropShadowOrder.duration_ms}ms linear
-          ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards;
+          ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards,
+        ${sizeTypeJudge(size)(leftRotate, rightRotate, rightRotate)}
+          ${angeTriangleRotateOrder.duration_ms}ms linear
+          ${angeTriangleRotateOrder.delay_ms}ms forwards;
     `;
   } else {
     return styled(AngeTriangleSVG)`

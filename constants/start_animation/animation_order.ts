@@ -66,11 +66,16 @@ export const angeTriangleRemoveDropShadowOrder: AnimationProps = {
 };
 
 export const angeTriangleMoveOrder: AnimationProps = {
-  duration_ms: 200,
+  duration_ms: 800,
   delay_ms:
     angeTriangleRemoveDropShadowOrder.duration_ms +
     angeTriangleRemoveDropShadowOrder.delay_ms +
     100,
+};
+
+export const angeTriangleRotateOrder: AnimationProps = {
+  duration_ms: angeTriangleMoveOrder.duration_ms + 100,
+  delay_ms: angeTriangleMoveOrder.delay_ms,
 };
 
 // omataseMattaText
@@ -81,5 +86,3 @@ export const omataseMattaFadeinOrder: AnimationProps = {
     angeTriangleRemoveDropShadowOrder.delay_ms +
     100,
 };
-
-//
