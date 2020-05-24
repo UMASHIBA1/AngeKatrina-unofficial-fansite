@@ -22,6 +22,7 @@ import {
   tabletFontSize,
   pcFontSize,
   omataseMattaLineHeight,
+  omataseMattaContent,
 } from "../../../constants/start_animation/omataseMattaSetting";
 
 const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
@@ -50,14 +51,21 @@ const calcTopLocation = (size: SizeType) => {
 
 const calcMovedLocation = (size: SizeType) => {
   const fontSize = sizeTypeJudge(size)(smFontSize, tabletFontSize, pcFontSize);
+  const contentHalfLen = Math.ceil(omataseMattaContent.length / 2);
   const smXYLocation = {
     x: 0,
-    y: `calc(${fontSize} * ${omataseMattaLineHeight} * -5)`,
+    y: `calc(${fontSize} * ${omataseMattaLineHeight} * -${contentHalfLen})`,
   };
-  const tabletXYLocation = { x: 0, y: calcTopLocation(size) };
-  const pcXYLocation = { x: 0, y: calcTopLocation(size) };
+  const tabletAndPCXYLocation = {
+    x: `calc(${fontSize} * -${contentHalfLen})`,
+    y: calcTopLocation(size),
+  };
 
-  return sizeTypeJudge(size)(smXYLocation, tabletXYLocation, pcXYLocation);
+  return sizeTypeJudge(size)(
+    smXYLocation,
+    tabletAndPCXYLocation,
+    tabletAndPCXYLocation
+  );
 };
 
 const createLocationAdjuster = (
