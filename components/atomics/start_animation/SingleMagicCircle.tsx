@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { Keyframes } from "styled-components";
+import styled from "styled-components";
 import {
   rightRotate,
   leftRotate,
@@ -37,13 +37,10 @@ const createAnimateStyledSVG = ({
   scaleMagnification,
   doAnimations: { doShadow, doExpand, doFadeout },
 }: Props) => {
-  let StyledSVG = styled(SvgElement)`
-    position: absolute;
-    filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
-  `;
-
   if (isStartSummonAnimation) {
-    StyledSVG = styled(StyledSVG)`
+    return styled(SvgElement)`
+      position: absolute;
+      filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
       will-change: animation;
       animation: ${doShadow ? toDeepDropShadow(4, ANGE_RED) : "none"}
           ${magicCircleDropShadowOrder.duration_ms}ms linear
@@ -61,13 +58,12 @@ const createAnimateStyledSVG = ({
           linear ${magicCricleFadeoutOrder.delay_ms}ms forwards;
     `;
   } else {
-    // NOTE styledの中でReactHooksを使っているのかこの処理を加えないと「前と同じ回数のReactHooksを使え」ってエラーをReactがだす
-    StyledSVG = styled(StyledSVG)`
+    return styled(SvgElement)`
+      position: absolute;
+      filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
       animation: none;
     `;
   }
-
-  return StyledSVG;
 };
 
 const Wrapper = styled.div`
@@ -79,32 +75,30 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const createRotateWrapper = (rotateDirection: Props["rotateDirection"]) => {
-  let rotateKeyframe: Keyframes;
+const judgeRotateKeyframe = (rotateDirection: Props["rotateDirection"]) => {
   if (rotateDirection === "right") {
-    rotateKeyframe = rightRotate();
+    return rightRotate();
   } else {
-    rotateKeyframe = leftRotate();
+    return leftRotate();
   }
-
-  return styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: ${rotateKeyframe} 20s linear infinite;
-  `;
 };
+
+const RotateWrapper = styled.div<{ rotateDirection: Props["rotateDirection"] }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ${({ rotateDirection }) => judgeRotateKeyframe(rotateDirection)}
+    20s linear infinite;
+`;
 
 const SingleMagicCircle: React.FC<Props> = (props: Props) => {
   const { diameter, rotateDirection } = props;
-
-  const RotateWrapper = createRotateWrapper(rotateDirection);
 
   const AnimateStyledSVG = createAnimateStyledSVG(props);
 
   return (
     <Wrapper>
-      <RotateWrapper>
+      <RotateWrapper rotateDirection={rotateDirection}>
         <AnimateStyledSVG width={diameter} height={diameter} />
       </RotateWrapper>
     </Wrapper>
