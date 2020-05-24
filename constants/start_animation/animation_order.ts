@@ -74,7 +74,7 @@ export const angeTriangleMoveOrder: AnimationProps = {
 };
 
 export const angeTriangleRotateOrder: AnimationProps = {
-  duration_ms: angeTriangleMoveOrder.duration_ms + 100,
+  duration_ms: angeTriangleMoveOrder.duration_ms,
   delay_ms: angeTriangleMoveOrder.delay_ms,
 };
 
@@ -82,7 +82,7 @@ export const angeTriangleRotateOrder: AnimationProps = {
 export const omataseMattaFadeinOrder: AnimationProps = {
   duration_ms: 180,
   delay_ms:
-    angeTriangleRemoveDropShadowOrder.duration_ms +
-    angeTriangleRemoveDropShadowOrder.delay_ms +
+    angeTriangleRotateOrder.duration_ms +
+    angeTriangleRotateOrder.delay_ms +
     100,
 };
