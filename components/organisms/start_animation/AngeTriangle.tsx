@@ -126,7 +126,7 @@ const createStyledTriangle = ({
           ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards,
         ${rightRotate()} ${angeTriangleUpRotateOrder.duration_ms}ms linear
           ${angeTriangleUpRotateOrder.delay_ms}ms forwards,
-        ${isMoveToDown ? rightRotate() : "none"}
+        ${isMoveToDown ? rightRotate("0deg", "540deg") : "none"}
           ${angeTriangleDownRotateOrder.duration_ms}ms linear
           ${angeTriangleDownRotateOrder.delay_ms}ms forwards;
     `;
