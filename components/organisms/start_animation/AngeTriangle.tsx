@@ -102,7 +102,7 @@ const createStyledTriangle = ({
         ${removeDeepDropShadow(10, "#FFFFFF")}
           ${angeTriangleRemoveDropShadowOrder.duration_ms}ms linear
           ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards,
-        ${sizeTypeJudge(size)(leftRotate, rightRotate, rightRotate)}
+        ${sizeTypeJudge(size)(rightRotate, leftRotate, leftRotate)}
           ${angeTriangleRotateOrder.duration_ms}ms linear
           ${angeTriangleRotateOrder.delay_ms}ms forwards;
     `;
