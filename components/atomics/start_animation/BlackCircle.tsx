@@ -33,8 +33,8 @@ const BlackCircleMain = styled.div<{
   transform: scale(0);
   animation: ${({ isStartSummonAnimation }) =>
       isStartSummonAnimation ? scale(30) : "none"}
-    ${blackCircleExpandOrder.duration}ms ease-out
-    ${blackCircleExpandOrder.delay}ms forwards;
+    ${blackCircleExpandOrder.duration_ms}ms ease-out
+    ${blackCircleExpandOrder.delay_ms}ms forwards;
 `;
 
 const BlackCircle: React.FC<Props> = ({

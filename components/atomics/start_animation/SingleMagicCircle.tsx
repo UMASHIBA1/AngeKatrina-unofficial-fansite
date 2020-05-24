@@ -46,19 +46,19 @@ const createAnimateStyledSVG = ({
     StyledSVG = styled(StyledSVG)`
       will-change: animation;
       animation: ${doShadow ? toDeepDropShadow(4, ANGE_RED) : "none"}
-          ${magicCircleDropShadowOrder.duration}ms linear
-          ${magicCircleDropShadowOrder.delay}ms forwards,
+          ${magicCircleDropShadowOrder.duration_ms}ms linear
+          ${magicCircleDropShadowOrder.delay_ms}ms forwards,
         ${doShadow ? removeDeepDropShadow(4, ANGE_RED) : "none"}
-          ${magicCircleRemoveDropShadowOrder.duration}ms linear
-          ${magicCircleRemoveDropShadowOrder.delay}ms forwards,
+          ${magicCircleRemoveDropShadowOrder.duration_ms}ms linear
+          ${magicCircleRemoveDropShadowOrder.delay_ms}ms forwards,
         ${doExpand && scaleMagnification !== undefined
             ? scale(scaleMagnification)
             : "none"}
-          ${magicCircleExpandOrder.duration}ms ease-out
-          ${magicCircleExpandOrder.delay}ms forwards,
+          ${magicCircleExpandOrder.duration_ms}ms ease-out
+          ${magicCircleExpandOrder.delay_ms}ms forwards,
         forwards,
-        ${doFadeout ? fadeout : "none"} ${magicCricleFadeoutOrder.duration}ms
-          linear ${magicCricleFadeoutOrder.delay}ms forwards;
+        ${doFadeout ? fadeout : "none"} ${magicCricleFadeoutOrder.duration_ms}ms
+          linear ${magicCricleFadeoutOrder.delay_ms}ms forwards;
     `;
   } else {
     // NOTE styledの中でReactHooksを使っているのかこの処理を加えないと「前と同じ回数のReactHooksを使え」ってエラーをReactがだす

@@ -52,10 +52,10 @@ const CharWrapper = styled.span<{
   line-height: ${omataseMattaLineHeight};
   animation: ${({ isStartSummonAnimation }) =>
       isStartSummonAnimation ? fadein() : "none"}
-    ${omataseMattaFadeinOrder.duration}ms ease-out
+    ${omataseMattaFadeinOrder.duration_ms}ms ease-out
     ${({ order }) =>
-      order * omataseMattaFadeinOrder.duration +
-      omataseMattaFadeinOrder.delay}ms
+      order * omataseMattaFadeinOrder.duration_ms +
+      omataseMattaFadeinOrder.delay_ms}ms
     forwards;
 `;
 

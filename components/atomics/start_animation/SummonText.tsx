@@ -4,7 +4,7 @@ import { ANGE_BROWN, ANGE_RED, ANGE_BLACK } from "../../../constants/colors";
 import { HWT_MARDELL_FONT_PROP } from "../../../constants/cssProps";
 import { toDeepInsetShadow } from "../../../styles/commonAnimation";
 import { summonTextShadowOrder } from "../../../constants/start_animation/animation_order";
-const { duration, delay } = summonTextShadowOrder;
+const { duration_ms: duration, delay_ms: delay } = summonTextShadowOrder;
 
 const StyledSummonText = styled.div<{
   diameter: number;

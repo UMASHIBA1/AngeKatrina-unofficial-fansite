@@ -77,8 +77,8 @@ const createLocationAdjuster = (
     animation: ${isStartSummonAnimation
         ? translate({ x: 0, y: calcTopLocation(size) }, calcMovedLocation(size))
         : "none"}
-      ${angeTriangleUpLocationOrder.duration}ms ease-out
-      ${angeTriangleUpLocationOrder.delay}ms forwards;
+      ${angeTriangleUpLocationOrder.duration_ms}ms ease-out
+      ${angeTriangleUpLocationOrder.delay_ms}ms forwards;
   `;
 };
 
@@ -91,14 +91,14 @@ const createStyledTriangle = ({
       width: ${calcTriangleWidthHeight(size)}px;
       height: ${calcTriangleWidthHeight(size)}px;
       opacity: 0;
-      animation: ${fadein(0.7)} ${angeTriangleFadeinOrder.duration}ms ease-in
-          ${angeTriangleFadeinOrder.delay}ms forwards,
+      animation: ${fadein(0.7)} ${angeTriangleFadeinOrder.duration_ms}ms ease-in
+          ${angeTriangleFadeinOrder.delay_ms}ms forwards,
         ${toDeepDropShadow(10, "#FFFFFF")}
-          ${angeTriangleDropShadowOrder.duration}ms linear
-          ${angeTriangleDropShadowOrder.delay}ms forwards,
+          ${angeTriangleDropShadowOrder.duration_ms}ms linear
+          ${angeTriangleDropShadowOrder.delay_ms}ms forwards,
         ${removeDeepDropShadow(10, "#FFFFFF")}
-          ${angeTriangleRemoveDropShadowOrder.duration}ms linear
-          ${angeTriangleRemoveDropShadowOrder.delay}ms forwards;
+          ${angeTriangleRemoveDropShadowOrder.duration_ms}ms linear
+          ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards;
     `;
   } else {
     return styled(AngeTriangleSVG)`
