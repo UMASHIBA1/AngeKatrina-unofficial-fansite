@@ -65,7 +65,7 @@ export const angeTriangleRemoveDropShadowOrder: AnimationProps = {
     angeTriangleDropShadowOrder.delay_ms,
 };
 
-export const angeTriangleUpLocationOrder: AnimationProps = {
+export const angeTriangleMoveOrder: AnimationProps = {
   duration_ms: 200,
   delay_ms:
     angeTriangleRemoveDropShadowOrder.duration_ms +
@@ -81,3 +81,5 @@ export const omataseMattaFadeinOrder: AnimationProps = {
     angeTriangleRemoveDropShadowOrder.delay_ms +
     100,
 };
+
+//

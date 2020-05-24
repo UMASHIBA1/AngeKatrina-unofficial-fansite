@@ -14,7 +14,7 @@ import {
   angeTriangleFadeinOrder,
   angeTriangleDropShadowOrder,
   angeTriangleRemoveDropShadowOrder,
-  angeTriangleUpLocationOrder,
+  angeTriangleMoveOrder,
 } from "../../../constants/start_animation/animation_order";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 import {
@@ -77,8 +77,8 @@ const createLocationAdjuster = (
     animation: ${isStartSummonAnimation
         ? translate({ x: 0, y: calcTopLocation(size) }, calcMovedLocation(size))
         : "none"}
-      ${angeTriangleUpLocationOrder.duration_ms}ms ease-out
-      ${angeTriangleUpLocationOrder.delay_ms}ms forwards;
+      ${angeTriangleMoveOrder.duration_ms}ms ease-out
+      ${angeTriangleMoveOrder.delay_ms}ms forwards;
   `;
 };
 
