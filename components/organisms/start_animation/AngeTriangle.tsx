@@ -58,7 +58,7 @@ const calcTopLocation = (size: SizeType) => {
   return sizeTypeJudge(size)(7, 9, 15);
 };
 
-const calcMovedLocation = (size: SizeType) => {
+const calcMovedUpLocation = (size: SizeType) => {
   const fontSize = sizeTypeJudge(size)(smFontSize, tabletFontSize, pcFontSize);
   const contentHalfLen = Math.ceil(omataseMattaContent.length / 2);
   const xyLocation = {
@@ -69,10 +69,23 @@ const calcMovedLocation = (size: SizeType) => {
   return xyLocation;
 };
 
+const calcMovedDownLocation = (size: SizeType) => {
+  const fontSize = sizeTypeJudge(size)(smFontSize, tabletFontSize, pcFontSize);
+  const contentHalfLen = Math.ceil(omataseMattaContent.length / 2);
+  const xyLocation = {
+    x: 0,
+    y: `calc(${fontSize} * ${omataseMattaLineHeight} * ${contentHalfLen})`,
+  };
+
+  return xyLocation;
+};
+
 const createLocationAdjuster = (
   size: SizeType,
-  isStartSummonAnimation: boolean
+  isStartSummonAnimation: boolean,
+  isMoveToDown: boolean
 ) => {
+  const movedUpLocation = calcMovedUpLocation(size);
   return styled.div`
     position: absolute;
     display: flex;
@@ -80,10 +93,15 @@ const createLocationAdjuster = (
     align-items: center;
     transform: translate(0, ${calcTopLocation(size)}px);
     animation: ${isStartSummonAnimation
-        ? translate({ x: 0, y: calcTopLocation(size) }, calcMovedLocation(size))
-        : "none"}
-      ${angeTriangleMoveUpOrder.duration_ms}ms ease-out
-      ${angeTriangleMoveUpOrder.delay_ms}ms forwards;
+          ? translate({ x: 0, y: calcTopLocation(size) }, movedUpLocation)
+          : "none"}
+        ${angeTriangleMoveUpOrder.duration_ms}ms ease-out
+        ${angeTriangleMoveUpOrder.delay_ms}ms forwards,
+      ${isMoveToDown
+          ? translate(movedUpLocation, calcMovedDownLocation(size))
+          : "none"}
+        ${angeTriangleMoveDownOrder.duration_ms}ms ease-out
+        ${angeTriangleMoveDownOrder.delay_ms}ms forwards;
   `;
 };
 
@@ -136,14 +154,25 @@ const AngeTriangle: React.FC = () => {
     isStartSummonAnimation,
     isMoveToDown: true,
   });
-  const LocationAdjuster = createLocationAdjuster(size, isStartSummonAnimation);
+  const LocationAdjuster = createLocationAdjuster(
+    size,
+    isStartSummonAnimation,
+    false
+  );
+  const MoveDownLocationAdjuster = createLocationAdjuster(
+    size,
+    isStartSummonAnimation,
+    true
+  );
 
   return (
     <Wrapper isStartSummonAnimation={isStartSummonAnimation}>
       <LocationAdjuster>
         <StyledTriangle />
-        <MoveDownStyledTriangle />
       </LocationAdjuster>
+      <MoveDownLocationAdjuster>
+        <MoveDownStyledTriangle />
+      </MoveDownLocationAdjuster>
     </Wrapper>
   );
 };
