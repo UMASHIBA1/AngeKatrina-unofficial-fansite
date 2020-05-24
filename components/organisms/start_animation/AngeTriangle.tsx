@@ -6,7 +6,6 @@ import {
   toDeepDropShadow,
   removeDeepDropShadow,
   translate,
-  leftRotate,
   rightRotate,
 } from "../../../styles/commonAnimation";
 import AngeTriangleSVG from "../../../public/start_animation/svgs/ange_triangle.svg";
@@ -125,9 +124,9 @@ const createStyledTriangle = ({
         ${removeDeepDropShadow(10, "#FFFFFF")}
           ${angeTriangleRemoveDropShadowOrder.duration_ms}ms linear
           ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards,
-        ${rightRotate} ${angeTriangleUpRotateOrder.duration_ms}ms linear
+        ${rightRotate()} ${angeTriangleUpRotateOrder.duration_ms}ms linear
           ${angeTriangleUpRotateOrder.delay_ms}ms forwards,
-        ${isMoveToDown ? rightRotate : "none"}
+        ${isMoveToDown ? rightRotate() : "none"}
           ${angeTriangleDownRotateOrder.duration_ms}ms linear
           ${angeTriangleDownRotateOrder.delay_ms}ms forwards;
     `;

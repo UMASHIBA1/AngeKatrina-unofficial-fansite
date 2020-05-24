@@ -1,23 +1,29 @@
 import { keyframes } from "styled-components";
 import LocationXY from "../typing/LocationXY";
 
-export const rightRotate = keyframes`
+export const rightRotate = (
+  from: string = "0deg",
+  to: string = "360deg"
+) => keyframes`
     from {
-        transform: rotate(0deg);
+        transform: rotate(${from});
     }
 
     to {
-        transform: rotate(360deg);
+        transform: rotate(${to});
     }
 `;
 
-export const leftRotate = keyframes`
+export const leftRotate = (
+  from: string = "0deg",
+  to: string = "-360deg"
+) => keyframes`
     from {
-        transform: rotate(0deg);
+        transform: rotate(${from});
     }
 
     to {
-        transform: rotate(-360deg);
+        transform: rotate(${to});
     }
 `;
 

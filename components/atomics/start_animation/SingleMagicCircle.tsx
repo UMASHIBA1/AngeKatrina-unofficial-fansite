@@ -82,9 +82,9 @@ const Wrapper = styled.div`
 const createRotateWrapper = (rotateDirection: Props["rotateDirection"]) => {
   let rotateKeyframe: Keyframes;
   if (rotateDirection === "right") {
-    rotateKeyframe = rightRotate;
+    rotateKeyframe = rightRotate();
   } else {
-    rotateKeyframe = leftRotate;
+    rotateKeyframe = leftRotate();
   }
 
   return styled.div`
