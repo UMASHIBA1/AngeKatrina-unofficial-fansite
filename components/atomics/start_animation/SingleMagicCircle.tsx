@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   rightRotate,
   leftRotate,
@@ -15,6 +15,10 @@ import {
   magicCricleFadeoutOrder,
   magicCircleExpandOrder,
 } from "../../../constants/start_animation/animation_order";
+import MostIn from "../../../public/start_animation/svgs/most_in.svg";
+import SecondIn from "../../../public/start_animation/svgs/second_in.svg";
+import ThirdIn from "../../../public/start_animation/svgs/third_in.svg";
+import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
 
 interface Animations {
   doShadow: boolean;
@@ -22,8 +26,15 @@ interface Animations {
   doFadeout: boolean;
 }
 
+const AvailableSVGs = {
+  mostIn: MostIn,
+  secondIn: SecondIn,
+  thirdIn: ThirdIn,
+  fourthIn: FourthIn,
+};
+
 interface Props {
-  SvgElement: React.StatelessComponent<React.SVGAttributes<SVGElement>>;
+  svgName: keyof typeof AvailableSVGs;
   diameter: number;
   rotateDirection: "right" | "left";
   isStartSummonAnimation: boolean;
@@ -31,40 +42,78 @@ interface Props {
   scaleMagnification?: number;
 }
 
-const createAnimateStyledSVG = ({
-  SvgElement,
-  isStartSummonAnimation,
-  scaleMagnification,
-  doAnimations: { doShadow, doExpand, doFadeout },
-}: Props) => {
-  if (isStartSummonAnimation) {
-    return styled(SvgElement)`
-      position: absolute;
-      filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
-      will-change: animation;
-      animation: ${doShadow ? toDeepDropShadow(4, ANGE_RED) : "none"}
-          ${magicCircleDropShadowOrder.duration_ms}ms linear
-          ${magicCircleDropShadowOrder.delay_ms}ms forwards,
-        ${doShadow ? removeDeepDropShadow(4, ANGE_RED) : "none"}
-          ${magicCircleRemoveDropShadowOrder.duration_ms}ms linear
-          ${magicCircleRemoveDropShadowOrder.delay_ms}ms forwards,
-        ${doExpand && scaleMagnification !== undefined
-            ? scale(scaleMagnification)
-            : "none"}
-          ${magicCircleExpandOrder.duration_ms}ms ease-out
-          ${magicCircleExpandOrder.delay_ms}ms forwards,
-        forwards,
-        ${doFadeout ? fadeout : "none"} ${magicCricleFadeoutOrder.duration_ms}ms
-          linear ${magicCricleFadeoutOrder.delay_ms}ms forwards;
-    `;
-  } else {
-    return styled(SvgElement)`
-      position: absolute;
-      filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
-      animation: none;
-    `;
-  }
+const circleCSS = css<{ diameter: Props["diameter"] }>`
+  position: absolute;
+  width: ${({ diameter }) => diameter}px;
+  height: ${({ diameter }) => diameter}px;
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
+  will-change: animation;
+`;
+
+const circleAnimationCSS = css<
+  Pick<Props, "isStartSummonAnimation" | "scaleMagnification" | "doAnimations">
+>`
+  animation: ${({ isStartSummonAnimation, doAnimations: { doShadow } }) =>
+        isStartSummonAnimation && doShadow
+          ? toDeepDropShadow(4, ANGE_RED)
+          : "none"}
+      ${magicCircleDropShadowOrder.duration_ms}ms linear
+      ${magicCircleDropShadowOrder.delay_ms}ms forwards,
+    ${({ isStartSummonAnimation, doAnimations: { doShadow } }) =>
+        isStartSummonAnimation && doShadow
+          ? removeDeepDropShadow(4, ANGE_RED)
+          : "none"}
+      ${magicCircleRemoveDropShadowOrder.duration_ms}ms linear
+      ${magicCircleRemoveDropShadowOrder.delay_ms}ms forwards,
+    ${({
+        isStartSummonAnimation,
+        doAnimations: { doExpand },
+        scaleMagnification,
+      }) =>
+        isStartSummonAnimation && doExpand && scaleMagnification !== undefined
+          ? scale(scaleMagnification)
+          : "none"}
+      ${magicCircleExpandOrder.duration_ms}ms ease-out
+      ${magicCircleExpandOrder.delay_ms}ms forwards,
+    forwards,
+    ${({ isStartSummonAnimation, doAnimations: { doFadeout } }) =>
+        isStartSummonAnimation && doFadeout ? fadeout : "none"}
+      ${magicCricleFadeoutOrder.duration_ms}ms linear
+      ${magicCricleFadeoutOrder.delay_ms}ms forwards;
+`;
+
+// NOTE styled-componentsで要素にstyleを付与するのにコンポーネント化が必要だったが
+// MostInComponentみたいにいちいち定義してコンポーネント化するのが面倒だったのでカリーを使用
+const SVGWrap = (
+  SVGElement: React.StatelessComponent<React.SVGAttributes<SVGElement>>
+): React.FC<Props> => {
+  return ({
+    svgName,
+    diameter,
+    rotateDirection,
+    isStartSummonAnimation,
+    doAnimations,
+    scaleMagnification,
+    ...props
+  }: Props) => <SVGElement {...props} />;
 };
+
+const StyledMostIn = styled(SVGWrap(MostIn))`
+  ${circleCSS}
+  ${circleAnimationCSS}
+`;
+const StyledSecondIn = styled(SVGWrap(SecondIn))`
+  ${circleCSS}
+  ${circleAnimationCSS}
+`;
+const StyledThirdIn = styled(SVGWrap(ThirdIn))`
+  ${circleCSS}
+  ${circleAnimationCSS}
+`;
+const StyledFourthIn = styled(SVGWrap(FourthIn))`
+  ${circleCSS}
+  ${circleAnimationCSS}
+`;
 
 const Wrapper = styled.div`
   position: absolute;
@@ -92,14 +141,27 @@ const RotateWrapper = styled.div<{ rotateDirection: Props["rotateDirection"] }>`
 `;
 
 const SingleMagicCircle: React.FC<Props> = (props: Props) => {
-  const { diameter, rotateDirection } = props;
+  const { rotateDirection, svgName } = props;
 
-  const AnimateStyledSVG = createAnimateStyledSVG(props);
+  let AnimateStyledSVG;
+  switch (svgName) {
+    case "mostIn":
+      AnimateStyledSVG = StyledMostIn;
+      break;
+    case "secondIn":
+      AnimateStyledSVG = StyledSecondIn;
+      break;
+    case "thirdIn":
+      AnimateStyledSVG = StyledThirdIn;
+      break;
+    case "fourthIn":
+      AnimateStyledSVG = StyledFourthIn;
+  }
 
   return (
     <Wrapper>
       <RotateWrapper rotateDirection={rotateDirection}>
-        <AnimateStyledSVG width={diameter} height={diameter} />
+        <AnimateStyledSVG {...props} />
       </RotateWrapper>
     </Wrapper>
   );

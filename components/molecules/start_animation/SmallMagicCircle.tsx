@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import MostIn from "../../../public/start_animation/svgs/most_in.svg";
-import SecondIn from "../../../public/start_animation/svgs/second_in.svg";
-import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
 import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
 
 export interface SmallMagicCircleProps {
@@ -44,7 +41,7 @@ const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
     <Wrapper top={top} left={left}>
       {circleNum >= 3 ? (
         <SingleMagicCircle
-          SvgElement={MostIn}
+          svgName="mostIn"
           diameter={mostInDiameter}
           rotateDirection={"right"}
           isStartSummonAnimation={isStartSummonAnimation}
@@ -53,7 +50,7 @@ const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
       ) : null}
       {circleNum >= 2 ? (
         <SingleMagicCircle
-          SvgElement={SecondIn}
+          svgName="secondIn"
           diameter={secondInDiameter}
           rotateDirection={"left"}
           isStartSummonAnimation={isStartSummonAnimation}
@@ -61,7 +58,7 @@ const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
         />
       ) : null}
       <SingleMagicCircle
-        SvgElement={FourthIn}
+        svgName="fourthIn"
         diameter={diameter}
         rotateDirection={"right"}
         isStartSummonAnimation={isStartSummonAnimation}
