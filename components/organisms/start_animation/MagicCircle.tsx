@@ -1,8 +1,4 @@
 import React from "react";
-import MostIn from "../../../public/start_animation/svgs/most_in.svg";
-import SecondIn from "../../../public/start_animation/svgs/second_in.svg";
-import ThirdIn from "../../../public/start_animation/svgs/third_in.svg";
-import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
 import styled from "styled-components";
 import SingleMagicCircle from "../../atomics/start_animation/SingleMagicCircle";
 import SummonText from "../../atomics/start_animation/SummonText";
@@ -75,14 +71,14 @@ const MagicCircle: React.FC = () => {
     <Wrapper>
       <SingleMagicCircle
         isStartSummonAnimation={isStartSummonAnimation}
-        SvgElement={MostIn}
+        svgName="mostIn"
         diameter={mostInDiameter}
         rotateDirection="right"
         doAnimations={runAnimations}
       />
       <SingleMagicCircle
         isStartSummonAnimation={isStartSummonAnimation}
-        SvgElement={MostIn}
+        svgName="mostIn"
         diameter={mostInDiameter}
         rotateDirection="right"
         scaleMagnification={size === "sm" ? 2.15 : 2.0}
@@ -90,7 +86,7 @@ const MagicCircle: React.FC = () => {
       />
       <SingleMagicCircle
         isStartSummonAnimation={isStartSummonAnimation}
-        SvgElement={SecondIn}
+        svgName="secondIn"
         diameter={SecondInDiameter}
         rotateDirection="left"
         scaleMagnification={1.1}
@@ -98,7 +94,7 @@ const MagicCircle: React.FC = () => {
       />
       <SingleMagicCircle
         isStartSummonAnimation={isStartSummonAnimation}
-        SvgElement={SecondIn}
+        svgName="secondIn"
         diameter={SecondInDiameter}
         rotateDirection="left"
         scaleMagnification={2.2}
@@ -106,7 +102,7 @@ const MagicCircle: React.FC = () => {
       />
       <SingleMagicCircle
         isStartSummonAnimation={isStartSummonAnimation}
-        SvgElement={ThirdIn}
+        svgName="thirdIn"
         diameter={ThirdInDiameter}
         rotateDirection="right"
         scaleMagnification={2.4}
@@ -114,7 +110,7 @@ const MagicCircle: React.FC = () => {
       />
       <SingleMagicCircle
         isStartSummonAnimation={isStartSummonAnimation}
-        SvgElement={ThirdIn}
+        svgName="thirdIn"
         diameter={ThirdInDiameter}
         rotateDirection="right"
         scaleMagnification={4.8}
@@ -122,7 +118,7 @@ const MagicCircle: React.FC = () => {
       />
       <SingleMagicCircle
         isStartSummonAnimation={isStartSummonAnimation}
-        SvgElement={FourthIn}
+        svgName="fourthIn"
         diameter={FourthInDiameter}
         rotateDirection="left"
         scaleMagnification={2.85}
@@ -130,7 +126,7 @@ const MagicCircle: React.FC = () => {
       />
       <SingleMagicCircle
         isStartSummonAnimation={isStartSummonAnimation}
-        SvgElement={FourthIn}
+        svgName="fourthIn"
         diameter={FourthInDiameter}
         rotateDirection="left"
         scaleMagnification={5.8}

@@ -1,6 +1,6 @@
 import React from "react";
 import { SizeType } from "../../../typing/SizeType";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   fadein,
   toDeepDropShadow,
@@ -28,17 +28,6 @@ import {
   omataseMattaLineHeight,
   omataseMattaContent,
 } from "../../../constants/start_animation/omataseMattaSetting";
-
-const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
-  position: absolute;
-  z-index: ${({ isStartSummonAnimation }) =>
-    isStartSummonAnimation ? angeTriangleZIndex : 1};
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 const calcTriangleWidthHeight = (size: SizeType) => {
   return sizeTypeJudge(size)(
@@ -82,98 +71,108 @@ const calcMovedDownLocation = (size: SizeType) => {
   return xyLocation;
 };
 
-const createLocationAdjuster = (
-  size: SizeType,
-  isStartSummonAnimation: boolean,
-  isMoveToDown: boolean
-) => {
-  const movedUpLocation = calcMovedUpLocation(size);
-  return styled.div`
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translate(0, ${calcTopLocation(size)}px);
-    animation: ${isStartSummonAnimation
-          ? translate({ x: 0, y: calcTopLocation(size) }, movedUpLocation)
+const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
+  position: absolute;
+  z-index: ${({ isStartSummonAnimation }) =>
+    isStartSummonAnimation ? angeTriangleZIndex : 1};
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LocationAdjuster = styled.div<ForAnimationType>`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(0, ${({ size }) => calcTopLocation(size)}px);
+  animation: ${({ size, isStartSummonAnimation }) =>
+        isStartSummonAnimation
+          ? translate(
+              { x: 0, y: calcTopLocation(size) },
+              calcMovedUpLocation(size)
+            )
           : "none"}
-        ${angeTriangleMoveUpOrder.duration_ms}ms ease-out
-        ${angeTriangleMoveUpOrder.delay_ms}ms forwards,
-      ${isMoveToDown
-          ? translate(movedUpLocation, calcMovedDownLocation(size))
+      ${angeTriangleMoveUpOrder.duration_ms}ms ease-out
+      ${angeTriangleMoveUpOrder.delay_ms}ms forwards,
+    ${({ size, isMoveToDown, isStartSummonAnimation }) =>
+        isStartSummonAnimation && isMoveToDown
+          ? translate(calcMovedUpLocation(size), calcMovedDownLocation(size))
           : "none"}
-        ${angeTriangleMoveDownOrder.duration_ms}ms ease-out
-        ${angeTriangleMoveDownOrder.delay_ms}ms forwards;
-  `;
+      ${angeTriangleMoveDownOrder.duration_ms}ms ease-out
+      ${angeTriangleMoveDownOrder.delay_ms}ms forwards;
+`;
+
+const animateTriangleProps = css<{ size: SizeType; isMoveToDown: boolean }>`
+  width: ${({ size }) => calcTriangleWidthHeight(size)};
+  height: ${({ size }) => calcTriangleWidthHeight(size)};
+  position: absolute;
+  opacity: 0;
+  animation: ${fadein(0.7)} ${angeTriangleFadeinOrder.duration_ms}ms ease-in
+      ${angeTriangleFadeinOrder.delay_ms}ms forwards,
+    ${toDeepDropShadow(10, "#FFFFFF")}
+      ${angeTriangleDropShadowOrder.duration_ms}ms linear
+      ${angeTriangleDropShadowOrder.delay_ms}ms forwards,
+    ${removeDeepDropShadow(10, "#FFFFFF")}
+      ${angeTriangleRemoveDropShadowOrder.duration_ms}ms linear
+      ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards,
+    ${rightRotate()} ${angeTriangleUpRotateOrder.duration_ms}ms linear
+      ${angeTriangleUpRotateOrder.delay_ms}ms forwards,
+    ${({ isMoveToDown }) =>
+        isMoveToDown ? rightRotate("0deg", "540deg") : "none"}
+      ${angeTriangleDownRotateOrder.duration_ms}ms linear
+      ${angeTriangleDownRotateOrder.delay_ms}ms forwards;
+`;
+
+const AngeTirangleSVGWrapper: React.FC<ForAnimationType> = ({
+  size,
+  isStartSummonAnimation,
+  isMoveToDown,
+  ...props
+}: ForAnimationType) => {
+  return <AngeTriangleSVG {...props} />;
 };
 
-const createStyledTriangle = ({
-  isStartSummonAnimation,
-  size,
-  isMoveToDown,
-}: ForAnimationType) => {
-  if (isStartSummonAnimation) {
-    return styled(AngeTriangleSVG)`
-      width: ${calcTriangleWidthHeight(size)};
-      height: ${calcTriangleWidthHeight(size)};
-      position: absolute;
-      opacity: 0;
-      animation: ${fadein(0.7)} ${angeTriangleFadeinOrder.duration_ms}ms ease-in
-          ${angeTriangleFadeinOrder.delay_ms}ms forwards,
-        ${toDeepDropShadow(10, "#FFFFFF")}
-          ${angeTriangleDropShadowOrder.duration_ms}ms linear
-          ${angeTriangleDropShadowOrder.delay_ms}ms forwards,
-        ${removeDeepDropShadow(10, "#FFFFFF")}
-          ${angeTriangleRemoveDropShadowOrder.duration_ms}ms linear
-          ${angeTriangleRemoveDropShadowOrder.delay_ms}ms forwards,
-        ${rightRotate()} ${angeTriangleUpRotateOrder.duration_ms}ms linear
-          ${angeTriangleUpRotateOrder.delay_ms}ms forwards,
-        ${isMoveToDown ? rightRotate("0deg", "540deg") : "none"}
-          ${angeTriangleDownRotateOrder.duration_ms}ms linear
-          ${angeTriangleDownRotateOrder.delay_ms}ms forwards;
-    `;
-  } else {
-    return styled(AngeTriangleSVG)`
-      position: absolute;
-      opacity: 0;
-    `;
-  }
-};
+const StyledTriangle = styled(AngeTirangleSVGWrapper)<ForAnimationType>`
+  ${({ isStartSummonAnimation }) =>
+    isStartSummonAnimation
+      ? animateTriangleProps
+      : `position: absolute;
+  opacity: 0;`}
+`;
 
 const AngeTriangle: React.FC = () => {
   const [size, isStartSummonAnimation] = useTypedSelector((state) => [
     state.sizes,
     state.isStartSummonAnimation,
   ]);
-  const StyledTriangle = createStyledTriangle({
-    size,
-    isStartSummonAnimation,
-    isMoveToDown: false,
-  });
-  const MoveDownStyledTriangle = createStyledTriangle({
-    size,
-    isStartSummonAnimation,
-    isMoveToDown: true,
-  });
-  const LocationAdjuster = createLocationAdjuster(
-    size,
-    isStartSummonAnimation,
-    false
-  );
-  const MoveDownLocationAdjuster = createLocationAdjuster(
-    size,
-    isStartSummonAnimation,
-    true
-  );
 
   return (
     <Wrapper isStartSummonAnimation={isStartSummonAnimation}>
-      <LocationAdjuster>
-        <StyledTriangle />
+      <LocationAdjuster
+        size={size}
+        isStartSummonAnimation={isStartSummonAnimation}
+        isMoveToDown={false}
+      >
+        <StyledTriangle
+          size={size}
+          isStartSummonAnimation={isStartSummonAnimation}
+          isMoveToDown={false}
+        />
       </LocationAdjuster>
-      <MoveDownLocationAdjuster>
-        <MoveDownStyledTriangle />
-      </MoveDownLocationAdjuster>
+      <LocationAdjuster
+        size={size}
+        isStartSummonAnimation={isStartSummonAnimation}
+        isMoveToDown={true}
+      >
+        <StyledTriangle
+          size={size}
+          isStartSummonAnimation={isStartSummonAnimation}
+          isMoveToDown={true}
+        />
+      </LocationAdjuster>
     </Wrapper>
   );
 };
