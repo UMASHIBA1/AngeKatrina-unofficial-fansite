@@ -106,3 +106,15 @@ export const translate = (from: LocationXY, to: LocationXY) => {
     }
 `;
 };
+
+export const bgColorChange = (from: string, to: string) => {
+  return keyframes`
+        from {
+            background-color: ${from};
+        }
+
+        to {
+            background-color: ${to};
+        }
+    `;
+};
