@@ -10,8 +10,10 @@ import {
 } from "../../../constants/colors";
 import { HWT_MARDELL_FONT_PROP } from "../../../constants/cssProps";
 import { toDeepInsetShadow, translate } from "../../../styles/commonAnimation";
-import { summonTextShadowOrder } from "../../../constants/start_animation/animation_order";
-const { duration_ms: duration, delay_ms: delay } = summonTextShadowOrder;
+import {
+  summonTextShadowOrder,
+  summonTextStripeOrder,
+} from "../../../constants/start_animation/animation_order";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -39,15 +41,16 @@ const StyledSummonText = styled.div<{
   top: calc(50% - ${({ diameter }) => diameter / 2}px);
   font-size: ${({ diameter }) => diameter / 7}px;
   animation: ${({ isPushedButton }) =>
-    isPushedButton
-      ? toDeepInsetShadow(200, ANGE_BLACK)
-      : "none"} ${duration}ms linear forwards ${delay}ms;
+    isPushedButton ? toDeepInsetShadow(200, ANGE_BLACK) : "none"} ${
+  summonTextShadowOrder.duration_ms
+}ms linear forwards ${summonTextShadowOrder.delay_ms}ms;
   `;
 
 const ColorLine = styled.div<{
   diameter: number;
   color: string;
   toDirection: "left" | "right";
+  isStartAnimation: boolean;
 }>`
   background-color: ${({ color }) => color};
   width: 100%;
@@ -56,11 +59,14 @@ const ColorLine = styled.div<{
       ? `translate(-${diameter}px, 0)`
       : `translate(${diameter}px, 0)`};
   height: ${({ diameter }) => diameter / 5}px;
-  animation: ${({ toDirection, diameter }) =>
-      toDirection === "right"
-        ? translate({ x: -diameter, y: 0 }, { x: 0, y: 0 })
-        : translate({ x: diameter, y: 0 }, { x: 0, y: 0 })}
-    300ms ease-out 500ms forwards;
+  animation: ${({ toDirection, diameter, isStartAnimation }) =>
+      isStartAnimation
+        ? toDirection === "right"
+          ? translate({ x: -diameter, y: 0 }, { x: 0, y: 0 })
+          : translate({ x: diameter, y: 0 }, { x: 0, y: 0 })
+        : "none"}
+    ${summonTextStripeOrder.duration_ms}ms ease-out
+    ${summonTextStripeOrder.delay_ms}ms forwards;
 `;
 
 const ColorLineWrapper = styled.div`
@@ -95,26 +101,35 @@ const SummonText: React.FC<Props> = ({
       >
         Summon
         <ColorLineWrapper>
-          <ColorLine diameter={diameter} color={DEEP_GREY} toDirection="left" />
+          <ColorLine
+            diameter={diameter}
+            color={DEEP_GREY}
+            toDirection="left"
+            isStartAnimation={isPushedButton}
+          />
           <ColorLine
             diameter={diameter}
             color={SECOND_DEEP_GREY}
             toDirection="right"
+            isStartAnimation={isPushedButton}
           />
           <ColorLine
             diameter={diameter}
             color={THIRD_DEEP_GREY}
             toDirection="left"
+            isStartAnimation={isPushedButton}
           />
           <ColorLine
             diameter={diameter}
             color={DEEP_GREY}
             toDirection="right"
+            isStartAnimation={isPushedButton}
           />
           <ColorLine
             diameter={diameter}
             color={SECOND_DEEP_GREY}
             toDirection="left"
+            isStartAnimation={isPushedButton}
           />
         </ColorLineWrapper>
       </StyledSummonText>
