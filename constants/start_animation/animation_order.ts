@@ -20,7 +20,8 @@ export const summonTextStripeOrder: AnimationProps = {
 // magicCircle
 export const magicCircleDropShadowOrder: AnimationProps = {
   duration_ms: 500,
-  delay_ms: 100,
+  delay_ms:
+    summonTextStripeOrder.duration_ms + summonTextStripeOrder.delay_ms + 100,
 };
 
 export const magicCircleRemoveDropShadowOrder: AnimationProps = {
