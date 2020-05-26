@@ -79,6 +79,7 @@ const ColorLineWrapper = styled.div`
   height: 100%;
   border-radius: 50%;
   overflow: hidden;
+  transform: rotate(-30deg);
 `;
 
 interface Props {
