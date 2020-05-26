@@ -28,7 +28,7 @@
     "@types/styled-components": "^5.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "sass": "^1.26.5",
-    "typescript": "3.7.3"
+    "typescript": "3.9.3"
   },
   "license": "ISC"
 }
