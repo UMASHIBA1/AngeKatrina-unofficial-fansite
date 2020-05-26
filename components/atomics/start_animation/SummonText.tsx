@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { ANGE_BROWN, ANGE_RED, ANGE_BLACK } from "../../../constants/colors";
+import {
+  ANGE_BROWN,
+  ANGE_RED,
+  ANGE_BLACK,
+  SECOND_DEEP_GREY,
+  DEEP_GREY,
+  THIRD_DEEP_GREY,
+} from "../../../constants/colors";
 import { HWT_MARDELL_FONT_PROP } from "../../../constants/cssProps";
 import { toDeepInsetShadow } from "../../../styles/commonAnimation";
 import { summonTextShadowOrder } from "../../../constants/start_animation/animation_order";
@@ -37,6 +44,28 @@ const StyledSummonText = styled.div<{
       : "none"} ${duration}ms linear forwards ${delay}ms;
   `;
 
+const ColorLine = styled.div<{
+  diameter: number;
+  color: string;
+  direction: "left" | "right";
+}>`
+  background-color: ${({ color }) => color};
+  width: 100%;
+  height: ${({ diameter }) => diameter / 5}px;
+`;
+
+const ColorLineWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+`;
+
 interface Props {
   diameter: number;
   isPushedButton: boolean;
@@ -55,7 +84,26 @@ const SummonText: React.FC<Props> = ({
         isPushedButton={isPushedButton}
         onClick={onClickFC}
       >
-        <span>Summon</span>
+        Summon
+        <ColorLineWrapper>
+          <ColorLine diameter={diameter} color={DEEP_GREY} direction="left" />
+          <ColorLine
+            diameter={diameter}
+            color={SECOND_DEEP_GREY}
+            direction="right"
+          />
+          <ColorLine
+            diameter={diameter}
+            color={THIRD_DEEP_GREY}
+            direction="left"
+          />
+          <ColorLine diameter={diameter} color={DEEP_GREY} direction="right" />
+          <ColorLine
+            diameter={diameter}
+            color={SECOND_DEEP_GREY}
+            direction="left"
+          />
+        </ColorLineWrapper>
       </StyledSummonText>
     </Wrapper>
   );
