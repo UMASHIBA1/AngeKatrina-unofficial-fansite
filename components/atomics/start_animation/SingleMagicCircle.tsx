@@ -47,7 +47,6 @@ const circleCSS = css<{ diameter: Props["diameter"] }>`
   width: ${({ diameter }) => diameter}px;
   height: ${({ diameter }) => diameter}px;
   filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
-  will-change: animation;
 `;
 
 const circleAnimationCSS = css<
