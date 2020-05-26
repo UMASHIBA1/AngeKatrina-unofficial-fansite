@@ -17,11 +17,17 @@ export const summonTextStripeOrder: AnimationProps = {
     summonTextShadowOrder.duration_ms + summonTextShadowOrder.delay_ms + 100,
 };
 
+export const summonTextToBlackOrder: AnimationProps = {
+  duration_ms: 300,
+  delay_ms:
+    summonTextStripeOrder.duration_ms + summonTextStripeOrder.delay_ms + 100,
+};
+
 // magicCircle
 export const magicCircleDropShadowOrder: AnimationProps = {
   duration_ms: 500,
   delay_ms:
-    summonTextStripeOrder.duration_ms + summonTextStripeOrder.delay_ms + 100,
+    summonTextToBlackOrder.duration_ms + summonTextToBlackOrder.delay_ms + 100,
 };
 
 export const magicCircleRemoveDropShadowOrder: AnimationProps = {

@@ -9,10 +9,15 @@ import {
   THIRD_DEEP_GREY,
 } from "../../../constants/colors";
 import { HWT_MARDELL_FONT_PROP } from "../../../constants/cssProps";
-import { toDeepInsetShadow, translate } from "../../../styles/commonAnimation";
+import {
+  toDeepInsetShadow,
+  translate,
+  bgColorChange,
+} from "../../../styles/commonAnimation";
 import {
   summonTextShadowOrder,
   summonTextStripeOrder,
+  summonTextToBlackOrder,
 } from "../../../constants/start_animation/animation_order";
 
 const Wrapper = styled.div`
@@ -60,13 +65,17 @@ const ColorLine = styled.div<{
       : `translate(${diameter}px, 0)`};
   height: ${({ diameter }) => diameter / 5}px;
   animation: ${({ toDirection, diameter, isStartAnimation }) =>
-      isStartAnimation
-        ? toDirection === "right"
-          ? translate({ x: -diameter, y: 0 }, { x: 0, y: 0 })
-          : translate({ x: diameter, y: 0 }, { x: 0, y: 0 })
-        : "none"}
-    ${summonTextStripeOrder.duration_ms}ms ease-out
-    ${summonTextStripeOrder.delay_ms}ms forwards;
+        isStartAnimation
+          ? toDirection === "right"
+            ? translate({ x: -diameter, y: 0 }, { x: 0, y: 0 })
+            : translate({ x: diameter, y: 0 }, { x: 0, y: 0 })
+          : "none"}
+      ${summonTextStripeOrder.duration_ms}ms ease-out
+      ${summonTextStripeOrder.delay_ms}ms forwards,
+    ${({ isStartAnimation, color }) =>
+        isStartAnimation ? bgColorChange(color, ANGE_BLACK) : "none"}
+      ${summonTextToBlackOrder.duration_ms}ms linear
+      ${summonTextToBlackOrder.delay_ms}ms forwards;
 `;
 
 const ColorLineWrapper = styled.div`
