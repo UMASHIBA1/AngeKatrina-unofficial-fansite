@@ -6,6 +6,13 @@ import { toDeepInsetShadow } from "../../../styles/commonAnimation";
 import { summonTextShadowOrder } from "../../../constants/start_animation/animation_order";
 const { duration_ms: duration, delay_ms: delay } = summonTextShadowOrder;
 
+const Wrapper = styled.div`
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
+
 const StyledSummonText = styled.div<{
   diameter: number;
   isPushedButton: boolean;
@@ -42,13 +49,15 @@ const SummonText: React.FC<Props> = ({
   onClickFC,
 }: Props) => {
   return (
-    <StyledSummonText
-      diameter={diameter}
-      isPushedButton={isPushedButton}
-      onClick={onClickFC}
-    >
-      <span>Summon</span>
-    </StyledSummonText>
+    <Wrapper>
+      <StyledSummonText
+        diameter={diameter}
+        isPushedButton={isPushedButton}
+        onClick={onClickFC}
+      >
+        <span>Summon</span>
+      </StyledSummonText>
+    </Wrapper>
   );
 };
 
