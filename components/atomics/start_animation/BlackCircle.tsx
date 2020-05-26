@@ -4,6 +4,7 @@ import { ANGE_BLACK } from "../../../constants/colors";
 import { scale } from "../../../styles/commonAnimation";
 import { SizeType } from "../../../typing/SizeType";
 import { blackCircleExpandOrder } from "../../../constants/start_animation/animation_order";
+import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 
 interface Props {
   isStartSummonAnimation: boolean;
@@ -31,8 +32,8 @@ const BlackCircleMain = styled.div<{
   border-radius: 50%;
   background-color: ${ANGE_BLACK};
   transform: scale(0);
-  animation: ${({ isStartSummonAnimation }) =>
-      isStartSummonAnimation ? scale(30) : "none"}
+  animation: ${({ isStartSummonAnimation, size }) =>
+      isStartSummonAnimation ? scale(sizeTypeJudge(size)(15, 20, 30)) : "none"}
     ${blackCircleExpandOrder.duration_ms}ms ease-out
     ${blackCircleExpandOrder.delay_ms}ms forwards;
 `;
