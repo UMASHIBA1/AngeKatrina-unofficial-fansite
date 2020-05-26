@@ -9,7 +9,7 @@ import {
   THIRD_DEEP_GREY,
 } from "../../../constants/colors";
 import { HWT_MARDELL_FONT_PROP } from "../../../constants/cssProps";
-import { toDeepInsetShadow } from "../../../styles/commonAnimation";
+import { toDeepInsetShadow, translate } from "../../../styles/commonAnimation";
 import { summonTextShadowOrder } from "../../../constants/start_animation/animation_order";
 const { duration_ms: duration, delay_ms: delay } = summonTextShadowOrder;
 
@@ -47,11 +47,20 @@ const StyledSummonText = styled.div<{
 const ColorLine = styled.div<{
   diameter: number;
   color: string;
-  direction: "left" | "right";
+  toDirection: "left" | "right";
 }>`
   background-color: ${({ color }) => color};
   width: 100%;
+  transform: ${({ toDirection, diameter }) =>
+    toDirection === "right"
+      ? `translate(-${diameter}px, 0)`
+      : `translate(${diameter}px, 0)`};
   height: ${({ diameter }) => diameter / 5}px;
+  animation: ${({ toDirection, diameter }) =>
+      toDirection === "right"
+        ? translate({ x: -diameter, y: 0 }, { x: 0, y: 0 })
+        : translate({ x: diameter, y: 0 }, { x: 0, y: 0 })}
+    300ms ease-out 500ms forwards;
 `;
 
 const ColorLineWrapper = styled.div`
@@ -86,22 +95,26 @@ const SummonText: React.FC<Props> = ({
       >
         Summon
         <ColorLineWrapper>
-          <ColorLine diameter={diameter} color={DEEP_GREY} direction="left" />
+          <ColorLine diameter={diameter} color={DEEP_GREY} toDirection="left" />
           <ColorLine
             diameter={diameter}
             color={SECOND_DEEP_GREY}
-            direction="right"
+            toDirection="right"
           />
           <ColorLine
             diameter={diameter}
             color={THIRD_DEEP_GREY}
-            direction="left"
+            toDirection="left"
           />
-          <ColorLine diameter={diameter} color={DEEP_GREY} direction="right" />
+          <ColorLine
+            diameter={diameter}
+            color={DEEP_GREY}
+            toDirection="right"
+          />
           <ColorLine
             diameter={diameter}
             color={SECOND_DEEP_GREY}
-            direction="left"
+            toDirection="left"
           />
         </ColorLineWrapper>
       </StyledSummonText>
