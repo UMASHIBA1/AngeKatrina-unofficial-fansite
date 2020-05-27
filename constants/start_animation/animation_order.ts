@@ -113,3 +113,11 @@ export const omataseMattaFadeinOrder: AnimationProps = {
   duration_ms: omataseMattaFadeinDuration_ms,
   delay_ms: angeTriangleMoveDownOrder.delay_ms + 100,
 };
+
+export const flashOrder: AnimationProps = {
+  duration_ms: 300,
+  delay_ms:
+    omataseMattaFadeinOrder.duration_ms * omataseMattaContent.length +
+    omataseMattaFadeinOrder.delay_ms +
+    300,
+};
