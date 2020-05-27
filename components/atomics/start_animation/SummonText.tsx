@@ -91,6 +91,10 @@ const ColorLineWrapper = styled.div`
   transform: rotate(-30deg);
 `;
 
+const SummonMain = styled.span`
+  position: absolute;
+`;
+
 interface Props {
   diameter: number;
   isPushedButton: boolean;
@@ -109,7 +113,7 @@ const SummonText: React.FC<Props> = ({
         isPushedButton={isPushedButton}
         onClick={onClickFC}
       >
-        Summon
+        <SummonMain>Summon</SummonMain>
         <ColorLineWrapper>
           <ColorLine
             diameter={diameter}
