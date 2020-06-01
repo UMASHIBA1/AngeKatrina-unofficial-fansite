@@ -5,7 +5,7 @@ import { flashOrder } from "../../../constants/start_animation/animation_order";
 import { flashZIndex } from "../../../constants/start_animation/zindex";
 import { useTypedSelector } from "../../../redux/store";
 import FlashLineSVG from '../../../public/start_animation/svgs/flash_line.svg';
-import WhiteCircle from '../../../public/start_animation/svgs/white_circle.svg';
+import WhiteCircleSVG from '../../../public/start_animation/svgs/white_circle.svg';
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   position: absolute;
@@ -24,18 +24,25 @@ interface SVGProps {
   blur: string;
 }
 
-const StarSVG: React.FC<SVGProps> = ({
-  isStartAnimation, diameter, blur, ...props
-}: SVGProps) => {
+
+
+const WhiteCircle: React.FC<SVGProps> = ({isStartAnimation, diameter, blur, ...props}:SVGProps) => {
+  return (
+    <WhiteCircleSVG {...props} />
+  )
+}
+
+type LineFlashProps = SVGProps & {rotate?: string, top?: string}
+
+const FlashLine: React.FC<LineFlashProps> = ({
+  isStartAnimation, diameter, blur, rotate, top,...props
+}: LineFlashProps) => {
   return (
     <FlashLineSVG {...props} />
   );
 }
 
-type LineFlashProps = SVGProps & {rotate?: string, top?: string}
-
-
-const LineFlash = styled(StarSVG)<LineFlashProps>`
+const LineFlash = styled(FlashLine)<LineFlashProps>`
   position: absolute;
   width: ${({ diameter }) => diameter};
   height: ${({ diameter }) => diameter};
