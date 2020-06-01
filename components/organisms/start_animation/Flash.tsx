@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { fadein } from "../../../styles/commonAnimation";
 import { flashOrder } from "../../../constants/start_animation/animation_order";
 import { flashZIndex } from "../../../constants/start_animation/zindex";
@@ -24,8 +24,6 @@ interface SVGProps {
   blur: string;
 }
 
-
-
 const WhiteCircle: React.FC<SVGProps> = ({isStartAnimation, blur, scale, ...props}:SVGProps) => {
   return (
     <WhiteCircleSVG {...props} />
@@ -42,6 +40,16 @@ const FlashLine: React.FC<LineFlashProps> = ({
   );
 }
 
+const lineFlashAnimation = ({top = "0", scale, rotate="0deg"}: Pick<LineFlashProps, "top" | "scale" | "rotate">) => keyframes`
+  from {
+    transform: translate(calc(100px / 2), ${top}) scale(0.0001) rotate(${rotate});
+  }
+
+  to {
+    transform: translate(calc(100px / 2), ${top}) scale(${scale}) rotate(${rotate});
+  }
+`;
+
 const LineFlash = styled(FlashLine)<LineFlashProps>`
   position: absolute;
   width: 100px;
@@ -49,7 +57,7 @@ const LineFlash = styled(FlashLine)<LineFlashProps>`
   transform: translate(calc(100px / 2), ${({top}) => top!==undefined?top: "0"}) scale(${({scale})=>scale}) rotate(${({rotate}) => rotate!==undefined?rotate:"0deg"});
   filter: blur(${({ blur }) => blur});
   opacity: 0;
-  animation: ${({ isStartAnimation }) => isStartAnimation ? fadein() : "none"} 0ms ease-out ${flashOrder.delay_ms}ms forwards;
+  animation: ${({ isStartAnimation }) => isStartAnimation ? fadein() : "none"} 0ms ease-out ${flashOrder.delay_ms}ms forwards, ${({isStartAnimation,scale, rotate, top })=>isStartAnimation?lineFlashAnimation({scale, rotate, top}): "none"} ${flashOrder.duration_ms}ms ease-out ${flashOrder.delay_ms}ms both;
 `;
 
 const CircleFlash = styled(WhiteCircle)<SVGProps>`
