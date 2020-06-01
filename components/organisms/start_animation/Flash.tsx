@@ -48,9 +48,8 @@ const LineFlash = styled(FlashLine)<LineFlashProps>`
   height: ${({ diameter }) => diameter};
   transform: translate(calc(${({ diameter }) => diameter} / 2), ${({top}) => top!==undefined?top: "0"}) rotate(${({rotate}) => rotate!==undefined?rotate:"0deg"});
   filter: blur(${({ blur }) => blur});
-//   animation: ${({ isStartAnimation }) =>
-  isStartAnimation ? fadein() : "none"}
-//     ${flashOrder.duration_ms}ms ease-out ${flashOrder.delay_ms}ms forwards;
+  opacity: 0;
+  animation: ${({ isStartAnimation }) => isStartAnimation ? fadein() : "none"} 0ms ease-out ${flashOrder.delay_ms}ms forwards;
 `;
 
 const CircleFlash = styled(WhiteCircle)<SVGProps>`
@@ -59,9 +58,8 @@ const CircleFlash = styled(WhiteCircle)<SVGProps>`
   height: ${({ diameter }) => diameter};
   transform: translate(calc(${({ diameter }) => diameter} / 2 + ${({diameter}) => diameter} / 6), 0) rotate(0deg);
   filter: blur(${({ blur }) => blur});
-  //   animation: ${({ isStartAnimation }) =>
-  isStartAnimation ? fadein() : "none"}
-  //     ${flashOrder.duration_ms}ms ease-out ${flashOrder.delay_ms}ms forwards;
+  opacity: 0;
+    animation: ${({ isStartAnimation }) => isStartAnimation ? fadein() : "none"} 0ms ease-out ${flashOrder.delay_ms}ms forwards;
 `
 
 const Flash: React.FC = () => {
