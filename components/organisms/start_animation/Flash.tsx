@@ -20,13 +20,13 @@ const Wrapper = styled.div<{ isStartAnimation: boolean }>`
 
 interface SVGProps {
   isStartAnimation: boolean;
-  diameter: string;
+  scale: number;
   blur: string;
 }
 
 
 
-const WhiteCircle: React.FC<SVGProps> = ({isStartAnimation, diameter, blur, ...props}:SVGProps) => {
+const WhiteCircle: React.FC<SVGProps> = ({isStartAnimation, blur, scale, ...props}:SVGProps) => {
   return (
     <WhiteCircleSVG {...props} />
   )
@@ -35,7 +35,7 @@ const WhiteCircle: React.FC<SVGProps> = ({isStartAnimation, diameter, blur, ...p
 type LineFlashProps = SVGProps & {rotate?: string, top?: string}
 
 const FlashLine: React.FC<LineFlashProps> = ({
-  isStartAnimation, diameter, blur, rotate, top,...props
+  isStartAnimation, blur, rotate, top, scale, ...props
 }: LineFlashProps) => {
   return (
     <FlashLineSVG {...props} />
@@ -44,9 +44,9 @@ const FlashLine: React.FC<LineFlashProps> = ({
 
 const LineFlash = styled(FlashLine)<LineFlashProps>`
   position: absolute;
-  width: ${({ diameter }) => diameter};
-  height: ${({ diameter }) => diameter};
-  transform: translate(calc(${({ diameter }) => diameter} / 2), ${({top}) => top!==undefined?top: "0"}) rotate(${({rotate}) => rotate!==undefined?rotate:"0deg"});
+  width: 100px;
+  height: 100px;
+  transform: translate(calc(100px / 2), ${({top}) => top!==undefined?top: "0"}) scale(${({scale})=>scale}) rotate(${({rotate}) => rotate!==undefined?rotate:"0deg"});
   filter: blur(${({ blur }) => blur});
   opacity: 0;
   animation: ${({ isStartAnimation }) => isStartAnimation ? fadein() : "none"} 0ms ease-out ${flashOrder.delay_ms}ms forwards;
@@ -54,12 +54,12 @@ const LineFlash = styled(FlashLine)<LineFlashProps>`
 
 const CircleFlash = styled(WhiteCircle)<SVGProps>`
   position: absolute;
-  width: ${({ diameter }) => diameter};
-  height: ${({ diameter }) => diameter};
-  transform: translate(calc(${({ diameter }) => diameter} / 2 + ${({diameter}) => diameter} / 6), 0) rotate(0deg);
+  width: 100px;
+  height: 100px;
+  transform: translate(calc(100px / 2), 0) scale(${({scale})=>scale}) rotate(0deg);
   filter: blur(${({ blur }) => blur});
   opacity: 0;
-    animation: ${({ isStartAnimation }) => isStartAnimation ? fadein() : "none"} 0ms ease-out ${flashOrder.delay_ms}ms forwards;
+  animation: ${({ isStartAnimation }) => isStartAnimation ? fadein() : "none"} 0ms ease-out ${flashOrder.delay_ms}ms forwards;
 `
 
 const Flash: React.FC = () => {
@@ -70,37 +70,37 @@ const Flash: React.FC = () => {
     <Wrapper isStartAnimation={isStartAnimation}>
       <LineFlash
         isStartAnimation={isStartAnimation}
-        diameter="1000px"
-        blur="10px"
+        scale={10}
+        blur="1px"
       />
       <LineFlash
         isStartAnimation={isStartAnimation}
-        diameter="800px"
-        blur="15px"
+        scale={8}
+        blur="1px"
         rotate="40deg"
         top="-70px"
       />
       <LineFlash
         isStartAnimation={isStartAnimation}
-        diameter="550px"
-        blur="15px"
+        scale={5.5}
+        blur="1px"
         rotate="-60deg"
         top="60px"
       />
       <CircleFlash 
         isStartAnimation={isStartAnimation}
-        diameter="300px"
-        blur="60px"
+        scale={3}
+        blur="20px"
       />
       <CircleFlash 
         isStartAnimation={isStartAnimation}
-        diameter="300px"
-        blur="300px"
+        scale={3}
+        blur="100px"
       />
       <CircleFlash 
         isStartAnimation={isStartAnimation}
-        diameter="200px"
-        blur="50px"
+        scale={2}
+        blur="25px"
       />
     </Wrapper>
   );
