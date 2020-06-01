@@ -50,6 +50,16 @@ const lineFlashAnimation = ({top = "0", scale, rotate="0deg"}: Pick<LineFlashPro
   }
 `;
 
+const circleFlashAnimation = (scale: LineFlashProps["scale"]) => keyframes`
+  from {
+    transform: translate(calc(100px / 2), 0) scale(0.0001) rotate(0deg);
+  }
+
+  to {
+    transform: translate(calc(100px / 2), 0) scale(${scale}) rotate(0deg);
+  }
+`
+
 const LineFlash = styled(FlashLine)<LineFlashProps>`
   position: absolute;
   width: 100px;
@@ -64,10 +74,10 @@ const CircleFlash = styled(WhiteCircle)<SVGProps>`
   position: absolute;
   width: 100px;
   height: 100px;
-  transform: translate(calc(100px / 2), 0) scale(${({scale})=>scale}) rotate(0deg);
+
   filter: blur(${({ blur }) => blur});
   opacity: 0;
-  animation: ${({ isStartAnimation }) => isStartAnimation ? fadein() : "none"} 0ms ease-out ${flashOrder.delay_ms}ms forwards;
+  animation: ${({ isStartAnimation }) => isStartAnimation ? fadein() : "none"} 0ms ease-out ${flashOrder.delay_ms}ms forwards, ${({isStartAnimation,scale}) => isStartAnimation?circleFlashAnimation(scale): "none"} ${flashOrder.duration_ms}ms ease-out ${flashOrder.delay_ms}ms both;
 `
 
 const Flash: React.FC = () => {
