@@ -127,3 +127,8 @@ export const circleFlashOrder: AnimationProps = {
   duration_ms: 1400,
   delay_ms: lineFlashOrder.delay_ms + 200,
 };
+
+export const hideScreenCircleFlashOrder: AnimationProps = {
+  duration_ms: 500,
+  delay_ms: circleFlashOrder.duration_ms + circleFlashOrder.delay_ms,
+};

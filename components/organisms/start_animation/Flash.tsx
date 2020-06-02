@@ -4,11 +4,16 @@ import { fadein } from "../../../styles/commonAnimation";
 import {
   circleFlashOrder,
   lineFlashOrder,
+  hideScreenCircleFlashOrder,
 } from "../../../constants/start_animation/animation_order";
 import { flashZIndex } from "../../../constants/start_animation/zindex";
 import { useTypedSelector } from "../../../redux/store";
 import FlashLineSVG from "../../../public/start_animation/svgs/flash_line.svg";
 import WhiteCircleSVG from "../../../public/start_animation/svgs/white_circle.svg";
+import {
+  sm_breakpoint,
+  tablet_breakpoint,
+} from "../../../constants/breakpoints";
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   position: absolute;
@@ -107,10 +112,47 @@ const CircleFlash = styled(WhiteCircle)<SVGProps>`
       both;
 `;
 
+const HideScreenCircleFlash = styled(WhiteCircle)<
+  SVGProps & { additionalDelayTime: number }
+>`
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  filter: blur(${({ blur }) => blur});
+  opacity: 0;
+  animation: ${({ isStartAnimation }) => (isStartAnimation ? fadein() : "none")}
+      0ms ease-out ${circleFlashOrder.delay_ms}ms forwards,
+    ${({ isStartAnimation }) =>
+        isStartAnimation
+          ? circleFlashAnimation(
+              (Math.max(window.innerWidth, window.innerHeight) / 100) * 3.0
+            )
+          : "none"}
+      ${hideScreenCircleFlashOrder.duration_ms}ms ease-out
+      ${({ additionalDelayTime }) =>
+        hideScreenCircleFlashOrder.delay_ms + additionalDelayTime}ms
+      both;
+`;
+
 const Flash: React.FC = () => {
-  const isStartAnimation = useTypedSelector(
-    (state) => state.isStartSummonAnimation
-  );
+  const [
+    size,
+    isStartAnimation,
+  ] = useTypedSelector(({ isStartSummonAnimation, sizes }) => [
+    sizes,
+    isStartSummonAnimation,
+  ]);
+
+  let deepCircleFlashScaleBase;
+  if (size === "sm") {
+    deepCircleFlashScaleBase = (sm_breakpoint / 100) * 1.5;
+  } else if (size === "tablet") {
+    deepCircleFlashScaleBase = (tablet_breakpoint / 100) * 1.5;
+  } else {
+    // 画面サイズ1920までの対応なので 1920px / 100px * 1.5(大体ルート2) = 大体29
+    deepCircleFlashScaleBase = 29;
+  }
+
   return (
     <Wrapper isStartAnimation={isStartAnimation}>
       <LineFlash isStartAnimation={isStartAnimation} scale={10} blur="1px" />
@@ -131,6 +173,12 @@ const Flash: React.FC = () => {
       <CircleFlash isStartAnimation={isStartAnimation} scale={3} blur="20px" />
       <CircleFlash isStartAnimation={isStartAnimation} scale={3} blur="100px" />
       <CircleFlash isStartAnimation={isStartAnimation} scale={2} blur="25px" />
+      <HideScreenCircleFlash
+        isStartAnimation={isStartAnimation}
+        scale={deepCircleFlashScaleBase}
+        blur="6px"
+        additionalDelayTime={0}
+      />
     </Wrapper>
   );
 };
