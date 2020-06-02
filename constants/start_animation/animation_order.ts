@@ -114,10 +114,16 @@ export const omataseMattaFadeinOrder: AnimationProps = {
   delay_ms: angeTriangleMoveDownOrder.delay_ms + 100,
 };
 
-export const flashOrder: AnimationProps = {
-  duration_ms: 300,
+// flash
+export const lineFlashOrder: AnimationProps = {
+  duration_ms: 1000,
   delay_ms:
     omataseMattaFadeinOrder.duration_ms * omataseMattaContent.length +
     omataseMattaFadeinOrder.delay_ms +
     300,
+};
+
+export const circleFlashOrder: AnimationProps = {
+  duration_ms: 1400,
+  delay_ms: lineFlashOrder.delay_ms + 200,
 };

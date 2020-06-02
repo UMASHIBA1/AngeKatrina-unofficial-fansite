@@ -1,7 +1,10 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { fadein } from "../../../styles/commonAnimation";
-import { flashOrder } from "../../../constants/start_animation/animation_order";
+import {
+  circleFlashOrder,
+  lineFlashOrder,
+} from "../../../constants/start_animation/animation_order";
 import { flashZIndex } from "../../../constants/start_animation/zindex";
 import { useTypedSelector } from "../../../redux/store";
 import FlashLineSVG from "../../../public/start_animation/svgs/flash_line.svg";
@@ -83,10 +86,10 @@ const LineFlash = styled(FlashLine)<LineFlashProps>`
   filter: blur(${({ blur }) => blur});
   opacity: 0;
   animation: ${({ isStartAnimation }) => (isStartAnimation ? fadein() : "none")}
-      0ms ease-out ${flashOrder.delay_ms}ms forwards,
+      0ms ease-out ${lineFlashOrder.delay_ms}ms forwards,
     ${({ isStartAnimation, scale, rotate, top }) =>
         isStartAnimation ? lineFlashAnimation({ scale, rotate, top }) : "none"}
-      ${flashOrder.duration_ms}ms ease-out ${flashOrder.delay_ms}ms both;
+      ${lineFlashOrder.duration_ms}ms ease-out ${lineFlashOrder.delay_ms}ms both;
 `;
 
 const CircleFlash = styled(WhiteCircle)<SVGProps>`
@@ -97,10 +100,11 @@ const CircleFlash = styled(WhiteCircle)<SVGProps>`
   filter: blur(${({ blur }) => blur});
   opacity: 0;
   animation: ${({ isStartAnimation }) => (isStartAnimation ? fadein() : "none")}
-      0ms ease-out ${flashOrder.delay_ms}ms forwards,
+      0ms ease-out ${circleFlashOrder.delay_ms}ms forwards,
     ${({ isStartAnimation, scale }) =>
         isStartAnimation ? circleFlashAnimation(scale) : "none"}
-      ${flashOrder.duration_ms}ms ease-out ${flashOrder.delay_ms}ms both;
+      ${circleFlashOrder.duration_ms}ms ease-out ${circleFlashOrder.delay_ms}ms
+      both;
 `;
 
 const Flash: React.FC = () => {
