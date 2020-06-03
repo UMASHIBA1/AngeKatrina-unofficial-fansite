@@ -78,6 +78,26 @@ const circleFlashAnimation = (scale: LineFlashProps["scale"]) => keyframes`
   }
 `;
 
+const hideScreenCircleAnimation = (
+  scale: LineFlashProps["scale"],
+  blur: LineFlashProps["blur"]
+) => keyframes`
+  0% {
+    transform: translate(calc(100px / 2), 0) scale(0.0001) rotate(0deg);
+    filter: blur(${blur});
+  }
+
+  70% {
+    transform: translate(calc(100px / 2), 0) scale(${scale * 0.7}) rotate(0deg);
+    filter: blur(0px);
+  }
+
+  to {
+    transform: translate(calc(100px / 2), 0) scale(${scale}) rotate(0deg);
+    filter: blur(0px);
+  }
+`;
+
 const LineFlash = styled(FlashLine)<LineFlashProps>`
   position: absolute;
   width: 100px;
@@ -118,14 +138,14 @@ const HideScreenCircleFlash = styled(WhiteCircle)<
   position: absolute;
   width: 100px;
   height: 100px;
-  filter: blur(${({ blur }) => blur});
   opacity: 0;
   animation: ${({ isStartAnimation }) => (isStartAnimation ? fadein() : "none")}
       0ms ease-out ${circleFlashOrder.delay_ms}ms forwards,
-    ${({ isStartAnimation }) =>
+    ${({ isStartAnimation, blur }) =>
         isStartAnimation
-          ? circleFlashAnimation(
-              (Math.max(window.innerWidth, window.innerHeight) / 100) * 3.0
+          ? hideScreenCircleAnimation(
+              (Math.max(window.innerWidth, window.innerHeight) / 100) * 3.0,
+              blur
             )
           : "none"}
       ${hideScreenCircleFlashOrder.duration_ms}ms ease-out
