@@ -6,6 +6,7 @@ import { ANGE_WHITE } from "../constants/colors";
 import BlackTransition from "../components/organisms/start_animation/BlackTransition";
 import OmataseMattaText from "../components/organisms/start_animation/OmataseMattaText";
 import AngeTriangle from "../components/organisms/start_animation/AngeTriangle";
+import Flash from "../components/organisms/start_animation/Flash";
 
 const Main = styled.main`
   width: 100%;
@@ -22,6 +23,7 @@ const IndexPage = () => (
       <BlackTransition />
       <AngeTriangle />
       <OmataseMattaText />
+      <Flash />
     </Main>
   </PageWrapper>
 );
