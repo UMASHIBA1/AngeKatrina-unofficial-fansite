@@ -38,7 +38,7 @@ const Tile = styled.div<TileProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #a24;
+  background-color: #ffffff;
   opacity: 0;
   width: ${({ width }) => width};
   height: ${({ height }) => height};

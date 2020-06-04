@@ -1,9 +1,10 @@
 import WhiteCircle from "../../atomics/start_animation/WhiteCircle";
 import styled, { keyframes } from "styled-components";
-import { fadein } from "../../../styles/commonAnimation";
+import { fadein, fadeout } from "../../../styles/commonAnimation";
 import {
   circleFlashOrder,
   hideScreenCircleFlashOrder,
+  disappearHideScreenCircleFlashOrder,
 } from "../../../constants/start_animation/animation_order";
 
 interface Props {
@@ -21,6 +22,7 @@ const hideScreenCircleAnimation = (
 	  filter: blur(${blur});
 	}
   
+  // NOTE 70%でblurを0pxにしてるのは、そうしないとなぜか画面端でblurが変な風にピカピカ光るから
 	70% {
 	  transform: translate(calc(100px / 2), 0) scale(${scale * 0.7}) rotate(0deg);
 	  filter: blur(0px);
@@ -51,7 +53,9 @@ const HideScreenCircleFlash = styled(WhiteCircle)<
       ${hideScreenCircleFlashOrder.duration_ms}ms ease-out
       ${({ additionalDelayTime }) =>
         hideScreenCircleFlashOrder.delay_ms + additionalDelayTime}ms
-      both;
+      both,
+    ${({ isStartAnimation }) => (isStartAnimation ? fadeout : "none")} 0ms
+      linear ${disappearHideScreenCircleFlashOrder.delay_ms}ms forwards;
 `;
 
 export default HideScreenCircleFlash;
