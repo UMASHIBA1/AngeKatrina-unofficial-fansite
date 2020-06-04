@@ -36,7 +36,7 @@ const Flash: React.FC = () => {
   } else if (size === "tablet") {
     deepCircleFlashScaleBase = (tablet_breakpoint / 100) * 1.5;
   } else {
-    // 画面サイズ1920までの対応なので 1920px / 100px * 1.5(大体ルート2) = 大体29
+    // NOTE 画面サイズ1920までの対応なので 1920px / 100px * 1.5(大体ルート2) = 大体29
     deepCircleFlashScaleBase = 29;
   }
 
