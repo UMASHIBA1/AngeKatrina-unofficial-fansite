@@ -4,4 +4,4 @@ export const blackTransitionZIndex = 102;
 export const omataseMattaTextZIndex = 103;
 export const angeTriangleZIndex = 104;
 export const flashZIndex = 105;
-export const showAngeCard = 106;
+export const showAngeCardZIndex = 106;
