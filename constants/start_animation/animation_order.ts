@@ -142,7 +142,7 @@ export const disappearHideScreenCircleFlashOrder: AnimationProps = {
 };
 
 export const showAngeCardOrder: AnimationProps = {
-  duration_ms: 20,
+  duration_ms: 3000,
   delay_ms:
     disappearHideScreenCircleFlashOrder.duration_ms +
     disappearHideScreenCircleFlashOrder.delay_ms,

@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { showAngeCardZIndex } from "../../../constants/start_animation/zindex";
 import { useTypedSelector } from "../../../redux/store";
-import CircleFlash from "../../molecules/start_animation/CircleFlash";
+import ShowScreenCircle from "../../molecules/start_animation/ShowScreenCircle";
+import calcHidableCircleSize from "../../../systems/calcHidableCircleSize";
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   position: absolute;
@@ -12,18 +13,25 @@ const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   height: 100%;
   display: flex;
   justify-content: flex-start;
-  align-item: center;
+  align-items: flex-start;
   overflow: hidden;
 `;
 
 const ShowAngeCard: React.FC = () => {
-  const isStartAnimation = useTypedSelector(
-    (state) => state.isStartSummonAnimation
-  );
+  const [isStartAnimation, size] = useTypedSelector((state) => [
+    state.isStartSummonAnimation,
+    state.sizes,
+  ]);
+
+  const showScreenCircleInitialScale = calcHidableCircleSize(size);
 
   return (
     <Wrapper isStartAnimation={isStartAnimation}>
-      <CircleFlash isStartAnimation={isStartAnimation} scale={3} blur="100px" />
+      <ShowScreenCircle
+        isStartAnimation={isStartAnimation}
+        scale={showScreenCircleInitialScale}
+        blur="6px"
+      />
     </Wrapper>
   );
 };
