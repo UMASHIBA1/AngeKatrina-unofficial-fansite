@@ -2,13 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { flashZIndex } from "../../../constants/start_animation/zindex";
 import { useTypedSelector } from "../../../redux/store";
-import {
-  sm_breakpoint,
-  tablet_breakpoint,
-} from "../../../constants/breakpoints";
 import LineFlash from "../../atomics/start_animation/LineFlash";
 import CircleFlash from "../../molecules/start_animation/CircleFlash";
 import HideScreenCircleFlash from "../../molecules/start_animation/HideScreenCircleFlash";
+import calcHidableCircleSize from "../../../systems/calcHidableCircleSize";
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   position: absolute;
@@ -30,15 +27,7 @@ const Flash: React.FC = () => {
     isStartSummonAnimation,
   ]);
 
-  let deepCircleFlashScaleBase;
-  if (size === "sm") {
-    deepCircleFlashScaleBase = (sm_breakpoint / 100) * 1.5;
-  } else if (size === "tablet") {
-    deepCircleFlashScaleBase = (tablet_breakpoint / 100) * 1.5;
-  } else {
-    // NOTE 画面サイズ1920までの対応なので 1920px / 100px * 1.5(大体ルート2) = 大体29
-    deepCircleFlashScaleBase = 29;
-  }
+  let deepCircleFlashScaleBase = calcHidableCircleSize(size);
 
   return (
     <Wrapper isStartAnimation={isStartAnimation}>
