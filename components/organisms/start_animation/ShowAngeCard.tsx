@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { showAngeCardZIndex } from "../../../constants/start_animation/zindex";
 import { useTypedSelector } from "../../../redux/store";
 import ShowScreenCircle from "../../molecules/start_animation/ShowScreenCircle";
-import calcHidableCircleSize from "../../../systems/calcHidableCircleSize";
+import {
+  sm_breakpoint,
+  tablet_breakpoint,
+} from "../../../constants/breakpoints";
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   position: absolute;
@@ -23,7 +26,15 @@ const ShowAngeCard: React.FC = () => {
     state.sizes,
   ]);
 
-  const showScreenCircleInitialScale = calcHidableCircleSize(size);
+  let showScreenCircleInitialScale;
+  if (size === "sm") {
+    showScreenCircleInitialScale = (sm_breakpoint / 100) * 2;
+  } else if (size === "tablet") {
+    showScreenCircleInitialScale = (tablet_breakpoint / 100) * 2;
+  } else {
+    // NOTE 画面の対応サイズは1920pxまでなので1920px / 100px * 2
+    showScreenCircleInitialScale = 38.4;
+  }
 
   return (
     <Wrapper isStartAnimation={isStartAnimation}>
