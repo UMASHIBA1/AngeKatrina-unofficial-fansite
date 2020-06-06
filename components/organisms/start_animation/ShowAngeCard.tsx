@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { showAngeCardZIndex } from "../../../constants/start_animation/zindex";
 import { useTypedSelector } from "../../../redux/store";
-import ShowScreenCircle from "../../molecules/start_animation/ShowScreenCircle";
+import ShowScreenCircleMain from "../../molecules/start_animation/ShowScreenCircle";
 import {
   sm_breakpoint,
   tablet_breakpoint,
@@ -38,10 +38,23 @@ const ShowAngeCard: React.FC = () => {
 
   return (
     <Wrapper isStartAnimation={isStartAnimation}>
-      <ShowScreenCircle
+      <ShowScreenCircleMain
         isStartAnimation={isStartAnimation}
         scale={showScreenCircleInitialScale}
         blur="6px"
+        opacity={0.6}
+      />
+      <ShowScreenCircleMain
+        isStartAnimation={isStartAnimation}
+        scale={showScreenCircleInitialScale}
+        blur="20px"
+        opacity={1}
+      />
+      <ShowScreenCircleMain
+        isStartAnimation={isStartAnimation}
+        scale={showScreenCircleInitialScale}
+        blur="40px"
+        opacity={0.6}
       />
     </Wrapper>
   );

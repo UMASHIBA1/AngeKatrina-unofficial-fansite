@@ -7,34 +7,53 @@ interface Props {
   isStartAnimation: boolean;
   scale: number;
   blur: string;
+  opacity: number;
 }
 
 const showScreenCircleAnimation = (
   scale: Props["scale"],
-  blur: Props["blur"]
+  opacity: Props["opacity"]
 ) => keyframes`
   0% {
-	transform: translate(calc(-100px / 2), calc(-100px / 2)) scale(${scale}) rotate(0deg);
-	filter: blur(0px);
+  transform: translate(calc(-100px / 2), calc(-100px / 2)) scale(${scale}) rotate(0deg);
+  opacity: 1;
   }
 
   100% {
-	  transform: translate(calc(-100px / 2), calc(-100px / 2)) scale(0.0001) rotate(0deg);
-	  filter: blur(0px);
+    transform: translate(calc(-100px / 2), calc(-100px / 2)) scale(0.000001) rotate(0deg);
+    opacity: ${opacity};
   }
 `;
 
-const ShowScreenCircle = styled(WhiteCircle)<Props>`
+const Wrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+`;
+
+const ShowScreenCircleMain = styled(WhiteCircle)<Props>`
   position: absolute;
   width: 100px;
   height: 100px;
   filter: blur(${({ blur }) => blur});
+  // margin: calc(-${({ blur }) => blur} * 2);
   opacity: 0;
   animation: ${({ isStartAnimation }) => (isStartAnimation ? fadein() : "none")}
       0ms ease-out ${showAngeCardOrder.delay_ms}ms forwards,
-    ${({ isStartAnimation, scale, blur }) =>
-        isStartAnimation ? showScreenCircleAnimation(scale, blur) : "none"}
+    ${({ isStartAnimation, scale, opacity }) =>
+      isStartAnimation ? showScreenCircleAnimation(scale, opacity) : "none"}
       ${showAngeCardOrder.duration_ms}ms linear ${showAngeCardOrder.delay_ms}ms
       forwards;
 `;
+
+const ShowScreenCircle: React.FC<Props> = (props: Props) => {
+  return (
+    <Wrapper>
+      <ShowScreenCircleMain {...props} />
+    </Wrapper>
+  );
+};
+
 export default ShowScreenCircle;
