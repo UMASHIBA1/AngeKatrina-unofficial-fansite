@@ -34,9 +34,7 @@ const hideScreenCircleAnimation = (
 	}
   `;
 
-const HideScreenCircleFlash = styled(WhiteCircle)<
-  Props & { additionalDelayTime: number }
->`
+const HideScreenCircleFlash = styled(WhiteCircle)<Props>`
   position: absolute;
   width: 100px;
   height: 100px;
@@ -51,9 +49,7 @@ const HideScreenCircleFlash = styled(WhiteCircle)<
             )
           : "none"}
       ${hideScreenCircleFlashOrder.duration_ms}ms ease-out
-      ${({ additionalDelayTime }) =>
-        hideScreenCircleFlashOrder.delay_ms + additionalDelayTime}ms
-      both,
+      ${hideScreenCircleFlashOrder.delay_ms}ms both,
     ${({ isStartAnimation }) => (isStartAnimation ? fadeout : "none")} 0ms
       linear ${disappearHideScreenCircleFlashOrder.delay_ms}ms forwards;
 `;

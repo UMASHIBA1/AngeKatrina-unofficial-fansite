@@ -64,7 +64,6 @@ const Flash: React.FC = () => {
         isStartAnimation={isStartAnimation}
         scale={deepCircleFlashScaleBase}
         blur="6px"
-        additionalDelayTime={0}
       />
     </Wrapper>
   );
