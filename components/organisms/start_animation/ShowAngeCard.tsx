@@ -45,8 +45,9 @@ const Line = styled.div<{
   height: ${({ height }) => height};
   background-color: #ffffff;
   margin: 0;
+  opacity: 0;
   animation: ${({ isStartAnimation }) => (isStartAnimation ? fadein() : "none")}
-      0ms linear ${showAngeCardOrder.delay_ms}ms both,
+      0ms linear ${showAngeCardOrder.delay_ms}ms forwards,
     ${({ isStartAnimation }) => (isStartAnimation ? fadeout : "none")}
       ${showAngeCardOrder.duration_ms}ms linear
       ${({ additionalDelay }) => showAngeCardOrder.delay_ms + additionalDelay}ms
