@@ -59,6 +59,18 @@ const useWindowWidthHeight = () => {
   useDidMount(() => {
     changeWidth(window.innerWidth);
     changeHeight(window.innerHeight);
+
+    let timer = 0;
+    window.addEventListener("resize", () => {
+      if (timer > 0) {
+        clearTimeout(timer);
+      }
+
+      timer = setTimeout(() => {
+        changeWidth(window.innerWidth);
+        changeHeight(window.innerHeight);
+      }, 200);
+    });
   });
   return [width, height];
 };
