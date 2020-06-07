@@ -44,7 +44,6 @@ const Line = styled.div<{
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   background-color: #ffffff;
-  margin: 0;
   opacity: 0;
   animation: ${({ isStartAnimation }) => (isStartAnimation ? fadein() : "none")}
       0ms linear ${showAngeCardOrder.delay_ms}ms forwards,
@@ -81,7 +80,7 @@ const ShowAngeCard: React.FC = () => {
     (state) => state.isStartSummonAnimation
   );
 
-  const lineNum = 15;
+  const lineNum = 8;
   const [windowWidth, windowHeight] = useWindowWidthHeight();
   const lineWidth = `${calcLineWidth(lineNum, windowWidth, windowHeight)}px`;
   const lineHeight = `${calcDiagonalLine(windowWidth, windowHeight)}px`;
@@ -95,7 +94,7 @@ const ShowAngeCard: React.FC = () => {
             key={index}
             width={lineWidth}
             height={lineHeight}
-            additionalDelay={20 * index}
+            additionalDelay={70 * index}
           />
         ))}
       </LineWrapper>
