@@ -36,7 +36,7 @@ const useDispatchSize = (dispatch: DispatchType) => {
   });
 };
 
-// 全てのページで必要な処理をまとめてあります。
+// NOTE 全てのページで必要な処理をまとめてあります。
 const PageWrapper: React.FC<Props> = (props: Props) => {
   const dispatch: DispatchType = useDispatch();
 

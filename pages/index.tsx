@@ -7,6 +7,7 @@ import BlackTransition from "../components/organisms/start_animation/BlackTransi
 import OmataseMattaText from "../components/organisms/start_animation/OmataseMattaText";
 import AngeTriangle from "../components/organisms/start_animation/AngeTriangle";
 import Flash from "../components/organisms/start_animation/Flash";
+import ShowAngeCard from "../components/organisms/start_animation/ShowAngeCard";
 
 const Main = styled.main`
   width: 100%;
@@ -24,6 +25,7 @@ const IndexPage = () => (
       <AngeTriangle />
       <OmataseMattaText />
       <Flash />
+      <ShowAngeCard />
     </Main>
   </PageWrapper>
 );
