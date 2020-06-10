@@ -7,18 +7,18 @@ import {
   SECOND_DEEP_GREY,
   DEEP_GREY,
   THIRD_DEEP_GREY,
-} from "../../../constants/colors";
-import { HWT_MARDELL_FONT_PROP } from "../../../constants/cssProps";
+} from "../../../../constants/colors";
+import { HWT_MARDELL_FONT_PROP } from "../../../../constants/cssProps";
 import {
   toDeepInsetShadow,
   translate,
   bgColorChange,
-} from "../../../styles/commonAnimation";
+} from "../../../../styles/commonAnimation";
 import {
   summonTextShadowOrder,
   summonTextStripeOrder,
   summonTextToBlackOrder,
-} from "../../../constants/start_animation/animation_order";
+} from "../../../../constants/start_animation/animation_order";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -38,7 +38,7 @@ const StyledSummonText = styled.div<{
   width: ${({ diameter }) => diameter}px;
   height: ${({ diameter }) => diameter}px;
   color: ${ANGE_RED};
-  background-color ${ANGE_BROWN};
+  background-color: ${ANGE_BROWN};
   cursor: pointer;
   border-radius: 50%;
   position: absolute;
@@ -46,10 +46,10 @@ const StyledSummonText = styled.div<{
   top: calc(50% - ${({ diameter }) => diameter / 2}px);
   font-size: ${({ diameter }) => diameter / 7}px;
   animation: ${({ isPushedButton }) =>
-    isPushedButton ? toDeepInsetShadow(200, ANGE_BLACK) : "none"} ${
-  summonTextShadowOrder.duration_ms
-}ms linear forwards ${summonTextShadowOrder.delay_ms}ms;
-  `;
+      isPushedButton ? toDeepInsetShadow(200, ANGE_BLACK) : "none"}
+    ${summonTextShadowOrder.duration_ms}ms linear forwards
+    ${summonTextShadowOrder.delay_ms}ms;
+`;
 
 const ColorLine = styled.div<{
   diameter: number;

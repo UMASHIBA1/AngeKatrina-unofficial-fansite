@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { blackTransitionZIndex } from "../../../constants/start_animation/zindex";
-import BlackCircle from "../../atomics/start_animation/BlackCircle";
-import { useTypedSelector } from "../../../redux/store";
+import { blackTransitionZIndex } from "../../../../constants/start_animation/zindex";
+import BlackCircle from "./BlackCircle";
+import { useTypedSelector } from "../../../../redux/store";
 
 const Wrapper = styled.div<{ isStartSummonAnimation: boolean }>`
   position: absolute;

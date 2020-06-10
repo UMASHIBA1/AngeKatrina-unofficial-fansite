@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { ANGE_BLACK } from "../../../constants/colors";
-import { scale } from "../../../styles/commonAnimation";
-import { SizeType } from "../../../typing/SizeType";
-import { blackCircleExpandOrder } from "../../../constants/start_animation/animation_order";
-import sizeTypeJudge from "../../../systems/sizeTypeJudge";
+import { ANGE_BLACK } from "../../../../constants/colors";
+import { scale } from "../../../../styles/commonAnimation";
+import { SizeType } from "../../../../typing/SizeType";
+import { blackCircleExpandOrder } from "../../../../constants/start_animation/animation_order";
+import sizeTypeJudge from "../../../../systems/sizeTypeJudge";
 
 interface Props {
   isStartSummonAnimation: boolean;
