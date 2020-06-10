@@ -1,8 +1,8 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import WhiteCircleSVG from "../../../public/start_animation/svgs/white_circle.svg";
-import { fadein } from "../../../styles/commonAnimation";
-import { circleFlashOrder } from "../../../constants/start_animation/animation_order";
+import WhiteCircleSVG from "../../../../public/start_animation/svgs/white_circle.svg";
+import { fadein } from "../../../../styles/commonAnimation";
+import { circleFlashOrder } from "../../../../constants/start_animation/animation_order";
 
 interface Props {
   isStartAnimation: boolean;

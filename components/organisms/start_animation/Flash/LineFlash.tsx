@@ -1,8 +1,8 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import FlashLineSVG from "../../../public/start_animation/svgs/flash_line.svg";
-import { lineFlashOrder } from "../../../constants/start_animation/animation_order";
-import { fadein } from "../../../styles/commonAnimation";
+import FlashLineSVG from "../../../../public/start_animation/svgs/flash_line.svg";
+import { lineFlashOrder } from "../../../../constants/start_animation/animation_order";
+import { fadein } from "../../../../styles/commonAnimation";
 
 interface Props {
   isStartAnimation: boolean;
