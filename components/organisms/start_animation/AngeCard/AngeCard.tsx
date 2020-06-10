@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import SSRText from "./SSRText";
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,7 +38,9 @@ const AngeCard: React.FC = () => {
   return (
     <Wrapper>
       <BackGround>
-        <WhiteBorderBG />
+        <WhiteBorderBG>
+          <SSRText />
+        </WhiteBorderBG>
       </BackGround>
     </Wrapper>
   );
