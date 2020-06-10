@@ -23,8 +23,9 @@ const BackGround = styled.div`
 
 const WhiteBorderBG = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: calc(100% - 10px);
   height: calc(100% - 10px);
   background-color: ${ANGE_LIVE_BACK_COLOR};
