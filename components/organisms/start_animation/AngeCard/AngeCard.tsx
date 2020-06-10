@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ANGE_LIVE_BACK_COLOR } from "../../../constants/colors";
+import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 
 const Wrapper = styled.div`
   display: flex;
