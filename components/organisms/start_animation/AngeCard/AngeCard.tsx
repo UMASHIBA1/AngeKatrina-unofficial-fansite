@@ -4,6 +4,7 @@ import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import SSRText from "./SSRText";
 import WhiteBG from "./WhiteBG";
 import AngeName from "./AngeName";
+import AngeDescription from "./AngeDescription";
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ const AngeCard: React.FC = () => {
           <SSRText />
           <WhiteBG />
           <AngeName />
+          <AngeDescription />
         </WhiteBorderBG>
       </BackGround>
     </Wrapper>
