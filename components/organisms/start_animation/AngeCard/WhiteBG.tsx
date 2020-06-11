@@ -23,8 +23,16 @@ const SmTabletWhiteBG = styled.div`
   }
 `;
 
+const PCWhiteBG = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  clip-path: polygon(0 0, 50% 0, 35% 100%, 0 100%);
+`;
+
 const WhiteBG: React.FC<Props> = ({ size }: Props) => {
-  return size === "pc" ? <></> : <SmTabletWhiteBG />;
+  return size === "pc" ? <PCWhiteBG /> : <SmTabletWhiteBG />;
 };
 
 export default WhiteBG;
