@@ -5,6 +5,8 @@ import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { sm_breakpoint } from "../../../../constants/breakpoints";
 import { tabletBreakPointForAngeCard } from "./constants";
 
+const minimalPCBreakPoint = 1540;
+
 const Wrapper = styled.div`
 	${BUNKYU_MIDASHI_GO_STD}
 	color: ${ANGE_LIVE_BACK_COLOR};
@@ -37,6 +39,11 @@ const AngeTitle = styled.div`
   }
 
   @media (min-width: ${tabletBreakPointForAngeCard + 1}px) {
+    font-size: 1.8rem;
+    border-bottom: solid 2px ${ANGE_LIVE_BACK_COLOR};
+  }
+
+  @media (min-width: ${minimalPCBreakPoint + 1}px) {
     font-size: 2rem;
     border-bottom: solid 2px ${ANGE_LIVE_BACK_COLOR};
   }
@@ -52,6 +59,10 @@ const AngeNameMain = styled.div`
   }
 
   @media (min-width: ${tabletBreakPointForAngeCard + 1}px) {
+    font-size: 3rem;
+  }
+
+  @media (min-width: ${minimalPCBreakPoint + 1}px) {
     font-size: 3.5rem;
   }
 `;
