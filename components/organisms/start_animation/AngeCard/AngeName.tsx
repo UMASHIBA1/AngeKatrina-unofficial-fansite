@@ -3,9 +3,7 @@ import styled from "styled-components";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { sm_breakpoint } from "../../../../constants/breakpoints";
-import { tabletBreakPointForAngeCard } from "./constants";
-
-const minimalPCBreakPoint = 1540;
+import { tabletBreakPointForAngeCard, minimalPCBreakPoint } from "./constants";
 
 const Wrapper = styled.div`
 	${BUNKYU_MIDASHI_GO_STD}
