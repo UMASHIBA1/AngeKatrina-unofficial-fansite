@@ -2,15 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
-import {
-  sm_breakpoint,
-  tablet_breakpoint,
-} from "../../../../constants/breakpoints";
+import { sm_breakpoint } from "../../../../constants/breakpoints";
+import { tabletBreakPointForAngeCard } from "./constants";
 
 const Wrapper = styled.div`
 	${BUNKYU_MIDASHI_GO_STD}
 	color: ${ANGE_LIVE_BACK_COLOR};
-  position: absolute;
+	position: absolute;
   @media (max-width: ${sm_breakpoint}px) {
 	left: 10px;
 	bottom: 16px;
@@ -21,7 +19,7 @@ const Wrapper = styled.div`
 	bottom: 30px;
   }
 
-  @media (min-width: ${tablet_breakpoint + 1}px) {
+  @media (min-width: ${tabletBreakPointForAngeCard + 1}px) {
 	  top: 20%;
 	  left: 5%;
   }
@@ -38,7 +36,7 @@ const AngeTitle = styled.div`
     border-bottom: solid 2px ${ANGE_LIVE_BACK_COLOR};
   }
 
-  @media (min-width: ${tablet_breakpoint + 1}px) {
+  @media (min-width: ${tabletBreakPointForAngeCard + 1}px) {
     font-size: 2rem;
     border-bottom: solid 2px ${ANGE_LIVE_BACK_COLOR};
   }
@@ -53,7 +51,7 @@ const AngeNameMain = styled.div`
     font-size: 3rem;
   }
 
-  @media (min-width: ${tablet_breakpoint + 1}px) {
+  @media (min-width: ${tabletBreakPointForAngeCard + 1}px) {
     font-size: 3.5rem;
   }
 `;
