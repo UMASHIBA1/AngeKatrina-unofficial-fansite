@@ -8,10 +8,9 @@ import {
 } from "../../../../constants/breakpoints";
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
 `;
 
 const TextBG = styled.div`

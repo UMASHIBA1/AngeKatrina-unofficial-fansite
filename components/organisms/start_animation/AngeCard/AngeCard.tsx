@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const BackGround = styled.div`
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,10 +24,7 @@ const BackGround = styled.div`
 `;
 
 const WhiteBorderBG = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  position: absolute;
   width: calc(100% - 10px);
   height: calc(100% - 10px);
   background-color: ${ANGE_LIVE_BACK_COLOR};
