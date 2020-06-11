@@ -8,20 +8,37 @@ const Wrapper = styled.div`
 	${BUNKYU_MIDASHI_GO_STD}
 	color: ${ANGE_LIVE_BACK_COLOR};
   position: absolute;
-  left: 10px;
-  bottom: 16px;
+  @media (max-width: ${sm_breakpoint}px) {
+	left: 10px;
+	bottom: 16px;
+  }
+
+  @media (min-width: ${sm_breakpoint + 1}px) {
+	left: 30px;
+	bottom: 30px;
+  }
+
 `;
 
 const AngeTitle = styled.div`
-  border-bottom: solid 1px ${ANGE_LIVE_BACK_COLOR};
   @media (max-width: ${sm_breakpoint}px) {
     font-size: 1rem;
+    border-bottom: solid 1px ${ANGE_LIVE_BACK_COLOR};
+  }
+
+  @media (min-width: ${sm_breakpoint + 1}px) {
+    font-size: 1.8rem;
+    border-bottom: solid 2px ${ANGE_LIVE_BACK_COLOR};
   }
 `;
 
 const AngeNameMain = styled.div`
   @media (max-width: ${sm_breakpoint}px) {
     font-size: 1.5rem;
+  }
+
+  @media (min-width: ${sm_breakpoint + 1}px) {
+    font-size: 3rem;
   }
 `;
 
