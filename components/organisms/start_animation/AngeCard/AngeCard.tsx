@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import SSRText from "./SSRText";
+import WhiteBG from "./WhiteBG";
+import { useTypedSelector } from "../../../../redux/store";
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,11 +35,14 @@ const WhiteBorderBG = styled.div`
 `;
 
 const AngeCard: React.FC = () => {
+  const size = useTypedSelector((state) => state.sizes);
+
   return (
     <Wrapper>
       <BackGround>
         <WhiteBorderBG>
           <SSRText />
+          <WhiteBG size={size} />
         </WhiteBorderBG>
       </BackGround>
     </Wrapper>
