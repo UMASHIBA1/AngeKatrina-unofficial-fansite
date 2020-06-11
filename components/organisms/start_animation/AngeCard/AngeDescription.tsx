@@ -11,7 +11,6 @@ const AngeDescriptionMain = styled.div`
 	${BUNKYU_MIDASHI_GO_STD}
 	color: ${ANGE_LIVE_BACK_COLOR};
 	line-height: 1.8;
-	word-wrap: break-word;
 
 	@media (min-width: ${tabletBreakPointForAngeCard + 1}px) {
 		display: block;
