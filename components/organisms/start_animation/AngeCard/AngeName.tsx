@@ -2,7 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
-import { sm_breakpoint } from "../../../../constants/breakpoints";
+import {
+  sm_breakpoint,
+  tablet_breakpoint,
+} from "../../../../constants/breakpoints";
 
 const Wrapper = styled.div`
 	${BUNKYU_MIDASHI_GO_STD}
@@ -18,6 +21,10 @@ const Wrapper = styled.div`
 	bottom: 30px;
   }
 
+  @media (min-width: ${tablet_breakpoint + 1}px) {
+	  top: 20%;
+	  left: 5%;
+  }
 `;
 
 const AngeTitle = styled.div`
@@ -30,6 +37,11 @@ const AngeTitle = styled.div`
     font-size: 1.8rem;
     border-bottom: solid 2px ${ANGE_LIVE_BACK_COLOR};
   }
+
+  @media (min-width: ${tablet_breakpoint + 1}px) {
+    font-size: 2rem;
+    border-bottom: solid 2px ${ANGE_LIVE_BACK_COLOR};
+  }
 `;
 
 const AngeNameMain = styled.div`
@@ -39,6 +51,10 @@ const AngeNameMain = styled.div`
 
   @media (min-width: ${sm_breakpoint + 1}px) {
     font-size: 3rem;
+  }
+
+  @media (min-width: ${tablet_breakpoint + 1}px) {
+    font-size: 3.5rem;
   }
 `;
 
