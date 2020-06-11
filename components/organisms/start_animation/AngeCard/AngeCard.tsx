@@ -4,6 +4,7 @@ import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import SSRText from "./SSRText";
 import WhiteBG from "./WhiteBG";
 import { useTypedSelector } from "../../../../redux/store";
+import AngeName from "./AngeName";
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,6 +44,7 @@ const AngeCard: React.FC = () => {
         <WhiteBorderBG>
           <SSRText />
           <WhiteBG size={size} />
+          <AngeName />
         </WhiteBorderBG>
       </BackGround>
     </Wrapper>
