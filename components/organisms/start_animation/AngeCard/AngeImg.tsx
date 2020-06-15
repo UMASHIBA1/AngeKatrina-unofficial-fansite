@@ -3,15 +3,23 @@ import styled from "styled-components";
 import AngeBasicImg from "../../../../public/start_animation/imgs/ange-basic.png";
 import AngeHeyImg from "../../../../public/start_animation/imgs/ange-hey.png";
 import AngeLightDressImg from "../../../../public/start_animation/imgs/ange-light-dress.png";
+import { tabletBreakPointForAngeCard } from "./constants";
 
 const Wrapper = styled.div`
   position: absolute;
-  width: 100%;
   height: 100%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  overflow: hidden;
+  @media (max-width: ${tabletBreakPointForAngeCard}px) {
+    width: 100%;
+  }
+  @media (min-width: ${tabletBreakPointForAngeCard + 1}px) {
+    top: 0;
+    right: 0;
+    width: 50%;
+  }
 `;
 
 interface ImgProps {
@@ -43,9 +51,13 @@ const createCustomImgs = (angeImgDatas: typeof imgProps) => {
     return styled.img.attrs(() => ({
       src,
       alt,
-      height,
     }))`
+      height: ${height};
       max-width: none; /*NOTE global.scssでmax-width: 100%って定義してあるから上書き */
+      @media (min-width: ${tabletBreakPointForAngeCard}px) {
+        height: auto;
+        width: 110%;
+      }
     `;
   };
 
