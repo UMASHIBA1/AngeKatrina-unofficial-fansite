@@ -5,6 +5,7 @@ import SSRText from "./SSRText";
 import WhiteBG from "./WhiteBG";
 import AngeName from "./AngeName";
 import AngeDescription from "./AngeDescription";
+import AngeImg from "./AngeImg";
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,6 +42,7 @@ const AngeCard: React.FC = () => {
       <BackGround>
         <WhiteBorderBG>
           <SSRText />
+          <AngeImg />
           <WhiteBG />
           <AngeName />
           <AngeDescription />
