@@ -10,14 +10,13 @@ const Wrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   overflow: hidden;
 `;
 
 interface ImgProps {
   src: string;
   alt: string;
-  width?: string;
   height?: string;
 }
 
@@ -30,7 +29,7 @@ const imgProps: { [s: string]: ImgProps } = {
   hey: {
     src: AngeHeyImg,
     alt: "アンジュ斜めポージング画像",
-    width: "125%",
+    height: "95%",
   },
   "light-dress": {
     src: AngeLightDressImg,
@@ -40,11 +39,10 @@ const imgProps: { [s: string]: ImgProps } = {
 };
 
 const createCustomImgs = (angeImgDatas: typeof imgProps) => {
-  const createCustomImg = ({ src, alt, width, height }: ImgProps) => {
+  const createCustomImg = ({ src, alt, height }: ImgProps) => {
     return styled.img.attrs(() => ({
       src,
       alt,
-      width,
       height,
     }))`
       max-width: none; /*NOTE global.scssでmax-width: 100%って定義してあるから上書き */
