@@ -18,45 +18,55 @@ const Wrapper = styled.div`
   @media (min-width: ${tabletBreakPointForAngeCard + 1}px) {
     top: 0;
     right: 0;
-    width: 50%;
+    width: 55%;
   }
 `;
 
 interface ImgProps {
   src: string;
   alt: string;
-  height?: string;
+  smTabletHeight: string;
+  pcMarginTop: string;
 }
 
 const imgProps: { [s: string]: ImgProps } = {
   basic: {
     src: AngeBasicImg,
     alt: "アンジュ通常画像",
-    height: "95%",
+    smTabletHeight: "95%",
+    pcMarginTop: "50px",
   },
   hey: {
     src: AngeHeyImg,
     alt: "アンジュ斜めポージング画像",
-    height: "95%",
+    smTabletHeight: "95%",
+    pcMarginTop: "0",
   },
   "light-dress": {
     src: AngeLightDressImg,
     alt: "アンジュ薄いドレス画像",
-    height: "95%",
+    smTabletHeight: "95%",
+    pcMarginTop: "70px",
   },
 };
 
 const createCustomImgs = (angeImgDatas: typeof imgProps) => {
-  const createCustomImg = ({ src, alt, height }: ImgProps) => {
+  const createCustomImg = ({
+    src,
+    alt,
+    smTabletHeight,
+    pcMarginTop,
+  }: ImgProps) => {
     return styled.img.attrs(() => ({
       src,
       alt,
     }))`
-      height: ${height};
+      height: ${smTabletHeight};
       max-width: none; /*NOTE global.scssでmax-width: 100%って定義してあるから上書き */
       @media (min-width: ${tabletBreakPointForAngeCard}px) {
         height: auto;
-        width: 110%;
+        width: 100%;
+        margin-top: ${pcMarginTop};
       }
     `;
   };
@@ -71,7 +81,7 @@ const createCustomImgs = (angeImgDatas: typeof imgProps) => {
 const customImgs = createCustomImgs(imgProps);
 
 const AngeImg: React.FC = () => {
-  const CustomImg = customImgs["hey"];
+  const CustomImg = customImgs["light-dress"];
   return (
     <Wrapper>
       <CustomImg />
