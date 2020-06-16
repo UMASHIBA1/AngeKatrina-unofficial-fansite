@@ -8,6 +8,9 @@ import OmataseMattaText from "../components/organisms/start_animation/OmataseMat
 import AngeTriangle from "../components/organisms/start_animation/AngeTriangle";
 import Flash from "../components/organisms/start_animation/Flash/Flash";
 import ShowAngeCard from "../components/organisms/start_animation/ShowAngeCard";
+import { GetServerSideProps } from "next";
+import getRandomInt from "../systems/getRandomInt";
+import AngeCard from "../components/organisms/start_animation/AngeCard/AngeCard";
 
 const Main = styled.main`
   width: 100%;
@@ -16,7 +19,20 @@ const Main = styled.main`
   background-color: ${ANGE_WHITE};
 `;
 
-const IndexPage = () => (
+interface Props {
+  randomInt: number;
+}
+
+// NOTE ランダム値をサーバー側で生成してAngeImgの表示される画像をサーバー、クライアント同じにしてる
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  return {
+    props: {
+      randomInt: getRandomInt(3),
+    },
+  };
+};
+
+const IndexPage = ({ randomInt }: Props) => (
   <PageWrapper>
     <Main>
       <MagicCircle />
@@ -26,6 +42,7 @@ const IndexPage = () => (
       <OmataseMattaText />
       <Flash />
       <ShowAngeCard />
+      <AngeCard randomInt={randomInt} />
     </Main>
   </PageWrapper>
 );
