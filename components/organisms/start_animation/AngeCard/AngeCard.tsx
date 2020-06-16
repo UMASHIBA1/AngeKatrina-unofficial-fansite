@@ -36,13 +36,23 @@ const WhiteBorderBG = styled.div`
   border: #ffffff solid 5px;
 `;
 
-const AngeCard: React.FC = () => {
+interface Props {
+  randomInt: number;
+}
+
+type AngeImgOptions = "basic" | "hey" | "light-dress";
+
+const angeImgOptions: AngeImgOptions[] = ["basic", "hey", "light-dress"];
+
+const AngeCard: React.FC<Props> = ({ randomInt: randomInt }: Props) => {
+  const angeImg = angeImgOptions[randomInt];
+
   return (
     <Wrapper>
       <BackGround>
         <WhiteBorderBG>
           <SSRText />
-          <AngeImg />
+          <AngeImg imgType={angeImg} />
           <WhiteBG />
           <AngeName />
           <AngeDescription />
