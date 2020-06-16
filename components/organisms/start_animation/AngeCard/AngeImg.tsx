@@ -29,7 +29,7 @@ interface ImgProps {
   pcMarginTop: string;
 }
 
-const imgProps: { [s: string]: ImgProps } = {
+const imgProps = {
   basic: {
     src: AngeBasicImg,
     alt: "アンジュ通常画像",
@@ -73,15 +73,21 @@ const createCustomImgs = (angeImgDatas: typeof imgProps) => {
 
   const customImgs: { [s: string]: ReturnType<typeof createCustomImg> } = {};
   for (const key in angeImgDatas) {
-    customImgs[key] = createCustomImg(angeImgDatas[key]);
+    customImgs[key] = createCustomImg(
+      angeImgDatas[key as keyof typeof angeImgDatas] as ImgProps
+    );
   }
   return customImgs;
 };
 
 const customImgs = createCustomImgs(imgProps);
 
-const AngeImg: React.FC = () => {
-  const CustomImg = customImgs["light-dress"];
+interface Props {
+  imgType: keyof typeof imgProps;
+}
+
+const AngeImg: React.FC<Props> = ({ imgType }: Props) => {
+  const CustomImg = customImgs[imgType];
   return (
     <Wrapper>
       <CustomImg />
