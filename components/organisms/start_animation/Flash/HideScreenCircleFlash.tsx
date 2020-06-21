@@ -1,11 +1,11 @@
-import WhiteCircle from "../../atomics/start_animation/WhiteCircle";
+import WhiteCircle from "./WhiteCircle";
 import styled, { keyframes } from "styled-components";
-import { fadein, fadeout } from "../../../styles/commonAnimation";
+import { fadein, fadeout } from "../../../../styles/commonAnimation";
 import {
   circleFlashOrder,
   hideScreenCircleFlashOrder,
   disappearHideScreenCircleFlashOrder,
-} from "../../../constants/start_animation/animation_order";
+} from "../../../../constants/start_animation/animation_order";
 
 interface Props {
   isStartAnimation: boolean;

@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { flashZIndex } from "../../../constants/start_animation/zindex";
-import { useTypedSelector } from "../../../redux/store";
-import LineFlash from "../../atomics/start_animation/LineFlash";
-import CircleFlash from "../../molecules/start_animation/CircleFlash";
-import HideScreenCircleFlash from "../../molecules/start_animation/HideScreenCircleFlash";
+import { flashZIndex } from "../../../../constants/start_animation/zindex";
+import { useTypedSelector } from "../../../../redux/store";
+import LineFlash from "./LineFlash";
+import CircleFlash from "./CircleFlash";
+import HideScreenCircleFlash from "./HideScreenCircleFlash";
 import {
   tablet_breakpoint,
   sm_breakpoint,
-} from "../../../constants/breakpoints";
+} from "../../../../constants/breakpoints";
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   position: absolute;
