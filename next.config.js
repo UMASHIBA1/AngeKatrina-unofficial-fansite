@@ -1,8 +1,10 @@
 const path = require("path");
 const withImages = require("next-images");
 
+const svgPath = path.resolve(__dirname, "public/start_animation/svgs");
+
 module.exports = withImages({
-  exclude: path.resolve(__dirname, "public/start_animation/svgs"),
+  exclude: svgPath,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
