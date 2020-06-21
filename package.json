@@ -27,7 +27,7 @@
     "@types/redux-logger": "3.0.8",
     "@types/styled-components": "5.1.0",
     "babel-plugin-styled-components": "1.10.7",
-    "next-images": "^1.4.0",
+    "next-images": "1.4.0",
     "sass": "1.26.8",
     "typescript": "3.9.5"
   },
