@@ -110,8 +110,15 @@ const animateTriangleProps = css<{ size: SizeType; isMoveToDown: boolean }>`
   height: ${({ size }) => calcTriangleWidthHeight(size)};
   position: absolute;
   opacity: 0;
-  animation: ${fadein(0.7)} ${angeTriangleFadeinOrder.duration_ms}ms ease-in
-      ${angeTriangleFadeinOrder.delay_ms}ms forwards,
+  animation: ${fadein(0.7)}
+      ${({ isMoveToDown }) =>
+        isMoveToDown ? 0 : angeTriangleFadeinOrder.duration_ms}ms
+      ease-in
+      ${({ isMoveToDown }) =>
+        isMoveToDown
+          ? angeTriangleDownRotateOrder.delay_ms - 100
+          : angeTriangleFadeinOrder.delay_ms}ms
+      forwards,
     ${toDeepDropShadow(10, "#FFFFFF")}
       ${angeTriangleDropShadowOrder.duration_ms}ms linear
       ${angeTriangleDropShadowOrder.delay_ms}ms forwards,
