@@ -7,14 +7,6 @@ module.exports = {
       },
       use: ["@svgr/webpack"],
     });
-    config.module.rules.push({
-      test: /\.png|jpg$/,
-      issuer: {
-        test: /\.(js|ts)x?$/,
-      },
-      use: ["url-loader"],
-    });
-
     return config;
   },
 };
