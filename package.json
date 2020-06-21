@@ -29,7 +29,7 @@
     "babel-plugin-styled-components": "1.10.7",
     "sass": "1.26.8",
     "typescript": "3.9.5",
-    "url-loader": "^4.1.0"
+    "url-loader": "4.1.0"
   },
   "license": "ISC"
 }
