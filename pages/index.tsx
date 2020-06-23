@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../constants/colors";
+import PageWrapper from "../components/templates/PageWrapper";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -12,10 +13,12 @@ const Wrapper = styled.div`
 
 const Home: React.FC = () => {
   return (
-    <Wrapper>
-      {/* aaaaa */}
-      {/* dad */}
-    </Wrapper>
+    <PageWrapper>
+      <Wrapper>
+        {/* aaaaa */}
+        {/* dad */}
+      </Wrapper>
+    </PageWrapper>
   );
 };
 
