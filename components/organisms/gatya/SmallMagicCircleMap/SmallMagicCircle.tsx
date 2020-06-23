@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SingleMagicCircle from "../../../atomics/start_animation/SingleMagicCircle";
+import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircle";
 
 export interface SmallMagicCircleProps {
   top: number;

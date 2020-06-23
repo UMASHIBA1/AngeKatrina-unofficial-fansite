@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import FlashLineSVG from "../../../../public/start_animation/svgs/flash_line.svg";
-import { lineFlashOrder } from "../../../../constants/start_animation/animation_order";
+import FlashLineSVG from "../../../../public/gatya/svgs/flash_line.svg";
+import { lineFlashOrder } from "../../../../constants/gatya/animation_order";
 import { fadein } from "../../../../styles/commonAnimation";
 
 interface Props {

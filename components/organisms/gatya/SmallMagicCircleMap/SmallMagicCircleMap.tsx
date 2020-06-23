@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SmallMagicCircle from "./SmallMagicCircle";
 import { useTypedSelector } from "../../../../redux/store";
-import { smallMagicCircleMapZIndex } from "../../../../constants/start_animation/zindex";
+import { smallMagicCircleMapZIndex } from "../../../../constants/gatya/zindex";
 import { SmallMagicCircleProps } from "./SmallMagicCircle";
 import sizeTypeJudge from "../../../../systems/sizeTypeJudge";
 

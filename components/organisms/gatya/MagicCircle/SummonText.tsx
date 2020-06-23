@@ -18,7 +18,7 @@ import {
   summonTextShadowOrder,
   summonTextStripeOrder,
   summonTextToBlackOrder,
-} from "../../../../constants/start_animation/animation_order";
+} from "../../../../constants/gatya/animation_order";
 
 const Wrapper = styled.div`
   position: absolute;

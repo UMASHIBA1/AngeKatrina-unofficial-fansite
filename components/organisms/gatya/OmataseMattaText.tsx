@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { SizeType } from "../../../typing/SizeType";
 import { useTypedSelector } from "../../../redux/store";
-import { omataseMattaTextZIndex } from "../../../constants/start_animation/zindex";
+import { omataseMattaTextZIndex } from "../../../constants/gatya/zindex";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
-import { omataseMattaFadeinOrder } from "../../../constants/start_animation/animation_order";
+import { omataseMattaFadeinOrder } from "../../../constants/gatya/animation_order";
 import { fadein } from "../../../styles/commonAnimation";
 import {
   smFontSize,
@@ -12,7 +12,7 @@ import {
   pcFontSize,
   omataseMattaLineHeight,
   omataseMattaContent,
-} from "../../../constants/start_animation/omataseMattaSetting";
+} from "../../../constants/gatya/omataseMattaSetting";
 
 const Wrapper = styled.div<{ size: SizeType; isStartSummonAnimation: boolean }>`
   position: absolute;

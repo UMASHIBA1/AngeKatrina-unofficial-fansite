@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import SingleMagicCircle from "../../../atomics/start_animation/SingleMagicCircle";
+import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircle";
 import SummonText from "./SummonText";
 import { useTypedSelector, DispatchType } from "../../../../redux/store";
 import { SizeType } from "../../../../typing/SizeType";
-import { magicCircleZIndex } from "../../../../constants/start_animation/zindex";
+import { magicCircleZIndex } from "../../../../constants/gatya/zindex";
 import { useDispatch } from "react-redux";
 import { startSummonAnimation } from "../../../../redux/modules/isStartSummonAnimation";
 import sizeTypeJudge from "../../../../systems/sizeTypeJudge";

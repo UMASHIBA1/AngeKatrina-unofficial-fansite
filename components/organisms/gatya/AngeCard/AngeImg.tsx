@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import AngeBasicImg from "../../../../public/start_animation/imgs/ange-basic.png";
-import AngeHeyImg from "../../../../public/start_animation/imgs/ange-hey.png";
-import AngeLightDressImg from "../../../../public/start_animation/imgs/ange-light-dress.png";
+import AngeBasicImg from "../../../../public/gatya/imgs/ange-basic.png";
+import AngeHeyImg from "../../../../public/gatya/imgs/ange-hey.png";
+import AngeLightDressImg from "../../../../public/gatya/imgs/ange-light-dress.png";
 import { tabletBreakPointForAngeCard } from "./constants";
 
 const Wrapper = styled.div`

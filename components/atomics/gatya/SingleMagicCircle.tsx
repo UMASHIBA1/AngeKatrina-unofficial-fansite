@@ -14,11 +14,11 @@ import {
   magicCircleRemoveDropShadowOrder,
   magicCricleFadeoutOrder,
   magicCircleExpandOrder,
-} from "../../../constants/start_animation/animation_order";
-import MostIn from "../../../public/start_animation/svgs/most_in.svg";
-import SecondIn from "../../../public/start_animation/svgs/second_in.svg";
-import ThirdIn from "../../../public/start_animation/svgs/third_in.svg";
-import FourthIn from "../../../public/start_animation/svgs/fourth_in.svg";
+} from "../../../constants/gatya/animation_order";
+import MostIn from "../../../public/gatya/svgs/most_in.svg";
+import SecondIn from "../../../public/gatya/svgs/second_in.svg";
+import ThirdIn from "../../../public/gatya/svgs/third_in.svg";
+import FourthIn from "../../../public/gatya/svgs/fourth_in.svg";
 
 interface Animations {
   doShadow: boolean;

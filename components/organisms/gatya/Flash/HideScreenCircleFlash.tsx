@@ -5,7 +5,7 @@ import {
   circleFlashOrder,
   hideScreenCircleFlashOrder,
   disappearHideScreenCircleFlashOrder,
-} from "../../../../constants/start_animation/animation_order";
+} from "../../../../constants/gatya/animation_order";
 
 interface Props {
   isStartAnimation: boolean;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { showAngeCardZIndex } from "../../../constants/start_animation/zindex";
+import { showAngeCardZIndex } from "../../../constants/gatya/zindex";
 import { useTypedSelector } from "../../../redux/store";
 import { fadeout, fadein } from "../../../styles/commonAnimation";
-import { showAngeCardOrder } from "../../../constants/start_animation/animation_order";
+import { showAngeCardOrder } from "../../../constants/gatya/animation_order";
 import useDidMount from "../../../hooks/useDidMount";
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`

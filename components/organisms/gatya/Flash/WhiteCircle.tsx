@@ -1,5 +1,5 @@
 import React from "react";
-import WhiteCircleSVG from "../../../../public/start_animation/svgs/white_circle.svg";
+import WhiteCircleSVG from "../../../../public/gatya/svgs/white_circle.svg";
 
 // NOTE HideScreenCircleFlashとCircleFlashのどちらでも使うためatomicでコンポーネント化しました
 interface Props {

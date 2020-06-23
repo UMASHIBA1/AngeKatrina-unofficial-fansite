@@ -8,9 +8,9 @@ import {
   translate,
   rightRotate,
 } from "../../../styles/commonAnimation";
-import AngeTriangleSVG from "../../../public/start_animation/svgs/ange_triangle.svg";
+import AngeTriangleSVG from "../../../public/gatya/svgs/ange_triangle.svg";
 import { useTypedSelector } from "../../../redux/store";
-import { angeTriangleZIndex } from "../../../constants/start_animation/zindex";
+import { angeTriangleZIndex } from "../../../constants/gatya/zindex";
 import {
   angeTriangleFadeinOrder,
   angeTriangleDropShadowOrder,
@@ -19,7 +19,7 @@ import {
   angeTriangleUpRotateOrder,
   angeTriangleMoveDownOrder,
   angeTriangleDownRotateOrder,
-} from "../../../constants/start_animation/animation_order";
+} from "../../../constants/gatya/animation_order";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 import {
   smFontSize,
@@ -27,7 +27,7 @@ import {
   pcFontSize,
   omataseMattaLineHeight,
   omataseMattaContent,
-} from "../../../constants/start_animation/omataseMattaSetting";
+} from "../../../constants/gatya/omataseMattaSetting";
 
 const calcTriangleWidthHeight = (size: SizeType) => {
   return sizeTypeJudge(size)(

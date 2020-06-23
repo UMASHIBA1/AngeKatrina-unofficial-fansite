@@ -7,9 +7,9 @@ import AngeName from "./AngeName";
 import AngeDescription from "./AngeDescription";
 import AngeImg from "./AngeImg";
 import { useTypedSelector } from "../../../../redux/store";
-import { angeCardZIndex } from "../../../../constants/start_animation/zindex";
+import { angeCardZIndex } from "../../../../constants/gatya/zindex";
 import { fadein } from "../../../../styles/commonAnimation";
-import { appearAngeCardOrder } from "../../../../constants/start_animation/animation_order";
+import { appearAngeCardOrder } from "../../../../constants/gatya/animation_order";
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   position: absolute;

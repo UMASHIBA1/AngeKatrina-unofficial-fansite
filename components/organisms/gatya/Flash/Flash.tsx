@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { flashZIndex } from "../../../../constants/start_animation/zindex";
+import { flashZIndex } from "../../../../constants/gatya/zindex";
 import { useTypedSelector } from "../../../../redux/store";
 import LineFlash from "./LineFlash";
 import CircleFlash from "./CircleFlash";
