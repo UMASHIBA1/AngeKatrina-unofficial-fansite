@@ -28,7 +28,7 @@
     "@types/styled-components": "5.1.0",
     "babel-plugin-styled-components": "1.10.7",
     "next-images": "1.4.0",
-    "sass": "1.26.8",
+    "sass": "1.26.9",
     "typescript": "3.9.5"
   },
   "license": "ISC"
