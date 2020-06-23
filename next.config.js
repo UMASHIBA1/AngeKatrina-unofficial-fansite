@@ -1,7 +1,7 @@
 const path = require("path");
 const withImages = require("next-images");
 
-const svgPath = path.resolve(__dirname, "public/svgs/gatya");
+const svgPath = path.resolve(__dirname, "public/svgs");
 
 module.exports = withImages({
   exclude: svgPath,
