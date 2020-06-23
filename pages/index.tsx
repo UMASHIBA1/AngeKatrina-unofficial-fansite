@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../constants/colors";
 import PageWrapper from "../components/templates/PageWrapper";
+import Logo from "../components/atomics/home/Logo";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -15,8 +16,7 @@ const Home: React.FC = () => {
   return (
     <PageWrapper>
       <Wrapper>
-        {/* aaaaa */}
-        {/* dad */}
+        <Logo />
       </Wrapper>
     </PageWrapper>
   );
