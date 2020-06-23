@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import FlashLineSVG from "../../../../public/gatya/svgs/flash_line.svg";
+import FlashLineSVG from "../../../../public/svgs/gatya/flash_line.svg";
 import { lineFlashOrder } from "../../../../constants/gatya/animation_order";
 import { fadein } from "../../../../styles/commonAnimation";
 

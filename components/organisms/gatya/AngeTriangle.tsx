@@ -8,7 +8,7 @@ import {
   translate,
   rightRotate,
 } from "../../../styles/commonAnimation";
-import AngeTriangleSVG from "../../../public/gatya/svgs/ange_triangle.svg";
+import AngeTriangleSVG from "../../../public/svgs/gatya/ange_triangle.svg";
 import { useTypedSelector } from "../../../redux/store";
 import { angeTriangleZIndex } from "../../../constants/gatya/zindex";
 import {

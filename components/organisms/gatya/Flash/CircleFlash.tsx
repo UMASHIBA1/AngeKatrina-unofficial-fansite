@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import WhiteCircleSVG from "../../../../public/gatya/svgs/white_circle.svg";
+import WhiteCircleSVG from "../../../../public/svgs/gatya/white_circle.svg";
 import { fadein } from "../../../../styles/commonAnimation";
 import { circleFlashOrder } from "../../../../constants/gatya/animation_order";
 
