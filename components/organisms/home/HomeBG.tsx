@@ -188,7 +188,9 @@ const HomeBG: React.FC<Props> = (props: Props) => {
     <Wrapper>
       <BGWrapper>
         {triangleProps.map((triangleProp) => {
-          return <BGTriangle {...triangleProp} />;
+          return (
+            <BGTriangle key={JSON.stringify(triangleProp)} {...triangleProp} />
+          );
         })}
       </BGWrapper>
       <ContentWrapper>{props.children}</ContentWrapper>
