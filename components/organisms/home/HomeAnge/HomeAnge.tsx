@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import angeBasicImgPath from "../../../../public/imgs/ange-basic.png";
-import { sm_breakpoint } from "../../../../constants/breakpoints";
+import {
+  sm_breakpoint,
+  tablet_breakpoint,
+} from "../../../../constants/breakpoints";
 
 const smAngeHeight = 500;
 const tabletAngeHeight = 800;
+const pcAngeHeight = "150%";
 
 const Img = styled.img.attrs({
   src: angeBasicImgPath,
@@ -20,6 +24,13 @@ const Img = styled.img.attrs({
     bottom: -${tabletAngeHeight * (3 / 5)}px;
     right: -${tabletAngeHeight * (1 / 8)}px;
     height: ${tabletAngeHeight}px;
+  }
+  @media (min-width: ${tablet_breakpoint}px) {
+    height: ${pcAngeHeight};
+    bottom: calc(-${pcAngeHeight} * ${0.45});
+    right: auto;
+    left: 100px;
+    transform: rotate(0);
   }
 `;
 
