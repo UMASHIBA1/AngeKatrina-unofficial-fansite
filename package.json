@@ -29,7 +29,7 @@
     "babel-plugin-styled-components": "1.10.7",
     "next-images": "1.4.0",
     "sass": "1.26.9",
-    "typescript": "3.9.5"
+    "typescript": "3.9.6"
   },
   "license": "ISC"
 }
