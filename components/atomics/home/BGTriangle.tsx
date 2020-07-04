@@ -1,9 +1,10 @@
 import YellowTriangleImg from "../../../public/svgs/home/yellow_triangle.svg";
 import WhiteTriangleImg from "../../../public/svgs/home/white_triangle.svg";
+import AngeTriangleImg from "../../../public/svgs/home/ange_triangle_sharp.svg";
 import styled from "styled-components";
 
-interface Props {
-  color: "yellow" | "white";
+export interface Props {
+  color: "yellow" | "white" | "ange";
   width?: string;
   rotate?: string;
   top?: string | number;
@@ -40,7 +41,13 @@ const BGTriangle: React.FC<Props> = ({
       bottom={bottom}
       right={right}
     >
-      {color === "yellow" ? <YellowTriangleImg /> : <WhiteTriangleImg />}
+      {color === "yellow" ? (
+        <YellowTriangleImg />
+      ) : color === "white" ? (
+        <WhiteTriangleImg />
+      ) : (
+        <AngeTriangleImg />
+      )}
     </Wrapper>
   );
 };
