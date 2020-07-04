@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import AngeBasicImg from "../../../../public/imgs/gatya/ange-basic.png";
+import AngeBasicImg from "../../../../public/imgs/ange-basic.png";
 import AngeHeyImg from "../../../../public/imgs/gatya/ange-hey.png";
 import AngeLightDressImg from "../../../../public/imgs/gatya/ange-light-dress.png";
 import { tabletBreakPointForAngeCard } from "./constants";
