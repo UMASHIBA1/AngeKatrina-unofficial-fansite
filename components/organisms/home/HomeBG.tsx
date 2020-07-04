@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${ANGE_LIVE_BACK_COLOR};
+  overflow: hidden;
 `;
 const BGWrapper = styled.div`
   position: absolute;
