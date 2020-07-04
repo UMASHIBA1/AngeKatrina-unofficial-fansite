@@ -4,6 +4,7 @@ import { ANGE_LIVE_BACK_COLOR } from "../constants/colors";
 import PageWrapper from "../components/templates/PageWrapper";
 import Logo from "../components/atomics/home/Logo";
 import HomeBG from "../components/organisms/home/HomeBG";
+import HomeAnge from "../components/organisms/home/HomeAnge/HomeAnge";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -19,6 +20,7 @@ const Home: React.FC = () => {
       <Wrapper>
         <HomeBG>
           <Logo />
+          <HomeAnge />
         </HomeBG>
       </Wrapper>
     </PageWrapper>
