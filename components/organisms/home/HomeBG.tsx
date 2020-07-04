@@ -99,13 +99,13 @@ const tabletBGTriangleProps: BGTriangleProp[] = [
     width: "70px",
     rotate: "45deg",
     bottom: "300px",
-    right: "10px",
+    right: "20px",
   },
   {
     color: "yellow",
     width: "120px",
     rotate: "-20deg",
-    bottom: "10px",
+    bottom: "40px",
     right: "260px",
   },
 ];
