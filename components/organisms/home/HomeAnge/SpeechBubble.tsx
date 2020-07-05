@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { ANGE_WHITE, ANGE_RED } from "../../../../constants/colors";
 import { TA_F1_BLOCK_LINE } from "../../../../constants/cssProps";
 
-interface Props {
+export interface Props {
   text: string;
   whichSide: "right" | "left";
   width?: string;
