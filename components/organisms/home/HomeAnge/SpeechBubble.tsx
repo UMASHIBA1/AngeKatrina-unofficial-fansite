@@ -13,8 +13,22 @@ interface Props {
   right?: string;
 }
 
-const leftSideCSS = css`
+const rightSideCSS = css`
   ::before {
+    content: "";
+    position: absolute;
+    left: -8%;
+    bottom: -24%;
+    width: 40%;
+    height: 40%;
+    background-color: ${ANGE_WHITE};
+    clip-path: polygon(0 0, 100% 0, 100% 60%);
+    transform: rotate(-32deg);
+  }
+`;
+
+const leftSideCSS = css`
+  ::after {
     content: "";
     position: absolute;
     right: -8%;
@@ -42,8 +56,8 @@ const SpeechBubbleMain = styled.div<Required<Omit<Props, "text">>>`
   align-items: center;
   justify-content: center;
   color: ${ANGE_RED};
+  ${({ whichSide }) => (whichSide === "left" ? leftSideCSS : rightSideCSS)}
   ${TA_F1_BLOCK_LINE}
-  ${leftSideCSS}
 `;
 
 const SpeechBubble: React.FC<Props> = (props: Props) => {
