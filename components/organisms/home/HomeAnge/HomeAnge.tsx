@@ -5,6 +5,12 @@ import {
   sm_breakpoint,
   tablet_breakpoint,
 } from "../../../../constants/breakpoints";
+import SpeechBubble, { Props as SpeechBubbleProp } from "./SpeechBubble";
+import { useTypedSelector } from "../../../../redux/store";
+import sizeTypeJudge from "../../../../systems/sizeTypeJudge";
+
+// アンジュ画像の大体の縦横比
+const angeImgAspectRatio = 0.356;
 
 const smAngeHeight = 500;
 const tabletAngeHeight = 800;
@@ -34,8 +40,27 @@ const Img = styled.img.attrs({
   }
 `;
 
+const smSpeechBubbleProp: Omit<SpeechBubbleProp, "text"> = {
+  whichSide: "left",
+  width: "100px",
+  bottom: `${smAngeHeight * (1 / 5)}px`,
+  right: `${smAngeHeight * angeImgAspectRatio * (7 / 8)}px`,
+};
+
 const HomeAnge: React.FC = () => {
-  return <Img />;
+  const size = useTypedSelector((state) => state.sizes);
+
+  const bubbleProp = sizeTypeJudge(size)(
+    smSpeechBubbleProp,
+    smSpeechBubbleProp,
+    smSpeechBubbleProp
+  );
+  return (
+    <React.Fragment>
+      <Img />
+      <SpeechBubble text="ほにゅ" {...bubbleProp} />
+    </React.Fragment>
+  );
 };
 
 export default HomeAnge;
