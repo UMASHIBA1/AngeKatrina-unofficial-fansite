@@ -6,6 +6,7 @@ import { TA_F1_BLOCK_LINE } from "../../../../constants/cssProps";
 export interface Props {
   text: string;
   whichSide: "right" | "left";
+  fontSize?: string;
   width?: string;
   top?: string;
   bottom?: string;
@@ -64,6 +65,7 @@ const SpeechBubble: React.FC<Props> = (props: Props) => {
   const {
     text,
     whichSide,
+    fontSize = "1rem",
     width = "100px",
     top = "auto",
     bottom = "auto",
@@ -74,6 +76,7 @@ const SpeechBubble: React.FC<Props> = (props: Props) => {
   return (
     <SpeechBubbleMain
       whichSide={whichSide}
+      fontSize={fontSize}
       width={width}
       top={top}
       bottom={bottom}
