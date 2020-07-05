@@ -29,6 +29,10 @@ const leftSideCSS = css`
 
 const SpeechBubbleMain = styled.div<Required<Omit<Props, "text">>>`
   position: absolute;
+  top: ${({ top }) => top};
+  left: ${({ left }) => left};
+  bottom: ${({ bottom }) => bottom};
+  right: ${({ right }) => right};
   background-color: ${ANGE_WHITE};
   width: ${({ width }) => width};
   /* NOTE 吹き出しの横縦比は4:3にしておく */
