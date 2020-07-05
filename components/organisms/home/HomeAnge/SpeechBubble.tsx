@@ -52,6 +52,7 @@ const SpeechBubbleMain = styled.div<Required<Omit<Props, "text">>>`
   width: ${({ width }) => width};
   /* NOTE 吹き出しの横縦比は4:3にしておく */
   height: calc(${({ width }) => width} * 0.75);
+  font-size: ${({ fontSize }) => fontSize};
   border-radius: 50%;
   display: flex;
   align-items: center;
