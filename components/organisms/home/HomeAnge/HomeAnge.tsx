@@ -43,8 +43,17 @@ const Img = styled.img.attrs({
 const smSpeechBubbleProp: Omit<SpeechBubbleProp, "text"> = {
   whichSide: "left",
   width: "100px",
+  fontSize: "1rem",
   bottom: `${smAngeHeight * (1 / 5)}px`,
   right: `${smAngeHeight * angeImgAspectRatio * (7 / 8)}px`,
+};
+
+const tabletSpeechBubbleProp: Omit<SpeechBubbleProp, "text"> = {
+  whichSide: "left",
+  width: "180px",
+  fontSize: "1.6rem",
+  bottom: `${tabletAngeHeight * (1 / 5)}px`,
+  right: `${tabletAngeHeight * angeImgAspectRatio * (7 / 8)}px`,
 };
 
 const HomeAnge: React.FC = () => {
@@ -52,7 +61,7 @@ const HomeAnge: React.FC = () => {
 
   const bubbleProp = sizeTypeJudge(size)(
     smSpeechBubbleProp,
-    smSpeechBubbleProp,
+    tabletSpeechBubbleProp,
     smSpeechBubbleProp
   );
   return (
