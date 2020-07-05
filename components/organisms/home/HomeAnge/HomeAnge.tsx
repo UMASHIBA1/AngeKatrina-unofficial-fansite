@@ -14,7 +14,7 @@ const angeImgAspectRatio = 0.356;
 
 const smAngeHeight = 500;
 const tabletAngeHeight = 800;
-const pcAngeHeight = "150%";
+const pcAngeHeight = "150vh";
 
 const Img = styled.img.attrs({
   src: angeBasicImgPath,
@@ -56,13 +56,21 @@ const tabletSpeechBubbleProp: Omit<SpeechBubbleProp, "text"> = {
   right: `${tabletAngeHeight * angeImgAspectRatio * (7 / 8)}px`,
 };
 
+const pcSpeechBubbleProp: Omit<SpeechBubbleProp, "text"> = {
+  whichSide: "right",
+  width: "300px",
+  fontSize: "3rem",
+  left: `calc(${pcAngeHeight} * ${angeImgAspectRatio} + 30px)`,
+  bottom: `calc(${pcAngeHeight} * 0.4)`,
+};
+
 const HomeAnge: React.FC = () => {
   const size = useTypedSelector((state) => state.sizes);
 
   const bubbleProp = sizeTypeJudge(size)(
     smSpeechBubbleProp,
     tabletSpeechBubbleProp,
-    smSpeechBubbleProp
+    pcSpeechBubbleProp
   );
   return (
     <React.Fragment>
