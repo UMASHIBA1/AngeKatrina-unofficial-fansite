@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import OneSlideContent from "./OneSlideContent";
 
@@ -10,22 +10,26 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-const SlideContent: React.FC = () => {
-  return (
-    <Wrapper>
-      <OneSlideContent>
-        アンジュカトリーナ を推すメリットをデメリット
-      </OneSlideContent>
-      <OneSlideContent>
-        メリット ・とにかく可愛い ・配信が楽しい ・毎日の生きがいができる
-        ・辛い時思い出して元気になれる ・とにかくかわいい
-      </OneSlideContent>
-      <OneSlideContent>
-        デメリット ・骨抜きになってしまう ・配信のない夜がとてもさみしい
-        ・恋人がいる人は揉める原因に ・とにかく可愛すぎる
-      </OneSlideContent>
-    </Wrapper>
-  );
+interface Props {
+  animationType: "slide" | "splitedSlide";
+  slidePages: ReactNode[];
+}
+
+const SlideContent: React.FC<Props> = ({
+  animationType,
+  slidePages: oneSlideContests,
+}: Props) => {
+  if (animationType === "slide") {
+    return (
+      <Wrapper>
+        {oneSlideContests.map((children) => (
+          <OneSlideContent>{children}</OneSlideContent>
+        ))}
+      </Wrapper>
+    );
+  } else {
+    return <React.Fragment />;
+  }
 };
 
 export default SlideContent;
