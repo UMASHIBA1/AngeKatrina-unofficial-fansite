@@ -8,7 +8,7 @@ import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../../constants/colors";
 
 const smDiameter = "90vw";
 const tabletDiameter = "70vw";
-const pcDiameter = "60vh";
+const pcDiameter = "70vh";
 
 const redBorderWidth = 4;
 
