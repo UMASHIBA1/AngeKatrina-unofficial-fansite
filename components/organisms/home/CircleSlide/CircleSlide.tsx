@@ -1,0 +1,37 @@
+import React from "react";
+import styled from "styled-components";
+import {
+  sm_breakpoint,
+  tablet_breakpoint,
+} from "../../../../constants/breakpoints";
+import CircleMain from "./CircleMain";
+
+const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 90%;
+  @media (min-width: ${sm_breakpoint}px) {
+    height: 85%;
+  }
+  @media (min-width: ${tablet_breakpoint}px) {
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+  }
+`;
+
+const CircleSlide: React.FC = () => {
+  return (
+    <Wrapper>
+      <CircleMain />
+    </Wrapper>
+  );
+};
+
+export default CircleSlide;
