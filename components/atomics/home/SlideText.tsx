@@ -9,7 +9,8 @@ import {
 
 const TextMain = styled.div<{ color: Props["color"] }>`
   ${TA_F1_BLOCK_LINE}
-  font-size: 36px;
+  font-size: 40px;
+  line-height: 1.8;
   color: ${({ color }) =>
     color === "bgRed"
       ? ANGE_LIVE_BACK_COLOR
@@ -25,8 +26,8 @@ interface Props {
   children: ReactNode;
 }
 
-const BigTaF1BlockLineText: React.FC<Props> = (props: Props) => {
+const SlideText: React.FC<Props> = (props: Props) => {
   return <TextMain color={props.color}>{props.children}</TextMain>;
 };
 
-export default BigTaF1BlockLineText;
+export default SlideText;
