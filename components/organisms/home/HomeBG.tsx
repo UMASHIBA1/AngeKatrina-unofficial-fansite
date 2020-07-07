@@ -47,15 +47,15 @@ const smBGTriangleProps: BGTriangleProp[] = [
   {
     color: "yellow",
     width: "80px",
-    top: "120px",
+    top: "100px",
     left: "26px",
   },
   {
     color: "white",
     width: "70px",
-    rotate: "40deg",
-    top: "140px",
-    right: "40px",
+    rotate: "45deg",
+    top: "90px",
+    right: "30px",
   },
   {
     color: "ange",
