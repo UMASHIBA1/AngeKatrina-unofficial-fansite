@@ -38,8 +38,8 @@ interface Props {
   children: ReactNode;
 }
 
-const SlideText: React.FC<Props> = (props: Props) => {
+const BigSlideText: React.FC<Props> = (props: Props) => {
   return <TextMain color={props.color}>{props.children}</TextMain>;
 };
 
-export default SlideText;
+export default BigSlideText;
