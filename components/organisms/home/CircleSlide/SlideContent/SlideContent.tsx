@@ -22,8 +22,8 @@ const SlideContent: React.FC<Props> = ({
   if (animationType === "slide") {
     return (
       <Wrapper>
-        {oneSlideContests.map((children) => (
-          <OneSlideContent>{children}</OneSlideContent>
+        {oneSlideContests.map((children, index) => (
+          <OneSlideContent key={index}>{children}</OneSlideContent>
         ))}
       </Wrapper>
     );
