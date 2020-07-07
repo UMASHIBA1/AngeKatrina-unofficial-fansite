@@ -19,10 +19,11 @@ const Wrapper = styled.div`
     height: 85%;
   }
   @media (min-width: ${tablet_breakpoint}px) {
-    top: 0;
+    top: auto;
+    bottom: 0;
     left: 50%;
     width: 50%;
-    height: 100%;
+    height: 90%;
   }
 `;
 
