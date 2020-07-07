@@ -42,6 +42,7 @@ const StyledCircleMain = styled.div`
   border: solid ${redBorderWidth}px ${ANGE_LIVE_BACK_COLOR};
   width: ${smDiameter};
   height: ${smDiameter};
+  overflow: hidden;
 
   @media (min-width: ${sm_breakpoint}px) {
     width: ${tabletDiameter};
