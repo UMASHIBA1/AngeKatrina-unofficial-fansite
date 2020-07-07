@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-interface Props {
+export interface Props {
   animationType: "slide" | "splitedSlide";
   slidePages: ReactNode[];
 }
