@@ -44,7 +44,7 @@ const FourthPage: React.FC = () => (
 );
 
 const meritAndDemeritData: contentDataType = {
-  animationType: "slide",
+  animationType: "splitedSlide",
   slidePages: [<FirstPage />, <SecondPage />, <ThirdPage />, <FourthPage />],
   animationDuration_ms: 7000,
 };
