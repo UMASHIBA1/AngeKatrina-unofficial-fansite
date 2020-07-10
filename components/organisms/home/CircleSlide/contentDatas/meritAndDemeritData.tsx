@@ -1,3 +1,4 @@
+import React from "react";
 import { Props as SlideContentProps } from "../SlideContent/SlideContent";
 import styled from "styled-components";
 import BigSlideText from "../../../../atomics/home/BigSlideText";
@@ -8,14 +9,14 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-const FirstPage = () => (
+const FirstPage: React.FC = () => (
   <Wrapper>
     <BigSlideText color="angeRed">アンジュ・カトリーナ</BigSlideText>
     <BigSlideText color="angeRed">を推すメリットとデメリット</BigSlideText>
   </Wrapper>
 );
 
-const SecondPage = () => (
+const SecondPage: React.FC = () => (
   <Wrapper>
     <BigSlideText color="angeRed">メリット</BigSlideText>
     <SlideText color="angeRed">とにかく可愛い</SlideText>
@@ -26,7 +27,7 @@ const SecondPage = () => (
   </Wrapper>
 );
 
-const ThirdPage = () => (
+const ThirdPage: React.FC = () => (
   <Wrapper>
     <BigSlideText color="angeRed">デメリット</BigSlideText>
     <SlideText color="angeRed">骨抜きになってしまう</SlideText>
