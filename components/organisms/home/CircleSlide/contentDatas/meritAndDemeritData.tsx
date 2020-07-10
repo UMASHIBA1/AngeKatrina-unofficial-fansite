@@ -37,10 +37,16 @@ const ThirdPage: React.FC = () => (
   </Wrapper>
 );
 
+const FourthPage: React.FC = () => (
+  <Wrapper>
+    <BigSlideText color="angeRed">用法用量を守って楽しんでね！</BigSlideText>
+  </Wrapper>
+);
+
 const meritAndDemeritData: contentDataType = {
   animationType: "slide",
-  slidePages: [<FirstPage />, <SecondPage />, <ThirdPage />],
-  animationDuration_ms: 5000,
+  slidePages: [<FirstPage />, <SecondPage />, <ThirdPage />, <FourthPage />],
+  animationDuration_ms: 7000,
 };
 
 export default meritAndDemeritData;
