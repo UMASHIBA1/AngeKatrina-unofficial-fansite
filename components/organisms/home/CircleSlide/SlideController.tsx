@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import SlideContent from "./SlideContent/SlideContent";
-import { Props as SlideContentProps } from "./SlideContent/SlideContent";
+import contentDataType from "./contentDatas/contentDataType";
+
+const sliderAnimationDuration_ms = 800;
 
 interface SlideContentsType {
-  [key: string]: SlideContentProps;
+  [key: string]: contentDataType;
 }
 
 interface Props {
@@ -50,7 +52,7 @@ const Slider = styled.div<{ isChangeSlide: boolean }>`
   transform: translate(100%, -100%) rotate(45deg);
   animation: ${({ isChangeSlide }) =>
       isChangeSlide ? changeSlideAnimation : "none"}
-    0.8s ease-in forwards;
+    ${sliderAnimationDuration_ms}ms ease-in forwards;
 `;
 
 const useNowSlidekey = (slideContents: Props["slideContents"]) => {
@@ -76,7 +78,12 @@ const SlideController: React.FC<Props> = ({ slideContents }: Props) => {
         onAnimationEnd={() => setIsChangeSlide(false)}
       />
       <SlideContent
-        {...slideContents[nowSlideKey]}
+        animationType={slideContents[nowSlideKey].animationType}
+        slidePages={slideContents[nowSlideKey].slidePages}
+        animationTimeProps={{
+          duration_ms: slideContents[nowSlideKey].animationDuration_ms,
+          delay_ms: sliderAnimationDuration_ms / 2,
+        }}
         onSlideEndFC={() => {
           const otherKeyList = Object.keys(slideContents).filter(
             (key) => key !== nowSlideKey
@@ -85,7 +92,9 @@ const SlideController: React.FC<Props> = ({ slideContents }: Props) => {
             otherKeyList[Math.floor(Math.random() * otherKeyList.length)];
           setIsChangeSlide(true);
           // TODO Sliderのアニメーションのタイミングと合わせる
-          changeNowSlideKey(nextKey);
+          setTimeout(() => {
+            changeNowSlideKey(nextKey);
+          }, sliderAnimationDuration_ms / 2);
         }}
       />
     </Controller>

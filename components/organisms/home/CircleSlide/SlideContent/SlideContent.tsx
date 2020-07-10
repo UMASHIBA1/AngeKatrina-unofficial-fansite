@@ -2,9 +2,15 @@ import React, { ReactNode } from "react";
 import styled, { keyframes } from "styled-components";
 import OneSlideContent from "./OneSlideContent";
 
+interface AnimationTimeProps {
+  duration_ms: number;
+  delay_ms: number;
+}
+
 export interface Props {
   animationType: "slide" | "splitedSlide";
   slidePages: ReactNode[];
+  animationTimeProps: AnimationTimeProps;
   onSlideEndFC?: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }
 
@@ -41,22 +47,32 @@ const slideAnimation = (slideNum: number) => {
   `;
 };
 
-const SlideWrapper = styled.div<{ slideNum: number }>`
+const SlideWrapper = styled.div<{
+  slideNum: number;
+  animationTimeProps: AnimationTimeProps;
+}>`
   display: flex;
   flex-direction: row;
   height: 100%;
   width: 100%;
-  animation: ${({ slideNum }) => slideAnimation(slideNum)} 5s ease-out forwards;
+  animation: ${({ slideNum }) => slideAnimation(slideNum)}
+    ${({ animationTimeProps }) => animationTimeProps.duration_ms}ms ease-out
+    forwards ${({ animationTimeProps }) => animationTimeProps.delay_ms}ms;
 `;
 
 const SlideContent: React.FC<Props> = ({
   animationType,
   slidePages,
   onSlideEndFC,
+  animationTimeProps,
 }: Props) => {
   if (animationType === "slide") {
     return (
-      <SlideWrapper slideNum={slidePages.length} onAnimationEnd={onSlideEndFC}>
+      <SlideWrapper
+        slideNum={slidePages.length}
+        onAnimationEnd={onSlideEndFC}
+        animationTimeProps={animationTimeProps}
+      >
         {slidePages.map((children, index) => (
           <OneSlideContent key={index}>{children}</OneSlideContent>
         ))}

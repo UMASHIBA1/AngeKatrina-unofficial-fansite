@@ -1,8 +1,8 @@
 import React from "react";
-import { Props as SlideContentProps } from "../SlideContent/SlideContent";
 import styled from "styled-components";
 import BigSlideText from "../../../../atomics/home/BigSlideText";
 import SlideText from "../../../../atomics/home/SlideText";
+import contentDataType from "./contentDataType";
 
 const Wrapper = styled.div`
   width: 90%;
@@ -37,9 +37,10 @@ const ThirdPage: React.FC = () => (
   </Wrapper>
 );
 
-const meritAndDemeritData: SlideContentProps = {
+const meritAndDemeritData: contentDataType = {
   animationType: "slide",
   slidePages: [<FirstPage />, <SecondPage />, <ThirdPage />],
+  animationDuration_ms: 5000,
 };
 
 export default meritAndDemeritData;

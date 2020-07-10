@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Props as SlideContentProps } from "../SlideContent/SlideContent";
 import BigSlideText from "../../../../atomics/home/BigSlideText";
 import RizeImg from "../../../../../public/imgs/rize-heruesta.png";
 import InuiImg from "../../../../../public/imgs/inui-toko.png";
 import AngeImg from "../../../../../public/imgs/ange-basic.png";
 import SlideText from "../../../../atomics/home/SlideText";
+import contentDataType from "./contentDataType";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -72,7 +72,7 @@ const SecondDescriptionPage: React.FC = () => (
   </TextWrapper>
 );
 
-const sanbakaData: SlideContentProps = {
+const sanbakaData: contentDataType = {
   animationType: "slide",
   slidePages: [
     <TitlePage />,
@@ -82,6 +82,7 @@ const sanbakaData: SlideContentProps = {
     <DescriptionPage />,
     <SecondDescriptionPage />,
   ],
+  animationDuration_ms: 8000,
 };
 
 export default sanbakaData;
