@@ -5,6 +5,7 @@ import OneSlideContent from "./OneSlideContent";
 export interface Props {
   animationType: "slide" | "splitedSlide";
   slidePages: ReactNode[];
+  onSlideEndFC?: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }
 
 const slideAnimation = (slideNum: number) => {
@@ -51,10 +52,11 @@ const SlideWrapper = styled.div<{ slideNum: number }>`
 const SlideContent: React.FC<Props> = ({
   animationType,
   slidePages,
+  onSlideEndFC,
 }: Props) => {
   if (animationType === "slide") {
     return (
-      <SlideWrapper slideNum={slidePages.length}>
+      <SlideWrapper slideNum={slidePages.length} onAnimationEnd={onSlideEndFC}>
         {slidePages.map((children, index) => (
           <OneSlideContent key={index}>{children}</OneSlideContent>
         ))}
