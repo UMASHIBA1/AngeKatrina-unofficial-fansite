@@ -29,7 +29,7 @@ const changeSlideAnimation = keyframes`
 	}
 `;
 
-const Controller = styled.div<{ isChangeSlide: boolean }>`
+const Controller = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
@@ -38,19 +38,19 @@ const Controller = styled.div<{ isChangeSlide: boolean }>`
   overflow: hidden;
   width: 100%;
   height: 100%;
-  ::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-color: ${ANGE_LIVE_BACK_COLOR};
-    width: 100%;
-    height: 100%;
-    transform: translate(100%, -100%) rotate(45deg);
-    animation: ${({ isChangeSlide }) =>
-        isChangeSlide ? changeSlideAnimation : "none"}
-      0.8s ease-in forwards;
-  }
+`;
+
+const Slider = styled.div<{ isChangeSlide: boolean }>`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: ${ANGE_LIVE_BACK_COLOR};
+  width: 100%;
+  height: 100%;
+  transform: translate(100%, -100%) rotate(45deg);
+  animation: ${({ isChangeSlide }) =>
+      isChangeSlide ? changeSlideAnimation : "none"}
+    0.8s ease-in forwards;
 `;
 
 const useNowSlidekey = (slideContents: Props["slideContents"]) => {
@@ -70,11 +70,24 @@ const SlideController: React.FC<Props> = ({ slideContents }: Props) => {
   const [nowSlideKey, changeNowSlideKey] = useNowSlidekey(slideContents);
   const [isChangeSlide, setIsChangeSlide] = useState(false);
   return (
-    <Controller
-      isChangeSlide={isChangeSlide}
-      onAnimationEnd={() => setIsChangeSlide(false)}
-    >
-      <SlideContent {...slideContents[nowSlideKey]} />
+    <Controller>
+      <Slider
+        isChangeSlide={isChangeSlide}
+        onAnimationEnd={() => setIsChangeSlide(false)}
+      />
+      <SlideContent
+        {...slideContents[nowSlideKey]}
+        onSlideEndFC={() => {
+          const otherKeyList = Object.keys(slideContents).filter(
+            (key) => key !== nowSlideKey
+          );
+          const nextKey =
+            otherKeyList[Math.floor(Math.random() * otherKeyList.length)];
+          setIsChangeSlide(true);
+          // TODO Sliderのアニメーションのタイミングと合わせる
+          changeNowSlideKey(nextKey);
+        }}
+      />
     </Controller>
   );
 };
