@@ -5,8 +5,8 @@ import {
   tablet_breakpoint,
 } from "../../../../constants/breakpoints";
 import CircleMain from "./CircleMain";
-import SlideContent from "./SlideContent/SlideContent";
 import meritAndDemeritData from "./contentDatas/meritAndDemeritData";
+import SlideController from "./SlideController";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -33,7 +33,7 @@ const CircleSlide: React.FC = () => {
   return (
     <Wrapper>
       <CircleMain>
-        <SlideContent {...meritAndDemeritData} />
+        <SlideController slideContents={{ id1: meritAndDemeritData }} />
       </CircleMain>
     </Wrapper>
   );
