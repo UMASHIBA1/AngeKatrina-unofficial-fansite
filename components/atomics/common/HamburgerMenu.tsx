@@ -18,6 +18,7 @@ const Circle = styled.div`
   background-color: ${ANGE_WHITE};
   border-radius: 50%;
   position: fixed;
+  cursor: pointer;
   width: 45px;
   height: 45px;
   top: 8px;
