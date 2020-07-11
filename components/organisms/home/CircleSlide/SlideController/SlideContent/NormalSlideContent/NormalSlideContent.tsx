@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { AnimationTimeProps } from "./SlideContent";
-import slideAnimation from "./slideAnimation";
+import { AnimationTimeProps } from "../SlideContent";
+import slideAnimation from "../slideAnimation";
 import NormalOneSlideContent from "./NormalOneSlideContent";
 import contentDataType from "../contentDatas/contentDataType";
 
@@ -24,7 +24,7 @@ const SlideWrapper = styled.div<{
     forwards ${({ animationTimeProps }) => animationTimeProps.delay_ms}ms;
 `;
 
-const NormalSlideWrapper: React.FC<Props> = ({
+const NormalSlideContent: React.FC<Props> = ({
   slidePages,
   animationTimeProps,
   onSlideEndFC,
@@ -42,4 +42,4 @@ const NormalSlideWrapper: React.FC<Props> = ({
   );
 };
 
-export default NormalSlideWrapper;
+export default NormalSlideContent;

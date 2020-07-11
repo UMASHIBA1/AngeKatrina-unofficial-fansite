@@ -1,4 +1,4 @@
-import { Props as SlideContentProps } from "../SlideContent/SlideContent";
+import { Props as SlideContentProps } from "../SlideContent";
 
 type contentDataType = Omit<SlideContentProps, "animationTimeProps"> & {
   animationDuration_ms: number;

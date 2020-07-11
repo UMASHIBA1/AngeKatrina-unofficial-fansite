@@ -4,7 +4,7 @@ import {
   ANGE_BROWN,
   ANGE_BLACK,
   ANGE_LIVE_BACK_COLOR,
-} from "../../../../../constants/colors";
+} from "../../../../../../../constants/colors";
 import contentDataType from "./contentDataType";
 
 const Styled = styled.div<{ bgColor: string }>`

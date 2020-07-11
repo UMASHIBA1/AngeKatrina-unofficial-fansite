@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { AnimationTimeProps } from "./SlideContent";
-import slideAnimation from "./slideAnimation";
+import { AnimationTimeProps } from "../SlideContent";
+import slideAnimation from "../slideAnimation";
 import contentDataType from "../contentDatas/contentDataType";
 
 interface Props {
@@ -56,7 +56,7 @@ const OneSlideContent = styled.div`
   justify-content: center;
 `;
 
-const SplitedSlideWrapper: React.FC<Props> = ({
+const SplitedSlideContent: React.FC<Props> = ({
   slidePages,
   animationTimeProps,
 }: Props) => {
@@ -78,4 +78,4 @@ const SplitedSlideWrapper: React.FC<Props> = ({
   );
 };
 
-export default SplitedSlideWrapper;
+export default SplitedSlideContent;

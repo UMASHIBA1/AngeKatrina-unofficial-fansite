@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import BigSlideText from "../../../../atomics/home/BigSlideText";
-import SlideText from "../../../../atomics/home/SlideText";
+import BigSlideText from "../../../../../../atomics/home/BigSlideText";
+import SlideText from "../../../../../../atomics/home/SlideText";
 import contentDataType from "./contentDataType";
 
 const Wrapper = styled.div`

@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import BigSlideText from "../../../../atomics/home/BigSlideText";
-import RizeImg from "../../../../../public/imgs/rize-heruesta.png";
-import InuiImg from "../../../../../public/imgs/inui-toko.png";
-import AngeImg from "../../../../../public/imgs/ange-basic.png";
-import SlideText from "../../../../atomics/home/SlideText";
+import BigSlideText from "../../../../../../atomics/home/BigSlideText";
+import RizeImg from "../../../../../../../public/imgs/rize-heruesta.png";
+import InuiImg from "../../../../../../../public/imgs/inui-toko.png";
+import AngeImg from "../../../../../../../public/imgs/ange-basic.png";
+import SlideText from "../../../../../../atomics/home/SlideText";
 import contentDataType from "./contentDataType";
 
 const Wrapper = styled.div`

@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import NormalSlideWrapper from "./NormalSlideWrapper";
-import SplitedSlideWrapper from "./SplitedSlideWrapper";
+import NormalSlideContent from "./NormalSlideContent/NormalSlideContent";
+import SplitedSlideContent from "./SplitedSlideContent/SplitedSlideContent";
 
 interface SlidePageType {
   node: ReactNode;
@@ -27,7 +27,7 @@ const SlideContent: React.FC<Props> = ({
 }: Props) => {
   if (animationType === "slide") {
     return (
-      <NormalSlideWrapper
+      <NormalSlideContent
         slidePages={slidePages}
         onSlideEndFC={onSlideEndFC}
         animationTimeProps={animationTimeProps}
@@ -35,7 +35,7 @@ const SlideContent: React.FC<Props> = ({
     );
   } else {
     return (
-      <SplitedSlideWrapper
+      <SplitedSlideContent
         slidePages={slidePages}
         animationTimeProps={animationTimeProps}
       />

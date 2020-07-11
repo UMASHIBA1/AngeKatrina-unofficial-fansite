@@ -5,10 +5,10 @@ import {
   tablet_breakpoint,
 } from "../../../../constants/breakpoints";
 import CircleMain from "./CircleMain";
-import meritAndDemeritData from "./contentDatas/meritAndDemeritData";
-import SlideController from "./SlideController";
-import sanbakaData from "./contentDatas/sanbakaData";
-import testData from "./contentDatas/testData";
+import meritAndDemeritData from "./SlideController/SlideContent/contentDatas/meritAndDemeritData";
+import SlideController from "./SlideController/SlideController";
+import sanbakaData from "./SlideController/SlideContent/contentDatas/sanbakaData";
+import testData from "./SlideController/SlideContent/contentDatas/testData";
 
 const Wrapper = styled.div`
   position: absolute;

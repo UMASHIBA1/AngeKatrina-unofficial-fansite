@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import {
+  ANGE_WHITE,
+  ANGE_LIVE_BACK_COLOR,
+} from "../../../../../constants/colors";
 import SlideContent from "./SlideContent/SlideContent";
-import contentDataType from "./contentDatas/contentDataType";
+import contentDataType from "./SlideContent/contentDatas/contentDataType";
 
 const sliderAnimationDuration_ms = 800;
 
