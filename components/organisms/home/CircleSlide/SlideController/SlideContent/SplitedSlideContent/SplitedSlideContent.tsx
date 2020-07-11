@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { AnimationTimeProps } from "../SlideContent";
 import slideAnimation from "../slideAnimation";
 import ContentDataType from "../contentDatas/ContentDataType";
+import AnimationProps from "../../../../../../../typing/AnimationProps";
 
 interface Props {
   slidePages: ContentDataType["slidePages"];
-  animationTimeProps: AnimationTimeProps;
+  animationTimeProps: AnimationProps;
   // onSlideEndFC?: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }
 
@@ -27,7 +27,7 @@ const createClipPath = (slideIndex: 0 | 1 | 2 | 3 | 4, slideNum: number) =>
 const SplitedSlideOneLine = styled.div<{
   index: 0 | 1 | 2 | 3 | 4;
   slideNum: number;
-  animationTimeProps: AnimationTimeProps;
+  animationTimeProps: AnimationProps;
 }>`
   position: absolute;
   display: flex;

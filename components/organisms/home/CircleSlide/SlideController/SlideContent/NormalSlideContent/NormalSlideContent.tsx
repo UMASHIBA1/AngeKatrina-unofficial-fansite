@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { AnimationTimeProps } from "../SlideContent";
 import slideAnimation from "../slideAnimation";
 import NormalOneSlideContent from "./NormalOneSlideContent";
 import ContentDataType from "../contentDatas/ContentDataType";
+import AnimationProps from "../../../../../../../typing/AnimationProps";
 
 interface Props {
   slidePages: ContentDataType["slidePages"];
-  animationTimeProps: AnimationTimeProps;
+  animationTimeProps: AnimationProps;
   onSlideEndFC?: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }
 
 const SlideWrapper = styled.div<{
   slideNum: number;
-  animationTimeProps: AnimationTimeProps;
+  animationTimeProps: AnimationProps;
 }>`
   display: flex;
   flex-direction: row;

@@ -2,15 +2,11 @@ import React from "react";
 import NormalSlideContent from "./NormalSlideContent/NormalSlideContent";
 import SplitedSlideContent from "./SplitedSlideContent/SplitedSlideContent";
 import ContentDataType from "./contentDatas/ContentDataType";
-
-export interface AnimationTimeProps {
-  duration_ms: number;
-  delay_ms: number;
-}
+import AnimationProps from "../../../../../../typing/AnimationProps";
 
 type Props = Omit<ContentDataType, "animationDuration_ms"> & {
   onSlideEndFC: (event: React.AnimationEvent<HTMLDivElement>) => void;
-  animationTimeProps: AnimationTimeProps;
+  animationTimeProps: AnimationProps;
 };
 
 const SlideContent: React.FC<Props> = ({

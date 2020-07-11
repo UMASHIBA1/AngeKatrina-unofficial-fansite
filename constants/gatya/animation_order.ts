@@ -1,9 +1,5 @@
 import { omataseMattaContent } from "./omataseMattaSetting";
-
-interface AnimationProps {
-  duration_ms: number;
-  delay_ms: number;
-}
+import AnimationProps from "../../typing/AnimationProps";
 
 // summmonText
 export const summonTextShadowOrder: AnimationProps = {
