@@ -8,6 +8,7 @@ import CircleMain from "./CircleMain";
 import meritAndDemeritData from "./contentDatas/meritAndDemeritData";
 import SlideController from "./SlideController";
 import sanbakaData from "./contentDatas/sanbakaData";
+import testData from "./contentDatas/testData";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -35,7 +36,11 @@ const CircleSlide: React.FC = () => {
     <Wrapper>
       <CircleMain>
         <SlideController
-          slideContents={{ id1: meritAndDemeritData, id2: sanbakaData }}
+          slideContents={{
+            id0: testData,
+            id1: meritAndDemeritData,
+            id2: sanbakaData,
+          }}
         />
       </CircleMain>
     </Wrapper>

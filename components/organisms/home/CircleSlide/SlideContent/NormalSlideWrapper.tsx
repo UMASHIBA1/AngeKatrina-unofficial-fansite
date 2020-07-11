@@ -2,11 +2,11 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { AnimationTimeProps } from "./SlideContent";
 import slideAnimation from "./slideAnimation";
+import NormalOneSlideContent from "./NormalOneSlideContent";
 
 interface Props {
-  slideNum: number;
+  slidePages: ReactNode[];
   animationTimeProps: AnimationTimeProps;
-  children: ReactNode;
   onSlideEndFC?: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }
 
@@ -23,14 +23,20 @@ const SlideWrapper = styled.div<{
     forwards ${({ animationTimeProps }) => animationTimeProps.delay_ms}ms;
 `;
 
-const NormalSlideWrapper: React.FC<Props> = (props: Props) => {
+const NormalSlideWrapper: React.FC<Props> = ({
+  slidePages,
+  animationTimeProps,
+  onSlideEndFC,
+}: Props) => {
   return (
     <SlideWrapper
-      slideNum={props.slideNum}
-      animationTimeProps={props.animationTimeProps}
-      onAnimationEnd={props.onSlideEndFC}
+      slideNum={slidePages.length}
+      animationTimeProps={animationTimeProps}
+      onAnimationEnd={onSlideEndFC}
     >
-      {props.children}
+      {slidePages.map((children, index) => (
+        <NormalOneSlideContent key={index}>{children}</NormalOneSlideContent>
+      ))}
     </SlideWrapper>
   );
 };

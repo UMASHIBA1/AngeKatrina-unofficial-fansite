@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import OneSlideContent from "./OneSlideContent";
 import NormalSlideWrapper from "./NormalSlideWrapper";
 import SplitedSlideWrapper from "./SplitedSlideWrapper";
 
@@ -24,22 +23,17 @@ const SlideContent: React.FC<Props> = ({
   if (animationType === "slide") {
     return (
       <NormalSlideWrapper
-        slideNum={slidePages.length}
+        slidePages={slidePages}
         onSlideEndFC={onSlideEndFC}
         animationTimeProps={animationTimeProps}
-      >
-        {slidePages.map((children, index) => (
-          <OneSlideContent key={index}>{children}</OneSlideContent>
-        ))}
-      </NormalSlideWrapper>
+      />
     );
   } else {
     return (
-      <SplitedSlideWrapper slidePages={slidePages}>
-        {slidePages.map((children, index) => (
-          <OneSlideContent key={index}>{children}</OneSlideContent>
-        ))}
-      </SplitedSlideWrapper>
+      <SplitedSlideWrapper
+        slidePages={slidePages}
+        animationTimeProps={animationTimeProps}
+      />
     );
   }
 };

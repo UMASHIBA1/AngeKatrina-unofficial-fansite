@@ -10,8 +10,8 @@ const OneSlideWrapper = styled.div`
   justify-content: center;
 `;
 
-const OneSlideContent: React.FC = (props) => {
+const NormalOneSlideContent: React.FC = (props) => {
   return <OneSlideWrapper>{props.children}</OneSlideWrapper>;
 };
 
-export default OneSlideContent;
+export default NormalOneSlideContent;
