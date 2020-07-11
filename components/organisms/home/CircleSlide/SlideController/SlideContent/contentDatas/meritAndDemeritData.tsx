@@ -47,12 +47,12 @@ const meritAndDemeritData: ContentDataType = {
   animationType: "splitedSlide",
   slidePages: [
     {
-      node: <SecondPage />,
-      key: "ange-merit-demerit-merit",
-    },
-    {
       node: <FirstPage />,
       key: "ange-merit-demerit-title",
+    },
+    {
+      node: <SecondPage />,
+      key: "ange-merit-demerit-merit",
     },
     {
       node: <ThirdPage />,

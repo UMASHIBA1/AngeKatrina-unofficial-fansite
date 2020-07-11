@@ -46,6 +46,7 @@ const Controller = styled.div`
 `;
 
 const Slider = styled.div<{ isChangeSlide: boolean }>`
+  z-index: 100;
   position: absolute;
   left: 0;
   bottom: 0;

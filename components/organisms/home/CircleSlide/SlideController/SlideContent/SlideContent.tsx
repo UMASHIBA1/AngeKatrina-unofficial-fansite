@@ -27,6 +27,7 @@ const SlideContent: React.FC<Props> = ({
     return (
       <SplitedSlideContent
         slidePages={slidePages}
+        onSlideEndFC={onSlideEndFC}
         animationTimeProps={animationTimeProps}
       />
     );

@@ -24,20 +24,20 @@ export default {
   animationType: "splitedSlide",
   slidePages: [
     {
-      node: <TestPage color={ANGE_RED} />,
-      key: "test-red1",
-    },
-    {
       node: <TestPage color={ANGE_BROWN} />,
       key: "test-brown1",
     },
     {
-      node: <TestPage color={ANGE_BLACK} />,
-      key: "test-black1",
+      node: <TestPage color={ANGE_RED} />,
+      key: "test-red1",
     },
     {
       node: <TestPage color={ANGE_LIVE_BACK_COLOR} />,
       key: "test-live-back1",
+    },
+    {
+      node: <TestPage color={ANGE_BLACK} />,
+      key: "test-black1",
     },
   ],
   animationDuration_ms: 7000,
