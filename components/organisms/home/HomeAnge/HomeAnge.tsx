@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import angeBasicImgPath from "../../../../public/imgs/ange-basic.png";
 import {
@@ -26,6 +26,7 @@ const Img = styled.img.attrs({
   transform: rotate(-24deg);
   height: ${smAngeHeight}px;
   max-width: none;
+  cursor: pointer;
   @media (min-width: ${sm_breakpoint}px) {
     bottom: -${tabletAngeHeight * (3 / 5)}px;
     right: -${tabletAngeHeight * (1 / 8)}px;
@@ -64,8 +65,35 @@ const pcSpeechBubbleProp: Omit<SpeechBubbleProp, "text"> = {
   bottom: `calc(${pcAngeHeight} * 0.4)`,
 };
 
+const useAngeComment = () => {
+  const angeCommentList = [
+    "ほにゅ？",
+    "わっ！",
+    "死ぬんだぁ",
+    "もろて",
+    "それはそう",
+    "ぺったんこ！",
+  ];
+  // NOTE サーバー側とクライアントの表示コンテンツを合わせる為最初はindex0
+  const randomIndex = 0;
+  const [angeCommentNowIndex, _changeAngeComment] = useState(randomIndex);
+
+  const changeAngeComment = () => {
+    let randomIndex = Math.floor(Math.random() * angeCommentList.length);
+    while (randomIndex == angeCommentNowIndex) {
+      randomIndex = Math.floor(Math.random() * angeCommentList.length);
+    }
+    _changeAngeComment(randomIndex);
+  };
+  return [angeCommentList[angeCommentNowIndex], changeAngeComment] as [
+    string,
+    () => void
+  ];
+};
+
 const HomeAnge: React.FC = () => {
   const size = useTypedSelector((state) => state.sizes);
+  const [angeComment, changeAngeComment] = useAngeComment();
 
   const bubbleProp = sizeTypeJudge(size)(
     smSpeechBubbleProp,
@@ -74,8 +102,8 @@ const HomeAnge: React.FC = () => {
   );
   return (
     <React.Fragment>
-      <Img />
-      <SpeechBubble text="ほにゅ" {...bubbleProp} />
+      <Img onClick={changeAngeComment} />
+      <SpeechBubble text={angeComment} {...bubbleProp} />
     </React.Fragment>
   );
 };
