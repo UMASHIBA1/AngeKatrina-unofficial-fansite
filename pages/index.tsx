@@ -1,50 +1,32 @@
+import React from "react";
 import styled from "styled-components";
-import MagicCircle from "../components/organisms/start_animation/MagicCircle/MagicCircle";
+import { ANGE_LIVE_BACK_COLOR } from "../constants/colors";
 import PageWrapper from "../components/templates/PageWrapper";
-import SmallMagicCircleMap from "../components/organisms/start_animation/SmallMagicCircleMap/SmallMagicCircleMap";
-import { ANGE_WHITE } from "../constants/colors";
-import BlackTransition from "../components/organisms/start_animation/BlackTransition/BlackTransition";
-import OmataseMattaText from "../components/organisms/start_animation/OmataseMattaText";
-import AngeTriangle from "../components/organisms/start_animation/AngeTriangle";
-import Flash from "../components/organisms/start_animation/Flash/Flash";
-import ShowAngeCard from "../components/organisms/start_animation/ShowAngeCard";
-import { GetServerSideProps } from "next";
-import getRandomInt from "../systems/getRandomInt";
-import AngeCard from "../components/organisms/start_animation/AngeCard/AngeCard";
+import Logo from "../components/atomics/home/Logo";
+import HomeBG from "../components/organisms/home/HomeBG";
+import HomeAnge from "../components/organisms/home/HomeAnge/HomeAnge";
+import CircleSlide from "../components/organisms/home/CircleSlide/CircleSlide";
 
-const Main = styled.main`
+const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
   position: absolute;
-  background-color: ${ANGE_WHITE};
+  background-color: ${ANGE_LIVE_BACK_COLOR};
 `;
 
-interface Props {
-  randomInt: number;
-}
-
-// NOTE ランダム値をサーバー側で生成してAngeImgの表示される画像をサーバー、クライアント同じにしてる
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  return {
-    props: {
-      randomInt: getRandomInt(3),
-    },
-  };
+const Home: React.FC = () => {
+  return (
+    <PageWrapper>
+      <Wrapper>
+        <HomeBG>
+          <CircleSlide />
+          <Logo />
+          <HomeAnge />
+        </HomeBG>
+      </Wrapper>
+    </PageWrapper>
+  );
 };
 
-const IndexPage = ({ randomInt }: Props) => (
-  <PageWrapper>
-    <Main>
-      <MagicCircle />
-      <SmallMagicCircleMap />
-      <BlackTransition />
-      <AngeTriangle />
-      <OmataseMattaText />
-      <Flash />
-      <ShowAngeCard />
-      <AngeCard randomInt={randomInt} />
-    </Main>
-  </PageWrapper>
-);
-
-export default IndexPage;
+export default Home;
