@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { AnimationTimeProps } from "../SlideContent";
 import slideAnimation from "../slideAnimation";
-import contentDataType from "../contentDatas/contentDataType";
+import ContentDataType from "../contentDatas/ContentDataType";
 
 interface Props {
-  slidePages: contentDataType["slidePages"];
+  slidePages: ContentDataType["slidePages"];
   animationTimeProps: AnimationTimeProps;
   // onSlideEndFC?: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }

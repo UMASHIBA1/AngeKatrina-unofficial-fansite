@@ -1,7 +1,14 @@
-import { Props as SlideContentProps } from "../SlideContent";
+import { ReactNode } from "react";
 
-type contentDataType = Omit<SlideContentProps, "animationTimeProps"> & {
+interface SlidePageType {
+  node: ReactNode;
+  key: string | number;
+}
+
+interface ContentDataType {
+  animationType: "slide" | "splitedSlide";
+  slidePages: SlidePageType[];
   animationDuration_ms: number;
-};
+}
 
-export default contentDataType;
+export default ContentDataType;

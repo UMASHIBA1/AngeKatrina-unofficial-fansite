@@ -1,23 +1,17 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import NormalSlideContent from "./NormalSlideContent/NormalSlideContent";
 import SplitedSlideContent from "./SplitedSlideContent/SplitedSlideContent";
-
-interface SlidePageType {
-  node: ReactNode;
-  key: string | number;
-}
-
-export interface Props {
-  animationType: "slide" | "splitedSlide";
-  slidePages: SlidePageType[];
-  animationTimeProps: AnimationTimeProps;
-  onSlideEndFC?: () => void;
-}
+import ContentDataType from "./contentDatas/ContentDataType";
 
 export interface AnimationTimeProps {
   duration_ms: number;
   delay_ms: number;
 }
+
+type Props = Omit<ContentDataType, "animationDuration_ms"> & {
+  onSlideEndFC: (event: React.AnimationEvent<HTMLDivElement>) => void;
+  animationTimeProps: AnimationTimeProps;
+};
 
 const SlideContent: React.FC<Props> = ({
   animationType,

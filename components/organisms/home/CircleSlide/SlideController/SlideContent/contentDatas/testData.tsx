@@ -5,7 +5,7 @@ import {
   ANGE_BLACK,
   ANGE_LIVE_BACK_COLOR,
 } from "../../../../../../../constants/colors";
-import contentDataType from "./contentDataType";
+import ContentDataType from "./ContentDataType";
 
 const Styled = styled.div<{ bgColor: string }>`
   display: flex;
@@ -41,4 +41,4 @@ export default {
     },
   ],
   animationDuration_ms: 7000,
-} as contentDataType;
+} as ContentDataType;
