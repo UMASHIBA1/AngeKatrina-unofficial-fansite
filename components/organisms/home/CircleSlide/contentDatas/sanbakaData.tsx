@@ -75,12 +75,30 @@ const SecondDescriptionPage: React.FC = () => (
 const sanbakaData: contentDataType = {
   animationType: "slide",
   slidePages: [
-    <TitlePage />,
-    <AngePage />,
-    <RizePage />,
-    <InuiPage />,
-    <DescriptionPage />,
-    <SecondDescriptionPage />,
+    {
+      node: <TitlePage />,
+      key: "sanbaka-description-title",
+    },
+    {
+      node: <AngePage />,
+      key: "sanbaka-description-ange",
+    },
+    {
+      node: <RizePage />,
+      key: "sanbaka-description-rize",
+    },
+    {
+      node: <InuiPage />,
+      key: "sanbaka-description-inui",
+    },
+    {
+      node: <DescriptionPage />,
+      key: "sanbaka-description-description",
+    },
+    {
+      node: <SecondDescriptionPage />,
+      key: "sanbaka-description-description2",
+    },
   ],
   animationDuration_ms: 8000,
 };

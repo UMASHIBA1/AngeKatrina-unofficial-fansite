@@ -2,9 +2,14 @@ import React, { ReactNode } from "react";
 import NormalSlideWrapper from "./NormalSlideWrapper";
 import SplitedSlideWrapper from "./SplitedSlideWrapper";
 
+interface SlidePageType {
+  node: ReactNode;
+  key: string | number;
+}
+
 export interface Props {
   animationType: "slide" | "splitedSlide";
-  slidePages: ReactNode[];
+  slidePages: SlidePageType[];
   animationTimeProps: AnimationTimeProps;
   onSlideEndFC?: () => void;
 }

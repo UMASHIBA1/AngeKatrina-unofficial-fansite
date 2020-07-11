@@ -23,10 +23,22 @@ const TestPage = ({ color }: { color: string }) => {
 export default {
   animationType: "splitedSlide",
   slidePages: [
-    <TestPage color={ANGE_RED} />,
-    <TestPage color={ANGE_BROWN} />,
-    <TestPage color={ANGE_BLACK} />,
-    <TestPage color={ANGE_LIVE_BACK_COLOR} />,
+    {
+      node: <TestPage color={ANGE_RED} />,
+      key: "test-red1",
+    },
+    {
+      node: <TestPage color={ANGE_BROWN} />,
+      key: "test-brown1",
+    },
+    {
+      node: <TestPage color={ANGE_BLACK} />,
+      key: "test-black1",
+    },
+    {
+      node: <TestPage color={ANGE_LIVE_BACK_COLOR} />,
+      key: "test-live-back1",
+    },
   ],
   animationDuration_ms: 7000,
 } as contentDataType;

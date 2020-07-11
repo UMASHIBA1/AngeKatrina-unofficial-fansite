@@ -1,10 +1,11 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 import { AnimationTimeProps } from "./SlideContent";
 import slideAnimation from "./slideAnimation";
+import contentDataType from "../contentDatas/contentDataType";
 
 interface Props {
-  slidePages: ReactNode[];
+  slidePages: contentDataType["slidePages"];
   animationTimeProps: AnimationTimeProps;
   // onSlideEndFC?: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }
@@ -68,8 +69,8 @@ const SplitedSlideWrapper: React.FC<Props> = ({
           animationTimeProps={animationTimeProps}
           key={index}
         >
-          {slidePages.map((children, index) => (
-            <OneSlideContent key={index}>{children}</OneSlideContent>
+          {slidePages.map(({ node, key }) => (
+            <OneSlideContent key={key}>{node}</OneSlideContent>
           ))}
         </SplitedSlideOneLine>
       ))}

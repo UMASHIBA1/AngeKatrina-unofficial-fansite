@@ -1,11 +1,12 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 import { AnimationTimeProps } from "./SlideContent";
 import slideAnimation from "./slideAnimation";
 import NormalOneSlideContent from "./NormalOneSlideContent";
+import contentDataType from "../contentDatas/contentDataType";
 
 interface Props {
-  slidePages: ReactNode[];
+  slidePages: contentDataType["slidePages"];
   animationTimeProps: AnimationTimeProps;
   onSlideEndFC?: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }
@@ -34,8 +35,8 @@ const NormalSlideWrapper: React.FC<Props> = ({
       animationTimeProps={animationTimeProps}
       onAnimationEnd={onSlideEndFC}
     >
-      {slidePages.map((children, index) => (
-        <NormalOneSlideContent key={index}>{children}</NormalOneSlideContent>
+      {slidePages.map(({ node, key }) => (
+        <NormalOneSlideContent key={key}>{node}</NormalOneSlideContent>
       ))}
     </SlideWrapper>
   );
