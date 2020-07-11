@@ -24,6 +24,7 @@ const SlideContent: React.FC<Props> = ({
       />
     );
   } else {
+    // NOTE SplitedSlideは作ったはいいけど使い道があまりなかった。これできれいに遷移するコンテンツがみつからない
     return (
       <SplitedSlideContent
         slidePages={slidePages}
