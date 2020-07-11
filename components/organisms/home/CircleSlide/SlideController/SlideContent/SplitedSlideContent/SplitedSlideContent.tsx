@@ -10,6 +10,11 @@ interface Props {
   onSlideEndFC?: (event: React.AnimationEvent<HTMLDivElement>) => void;
 }
 
+type splitIndexType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+
+const splitedNum = 10;
+const splitedHeight = 100 / splitedNum;
+
 const SplitedSlideWrapperMain = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,13 +24,15 @@ const SplitedSlideWrapperMain = styled.div`
   height: 100%;
 `;
 
-const createClipPath = (slideIndex: 0 | 1 | 2 | 3 | 4, slideNum: number) =>
-  `0 ${20 * slideIndex}%, ${slideNum * 100}% ${20 * slideIndex}%, ${
-    slideNum * 100
-  }% ${20 * slideIndex + 20}%, 0 ${20 * slideIndex + 20}%`;
+const createClipPath = (slideIndex: splitIndexType, slideNum: number) =>
+  `0 ${splitedHeight * slideIndex}%, ${slideNum * 100}% ${
+    splitedHeight * slideIndex
+  }%, ${slideNum * 100}% ${splitedHeight * slideIndex + splitedHeight}%, 0 ${
+    splitedHeight * slideIndex + splitedHeight
+  }%`;
 
 const SplitedSlideOneLine = styled.div<{
-  index: 0 | 1 | 2 | 3 | 4;
+  index: splitIndexType;
   slideNum: number;
   animationTimeProps: AnimationProps;
 }>`
@@ -63,9 +70,9 @@ const SplitedSlideContent: React.FC<Props> = ({
 }: Props) => {
   return (
     <SplitedSlideWrapperMain>
-      {[0, 1, 2, 3, 4].map((index) => (
+      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
         <SplitedSlideOneLine
-          index={index as 0 | 1 | 2 | 3 | 4}
+          index={index as splitIndexType}
           slideNum={slidePages.length}
           animationTimeProps={animationTimeProps}
           key={`${slidePages[0].key}---${index}`}
