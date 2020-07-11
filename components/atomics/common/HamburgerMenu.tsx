@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../constants/colors";
-import { sm_breakpoint } from "../../../constants/breakpoints";
+import {
+  sm_breakpoint,
+  tablet_breakpoint,
+} from "../../../constants/breakpoints";
 
 interface Props {
   onClickFC?: () => void;
@@ -26,6 +29,12 @@ const Circle = styled.div`
     top: 12px;
     right: 12px;
   }
+  @media (min-width: ${tablet_breakpoint}px) {
+    width: 80px;
+    height: 80px;
+    top: 16px;
+    right: 16px;
+  }
 `;
 
 const Line = styled.div`
@@ -40,6 +49,11 @@ const Line = styled.div`
     height: 6px;
     margin: 4px 0 4px 0;
     border-radius: 3px;
+  }
+  @media (min-width: ${tablet_breakpoint}px) {
+    height: 8px;
+    margin: 4px 0 4px 0;
+    border-radius: 4px;
   }
 `;
 
