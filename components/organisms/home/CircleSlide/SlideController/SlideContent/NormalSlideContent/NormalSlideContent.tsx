@@ -34,6 +34,9 @@ const NormalSlideContent: React.FC<Props> = ({
       slideNum={slidePages.length}
       animationTimeProps={animationTimeProps}
       onAnimationEnd={onSlideEndFC}
+      // NOTE SlidePageのlengthが同じだった場合、文章は変わるがもう一度アニメーションが発生しなかった。
+      // そのため再レンダリングさせるためkeyを指定
+      key={slidePages[0].key}
     >
       {slidePages.map(({ node, key }) => (
         <NormalOneSlideContent key={key}>{node}</NormalOneSlideContent>
