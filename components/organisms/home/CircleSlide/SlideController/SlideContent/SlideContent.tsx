@@ -1,10 +1,10 @@
 import React from "react";
 import NormalSlideContent from "./NormalSlideContent/NormalSlideContent";
 import SplitedSlideContent from "./SplitedSlideContent/SplitedSlideContent";
-import ContentDataType from "./contentDatas/ContentDataType";
+import contentDataType from "./contentDatas/contentDataType";
 import AnimationProps from "../../../../../../typing/AnimationProps";
 
-type Props = Omit<ContentDataType, "animationDuration_ms"> & {
+type Props = Omit<contentDataType, "animationDuration_ms"> & {
   onSlideEndFC: (event: React.AnimationEvent<HTMLDivElement>) => void;
   animationTimeProps: AnimationProps;
 };

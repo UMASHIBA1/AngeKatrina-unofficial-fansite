@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import BigSlideText from "../../../../../../atomics/home/BigSlideText";
 import SlideText from "../../../../../../atomics/home/SlideText";
-import ContentDataType from "./ContentDataType";
+import contentDataType from "./contentDataType";
 
 const Wrapper = styled.div`
   width: 90%;
@@ -43,7 +43,7 @@ const FourthPage: React.FC = () => (
   </Wrapper>
 );
 
-const meritAndDemeritData: ContentDataType = {
+const meritAndDemeritData: contentDataType = {
   animationType: "slide",
   slidePages: [
     {

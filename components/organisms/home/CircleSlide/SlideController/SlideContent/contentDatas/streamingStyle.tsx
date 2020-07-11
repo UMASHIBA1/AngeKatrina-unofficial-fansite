@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import BigSlideText from "../../../../../../atomics/home/BigSlideText";
-import ContentDataType from "./ContentDataType";
+import contentDataType from "./contentDataType";
 import SlideText from "../../../../../../atomics/home/SlideText";
 
 const Wrapper = styled.div`
@@ -39,7 +39,7 @@ const OverTimeContentPage: React.FC = () => (
   </Wrapper>
 );
 
-const streamingStyleData: ContentDataType = {
+const streamingStyleData: contentDataType = {
   animationType: "slide",
   slidePages: [
     {

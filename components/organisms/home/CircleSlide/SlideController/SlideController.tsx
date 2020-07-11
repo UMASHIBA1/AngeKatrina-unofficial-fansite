@@ -5,12 +5,12 @@ import {
   ANGE_LIVE_BACK_COLOR,
 } from "../../../../../constants/colors";
 import SlideContent from "./SlideContent/SlideContent";
-import ContentDataType from "./SlideContent/contentDatas/ContentDataType";
+import contentDataType from "./SlideContent/contentDatas/contentDataType";
 
 const sliderAnimationDuration_ms = 800;
 
 interface SlideContentsType {
-  [key: string]: ContentDataType;
+  [key: string]: contentDataType;
 }
 
 interface Props {

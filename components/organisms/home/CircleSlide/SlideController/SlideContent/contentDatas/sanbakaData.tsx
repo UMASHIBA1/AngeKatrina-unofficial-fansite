@@ -5,7 +5,7 @@ import RizeImg from "../../../../../../../public/imgs/rize-heruesta.png";
 import InuiImg from "../../../../../../../public/imgs/inui-toko.png";
 import AngeImg from "../../../../../../../public/imgs/ange-basic.png";
 import SlideText from "../../../../../../atomics/home/SlideText";
-import ContentDataType from "./ContentDataType";
+import contentDataType from "./contentDataType";
 
 const Wrapper = styled.div`
   height: 100%;
@@ -72,7 +72,7 @@ const SecondDescriptionPage: React.FC = () => (
   </TextWrapper>
 );
 
-const sanbakaData: ContentDataType = {
+const sanbakaData: contentDataType = {
   animationType: "slide",
   slidePages: [
     {

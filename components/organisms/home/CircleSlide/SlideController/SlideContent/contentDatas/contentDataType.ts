@@ -5,10 +5,10 @@ interface SlidePageType {
   key: string | number;
 }
 
-interface ContentDataType {
+interface contentDataType {
   animationType: "slide" | "splitedSlide";
   slidePages: SlidePageType[];
   animationDuration_ms: number;
 }
 
-export default ContentDataType;
+export default contentDataType;
