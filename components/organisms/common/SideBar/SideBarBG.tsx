@@ -14,8 +14,8 @@ const SideBarBGMain = styled.div<{ isOpenSideBar: boolean }>`
   transform: translate(100%, 0);
   z-index: ${sideBarZIndex};
   background-color: ${ANGE_WHITE};
-  width: 150%;
-  height: 150%;
+  width: 100%;
+  height: 100%;
   animation: ${({ isOpenSideBar }) =>
       isOpenSideBar ? bounceToX("100%", "0", "5%") : "none"}
     400ms ease-out forwards;
