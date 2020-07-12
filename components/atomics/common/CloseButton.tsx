@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import {
-  ANGE_WHITE,
-  ANGE_LIVE_BACK_COLOR,
-} from "../../../../../constants/colors";
+import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../constants/colors";
 
 interface Props {
   onClickFC?: () => void;
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<Required<Omit<Props, "onClickFC">>>`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: ${({ top }) => top};
+  right: ${({ right }) => right};
+  bottom: ${({ bottom }) => bottom};
+  left: ${({ left }) => left};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +43,7 @@ const CloseButtonOutLine = styled.button`
   }
 `;
 
-const CloseButton = styled.div<{ isHovering: boolean }>`
+const CloseButtonMain = styled.div<{ isHovering: boolean }>`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -74,23 +77,29 @@ const RightTopLine = styled.div<{ isHovering: boolean }>`
   transform: rotate(45deg);
 `;
 
-const SideBarCloseButton: React.FC<Props> = (props: Props) => {
+const CloseButton: React.FC<Props> = ({
+  onClickFC,
+  top = "auto",
+  right = "auto",
+  bottom = "auto",
+  left = "auto",
+}: Props) => {
   const [isHovering, changeIsHovering] = useState(false);
 
   return (
-    <Wrapper>
+    <Wrapper top={top} right={right} bottom={bottom} left={left}>
       <CloseButtonOutLine
-        onClick={props.onClickFC}
+        onClick={onClickFC}
         onMouseEnter={() => changeIsHovering(true)}
         onMouseLeave={() => changeIsHovering(false)}
       >
-        <CloseButton isHovering={isHovering}>
+        <CloseButtonMain isHovering={isHovering}>
           <LeftTopLine isHovering={isHovering} />
           <RightTopLine isHovering={isHovering} />
-        </CloseButton>
+        </CloseButtonMain>
       </CloseButtonOutLine>
     </Wrapper>
   );
 };
 
-export default SideBarCloseButton;
+export default CloseButton;

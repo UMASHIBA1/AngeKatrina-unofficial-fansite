@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SideBarBG from "./SideBarBG";
 import useDidMount from "../../../../hooks/useDidMount";
-import SideBarCloseButton from "./SideBarTopBar/SideBarCloseButton";
+import CloseButton from "../../../atomics/common/CloseButton";
 import SideBarTopBar from "./SideBarTopBar/SideBarTopBar";
 
 const SideBar: React.FC = () => {
@@ -16,10 +16,11 @@ const SideBar: React.FC = () => {
   return (
     <SideBarBG isOpenSideBar={isOpenSideBar}>
       <SideBarTopBar>
-        <SideBarCloseButton
+        <CloseButton
           onClickFC={() => {
             changeIsOpenSideBar(false);
           }}
+          right="10px"
         />
       </SideBarTopBar>
     </SideBarBG>
