@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import {
+  ANGE_WHITE,
+  ANGE_LIVE_BACK_COLOR,
+} from "../../../../../constants/colors";
 
 interface Props {
   onClickFC?: () => void;
