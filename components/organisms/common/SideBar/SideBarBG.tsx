@@ -18,7 +18,7 @@ const SideBarBGMain = styled.div<{ isOpenSideBar: boolean }>`
   height: 150%;
   animation: ${({ isOpenSideBar }) =>
       isOpenSideBar ? bounceToX("100%", "0", "5%") : "none"}
-    400ms cubic-bezier(0, 0.01, 0.74, 1.53) forwards;
+    400ms ease-out forwards;
 `;
 
 const SideBarBG: React.FC<Props> = ({ isOpenSideBar, children }: Props) => {
