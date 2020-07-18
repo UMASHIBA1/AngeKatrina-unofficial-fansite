@@ -5,6 +5,7 @@ import CloseButton from "../../../atomics/common/CloseButton";
 import SideBarTopBar from "./SideBarTopBar/SideBarTopBar";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import SlideBarTitle from "./SideBarTopBar/SideBarTitle";
+import SideBarMenu from "./SideBarMenu/SideBarMenu";
 
 const SideBar: React.FC = () => {
   const [isOpenSideBar, changeIsOpenSideBar] = useState(false);
@@ -26,6 +27,7 @@ const SideBar: React.FC = () => {
           right="10px"
         />
       </SideBarTopBar>
+      <SideBarMenu></SideBarMenu>
     </SideBarBG>
   );
 };
