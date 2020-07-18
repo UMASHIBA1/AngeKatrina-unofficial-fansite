@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../../constants/colors";
 
 const TopBar = styled.div`
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
