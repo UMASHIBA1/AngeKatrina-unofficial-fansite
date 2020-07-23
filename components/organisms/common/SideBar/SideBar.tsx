@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SideBarBG from "./SideBarBG";
 import useDidMount from "../../../../hooks/useDidMount";
-import CloseButton from "../../../atomics/common/CloseButton";
+import CloseButton from "../../../atomics/common/CloseButton/CloseButton";
 import SideBarTopBar from "./SideBarTopBar/SideBarTopBar";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import SlideBarTitle from "./SideBarTopBar/SideBarTitle";
