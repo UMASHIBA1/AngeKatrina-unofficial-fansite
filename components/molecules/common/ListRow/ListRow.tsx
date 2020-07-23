@@ -60,6 +60,7 @@ const ListRow: React.FC<Props> = ({
       onMouseLeave={() => changeIsHovering(false)}
       cursor={cursor}
       onClick={onClickFC}
+      data-testid="list-row"
     >
       <IconWrapper>
         {HoveredSvg !== undefined && IconSvg !== undefined ? (

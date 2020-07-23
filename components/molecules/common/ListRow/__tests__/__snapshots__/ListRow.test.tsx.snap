@@ -4,6 +4,7 @@ exports[`snapshot test pass cursor: default prop 1`] = `
 <div
   className="ListRow__Wrapper-sc-1mu2w86-0 dOEazA"
   cursor="default"
+  data-testid="list-row"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -23,6 +24,7 @@ exports[`snapshot test pass cursor: pointer prop 1`] = `
 <div
   className="ListRow__Wrapper-sc-1mu2w86-0 byiPZs"
   cursor="pointer"
+  data-testid="list-row"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -42,6 +44,7 @@ exports[`snapshot test pass minimum props 1`] = `
 <div
   className="ListRow__Wrapper-sc-1mu2w86-0 dOEazA"
   cursor="default"
+  data-testid="list-row"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
