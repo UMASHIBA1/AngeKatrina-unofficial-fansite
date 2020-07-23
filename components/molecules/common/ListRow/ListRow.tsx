@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import H2 from "../../atomics/common/H2";
+import H2 from "../../../atomics/common/H2";
 
 interface Props {
   mainText: string;

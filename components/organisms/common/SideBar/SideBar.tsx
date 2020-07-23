@@ -14,7 +14,7 @@ import WhiteHomeIcon from "../../../../public/svgs/common/white-homeIcon.svg";
 import WhiteInfoIcon from "../../../../public/svgs/common/white-infoIcon.svg";
 import WhiteLicenseIcon from "../../../../public/svgs/common/white-licenseIcon.svg";
 import WhitePresentIcon from "../../../../public/svgs/common/white-presentIcon.svg";
-import ListRow from "../../../molecules/common/ListRow";
+import ListRow from "../../../molecules/common/ListRow/ListRow";
 
 interface contentDataType {
   icon: React.StatelessComponent<React.SVGAttributes<SVGElement>>;

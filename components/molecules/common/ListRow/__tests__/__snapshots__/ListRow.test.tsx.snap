@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test pass cursor: default prop 1`] = `
+<div
+  className="ListRow__Wrapper-sc-1mu2w86-0 dOEazA"
+  cursor="default"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="ListRow__IconWrapper-sc-1mu2w86-1 cgdwMp"
+  />
+  <h2
+    className="H2__Text-cfm3jm-0 kMZDyH"
+    color="#000000"
+  >
+    sample
+  </h2>
+</div>
+`;
+
+exports[`snapshot test pass cursor: pointer prop 1`] = `
+<div
+  className="ListRow__Wrapper-sc-1mu2w86-0 byiPZs"
+  cursor="pointer"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="ListRow__IconWrapper-sc-1mu2w86-1 cgdwMp"
+  />
+  <h2
+    className="H2__Text-cfm3jm-0 kMZDyH"
+    color="#000000"
+  >
+    sample
+  </h2>
+</div>
+`;
+
+exports[`snapshot test pass minimum props 1`] = `
+<div
+  className="ListRow__Wrapper-sc-1mu2w86-0 dOEazA"
+  cursor="default"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="ListRow__IconWrapper-sc-1mu2w86-1 cgdwMp"
+  />
+  <h2
+    className="H2__Text-cfm3jm-0 kMZDyH"
+    color="#000000"
+  >
+    sample
+  </h2>
+</div>
+`;
