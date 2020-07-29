@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../constants/colors";
+import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import {
   sm_breakpoint,
   tablet_breakpoint,
-} from "../../../constants/breakpoints";
+} from "../../../../constants/breakpoints";
 
 interface Props {
   onClickFC?: () => void;
@@ -60,7 +60,7 @@ const Line = styled.div`
 
 const HamburgerMenu: React.FC<Props> = (props: Props) => {
   return (
-    <Circle onClick={props.onClickFC}>
+    <Circle onClick={props.onClickFC} data-testid="hamburger-menu">
       <Line />
       <Line />
       <Line />

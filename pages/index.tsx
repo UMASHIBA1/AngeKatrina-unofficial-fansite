@@ -6,7 +6,7 @@ import Logo from "../components/atomics/home/Logo";
 import HomeBG from "../components/organisms/home/HomeBG";
 import HomeAnge from "../components/organisms/home/HomeAnge/HomeAnge";
 import CircleSlide from "../components/organisms/home/CircleSlide/CircleSlide";
-import HamburgerMenu from "../components/atomics/common/HamburgerMenu";
+import HamburgerMenu from "../components/atomics/common/HamburgerMenu/HamburgerMenu";
 import SideBar from "../components/organisms/common/SideBar/SideBar";
 
 const Wrapper = styled.div`
