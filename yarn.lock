@@ -5893,10 +5893,10 @@ neo-async@2.6.1, neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-next-images@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/next-images/-/next-images-1.4.0.tgz#be21d20e9437debe2dd3b5d0ef5847dd6fc77cec"
-  integrity sha512-r5PMMyv5Nrbq93IutIpB0arApPQUer42dfKU/vjlc2u8n3PBib8Pvv9eRH/Eco0Akg5hitp8E125GBZ+isWSsA==
+next-images@1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/next-images/-/next-images-1.6.2.tgz#e5535ba468c3c857025e7fa07a27c773326223ad"
+  integrity sha512-tmINk0NzJ/D7Kk16x9gOgTd9wlcVG4IfyEcQqt/SY31miwuv5pzUhT7fakO2fYPrXimHOEPBaacCz1G6jADcbQ==
   dependencies:
     file-loader "^6.0.0"
     url-loader "^4.0.0"
