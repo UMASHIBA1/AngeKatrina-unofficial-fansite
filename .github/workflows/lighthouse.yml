@@ -1,11 +1,53 @@
-name: CI
+name: light house CI
 on: [push]
 jobs:
-  lighthouseci:
+  lhci:
+    name: Lighthouse
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install && npm install -g @lhci/cli@0.6.x
-      - run: npm run build
-      - run: lhci autorun
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: yarn install, build
+        run: |
+          yarn install
+          yarn build
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.6.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+      - name: Slack Notification on SUCCESS
+        if: success()
+        uses: tokorom/action-slack-incoming-webhook@main
+        env:
+          INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          text: Successfully run lighthouse
+          attachments: |
+            [
+              {
+                "color": "good",
+                "author_name": "${{ github.actor }}",
+                "author_icon": "${{ github.event.sender.avatar_url }}",
+                "fields": [
+                  {
+                    "title": "コミットメッセージ",
+                    "value": "${{ github.event.head_commit.message }}"
+                  },
+                  {
+                    "title": "GitHub Actions URL",
+                    "value": "${{ github.event.repository.url }}/actions/runs/${{ github.run_id }}"
+                  },
+                  {
+                    "title": "差分表示 URL",
+                    "value": "${{ github.event.compare }}"
+                  }
+                ]
+              }
+            ]
