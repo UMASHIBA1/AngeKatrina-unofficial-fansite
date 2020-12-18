@@ -35,7 +35,7 @@
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.5",
     "jest": "26.1.0",
-    "next-images": "1.4.0",
+    "next-images": "1.6.2",
     "react-test-renderer": "16.13.1",
     "sass": "1.26.10",
     "ts-jest": "26.1.4",
