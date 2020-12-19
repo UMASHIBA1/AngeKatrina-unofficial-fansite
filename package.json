@@ -5,7 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "fmt": "prettier --write ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.4.0",
