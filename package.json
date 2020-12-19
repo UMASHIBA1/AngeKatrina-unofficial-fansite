@@ -28,6 +28,7 @@
     "@types/styled-components": "5.1.1",
     "babel-plugin-styled-components": "1.10.7",
     "next-images": "1.4.0",
+    "prettier": "2.2.1",
     "sass": "1.26.10",
     "typescript": "3.9.6"
   },
