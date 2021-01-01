@@ -6,6 +6,7 @@ import Logo from "../components/atomics/home/Logo";
 import HomeBG from "../components/organisms/home/HomeBG";
 import HomeAnge from "../components/organisms/home/HomeAnge/HomeAnge";
 import CircleSlide from "../components/organisms/home/CircleSlide/CircleSlide";
+import HamburgerMenu from "../components/atomics/common/HamburgerMenu";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -23,6 +24,7 @@ const Home: React.FC = () => {
           <CircleSlide />
           <Logo />
           <HomeAnge />
+          <HamburgerMenu />
         </HomeBG>
       </Wrapper>
     </PageWrapper>
