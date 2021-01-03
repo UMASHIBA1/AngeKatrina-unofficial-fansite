@@ -34,7 +34,7 @@ const Home: React.FC = () => {
           <NavBar
             isOpen={isOpenNavBar}
             onClose={() => {
-              changeIsOpenNavBar(true);
+              changeIsOpenNavBar(false);
             }}
           />
         </HomeBG>

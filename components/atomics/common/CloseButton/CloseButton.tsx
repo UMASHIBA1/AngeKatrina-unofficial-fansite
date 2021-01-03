@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
-import { boundExpand } from "../../../../styles/commonAnimation";
+import {
+  boundExpand,
+  boundShrink,
+  scale,
+} from "../../../../styles/commonAnimation";
 
 interface Props {
   displayAnimationDelay: number;
-  runStartAnimation: boolean;
+  disableAnimationDelay: number;
+  runDisplayAnimation: boolean;
+  runCloseAnimation: boolean;
   onClickFC?: () => void;
   top?: string;
   right?: string;
@@ -24,10 +30,20 @@ const Wrapper = styled.div<Required<Omit<Props, "onClickFC">>>`
   align-items: center;
   width: 55px;
   height: 55px;
-  animation: ${({ runStartAnimation }) =>
-      runStartAnimation ? boundExpand(40, 1.1) : "none"}
-    500ms ease-out both
-    ${({ displayAnimationDelay }) => displayAnimationDelay}ms;
+  ${({ runDisplayAnimation, displayAnimationDelay }) =>
+    runDisplayAnimation &&
+    css`
+      transform: scale(0);
+      animation: ${boundExpand(40, 1.1)} 500ms ease-out forwards
+        ${displayAnimationDelay}ms;
+    `}
+
+  ${({ runCloseAnimation, disableAnimationDelay }) =>
+    runCloseAnimation &&
+    css`
+      transform: scale(1.1);
+      animation: ${scale(0)} 200ms ease-out forwards ${disableAnimationDelay}ms;
+    `}
 `;
 
 const transitionTime = "200ms";
@@ -91,17 +107,21 @@ const CloseButton: React.FC<Props> = ({
   bottom = "auto",
   left = "auto",
   displayAnimationDelay,
-  runStartAnimation,
+  disableAnimationDelay,
+  runDisplayAnimation,
+  runCloseAnimation,
 }: Props) => {
   const [isHovering, changeIsHovering] = useState(false);
 
   return (
     <Wrapper
-      runStartAnimation={runStartAnimation}
+      runDisplayAnimation={runDisplayAnimation}
+      runCloseAnimation={runCloseAnimation}
       top={top}
       right={right}
       bottom={bottom}
       left={left}
+      disableAnimationDelay={disableAnimationDelay}
       displayAnimationDelay={displayAnimationDelay}
     >
       <CloseButtonOutLine

@@ -8,7 +8,9 @@ interface Props {
   color: "red" | "white";
   place: "topRight" | "bottomLeft";
   runStartAnimation: boolean;
+  runCloseAnimation: boolean;
   animationOrder: "first" | "second";
+  onAnimationEnd?: () => void;
 }
 
 const Circle = styled.div<Props>`
@@ -27,19 +29,33 @@ const Circle = styled.div<Props>`
     `}
 	width: max(100vw, 100vh);
   height: max(100vw, 100vh);
-  transform: scale(0);
-  animation: ${({ runStartAnimation }) =>
-      runStartAnimation ? scale(2.8) : "none"}
-    ease-in forwards;
-  animation-duration: 200ms;
-  animation-delay: ${({ animationOrder }) =>
-    animationOrder === "first" ? "100ms" : "300ms"};
+  visibility: ${({ runStartAnimation, runCloseAnimation }) =>
+    runStartAnimation && runCloseAnimation ? "hidden" : "visible"};
+  ${({ runStartAnimation, animationOrder }) => {
+    if (runStartAnimation) {
+      return css`
+        transform: scale(0);
+        animation: ${scale(2.8)} ease-in forwards;
+        animation-duration: 200ms;
+        animation-delay: ${animationOrder === "first" ? "100ms" : "300ms"};
 
-  @media (min-width: ${tablet_breakpoint}px) {
-    animation-duration: 250ms;
-    animation-delay: ${({ animationOrder }) =>
-      animationOrder === "first" ? "100ms" : "300ms"};
-  }
+        @media (min-width: ${tablet_breakpoint}px) {
+          animation-duration: 250ms;
+        }
+      `;
+    } else {
+      return css`
+        transform: scale(2.8);
+        animation: ${scale(0)} ease-in forwards;
+        animation-duration: 200ms;
+        animation-delay: ${animationOrder === "first" ? "700ms" : "600ms"};
+
+        @media (min-width: ${tablet_breakpoint}px) {
+          animation-duration: 250ms;
+        }
+      `;
+    }
+  }}
 
   ${({ color }) =>
     color === "red" &&
@@ -56,7 +72,14 @@ const Circle = styled.div<Props>`
 `;
 
 const ExpandCircle: React.FC<Props> = (props) => {
-  return <Circle {...props} />;
+  return (
+    <Circle
+      {...props}
+      onAnimationEnd={
+        props.runCloseAnimation ? props.onAnimationEnd : undefined
+      }
+    />
+  );
 };
 
 export default ExpandCircle;

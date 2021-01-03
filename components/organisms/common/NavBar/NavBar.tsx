@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
 import ExpandCircle from "./ExpandCircle";
 import NavBarTop from "./NavBarTop/NavBarTop";
 import RedHomeIcon from "../../../../public/svgs/common/red-homeIcon.svg";
@@ -12,6 +12,7 @@ import WhiteLicenseIcon from "../../../../public/svgs/common/white-licenseIcon.s
 import WhitePresentIcon from "../../../../public/svgs/common/white-presentIcon.svg";
 import NavBarMenu from "./NavBarMenu/NavBarMenu";
 import { navBarZindex } from "../../../../constants/zindex";
+import { toUnvisible, toVisible } from "../../../../styles/commonAnimation";
 
 const contentData = [
   {
@@ -41,7 +42,7 @@ interface Props {
   onClose: () => void;
 }
 
-const NavWrapper = styled.div<{ isOpen: boolean }>`
+const NavWrapper = styled.div<{ isOpen: boolean; runCloseAnimation: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -49,26 +50,62 @@ const NavWrapper = styled.div<{ isOpen: boolean }>`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+  ${({ isOpen, runCloseAnimation }) =>
+    !isOpen &&
+    !runCloseAnimation &&
+    css`
+      visibility: hidden;
+    `}
+
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      visibility: hidden;
+      animation: ${toVisible} 1ms forwards linear 0ms;
+    `}
+  ${({ runCloseAnimation }) =>
+    runCloseAnimation &&
+    css`
+      visibility: visible;
+      animation: ${toUnvisible} 1ms forwards linear 1000ms;
+    `}
 `;
 
 const NavBar: React.FC<Props> = ({ isOpen, onClose }) => {
+  const [runCloseAnimation, changeRunCloseAnimation] = useState(false);
   return (
-    <NavWrapper isOpen={isOpen}>
+    <NavWrapper isOpen={isOpen} runCloseAnimation={runCloseAnimation}>
       <ExpandCircle
         color="red"
         place="topRight"
+        runCloseAnimation={runCloseAnimation}
         runStartAnimation={isOpen}
         animationOrder="first"
+        onAnimationEnd={() => {
+          console.log("run close red");
+          changeRunCloseAnimation(false);
+        }}
       />
       <ExpandCircle
         color="white"
         place="bottomLeft"
+        runCloseAnimation={runCloseAnimation}
         runStartAnimation={isOpen}
         animationOrder="second"
       />
-      <NavBarTop runStartAnimation={isOpen} onClose={onClose} />
-      <NavBarMenu runStartAnimation={isOpen} contentDataList={contentData} />
+      <NavBarTop
+        runStartAnimation={isOpen}
+        onClose={() => {
+          onClose();
+          changeRunCloseAnimation(true);
+        }}
+        runCloseAnimation={runCloseAnimation}
+      />
+      <NavBarMenu
+        runStartAnimation={isOpen}
+        runCloseAnimation={runCloseAnimation}
+        contentDataList={contentData}
+      />
     </NavWrapper>
   );
 };

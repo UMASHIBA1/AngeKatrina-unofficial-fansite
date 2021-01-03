@@ -45,6 +45,18 @@ export const fadeout = keyframes`
     }
 `;
 
+export const toVisible = keyframes`
+    to {
+        visibility: visible;
+    }
+`;
+
+export const toUnvisible = keyframes`
+    to {
+        visibility: hidden;
+    }
+`;
+
 export const toDeepInsetShadow = (
   shadowSpreadRadius = 20,
   color = "rgba(0,0,0,0.5)"
@@ -191,5 +203,22 @@ export const boundExpand = (
 
     100% {
         transform: scale(1);
+    }
+`;
+
+export const boundShrink = (
+  bouncePercent: number = 70,
+  bounceRatio: number = 1.2
+) => keyframes`
+    0% {
+        transform: scale(1);
+    }
+
+    ${bouncePercent}% {
+        transform: scale(${bounceRatio});
+    }
+
+    100% {
+        transform: scale(0);
     }
 `;
