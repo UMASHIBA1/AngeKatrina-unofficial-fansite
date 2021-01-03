@@ -11,6 +11,7 @@ import WhiteInfoIcon from "../../../../public/svgs/common/white-infoIcon.svg";
 import WhiteLicenseIcon from "../../../../public/svgs/common/white-licenseIcon.svg";
 import WhitePresentIcon from "../../../../public/svgs/common/white-presentIcon.svg";
 import NavBarMenu from "./NavBarMenu/NavBarMenu";
+import { navBarZindex } from "../../../../constants/zindex";
 interface contentDataType {
   icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
   hoveredIcon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
@@ -55,6 +56,7 @@ const NavWrapper = styled.div<{ isOpen: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
+  z-index: ${navBarZindex};
   width: 100vw;
   height: 100vh;
   overflow: hidden;
