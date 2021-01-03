@@ -8,7 +8,7 @@ import HomeAnge from "../components/organisms/home/HomeAnge/HomeAnge";
 import CircleSlide from "../components/organisms/home/CircleSlide/CircleSlide";
 import HamburgerMenu from "../components/atomics/common/HamburgerMenu";
 import NavBar from "../components/atomics/common/NavBar/NavBar";
-import HamburgerMenu from "../components/atomics/common/HamburgerMenu/HamburgerMenu";
+// import HamburgerMenu from "../components/atomics/common/HamburgerMenu/HamburgerMenu";
 import SideBar from "../components/organisms/common/SideBar/SideBar";
 
 const Wrapper = styled.div`
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
           <CircleSlide />
           <Logo />
           <HomeAnge />
-          <HamburgerMenu />
+          {/* <HamburgerMenu /> */}
           <NavBar />
           <HamburgerMenu />
           <SideBar />
