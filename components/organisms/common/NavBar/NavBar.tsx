@@ -44,10 +44,10 @@ const contentData: contentDataType[] = [
   },
 ];
 
-interface LinkProp {
-  text: string;
-  url: string;
-}
+// interface LinkProp {
+//   text: string;
+//   url: string;
+// }
 
 // interface Props {
 //   links: LinkProp[];
@@ -81,21 +81,7 @@ const NavBar: React.FC = () => {
         animationOrder="second"
       />
       <NavBarTop />
-      <NavBarMenu>
-        {contentData.map(({ icon, mainText, hoveredIcon }) => {
-          return (
-            <ListRow
-              key={mainText}
-              mainText={mainText}
-              IconSvg={icon}
-              HoveredSvg={hoveredIcon}
-              bgColor={ANGE_WHITE}
-              textColor={ANGE_LIVE_BACK_COLOR}
-              cursor={"pointer"}
-            />
-          );
-        })}
-      </NavBarMenu>
+      <NavBarMenu contentDataList={contentData} />
       {/* <LinkList
         links={[
           {
