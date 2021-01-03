@@ -118,3 +118,61 @@ export const bgColorChange = (from: string, to: string) => {
         }
     `;
 };
+
+export const bounceToX = (from: string, to: string, maxBounce: string) => {
+  // NOTE maxBounce_percentは最大の跳ね返りを5%にしたいなら5%を指定する
+  return keyframes`
+        0% {
+            transform: translateX(${from});
+        }
+
+        20% {
+            transform: translateX(${to});
+        }
+
+        40% {
+            transform: translateX(${maxBounce});
+        }
+
+        60% {
+            transform: translateX(0);
+        }
+
+        80% {
+            transform: translateX(calc(${maxBounce} / 2));
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    `;
+};
+
+export const bounceToY = (from: string, to: string, maxBounce: string) => {
+  // NOTE maxBounce_percentは最大の跳ね返りを5%にしたいなら5%を指定する
+  return keyframes`
+        0% {
+            transform: translateY(${from});
+        }
+
+        20% {
+            transform: translateY(${to});
+        }
+
+        40% {
+            transform: translateY(${maxBounce});
+        }
+
+        60% {
+            transform: translateY(0);
+        }
+
+        80% {
+            transform: translateY(calc(${maxBounce} / 2));
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    `;
+};

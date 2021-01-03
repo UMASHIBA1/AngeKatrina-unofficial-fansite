@@ -8,6 +8,8 @@ import HomeAnge from "../components/organisms/home/HomeAnge/HomeAnge";
 import CircleSlide from "../components/organisms/home/CircleSlide/CircleSlide";
 import HamburgerMenu from "../components/atomics/common/HamburgerMenu";
 import NavBar from "../components/atomics/common/NavBar/NavBar";
+import HamburgerMenu from "../components/atomics/common/HamburgerMenu/HamburgerMenu";
+import SideBar from "../components/organisms/common/SideBar/SideBar";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -27,6 +29,8 @@ const Home: React.FC = () => {
           <HomeAnge />
           <HamburgerMenu />
           <NavBar />
+          <HamburgerMenu />
+          <SideBar />
         </HomeBG>
       </Wrapper>
     </PageWrapper>
