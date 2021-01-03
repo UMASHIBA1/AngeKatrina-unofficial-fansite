@@ -23,7 +23,7 @@ const TopBar = styled.div`
     width: 100%;
     height: 2px;
     background-color: ${ANGE_LIVE_BACK_COLOR};
-    animation: ${translate({ x: "-100%", y: 0 }, { x: 0, y: 0 })} 100ms
+    animation: ${translate({ x: "-100%", y: 0 }, { x: 0, y: 0 })} 150ms
       ease-in-out both ${baseDelay + 50}ms;
   }
 `;
@@ -41,6 +41,7 @@ const NavBarTop: React.FC = (props) => {
     <TopBar>
       <NavBarTitle text="どれにする？" color={ANGE_LIVE_BACK_COLOR} />
       <CloseButton
+        displayAnimationDelay={baseDelay + 300}
         onClickFC={() => {
           changeIsOpenSideBar(false);
         }}

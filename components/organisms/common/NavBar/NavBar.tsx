@@ -1,7 +1,6 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import ExpandCircle from "./ExpandCircle";
-import LinkList from "./LinkList";
 import NavBarTop from "./NavBarTop/NavBarTop";
 import RedHomeIcon from "../../../../public/svgs/common/red-homeIcon.svg";
 import RedInfoIcon from "../../../../public/svgs/common/red-infoIcon.svg";
@@ -12,9 +11,6 @@ import WhiteInfoIcon from "../../../../public/svgs/common/white-infoIcon.svg";
 import WhiteLicenseIcon from "../../../../public/svgs/common/white-licenseIcon.svg";
 import WhitePresentIcon from "../../../../public/svgs/common/white-presentIcon.svg";
 import NavBarMenu from "./NavBarMenu/NavBarMenu";
-import ListRow from "../../../molecules/common/ListRow/ListRow";
-import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../../constants/colors";
-
 interface contentDataType {
   icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
   hoveredIcon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
@@ -82,22 +78,6 @@ const NavBar: React.FC = () => {
       />
       <NavBarTop />
       <NavBarMenu contentDataList={contentData} />
-      {/* <LinkList
-        links={[
-          {
-            text: "にゃーん!",
-            url: "exaple.com",
-          },
-          {
-            text: "日本語にゃーん",
-            url: "example.com",
-          },
-          {
-            text: "ガチャ",
-            url: "example.com",
-          },
-        ]}
-      /> */}
     </NavWrapper>
   );
 };

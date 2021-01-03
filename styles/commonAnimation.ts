@@ -176,3 +176,20 @@ export const bounceToY = (from: string, to: string, maxBounce: string) => {
         }
     `;
 };
+
+export const boundExpand = (
+  bouncePercent: number = 30,
+  bounceRatio: number = 1.2
+) => keyframes`
+    0% {
+        transform: scale(0);
+    }
+
+    ${bouncePercent}% {
+        transform: scale(${bounceRatio});
+    }
+
+    100% {
+        transform: scale(1);
+    }
+`;

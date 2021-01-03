@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import { boundExpand, fadein } from "../../../../styles/commonAnimation";
 
 interface Props {
+  displayAnimationDelay: number;
   onClickFC?: () => void;
   top?: string;
   right?: string;
@@ -21,6 +23,8 @@ const Wrapper = styled.div<Required<Omit<Props, "onClickFC">>>`
   align-items: center;
   width: 55px;
   height: 55px;
+  animation: ${boundExpand(40, 1.1)} 500ms ease-out both
+    ${({ displayAnimationDelay }) => displayAnimationDelay}ms;
 `;
 
 const transitionTime = "200ms";
@@ -83,11 +87,18 @@ const CloseButton: React.FC<Props> = ({
   right = "auto",
   bottom = "auto",
   left = "auto",
+  displayAnimationDelay,
 }: Props) => {
   const [isHovering, changeIsHovering] = useState(false);
 
   return (
-    <Wrapper top={top} right={right} bottom={bottom} left={left}>
+    <Wrapper
+      top={top}
+      right={right}
+      bottom={bottom}
+      left={left}
+      displayAnimationDelay={displayAnimationDelay}
+    >
       <CloseButtonOutLine
         onClick={onClickFC}
         onMouseEnter={() => changeIsHovering(true)}
