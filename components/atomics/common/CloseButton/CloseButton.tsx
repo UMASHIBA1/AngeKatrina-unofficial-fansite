@@ -5,6 +5,7 @@ import { boundExpand } from "../../../../styles/commonAnimation";
 
 interface Props {
   displayAnimationDelay: number;
+  runStartAnimation: boolean;
   onClickFC?: () => void;
   top?: string;
   right?: string;
@@ -23,7 +24,9 @@ const Wrapper = styled.div<Required<Omit<Props, "onClickFC">>>`
   align-items: center;
   width: 55px;
   height: 55px;
-  animation: ${boundExpand(40, 1.1)} 500ms ease-out both
+  animation: ${({ runStartAnimation }) =>
+      runStartAnimation ? boundExpand(40, 1.1) : "none"}
+    500ms ease-out both
     ${({ displayAnimationDelay }) => displayAnimationDelay}ms;
 `;
 
@@ -88,11 +91,13 @@ const CloseButton: React.FC<Props> = ({
   bottom = "auto",
   left = "auto",
   displayAnimationDelay,
+  runStartAnimation,
 }: Props) => {
   const [isHovering, changeIsHovering] = useState(false);
 
   return (
     <Wrapper
+      runStartAnimation={runStartAnimation}
       top={top}
       right={right}
       bottom={bottom}

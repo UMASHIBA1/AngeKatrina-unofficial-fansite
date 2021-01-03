@@ -12,13 +12,8 @@ import WhiteLicenseIcon from "../../../../public/svgs/common/white-licenseIcon.s
 import WhitePresentIcon from "../../../../public/svgs/common/white-presentIcon.svg";
 import NavBarMenu from "./NavBarMenu/NavBarMenu";
 import { navBarZindex } from "../../../../constants/zindex";
-interface contentDataType {
-  icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-  hoveredIcon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-  mainText: string;
-}
 
-const contentData: contentDataType[] = [
+const contentData = [
   {
     icon: RedHomeIcon,
     hoveredIcon: WhiteHomeIcon,
@@ -41,16 +36,10 @@ const contentData: contentDataType[] = [
   },
 ];
 
-// interface LinkProp {
-//   text: string;
-//   url: string;
-// }
-
-// interface Props {
-//   links: LinkProp[];
-//   isOpen: boolean;
-//   changeIsClose: () => void;
-// }
+interface Props {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
 const NavWrapper = styled.div<{ isOpen: boolean }>`
   position: absolute;
@@ -63,23 +52,23 @@ const NavWrapper = styled.div<{ isOpen: boolean }>`
   visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
 `;
 
-const NavBar: React.FC = () => {
+const NavBar: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
-    <NavWrapper isOpen={true}>
+    <NavWrapper isOpen={isOpen}>
       <ExpandCircle
         color="red"
         place="topRight"
-        isStartAnimation={true}
+        runStartAnimation={isOpen}
         animationOrder="first"
       />
       <ExpandCircle
         color="white"
         place="bottomLeft"
-        isStartAnimation={true}
+        runStartAnimation={isOpen}
         animationOrder="second"
       />
-      <NavBarTop />
-      <NavBarMenu contentDataList={contentData} />
+      <NavBarTop runStartAnimation={isOpen} onClose={onClose} />
+      <NavBarMenu runStartAnimation={isOpen} contentDataList={contentData} />
     </NavWrapper>
   );
 };

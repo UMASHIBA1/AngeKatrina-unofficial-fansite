@@ -7,7 +7,7 @@ import { scale } from "../../../../styles/commonAnimation";
 interface Props {
   color: "red" | "white";
   place: "topRight" | "bottomLeft";
-  isStartAnimation: boolean;
+  runStartAnimation: boolean;
   animationOrder: "first" | "second";
 }
 
@@ -28,8 +28,8 @@ const Circle = styled.div<Props>`
 	width: max(100vw, 100vh);
   height: max(100vw, 100vh);
   transform: scale(0);
-  animation: ${({ isStartAnimation }) =>
-      isStartAnimation ? scale(2.8) : "none"}
+  animation: ${({ runStartAnimation }) =>
+      runStartAnimation ? scale(2.8) : "none"}
     ease-in forwards;
   animation-duration: 200ms;
   animation-delay: ${({ animationOrder }) =>

@@ -14,12 +14,13 @@ interface ContentDataType {
 }
 
 interface Props {
+  runStartAnimation: boolean;
   contentDataList: ContentDataType[];
 }
 
 const baseDelay = 550;
 
-const Wrapper = styled.ul`
+const Wrapper = styled.ul<Pick<Props, "runStartAnimation">>`
   width: 100%;
   position: relative;
   display: flex;
@@ -29,25 +30,36 @@ const Wrapper = styled.ul`
   margin: 0;
   padding: 0;
   opacity: 0;
-  animation: ${fadein(1)} 1ms forwards linear ${baseDelay}ms;
+  animation: ${({ runStartAnimation }) =>
+      runStartAnimation ? fadein(1) : "none"}
+    1ms forwards linear ${baseDelay}ms;
 `;
 
-const AnimateListWrapper = styled.li<{ order: number }>`
+const AnimateListWrapper = styled.li<
+  { order: number } & Pick<Props, "runStartAnimation">
+>`
   width: 100%;
   line-height: 1;
   opacity: 0;
-  animation: ${fadein(1)} 200ms ease-in
-    ${({ order }) => order * 80 + baseDelay + 100}ms forwards;
+  animation: ${({ runStartAnimation }) =>
+      runStartAnimation ? fadein(1) : "none"}
+    200ms ease-in ${({ order }) => order * 80 + baseDelay + 100}ms forwards;
 `;
 
-const NavBarMenu: React.FC<Props> = ({ contentDataList }) => {
+const NavBarMenu: React.FC<Props> = ({
+  contentDataList,
+  runStartAnimation,
+}) => {
   return (
-    <Wrapper>
+    <Wrapper runStartAnimation={runStartAnimation}>
       {contentDataList.map(({ icon, mainText, hoveredIcon }, i) => {
         return (
-          <AnimateListWrapper order={i}>
+          <AnimateListWrapper
+            runStartAnimation={runStartAnimation}
+            order={i}
+            key={mainText}
+          >
             <ListRow
-              key={mainText}
               mainText={mainText}
               IconSvg={icon}
               HoveredSvg={hoveredIcon}
