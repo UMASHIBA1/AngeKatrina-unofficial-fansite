@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { ANGE_WHITE, ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
-import { boundExpand, fadein } from "../../../../styles/commonAnimation";
+import { boundExpand } from "../../../../styles/commonAnimation";
 
 interface Props {
   displayAnimationDelay: number;
