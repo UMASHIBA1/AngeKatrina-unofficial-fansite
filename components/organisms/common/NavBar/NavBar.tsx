@@ -12,7 +12,13 @@ import WhiteLicenseIcon from "../../../../public/svgs/common/white-licenseIcon.s
 import WhitePresentIcon from "../../../../public/svgs/common/white-presentIcon.svg";
 import NavBarMenu from "./NavBarMenu/NavBarMenu";
 import { navBarZindex } from "../../../../constants/zindex";
-import { toUnvisible, toVisible } from "../../../../styles/commonAnimation";
+import {
+  toUnvisible,
+  toVisible,
+  translate,
+} from "../../../../styles/commonAnimation";
+import { tablet_breakpoint } from "../../../../constants/breakpoints";
+import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 
 const contentData = [
   {
@@ -42,7 +48,43 @@ interface Props {
   onClose: () => void;
 }
 
-const NavWrapper = styled.div<{ isOpen: boolean; runCloseAnimation: boolean }>`
+const NavWrapper = styled.nav<{ isOpen: boolean; runCloseAnimation: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-right: 0;
+  overflow: hidden;
+  @media (min-width: ${tablet_breakpoint}px) {
+    right: 0;
+    left: auto;
+    width: 360px;
+    ::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+      background-color: ${ANGE_LIVE_BACK_COLOR};
+      width: 2px;
+      height: 100%;
+      animation: 200ms ease-in-out both;
+      ${({ isOpen }) =>
+        isOpen &&
+        css`
+          animation-name: ${translate({ x: 0, y: "-100%" }, { x: 0, y: 0 })};
+          animation-delay: 600ms;
+        `}
+      ${({ runCloseAnimation }) =>
+        runCloseAnimation &&
+        css`
+          animation-name: ${translate({ x: 0, y: 0 }, { x: 0, y: "100%" })};
+        `}
+    }
+  }
+`;
+
+const Wrapper = styled.div<{ isOpen: boolean; runCloseAnimation: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -69,12 +111,17 @@ const NavWrapper = styled.div<{ isOpen: boolean; runCloseAnimation: boolean }>`
       visibility: visible;
       animation: ${toUnvisible} 1ms forwards linear 1000ms;
     `}
+
+    @media (min-width: ${tablet_breakpoint}px) {
+    right: 0;
+    left: auto;
+  }
 `;
 
 const NavBar: React.FC<Props> = ({ isOpen, onClose }) => {
   const [runCloseAnimation, changeRunCloseAnimation] = useState(false);
   return (
-    <NavWrapper isOpen={isOpen} runCloseAnimation={runCloseAnimation}>
+    <Wrapper isOpen={isOpen} runCloseAnimation={runCloseAnimation}>
       <ExpandCircle
         color="red"
         place="topRight"
@@ -93,20 +140,22 @@ const NavBar: React.FC<Props> = ({ isOpen, onClose }) => {
         runStartAnimation={isOpen}
         animationOrder="second"
       />
-      <NavBarTop
-        runStartAnimation={isOpen}
-        onClose={() => {
-          onClose();
-          changeRunCloseAnimation(true);
-        }}
-        runCloseAnimation={runCloseAnimation}
-      />
-      <NavBarMenu
-        runStartAnimation={isOpen}
-        runCloseAnimation={runCloseAnimation}
-        contentDataList={contentData}
-      />
-    </NavWrapper>
+      <NavWrapper isOpen={isOpen} runCloseAnimation={runCloseAnimation}>
+        <NavBarTop
+          runStartAnimation={isOpen}
+          onClose={() => {
+            onClose();
+            changeRunCloseAnimation(true);
+          }}
+          runCloseAnimation={runCloseAnimation}
+        />
+        <NavBarMenu
+          runStartAnimation={isOpen}
+          runCloseAnimation={runCloseAnimation}
+          contentDataList={contentData}
+        />
+      </NavWrapper>
+    </Wrapper>
   );
 };
 
