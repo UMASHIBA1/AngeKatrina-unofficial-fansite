@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../../constants/colors";
 import { boundExpand, scale } from "../../../../styles/commonAnimation";
 
-interface Props {
+export interface CloseButtonProps {
   displayAnimationDelay: number;
   disableAnimationDelay: number;
   runDisplayAnimation: boolean;
@@ -15,7 +15,7 @@ interface Props {
   left?: string;
 }
 
-const Wrapper = styled.div<Required<Omit<Props, "onClickFC">>>`
+const Wrapper = styled.div<Required<Omit<CloseButtonProps, "onClickFC">>>`
   position: absolute;
   top: ${({ top }) => top};
   right: ${({ right }) => right};
@@ -96,7 +96,7 @@ const RightTopLine = styled.div<{ isHovering: boolean }>`
   transform: rotate(45deg);
 `;
 
-const CloseButton: React.FC<Props> = ({
+const CloseButton: React.FC<CloseButtonProps> = ({
   onClickFC,
   top = "auto",
   right = "auto",
@@ -106,7 +106,7 @@ const CloseButton: React.FC<Props> = ({
   disableAnimationDelay,
   runDisplayAnimation,
   runCloseAnimation,
-}: Props) => {
+}: CloseButtonProps) => {
   const [isHovering, changeIsHovering] = useState(false);
 
   return (
