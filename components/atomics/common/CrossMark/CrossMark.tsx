@@ -77,7 +77,7 @@ const Line = styled.div<{
         content: "";
         display: block;
         animation: ${boundExpandY(70, 1.2)} 600ms ease-in-out both 100ms;
-        border-radius: ${widthHeight ? "calc(${widthHeight} / 10)" : `12px`};
+        border-radius: ${widthHeight ? `calc(${widthHeight} / 10)` : `12px`};
       }
     `}
 `;
