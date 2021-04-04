@@ -22,7 +22,7 @@ const Wrapper = styled.div<{ widthHeight?: string }>`
   margin: auto;
 `;
 
-const Line = styled.div<{ color: RedBlackYellow }>`
+const Line = styled.div<{ color: RedBlackYellow; widthHeight?: string }>`
   position: absolute;
   top: 0;
   left: calc(50% - 12px);
@@ -39,13 +39,21 @@ const Line = styled.div<{ color: RedBlackYellow }>`
   :nth-child(2) {
     transform: rotate(45deg);
   }
+
+  ${({ widthHeight }) =>
+    widthHeight &&
+    css`
+      left: calc(50% - ${widthHeight} / 10);
+      width: calc(${widthHeight} / 5);
+      border-radius: calc(${widthHeight} / 10);
+    `}
 `;
 
 const CrossMark: React.FC<CrossMarkProps> = ({ color, widthHeight }) => {
   return (
     <Wrapper widthHeight={widthHeight}>
-      <Line color={color} />
-      <Line color={color} />
+      <Line color={color} widthHeight={widthHeight} />
+      <Line color={color} widthHeight={widthHeight} />
     </Wrapper>
   );
 };
