@@ -54,3 +54,10 @@ Cross60px.args = {
   color: ANGE_RED,
   widthHeight: "60px",
 };
+
+export const ExpandAnimationCross = Template.bind({});
+
+ExpandAnimationCross.args = {
+  color: ANGE_RED,
+  animation: "expandRotate",
+};

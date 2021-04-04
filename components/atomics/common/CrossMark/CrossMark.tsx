@@ -1,13 +1,18 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { boundExpandY, rightRotate } from "../../../../styles/commonAnimation";
 import { RedBlackYellow } from "../../../../typing/Color";
 
 export interface CrossMarkProps {
   color: RedBlackYellow;
+  animation: "none" | "expandRotate";
   widthHeight?: string;
 }
 
-const Wrapper = styled.div<{ widthHeight?: string }>`
+const Wrapper = styled.div<{
+  animation: CrossMarkProps["animation"];
+  widthHeight?: string;
+}>`
   position: relative;
   top: 0;
   left: 0;
@@ -20,9 +25,19 @@ const Wrapper = styled.div<{ widthHeight?: string }>`
       height: ${widthHeight};
     `}
   margin: auto;
+
+  ${({ animation }) =>
+    animation === "expandRotate" &&
+    css`
+      animation: ${rightRotate()} 600ms ease-in-out both 100ms;
+    `}
 `;
 
-const Line = styled.div<{ color: RedBlackYellow; widthHeight?: string }>`
+const Line = styled.div<{
+  color: RedBlackYellow;
+  animation: CrossMarkProps["animation"];
+  widthHeight?: string;
+}>`
   position: absolute;
   top: 0;
   left: calc(50% - 12px);
@@ -47,13 +62,35 @@ const Line = styled.div<{ color: RedBlackYellow; widthHeight?: string }>`
       width: calc(${widthHeight} / 5);
       border-radius: calc(${widthHeight} / 10);
     `}
+
+  ${({ color, animation, widthHeight }) =>
+    animation === "expandRotate" &&
+    css`
+      background-color: transparent;
+      ::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: ${color};
+        content: "";
+        display: block;
+        animation: ${boundExpandY(70, 1.2)} 600ms ease-in-out both 100ms;
+        border-radius: ${widthHeight ? "calc(${widthHeight} / 10)" : `12px`};
+      }
+    `}
 `;
 
-const CrossMark: React.FC<CrossMarkProps> = ({ color, widthHeight }) => {
+const CrossMark: React.FC<CrossMarkProps> = ({
+  color,
+  animation,
+  widthHeight,
+}) => {
   return (
-    <Wrapper widthHeight={widthHeight}>
-      <Line color={color} widthHeight={widthHeight} />
-      <Line color={color} widthHeight={widthHeight} />
+    <Wrapper widthHeight={widthHeight} animation={animation}>
+      <Line color={color} widthHeight={widthHeight} animation={animation} />
+      <Line color={color} widthHeight={widthHeight} animation={animation} />
     </Wrapper>
   );
 };

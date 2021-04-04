@@ -222,3 +222,20 @@ export const boundShrink = (
         transform: scale(0);
     }
 `;
+
+export const boundExpandY = (
+  bouncePercent: number = 30,
+  bounceRatio: number = 1.2
+) => keyframes`
+        0% {
+        transform: scaleY(0);
+    }
+
+    ${bouncePercent}% {
+        transform: scaleY(${bounceRatio});
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+`;
