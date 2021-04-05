@@ -1,11 +1,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { boundExpandY, rightRotate } from "../../../../styles/commonAnimation";
+import {
+  boundExpandY,
+  rightRotate,
+  translate,
+} from "../../../../styles/commonAnimation";
 import { RedBlackYellow } from "../../../../typing/Color";
 
 export interface CrossMarkProps {
   color: RedBlackYellow;
-  animation: "none" | "expandRotate";
+  animation: "none" | "expandRotate" | "slideLine";
   widthHeight?: string;
 }
 
@@ -77,6 +81,26 @@ const Line = styled.div<{
         content: "";
         display: block;
         animation: ${boundExpandY(70, 1.2)} 600ms ease-in-out both 100ms;
+        border-radius: ${widthHeight ? `calc(${widthHeight} / 10)` : `12px`};
+      }
+    `}
+
+    ${({ color, animation, widthHeight }) =>
+    animation === "slideLine" &&
+    css`
+      background-color: transparent;
+      overflow: hidden;
+      ::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: ${color};
+        content: "";
+        display: block;
+        animation: ${translate({ x: 0, y: "-100%" }, { x: 0, y: 0 })} 600ms
+          ease-in-out both 100ms;
         border-radius: ${widthHeight ? `calc(${widthHeight} / 10)` : `12px`};
       }
     `}

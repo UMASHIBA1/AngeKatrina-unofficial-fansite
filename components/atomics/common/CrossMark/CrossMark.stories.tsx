@@ -61,3 +61,10 @@ ExpandRotateAnimationCross.args = {
   color: ANGE_RED,
   animation: "expandRotate",
 };
+
+export const SlideAnimationCross = Template.bind({});
+
+SlideAnimationCross.args = {
+  color: ANGE_YELLOW,
+  animation: "slideLine",
+};
