@@ -35,4 +35,20 @@ export const Ring60px = Template.bind({});
 
 Ring60px.args = {
   widthHeight: "60px",
+  color: ANGE_YELLOW,
+};
+
+export const ExpandRing = Template.bind({});
+
+ExpandRing.args = {
+  animation: "expand",
+  color: ANGE_RED,
+};
+
+export const Expand60pxRing = Template.bind({});
+
+Expand60pxRing.args = {
+  animation: "expand",
+  color: ANGE_RED,
+  widthHeight: "60px",
 };
