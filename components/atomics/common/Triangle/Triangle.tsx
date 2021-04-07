@@ -1,6 +1,6 @@
-import YellowTriangleImg from "../../../public/svgs/home/yellow_triangle.svg";
-import WhiteTriangleImg from "../../../public/svgs/home/white_triangle.svg";
-import AngeTriangleImg from "../../../public/svgs/home/ange_triangle_sharp.svg";
+import YellowTriangleImg from "../../../../public/svgs/home/yellow_triangle.svg";
+import WhiteTriangleImg from "../../../../public/svgs/home/white_triangle.svg";
+import AngeTriangleImg from "../../../../public/svgs/home/ange_triangle_sharp.svg";
 import styled from "styled-components";
 
 export interface Props {
@@ -23,7 +23,7 @@ const Wrapper = styled.div<Required<Omit<Props, "color">>>`
   right: ${({ right }) => right};
 `;
 
-const BGTriangle: React.FC<Props> = ({
+const Triangle: React.FC<Props> = ({
   color,
   width = "100px",
   rotate = "0deg",
@@ -52,4 +52,4 @@ const BGTriangle: React.FC<Props> = ({
   );
 };
 
-export default BGTriangle;
+export default Triangle;
