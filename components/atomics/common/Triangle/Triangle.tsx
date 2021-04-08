@@ -2,11 +2,12 @@ import YellowTriangleImg from "../../../../public/svgs/home/yellow_triangle.svg"
 import WhiteTriangleImg from "../../../../public/svgs/home/white_triangle.svg";
 import AngeTriangleImg from "../../../../public/svgs/home/ange_triangle_sharp.svg";
 import BlackTriangleImg from "../../../../public/svgs/home/black_triangle.svg";
+import RedTriangleImg from "../../../../public/svgs/home/red_triangle.svg";
 import styled, { css } from "styled-components";
 import { multiBoundExpand } from "../../../../styles/commonAnimation";
 
 export interface TriangleProps {
-  color: "yellow" | "white" | "ange" | "black";
+  color: "yellow" | "white" | "ange" | "black" | "red";
   animation?: "none" | "boundExpand";
   animationDelayMs?: number;
   width?: string;
@@ -61,6 +62,8 @@ const Triangle: React.FC<TriangleProps> = ({
         <WhiteTriangleImg />
       ) : color === "black" ? (
         <BlackTriangleImg />
+      ) : color === "red" ? (
+        <RedTriangleImg />
       ) : (
         <AngeTriangleImg />
       )}

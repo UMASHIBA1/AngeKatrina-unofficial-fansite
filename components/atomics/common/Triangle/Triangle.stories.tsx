@@ -46,6 +46,12 @@ BlackTriangle.args = {
   color: "black",
 };
 
+export const RedTriangle = Template.bind({});
+
+RedTriangle.args = {
+  color: "red",
+};
+
 export const AngeTriangle = Template.bind({});
 
 AngeTriangle.args = {
