@@ -227,7 +227,7 @@ export const boundExpandY = (
   bouncePercent: number = 30,
   bounceRatio: number = 1.2
 ) => keyframes`
-        0% {
+    0% {
         transform: scaleY(0);
     }
 
@@ -237,5 +237,35 @@ export const boundExpandY = (
 
     100% {
         transform: scaleY(1);
+    }
+`;
+
+export const multiBoundExpand = (bounceRatio: number = 1.4) => keyframes`
+    0% {
+        transform: scale(0);
+    }
+
+    16% {
+        transform: scale(${bounceRatio});
+    }
+
+    33% {
+        transform: scale(1);
+    }
+
+    49% {
+        transform: scale(${1 + (bounceRatio - 1) / 2})
+    }
+
+    66% {
+        transform: scale(1);
+    }
+
+    83% {
+        transform: scale(${1 + (bounceRatio - 1) / 4})
+    }
+
+    100% {
+        transform: scale(1);
     }
 `;

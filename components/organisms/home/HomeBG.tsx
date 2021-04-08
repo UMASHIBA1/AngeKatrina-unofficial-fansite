@@ -6,7 +6,7 @@ import {
   homeBgZIndex,
 } from "../../../constants/home/zindex";
 import Triangle, {
-  Props as BGTriangleProp,
+  TriangleProps as BGTriangleProp,
 } from "../../atomics/common/Triangle/Triangle";
 import { useTypedSelector } from "../../../redux/store";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
