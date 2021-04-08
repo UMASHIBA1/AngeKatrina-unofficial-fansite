@@ -1,8 +1,8 @@
-import YellowTriangleImg from "../../../../public/svgs/home/yellow_triangle.svg";
-import WhiteTriangleImg from "../../../../public/svgs/home/white_triangle.svg";
-import AngeTriangleImg from "../../../../public/svgs/home/ange_triangle_sharp.svg";
-import BlackTriangleImg from "../../../../public/svgs/home/black_triangle.svg";
-import RedTriangleImg from "../../../../public/svgs/home/red_triangle.svg";
+import YellowTriangleImg from "../../../../public/svgs/common/yellow_triangle.svg";
+import WhiteTriangleImg from "../../../../public/svgs/common/white_triangle.svg";
+import AngeTriangleImg from "../../../../public/svgs/common/ange_triangle_sharp.svg";
+import BlackTriangleImg from "../../../../public/svgs/common/black_triangle.svg";
+import RedTriangleImg from "../../../../public/svgs/common/red_triangle.svg";
 import styled, { css } from "styled-components";
 import { multiBoundExpand } from "../../../../styles/commonAnimation";
 
