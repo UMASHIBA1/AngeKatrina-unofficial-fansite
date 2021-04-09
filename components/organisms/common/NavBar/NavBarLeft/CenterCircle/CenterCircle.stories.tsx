@@ -1,7 +1,7 @@
 import { Meta } from "@storybook/react/types-6-0";
 import styled from "styled-components";
 import { ANGE_WHITE } from "../../../../../../constants/colors";
-import ThreeSlashes from "./ThreeSlashes";
+import CenterCircle from "./CenterCircle";
 
 const Decorator = styled.div`
   position: relative;
@@ -11,16 +11,11 @@ const Decorator = styled.div`
   height: 540px;
   overflow: hidden;
   background-color: ${ANGE_WHITE};
-  > div {
-    position: absolute;
-    top: 0;
-    left: 50%;
-  }
 `;
 
 export default {
-  title: "organism/NavBarLeftThreeSlashs",
-  component: ThreeSlashes,
+  title: "organism/NavBarLeftCenterCircle",
+  component: CenterCircle,
   decorators: [
     (Story) => (
       <Decorator>
@@ -30,4 +25,4 @@ export default {
   ],
 } as Meta;
 
-export const NormalThreeSlashs: React.VFC<{}> = () => <ThreeSlashes />;
+export const NormalCenterCircle: React.VFC<{}> = () => <CenterCircle />;
