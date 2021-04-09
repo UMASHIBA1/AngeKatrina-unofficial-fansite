@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react/types-6-0";
 import styled from "styled-components";
-import { ANGE_WHITE } from "../../../../../constants/colors";
+import { ANGE_WHITE } from "../../../../../../constants/colors";
 import ThreeSlashes from "./ThreeSlashes";
 
 const Decorator = styled.div`

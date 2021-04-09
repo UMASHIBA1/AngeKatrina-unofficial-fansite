@@ -4,8 +4,8 @@ import {
   ANGE_BLACK,
   ANGE_RED,
   ANGE_YELLOW,
-} from "../../../../../constants/colors";
-import { RedBlackYellow } from "../../../../../typing/Color";
+} from "../../../../../../constants/colors";
+import { RedBlackYellow } from "../../../../../../typing/Color";
 
 const Line = styled.div<{ color: RedBlackYellow }>`
   width: 20px;
