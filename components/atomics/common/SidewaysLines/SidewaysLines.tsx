@@ -5,19 +5,32 @@ import {
   ANGE_RED,
   ANGE_YELLOW,
 } from "../../../../constants/colors";
+import { fadein, translate } from "../../../../styles/commonAnimation";
 import { RedBlackYellow } from "../../../../typing/Color";
 
 export interface SidewaysLinesProps {
   animation: "none" | "slideFadein";
   pattern: "leftRightCenter" | "rightCenterLeft" | "centerLeftRight";
+  animationDelayMs?: number;
 }
 
-const Line = styled.div<{ color: RedBlackYellow }>`
+const Line = styled.div<{
+  color: RedBlackYellow;
+  animation: SidewaysLinesProps["animation"];
+  animationDelayMs: SidewaysLinesProps["animationDelayMs"];
+}>`
   height: 12px;
   width: 100%;
   border-radius: 6px;
   background-color: ${({ color }) => color};
   margin: 6px;
+  ${({ animation, animationDelayMs }) =>
+    animation === "slideFadein" &&
+    css`
+      animation: ${fadein()} 1000ms ease-in-out ${animationDelayMs}ms both,
+        ${translate({ x: "-50%", y: 0 }, { x: 0, y: 0 })} 1000ms ease-out
+          ${animationDelayMs}ms both;
+    `}
 `;
 
 const Wrapper = styled.div<SidewaysLinesProps>`
@@ -90,12 +103,46 @@ const Wrapper = styled.div<SidewaysLinesProps>`
   }
 `;
 
-const SidewaysLines: React.FC<SidewaysLinesProps> = (props) => {
+const SidewaysLines: React.FC<SidewaysLinesProps> = ({
+  animation,
+  pattern,
+  animationDelayMs = 100,
+}) => {
+  const firstLineDelay =
+    pattern === "centerLeftRight"
+      ? 100
+      : pattern === "leftRightCenter"
+      ? 200
+      : 0;
+  const secondLineDelay =
+    pattern === "centerLeftRight"
+      ? 200
+      : pattern === "leftRightCenter"
+      ? 0
+      : 100;
+  const thirdLineDelay =
+    pattern === "centerLeftRight"
+      ? 0
+      : pattern === "leftRightCenter"
+      ? 100
+      : 200;
   return (
-    <Wrapper {...props}>
-      <Line color={ANGE_RED} />
-      <Line color={ANGE_YELLOW} />
-      <Line color={ANGE_BLACK} />
+    <Wrapper animation={animation} pattern={pattern}>
+      <Line
+        color={ANGE_RED}
+        animation={animation}
+        animationDelayMs={animationDelayMs + firstLineDelay}
+      />
+      <Line
+        color={ANGE_YELLOW}
+        animation={animation}
+        animationDelayMs={animationDelayMs + secondLineDelay}
+      />
+      <Line
+        color={ANGE_BLACK}
+        animation={animation}
+        animationDelayMs={animationDelayMs + thirdLineDelay}
+      />
     </Wrapper>
   );
 };

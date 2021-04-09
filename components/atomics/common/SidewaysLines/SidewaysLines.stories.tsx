@@ -45,3 +45,27 @@ CenterLeftRight.args = {
   pattern: "centerLeftRight",
   animation: "none",
 };
+
+export const SlideFadeinLeftRightCenter = Template.bind({});
+
+SlideFadeinLeftRightCenter.args = {
+  pattern: "centerLeftRight",
+  animation: "slideFadein",
+  animationDelayMs: 400,
+};
+
+export const SlideFadeinRightCenterLeft = Template.bind({});
+
+SlideFadeinRightCenterLeft.args = {
+  pattern: "rightCenterLeft",
+  animation: "slideFadein",
+  animationDelayMs: 400,
+};
+
+export const SlideFadeinCenterLeftRight = Template.bind({});
+
+SlideFadeinCenterLeftRight.args = {
+  pattern: "centerLeftRight",
+  animation: "slideFadein",
+  animationDelayMs: 400,
+};
