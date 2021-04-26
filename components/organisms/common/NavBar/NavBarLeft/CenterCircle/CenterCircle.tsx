@@ -5,6 +5,7 @@ import SecondInsideCircle from "../../../../../../public/svgs/common/one_black_c
 import ThirdInsideCircle from "../../../../../../public/svgs/common/two_yellow_two_red_circle.svg";
 import { TA_F1_BLOCK_LINE } from "../../../../../../constants/cssProps";
 import { ANGE_RED } from "../../../../../../constants/colors";
+import OutsideRotateLine from "./OutsideRotateLine";
 
 const SVGWrapper = styled.div<{ width: number }>`
   position: absolute;
@@ -44,6 +45,7 @@ const CenterText = styled.p`
 const CenterCircle: React.FC = () => {
   return (
     <Wrapper>
+      <OutsideRotateLine diameter={470} />
       <SVGWrapper width={450}>
         <ThirdInsideCircle />
       </SVGWrapper>
