@@ -1,40 +1,54 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../../../constants/colors";
 import {
   fadein,
   fadeout,
   leftRotate,
+  rightRotate,
 } from "../../../../../../styles/commonAnimation";
 
 interface Props {
   diameter: number;
+  leftOrRightRotate: "left" | "right";
+  animationDelayMs?: number;
+  startRotateDeg?: number;
 }
 
-const Wrapper = styled.div<Props>`
+const Wrapper = styled.div<Required<Omit<Props, "startRotateDeg">>>`
   position: absolute;
   top: calc(50% - ${({ diameter }) => diameter / 2}px);
   left: calc(50% - ${({ diameter }) => diameter / 2}px);
   width: ${({ diameter }) => diameter}px;
   height: ${({ diameter }) => diameter}px;
-  animation: ${fadein()} 400ms ease-out 400ms both,
-    ${leftRotate()} 1000ms both cubic-bezier(0.33, 1, 0.68, 1) 400ms,
-    ${fadeout} 400ms forwards ease-out 1000ms;
+  ${({ animationDelayMs: animationDelay, leftOrRightRotate }) => css`
+    animation: ${fadein()} 400ms ease-out ${animationDelay}ms both,
+      ${leftOrRightRotate === "left" ? leftRotate() : rightRotate()} 1000ms both
+        cubic-bezier(0.33, 1, 0.68, 1) ${animationDelay}ms,
+      ${fadeout} 400ms forwards ease-out ${animationDelay + 600}ms;
+  `}
 `;
 
-const BorderLine = styled.div`
+const BorderLine = styled.div<Required<Pick<Props, "startRotateDeg">>>`
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 6px solid ${ANGE_LIVE_BACK_COLOR};
-  clip-path: polygon(50% 50%, 100% 50%, 100% 100%);
+  border: 8px solid ${ANGE_LIVE_BACK_COLOR};
+  clip-path: polygon(50% 50%, 15% 100%, 85% 100%);
   box-sizing: border-box;
+  ${({ startRotateDeg }) => css`
+    transform: rotate(${startRotateDeg}deg);
+  `}
 `;
 
-const OutsideRotateLine: React.VFC<Props> = ({ diameter }: Props) => {
+const OutsideRotateLine: React.VFC<Props> = ({
+  startRotateDeg = 0,
+  animationDelayMs: animationDelay = 0,
+  ...props
+}) => {
   return (
-    <Wrapper diameter={diameter}>
-      <BorderLine />
+    <Wrapper {...props} animationDelayMs={animationDelay}>
+      <BorderLine startRotateDeg={startRotateDeg} />
     </Wrapper>
   );
 };

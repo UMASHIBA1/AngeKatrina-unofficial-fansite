@@ -45,7 +45,24 @@ const CenterText = styled.p`
 const CenterCircle: React.FC = () => {
   return (
     <Wrapper>
-      <OutsideRotateLine diameter={470} />
+      <OutsideRotateLine
+        diameter={470}
+        leftOrRightRotate="right"
+        startRotateDeg={0}
+        animationDelayMs={0}
+      />
+      <OutsideRotateLine
+        diameter={490}
+        leftOrRightRotate="left"
+        startRotateDeg={180}
+        animationDelayMs={100}
+      />
+      <OutsideRotateLine
+        diameter={510}
+        leftOrRightRotate="right"
+        startRotateDeg={240}
+        animationDelayMs={200}
+      />
       <SVGWrapper width={450}>
         <ThirdInsideCircle />
       </SVGWrapper>
