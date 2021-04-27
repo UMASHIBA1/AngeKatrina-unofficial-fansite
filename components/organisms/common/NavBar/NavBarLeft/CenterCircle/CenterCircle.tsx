@@ -6,7 +6,11 @@ import ThirdInsideCircle from "../../../../../../public/svgs/common/two_yellow_t
 import { TA_F1_BLOCK_LINE } from "../../../../../../constants/cssProps";
 import { ANGE_RED } from "../../../../../../constants/colors";
 import OutsideRotateLine from "./OutsideRotateLine";
-import { scale } from "../../../../../../styles/commonAnimation";
+import {
+  fadein,
+  scale,
+  translate,
+} from "../../../../../../styles/commonAnimation";
 
 const SVGWrapper = styled.div<{ width: number; animationDelay: number }>`
   position: absolute;
@@ -35,18 +39,37 @@ const Wrapper = styled.div`
 `;
 
 const CenterText = styled.p`
+  font-size: 28px;
+  color: ${ANGE_RED};
+  ${TA_F1_BLOCK_LINE}
+  animation: ${fadein()} ease-in-out 1ms both 1000ms;
+  margin: 0;
+`;
+
+const TextWrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   transform: translate(-50%, -50%);
-  font-size: 28px;
   width: 100%;
   margin: 0;
-  color: ${ANGE_RED};
-  ${TA_F1_BLOCK_LINE}
+
+  ::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: ${ANGE_RED};
+    animation: ${translate({ x: "-100%", y: 0 }, { x: "100%", y: 0 })}
+      ease-in-out 400ms both 800ms;
+  }
 `;
 
 const CenterCircle: React.FC = () => {
@@ -79,7 +102,9 @@ const CenterCircle: React.FC = () => {
       <SVGWrapper width={380} animationDelay={500}>
         <FirstInsideCircle />
       </SVGWrapper>
-      <CenterText>どれにする？</CenterText>
+      <TextWrapper>
+        <CenterText>どれにする？</CenterText>
+      </TextWrapper>
     </Wrapper>
   );
 };
