@@ -11,8 +11,17 @@ import {
   scale,
   translate,
 } from "../../../../../../styles/commonAnimation";
+import { startAnimationBaseDelayMs } from "./animationBaseDelay";
 
-const SVGWrapper = styled.div<{ width: number; animationDelay: number }>`
+interface Props {
+  runStartAnimation: boolean;
+}
+
+const SVGWrapper = styled.div<{
+  width: number;
+  animationDelay: number;
+  runStartAnimation: boolean;
+}>`
   position: absolute;
   ${({ width }) =>
     width &&
@@ -22,8 +31,12 @@ const SVGWrapper = styled.div<{ width: number; animationDelay: number }>`
     `}
   width: ${({ width }) => width}px;
   transform: scale(0);
-  animation: ${scale(1)} 800ms ease-out forwards
-    ${({ animationDelay }) => animationDelay}ms;
+  ${({ runStartAnimation, animationDelay }) =>
+    runStartAnimation &&
+    css`
+      animation: ${scale(1)} 800ms ease-out forwards
+        ${startAnimationBaseDelayMs + animationDelay}ms;
+    `}
 `;
 
 const Wrapper = styled.div`
@@ -38,15 +51,21 @@ const Wrapper = styled.div`
   height: 240px;
 `;
 
-const CenterText = styled.p`
+const CenterText = styled.p<{ runStartAnimation: boolean }>`
   font-size: 28px;
   color: ${ANGE_RED};
   ${TA_F1_BLOCK_LINE}
-  animation: ${fadein()} ease-in-out 1ms both 1000ms;
+  opacity: 0;
+  ${({ runStartAnimation }) =>
+    runStartAnimation &&
+    css`
+      animation: ${fadein()} ease-in-out 1ms forwards
+        ${startAnimationBaseDelayMs + 1000}ms;
+    `}
   margin: 0;
 `;
 
-const TextWrapper = styled.div`
+const TextWrapper = styled.div<{ runStartAnimation: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -67,43 +86,65 @@ const TextWrapper = styled.div`
     width: 100%;
     height: 100%;
     background-color: ${ANGE_RED};
-    animation: ${translate({ x: "-100%", y: 0 }, { x: "100%", y: 0 })}
-      ease-in-out 400ms both 800ms;
+    transform: translate(-100%, 0);
+    ${({ runStartAnimation }) =>
+      runStartAnimation &&
+      css`
+        animation: ${translate({ x: "-100%", y: 0 }, { x: "100%", y: 0 })}
+          ease-in-out 400ms forwards ${startAnimationBaseDelayMs + 800}ms;
+      `}
   }
 `;
 
-const CenterCircle: React.FC = () => {
+const CenterCircle: React.VFC<Props> = ({ runStartAnimation }) => {
   return (
     <Wrapper>
       <OutsideRotateLine
+        runStartAnimation={runStartAnimation}
         diameter={470}
         leftOrRightRotate="right"
         startRotateDeg={0}
         animationDelayMs={0}
       />
       <OutsideRotateLine
+        runStartAnimation={runStartAnimation}
         diameter={490}
         leftOrRightRotate="left"
         startRotateDeg={180}
         animationDelayMs={100}
       />
       <OutsideRotateLine
+        runStartAnimation={runStartAnimation}
         diameter={510}
         leftOrRightRotate="right"
         startRotateDeg={240}
         animationDelayMs={200}
       />
-      <SVGWrapper width={450} animationDelay={200}>
+      <SVGWrapper
+        width={450}
+        animationDelay={200}
+        runStartAnimation={runStartAnimation}
+      >
         <ThirdInsideCircle />
       </SVGWrapper>
-      <SVGWrapper width={415} animationDelay={350}>
+      <SVGWrapper
+        width={415}
+        animationDelay={350}
+        runStartAnimation={runStartAnimation}
+      >
         <SecondInsideCircle />
       </SVGWrapper>
-      <SVGWrapper width={380} animationDelay={500}>
+      <SVGWrapper
+        width={380}
+        animationDelay={500}
+        runStartAnimation={runStartAnimation}
+      >
         <FirstInsideCircle />
       </SVGWrapper>
-      <TextWrapper>
-        <CenterText>どれにする？</CenterText>
+      <TextWrapper runStartAnimation={runStartAnimation}>
+        <CenterText runStartAnimation={runStartAnimation}>
+          どれにする？
+        </CenterText>
       </TextWrapper>
     </Wrapper>
   );

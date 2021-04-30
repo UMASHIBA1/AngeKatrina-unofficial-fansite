@@ -19,6 +19,7 @@ import {
 } from "../../../../styles/commonAnimation";
 import { tablet_breakpoint } from "../../../../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import NavBarLeft from "./NavBarLeft/NavBarLeft";
 
 const contentData = [
   {
@@ -140,6 +141,7 @@ const NavBar: React.FC<Props> = ({ isOpen, onClose }) => {
         runStartAnimation={isOpen}
         animationOrder="second"
       />
+      <NavBarLeft runStartAnimation={isOpen} />
       <NavWrapper isOpen={isOpen} runCloseAnimation={runCloseAnimation}>
         <NavBarTop
           runStartAnimation={isOpen}

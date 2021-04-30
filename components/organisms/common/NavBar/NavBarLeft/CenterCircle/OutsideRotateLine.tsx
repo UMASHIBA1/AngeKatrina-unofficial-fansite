@@ -7,9 +7,11 @@ import {
   leftRotate,
   rightRotate,
 } from "../../../../../../styles/commonAnimation";
+import { startAnimationBaseDelayMs } from "./animationBaseDelay";
 
 interface Props {
   diameter: number;
+  runStartAnimation: boolean;
   leftOrRightRotate: "left" | "right";
   animationDelayMs?: number;
   startRotateDeg?: number;
@@ -21,12 +23,21 @@ const Wrapper = styled.div<Required<Omit<Props, "startRotateDeg">>>`
   left: calc(50% - ${({ diameter }) => diameter / 2}px);
   width: ${({ diameter }) => diameter}px;
   height: ${({ diameter }) => diameter}px;
-  ${({ animationDelayMs: animationDelay, leftOrRightRotate }) => css`
-    animation: ${fadein()} 400ms ease-out ${animationDelay}ms both,
-      ${leftOrRightRotate === "left" ? leftRotate() : rightRotate()} 1000ms both
-        cubic-bezier(0.33, 1, 0.68, 1) ${animationDelay}ms,
-      ${fadeout} 400ms forwards ease-out ${animationDelay + 600}ms;
-  `}
+  ${({
+    animationDelayMs: animationDelay,
+    leftOrRightRotate,
+    runStartAnimation,
+  }) =>
+    runStartAnimation &&
+    css`
+      animation: ${fadein()} 400ms ease-out
+          ${startAnimationBaseDelayMs + animationDelay}ms both,
+        ${leftOrRightRotate === "left" ? leftRotate() : rightRotate()} 1000ms
+          both cubic-bezier(0.33, 1, 0.68, 1)
+          ${startAnimationBaseDelayMs + animationDelay}ms,
+        ${fadeout} 400ms forwards ease-out
+          ${startAnimationBaseDelayMs + animationDelay + 600}ms;
+    `}
 `;
 
 const BorderLine = styled.div<Required<Pick<Props, "startRotateDeg">>>`
