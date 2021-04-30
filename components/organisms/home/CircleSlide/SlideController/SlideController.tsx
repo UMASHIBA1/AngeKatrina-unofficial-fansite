@@ -6,6 +6,7 @@ import {
 } from "../../../../../constants/colors";
 import SlideContent from "./SlideContent/SlideContent";
 import contentDataType from "./SlideContent/contentDatas/contentDataType";
+import { circleSlideSlider } from "../../../../../constants/home/zindex";
 
 const sliderAnimationDuration_ms = 800;
 
@@ -46,7 +47,7 @@ const Controller = styled.div`
 `;
 
 const Slider = styled.div<{ isChangeSlide: boolean }>`
-  z-index: 100;
+  z-index: ${circleSlideSlider};
   position: absolute;
   left: 0;
   bottom: 0;

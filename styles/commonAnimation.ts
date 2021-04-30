@@ -45,6 +45,18 @@ export const fadeout = keyframes`
     }
 `;
 
+export const toVisible = keyframes`
+    to {
+        visibility: visible;
+    }
+`;
+
+export const toUnvisible = keyframes`
+    to {
+        visibility: hidden;
+    }
+`;
+
 export const toDeepInsetShadow = (
   shadowSpreadRadius = 20,
   color = "rgba(0,0,0,0.5)"
@@ -118,3 +130,142 @@ export const bgColorChange = (from: string, to: string) => {
         }
     `;
 };
+
+export const bounceToX = (from: string, to: string, maxBounce: string) => {
+  // NOTE maxBounce_percentは最大の跳ね返りを5%にしたいなら5%を指定する
+  return keyframes`
+        0% {
+            transform: translateX(${from});
+        }
+
+        20% {
+            transform: translateX(${to});
+        }
+
+        40% {
+            transform: translateX(${maxBounce});
+        }
+
+        60% {
+            transform: translateX(0);
+        }
+
+        80% {
+            transform: translateX(calc(${maxBounce} / 2));
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    `;
+};
+
+export const bounceToY = (from: string, to: string, maxBounce: string) => {
+  // NOTE maxBounce_percentは最大の跳ね返りを5%にしたいなら5%を指定する
+  return keyframes`
+        0% {
+            transform: translateY(${from});
+        }
+
+        20% {
+            transform: translateY(${to});
+        }
+
+        40% {
+            transform: translateY(${maxBounce});
+        }
+
+        60% {
+            transform: translateY(0);
+        }
+
+        80% {
+            transform: translateY(calc(${maxBounce} / 2));
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    `;
+};
+
+export const boundExpand = (
+  bouncePercent: number = 30,
+  bounceRatio: number = 1.2
+) => keyframes`
+    0% {
+        transform: scale(0);
+    }
+
+    ${bouncePercent}% {
+        transform: scale(${bounceRatio});
+    }
+
+    100% {
+        transform: scale(1);
+    }
+`;
+
+export const boundShrink = (
+  bouncePercent: number = 70,
+  bounceRatio: number = 1.2
+) => keyframes`
+    0% {
+        transform: scale(1);
+    }
+
+    ${bouncePercent}% {
+        transform: scale(${bounceRatio});
+    }
+
+    100% {
+        transform: scale(0);
+    }
+`;
+
+export const boundExpandY = (
+  bouncePercent: number = 30,
+  bounceRatio: number = 1.2
+) => keyframes`
+    0% {
+        transform: scaleY(0);
+    }
+
+    ${bouncePercent}% {
+        transform: scaleY(${bounceRatio});
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
+`;
+
+export const multiBoundExpand = (bounceRatio: number = 1.4) => keyframes`
+    0% {
+        transform: scale(0);
+    }
+
+    16% {
+        transform: scale(${bounceRatio});
+    }
+
+    33% {
+        transform: scale(1);
+    }
+
+    49% {
+        transform: scale(${1 + (bounceRatio - 1) / 2})
+    }
+
+    66% {
+        transform: scale(1);
+    }
+
+    83% {
+        transform: scale(${1 + (bounceRatio - 1) / 4})
+    }
+
+    100% {
+        transform: scale(1);
+    }
+`;
