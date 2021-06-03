@@ -3,6 +3,7 @@ import { fadein, fadeout, scale } from "../../../../styles/commonAnimation";
 import { RedBlackYellow } from "../../../../typing/Color";
 
 export interface RingProps {
+  runStartAnimation: boolean;
   widthHeight?: string;
   color: RedBlackYellow;
   animation: "none" | "expand";
@@ -11,7 +12,7 @@ export interface RingProps {
 
 const miniRingAnimationDuration = 500;
 
-const MiniRing = styled.div<RingProps>`
+const MiniRing = styled.div<Omit<RingProps, "runStartAnimation">>`
   position: absolute;
   top: 0;
   left: 0;
@@ -36,7 +37,7 @@ const MiniRing = styled.div<RingProps>`
     `}
 `;
 
-const RingMain = styled.div<RingProps>`
+const RingMain = styled.div<Omit<RingProps, "runStartAnimation">>`
   position: absolute;
   top: 0;
   left: 0;
@@ -49,12 +50,6 @@ const RingMain = styled.div<RingProps>`
   border-radius: 50%;
   box-sizing: border-box;
 
-  ${({ widthHeight, color }) =>
-    widthHeight &&
-    css`
-      border: solid ${color} calc(${widthHeight} / 15);
-    `}
-
   ${({ animation, animationDelay }) =>
     animation === "expand" &&
     css`
@@ -63,7 +58,10 @@ const RingMain = styled.div<RingProps>`
     `}
 `;
 
-const Wrapper = styled.div<{ widthHeight: RingProps["widthHeight"] }>`
+const Wrapper = styled.div<{
+  widthHeight: RingProps["widthHeight"];
+  runStartAnimation: RingProps["runStartAnimation"];
+}>`
   position: relative;
   top: 0;
   left: 0;
@@ -76,6 +74,14 @@ const Wrapper = styled.div<{ widthHeight: RingProps["widthHeight"] }>`
       width: ${widthHeight};
       height: ${widthHeight};
     `}
+
+  ${({ runStartAnimation }) =>
+    !runStartAnimation &&
+    css`
+      > ${MiniRing}, > ${RingMain} {
+        display: none;
+      }
+    `}
 `;
 
 const Ring: React.FC<RingProps> = ({
@@ -83,9 +89,10 @@ const Ring: React.FC<RingProps> = ({
   color,
   widthHeight,
   animationDelay = 100,
+  runStartAnimation,
 }) => {
   return (
-    <Wrapper widthHeight={widthHeight}>
+    <Wrapper widthHeight={widthHeight} runStartAnimation={runStartAnimation}>
       <MiniRing
         animation={animation}
         color={color}

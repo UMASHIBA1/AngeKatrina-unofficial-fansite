@@ -11,7 +11,9 @@ export default {
   component: Ring,
 } as Meta<RingProps>;
 
-const Template: Story<RingProps> = (args) => <Ring {...args} />;
+const Template: Story<RingProps> = (args) => (
+  <Ring {...args} runStartAnimation={true} />
+);
 
 export const YellowRing = Template.bind({});
 
