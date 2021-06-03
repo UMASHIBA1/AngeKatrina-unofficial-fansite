@@ -28,7 +28,9 @@ export default {
   ],
 } as Meta<CrossMarkProps>;
 
-const Template: Story<CrossMarkProps> = (args) => <CrossMark {...args} />;
+const Template: Story<CrossMarkProps> = (args) => (
+  <CrossMark {...args} runStartAnimation={true} />
+);
 
 export const YellowCross = Template.bind({});
 

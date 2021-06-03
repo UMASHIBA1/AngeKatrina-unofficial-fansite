@@ -8,14 +8,18 @@ import {
 import { RedBlackYellow } from "../../../../typing/Color";
 
 export interface CrossMarkProps {
+  runStartAnimation: boolean;
   color: RedBlackYellow;
   animation: "none" | "expandRotate" | "slideLine";
+  animationDelay?: number;
   widthHeight?: string;
 }
 
 const Wrapper = styled.div<{
   animation: CrossMarkProps["animation"];
   widthHeight?: string;
+  animationDelay: CrossMarkProps["animationDelay"];
+  runStartAnimation: CrossMarkProps["runStartAnimation"];
 }>`
   position: relative;
   top: 0;
@@ -30,16 +34,23 @@ const Wrapper = styled.div<{
     `}
   margin: auto;
 
-  ${({ animation }) =>
+  ${({ animation, animationDelay }) =>
     animation === "expandRotate" &&
     css`
-      animation: ${rightRotate()} 600ms ease-in-out both 100ms;
+      animation: ${rightRotate()} 600ms ease-in-out both ${animationDelay}ms;
+    `}
+
+  ${({ runStartAnimation }) =>
+    !runStartAnimation &&
+    css`
+      display: none;
     `}
 `;
 
 const Line = styled.div<{
   color: RedBlackYellow;
   animation: CrossMarkProps["animation"];
+  animationDelay: CrossMarkProps["animationDelay"];
   widthHeight?: string;
 }>`
   position: absolute;
@@ -67,7 +78,7 @@ const Line = styled.div<{
       border-radius: calc(${widthHeight} / 10);
     `}
 
-  ${({ color, animation, widthHeight }) =>
+  ${({ color, animation, widthHeight, animationDelay }) =>
     animation === "expandRotate" &&
     css`
       background-color: transparent;
@@ -80,12 +91,13 @@ const Line = styled.div<{
         background-color: ${color};
         content: "";
         display: block;
-        animation: ${boundExpandY(70, 1.2)} 600ms ease-in-out both 100ms;
+        animation: ${boundExpandY(70, 1.2)} 600ms ease-in-out both
+          ${animationDelay}ms;
         border-radius: ${widthHeight ? `calc(${widthHeight} / 10)` : `12px`};
       }
     `}
 
-    ${({ color, animation, widthHeight }) =>
+    ${({ color, animation, widthHeight, animationDelay }) =>
     animation === "slideLine" &&
     css`
       background-color: transparent;
@@ -100,7 +112,7 @@ const Line = styled.div<{
         content: "";
         display: block;
         animation: ${translate({ x: 0, y: "-100%" }, { x: 0, y: 0 })} 600ms
-          ease-in-out both 100ms;
+          ease-in-out both ${animationDelay}ms;
         border-radius: ${widthHeight ? `calc(${widthHeight} / 10)` : `12px`};
       }
     `}
@@ -110,11 +122,28 @@ const CrossMark: React.FC<CrossMarkProps> = ({
   color,
   animation,
   widthHeight,
+  runStartAnimation,
+  animationDelay = 100,
 }) => {
   return (
-    <Wrapper widthHeight={widthHeight} animation={animation}>
-      <Line color={color} widthHeight={widthHeight} animation={animation} />
-      <Line color={color} widthHeight={widthHeight} animation={animation} />
+    <Wrapper
+      animationDelay={animationDelay}
+      runStartAnimation={runStartAnimation}
+      widthHeight={widthHeight}
+      animation={animation}
+    >
+      <Line
+        animationDelay={animationDelay}
+        color={color}
+        widthHeight={widthHeight}
+        animation={animation}
+      />
+      <Line
+        animationDelay={animationDelay}
+        color={color}
+        widthHeight={widthHeight}
+        animation={animation}
+      />
     </Wrapper>
   );
 };
