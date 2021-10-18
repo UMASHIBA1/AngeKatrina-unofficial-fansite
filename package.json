@@ -33,7 +33,7 @@
     "next-images": "1.4.0",
     "prettier": "2.2.1",
     "sass": "1.26.10",
-    "typescript": "3.9.6"
+    "typescript": "3.9.10"
   },
   "license": "ISC",
   "husky": {
