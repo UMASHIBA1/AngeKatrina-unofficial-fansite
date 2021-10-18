@@ -9,7 +9,7 @@
     "fmt": "prettier --write ."
   },
   "dependencies": {
-    "@reduxjs/toolkit": "1.4.0",
+    "@reduxjs/toolkit": "1.6.2",
     "isomorphic-unfetch": "3.0.0",
     "next": "latest",
     "react": "16.13.1",
