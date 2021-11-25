@@ -34,7 +34,7 @@ const tabletAngeHeight = 800;
 const pcAngeHeight = "150vh";
 
 const Img = styled.img.attrs({
-  src: angeBasicImgPath,
+  src: angeBasicImgPath.src,
   alt: "アンジュ画像",
 })<{ isStartAnimation: boolean }>`
   position: absolute;

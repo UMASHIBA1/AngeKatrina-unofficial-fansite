@@ -28,9 +28,9 @@ const createStyledImg = (src: string, alt: string) =>
     height: 80%;
   `;
 
-const StyledAngeImg = createStyledImg(AngeImg, "アンジュカトリーナ画像");
-const StyledInuiImg = createStyledImg(InuiImg, "戌亥とこ画像");
-const StyledRizeImg = createStyledImg(RizeImg, "リゼ・ヘルエスタ画像");
+const StyledAngeImg = createStyledImg(AngeImg.src, "アンジュカトリーナ画像");
+const StyledInuiImg = createStyledImg(InuiImg.src, "戌亥とこ画像");
+const StyledRizeImg = createStyledImg(RizeImg.src, "リゼ・ヘルエスタ画像");
 
 const TitlePage: React.FC = () => (
   <TextWrapper>
