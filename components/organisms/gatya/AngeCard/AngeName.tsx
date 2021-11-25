@@ -6,22 +6,22 @@ import { sm_breakpoint } from "../../../../constants/breakpoints";
 import { tabletBreakPointForAngeCard, minimalPCBreakPoint } from "./constants";
 
 const Wrapper = styled.div`
-	${BUNKYU_MIDASHI_GO_STD}
-	color: ${ANGE_LIVE_BACK_COLOR};
-	position: absolute;
+  ${BUNKYU_MIDASHI_GO_STD}
+  color: ${ANGE_LIVE_BACK_COLOR};
+  position: absolute;
   @media (max-width: ${sm_breakpoint}px) {
-	left: 10px;
-	bottom: 16px;
+    left: 10px;
+    bottom: 16px;
   }
 
   @media (min-width: ${sm_breakpoint + 1}px) {
-	left: 30px;
-	bottom: 30px;
+    left: 30px;
+    bottom: 30px;
   }
 
   @media (min-width: ${tabletBreakPointForAngeCard + 1}px) {
-	  top: 20%;
-	  left: 5%;
+    top: 20%;
+    left: 5%;
   }
 `;
 

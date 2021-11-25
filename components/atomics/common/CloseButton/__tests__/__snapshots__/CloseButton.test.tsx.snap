@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sample 1`] = `
+<div
+  className="CloseButton__Wrapper-rlgiig-0 iSEzbT"
+>
+  <button
+    className="CloseButton__CloseButtonOutLine-rlgiig-1 fKjHHz"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="CloseButton__CloseButtonMain-rlgiig-2 bGdhyS"
+    >
+      <div
+        className="CloseButton__LeftTopLine-rlgiig-3 deprwd"
+      />
+      <div
+        className="CloseButton__RightTopLine-rlgiig-4 dgfLAc"
+      />
+    </div>
+  </button>
+</div>
+`;
