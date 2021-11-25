@@ -30,4 +30,6 @@ export default {
   ],
 } as Meta;
 
-export const NormalThreeSlashs: React.VFC<{}> = () => <ThreeSlashes />;
+export const NormalThreeSlashs: React.VFC<{}> = () => (
+  <ThreeSlashes runStartAnimation={true} />
+);
