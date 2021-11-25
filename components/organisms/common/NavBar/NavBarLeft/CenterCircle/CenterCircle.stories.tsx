@@ -25,4 +25,6 @@ export default {
   ],
 } as Meta;
 
-export const NormalCenterCircle: React.VFC<{}> = () => <CenterCircle />;
+export const NormalCenterCircle: React.VFC<{}> = () => (
+  <CenterCircle runStartAnimation={true} />
+);
