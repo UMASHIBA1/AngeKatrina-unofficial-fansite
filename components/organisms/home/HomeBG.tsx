@@ -5,9 +5,9 @@ import {
   homeContentZIndex,
   homeBgZIndex,
 } from "../../../constants/home/zindex";
-import BGTriangle, {
-  Props as BGTriangleProp,
-} from "../../atomics/home/BGTriangle";
+import Triangle, {
+  TriangleProps as BGTriangleProp,
+} from "../../atomics/common/Triangle/Triangle";
 import { useTypedSelector } from "../../../redux/store";
 import sizeTypeJudge from "../../../systems/sizeTypeJudge";
 
@@ -190,7 +190,7 @@ const HomeBG: React.FC<Props> = (props: Props) => {
       <BGWrapper>
         {triangleProps.map((triangleProp) => {
           return (
-            <BGTriangle key={JSON.stringify(triangleProp)} {...triangleProp} />
+            <Triangle key={JSON.stringify(triangleProp)} {...triangleProp} />
           );
         })}
       </BGWrapper>
