@@ -18,9 +18,8 @@ export interface TriangleProps {
   right?: string | number;
 }
 
-const Wrapper = styled.div<Required<Omit<TriangleProps, "color">>>`
+const Wrapper = styled.div<Required<Omit<TriangleProps, "color" | "rotate">>>`
   width: ${({ width }) => width};
-  transform: rotate(${({ rotate }) => rotate});
   position: absolute;
   top: ${({ top }) => top};
   left: ${({ left }) => left};
@@ -32,6 +31,10 @@ const Wrapper = styled.div<Required<Omit<TriangleProps, "color">>>`
       animation: ${multiBoundExpand()} 1500ms both ease-in-out
         ${animationDelayMs}ms;
     `}
+`;
+
+const RotateWrapper = styled.div<Required<Pick<TriangleProps, "rotate">>>`
+  transform: rotate(${({ rotate }) => rotate});
 `;
 
 const Triangle: React.FC<TriangleProps> = ({
@@ -48,7 +51,6 @@ const Triangle: React.FC<TriangleProps> = ({
   return (
     <Wrapper
       width={width}
-      rotate={rotate}
       top={top}
       left={left}
       bottom={bottom}
@@ -56,17 +58,19 @@ const Triangle: React.FC<TriangleProps> = ({
       animation={animation}
       animationDelayMs={animationDelayMs}
     >
-      {color === "yellow" ? (
-        <YellowTriangleImg />
-      ) : color === "white" ? (
-        <WhiteTriangleImg />
-      ) : color === "black" ? (
-        <BlackTriangleImg />
-      ) : color === "red" ? (
-        <RedTriangleImg />
-      ) : (
-        <AngeTriangleImg />
-      )}
+      <RotateWrapper rotate={rotate}>
+        {color === "yellow" ? (
+          <YellowTriangleImg />
+        ) : color === "white" ? (
+          <WhiteTriangleImg />
+        ) : color === "black" ? (
+          <BlackTriangleImg />
+        ) : color === "red" ? (
+          <RedTriangleImg />
+        ) : (
+          <AngeTriangleImg />
+        )}
+      </RotateWrapper>
     </Wrapper>
   );
 };

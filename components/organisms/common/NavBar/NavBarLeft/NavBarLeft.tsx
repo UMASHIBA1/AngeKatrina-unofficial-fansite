@@ -4,6 +4,7 @@ import { tablet_breakpoint } from "../../../../../constants/breakpoints";
 import NavBarCrossMarks from "../NavBarCrossMarks";
 import NavBarRings from "../NavBarRings";
 import NavBarSidewaysLines from "../NavBarSidewaysLines";
+import NavBarTriangles from "../NavBarTriangles";
 import CenterCircle from "./CenterCircle/CenterCircle";
 import ThreeSlashes from "./ThreeSlashes/ThreeSlashes";
 
@@ -31,6 +32,7 @@ const NavBarLeft: React.VFC<Props> = ({ runStartAnimation }) => {
       <NavBarRings runStartAnimation={runStartAnimation} />
       <NavBarCrossMarks runStartAnimation={runStartAnimation} />
       <NavBarSidewaysLines runStartAnimation={runStartAnimation} />
+      <NavBarTriangles runStartAnimation={runStartAnimation} />
     </Wrapper>
   );
 };
