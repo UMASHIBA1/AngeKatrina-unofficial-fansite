@@ -27,7 +27,7 @@ const Line = styled.div<{
   ${({ animation, animationDelayMs }) =>
     animation === "slideFadein" &&
     css`
-      animation: ${fadein()} 1000ms ease-in-out ${animationDelayMs}ms both,
+      animation: ${fadein()} 800ms ease-in-out ${animationDelayMs}ms both,
         ${translate({ x: "-50%", y: 0 }, { x: 0, y: 0 })} 1000ms ease-out
           ${animationDelayMs}ms both;
     `}
