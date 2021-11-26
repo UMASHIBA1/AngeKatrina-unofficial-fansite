@@ -6,11 +6,13 @@ import {
 } from "../../../../../constants/colors";
 import { fadein, fadeout } from "../../../../../styles/commonAnimation";
 import ListRow from "../../../../molecules/common/ListRow/ListRow";
+import Link from "next/link";
 
 interface ContentDataType {
   icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
   hoveredIcon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
   mainText: string;
+  link: string;
 }
 
 interface Props {
@@ -59,23 +61,25 @@ const NavBarMenu: React.FC<Props> = ({
 }) => {
   return (
     <Wrapper runStartAnimation={runStartAnimation}>
-      {contentDataList.map(({ icon, mainText, hoveredIcon }, i) => {
+      {contentDataList.map(({ icon, mainText, hoveredIcon, link }, i) => {
         return (
-          <AnimateListWrapper
-            runStartAnimation={runStartAnimation}
-            runCloseAnimation={runCloseAnimation}
-            order={i}
-            key={mainText}
-          >
-            <ListRow
-              mainText={mainText}
-              IconSvg={icon}
-              HoveredSvg={hoveredIcon}
-              bgColor={ANGE_WHITE}
-              textColor={ANGE_LIVE_BACK_COLOR}
-              cursor={"pointer"}
-            />
-          </AnimateListWrapper>
+          <Link href={link}>
+            <AnimateListWrapper
+              runStartAnimation={runStartAnimation}
+              runCloseAnimation={runCloseAnimation}
+              order={i}
+              key={mainText}
+            >
+              <ListRow
+                mainText={mainText}
+                IconSvg={icon}
+                HoveredSvg={hoveredIcon}
+                bgColor={ANGE_WHITE}
+                textColor={ANGE_LIVE_BACK_COLOR}
+                cursor={"pointer"}
+              />
+            </AnimateListWrapper>
+          </Link>
         );
       })}
     </Wrapper>
