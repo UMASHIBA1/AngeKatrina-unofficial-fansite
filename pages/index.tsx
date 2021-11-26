@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../constants/colors";
 import PageWrapper from "../components/templates/PageWrapper";
-import Logo from "../components/atomics/home/Logo";
+import Logo from "../components/atomics/common/Logo";
 import HomeBG from "../components/organisms/home/HomeBG";
 import HomeAnge from "../components/organisms/home/HomeAnge/HomeAnge";
 import CircleSlide from "../components/organisms/home/CircleSlide/CircleSlide";
