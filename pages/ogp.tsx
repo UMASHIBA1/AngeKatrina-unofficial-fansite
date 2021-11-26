@@ -35,12 +35,13 @@ const LogoWrapper = styled.div`
 const paused = "paused";
 const running = "running";
 
-type PlayState = typeof paused | typeof running;
+// type PlayState = typeof paused | typeof running;
 
+// TODO: 動的なOGPを作ろうとしたんですが現在WIPです。
 const OGP: React.VFC = () => {
-  const [animationPlayState, changeAnimationPlayState] = useState<PlayState>(
-    paused
-  );
+  // const [animationPlayState, changeAnimationPlayState] = useState<PlayState>(
+  //   paused
+  // );
   return (
     <OGPPage>
       <BorderWrapper>
