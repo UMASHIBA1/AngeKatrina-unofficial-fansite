@@ -2,7 +2,7 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import ogpImg from "../public/imgs/ogp.png";
 
-const hostUrl = "https://ange-kawaina.vercel.app/";
+const hostUrl = "https://ange-kawaina.vercel.app";
 const ogpAbsolutePath = hostUrl + ogpImg;
 class MyDocument extends Document {
   render() {
