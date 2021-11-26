@@ -12,6 +12,7 @@ export interface SidewaysLinesProps {
   animation: "none" | "slideFadein";
   pattern: "leftRightCenter" | "rightCenterLeft" | "centerLeftRight";
   animationDelayMs?: number;
+  width?: string;
 }
 
 const Line = styled.div<{
@@ -19,7 +20,7 @@ const Line = styled.div<{
   animation: SidewaysLinesProps["animation"];
   animationDelayMs: SidewaysLinesProps["animationDelayMs"];
 }>`
-  height: 12px;
+  min-height: 12px;
   width: 100%;
   border-radius: 6px;
   background-color: ${({ color }) => color};
@@ -40,7 +41,9 @@ const Wrapper = styled.div<SidewaysLinesProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  ${({ width }) => css`
+    width: ${width};
+  `}}
 
   > ${Line} {
     position: relative;
@@ -107,6 +110,7 @@ const SidewaysLines: React.FC<SidewaysLinesProps> = ({
   animation,
   pattern,
   animationDelayMs = 100,
+  width = "200px",
 }) => {
   const firstLineDelay =
     pattern === "centerLeftRight"
@@ -127,7 +131,7 @@ const SidewaysLines: React.FC<SidewaysLinesProps> = ({
       ? 100
       : 200;
   return (
-    <Wrapper animation={animation} pattern={pattern}>
+    <Wrapper animation={animation} pattern={pattern} width={width}>
       <Line
         color={ANGE_RED}
         animation={animation}

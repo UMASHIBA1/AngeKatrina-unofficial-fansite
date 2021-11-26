@@ -44,16 +44,19 @@ const NavBarSidewaysLines: React.VFC<Props> = ({ runStartAnimation }) => (
       animation="slideFadein"
       pattern="rightCenterLeft"
       animationDelayMs={sidewayBaseDelay + 400}
+      width="25%"
     />
     <SidewaysLines
       animation="slideFadein"
       pattern="leftRightCenter"
       animationDelayMs={sidewayBaseDelay}
+      width="25%"
     />
     <SidewaysLines
       animation="slideFadein"
       pattern="centerLeftRight"
       animationDelayMs={sidewayBaseDelay + 200}
+      width="25%"
     />
   </Wrapper>
 );
