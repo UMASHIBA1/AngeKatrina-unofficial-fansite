@@ -9,7 +9,9 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
-          <title>非公式ファンサイト アンゲ・カワイーナ</title>
+          <title>
+            アンジュ・カトリーナ 非公式ファンサイト アンゲ・カワイーナ
+          </title>
           <meta
             name="description"
             content="にじさんじライバー アンジュカトリーナさんの非公式ファンサイトです。楽しんでいってね！"
@@ -17,8 +19,9 @@ class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta
             property="og:title"
-            content="非公式ファンサイト アンゲ・カワイーナ"
+            content="アンジュ・カトリーナ 非公式ファンサイト アンゲ・カワイーナ"
           />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content={hostUrl} />
           <meta property="og:image" content={ogpAbsolutePath} />
