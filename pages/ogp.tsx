@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Logo from "../components/atomics/common/Logo";
 import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../constants/colors";
@@ -32,8 +33,8 @@ const LogoWrapper = styled.div`
   margin-right: 5%;
 `;
 
-const paused = "paused";
-const running = "running";
+// const paused = "paused";
+// const running = "running";
 
 // type PlayState = typeof paused | typeof running;
 
