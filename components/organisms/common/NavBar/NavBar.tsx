@@ -26,21 +26,25 @@ const contentData = [
     icon: RedHomeIcon,
     hoveredIcon: WhiteHomeIcon,
     mainText: "ホーム",
+    link: "/",
   },
   {
     icon: RedInfoIcon,
     hoveredIcon: WhiteInfoIcon,
     mainText: "アンジュ情報",
+    link: "/",
   },
   {
     icon: RedLicenseIcon,
     hoveredIcon: WhiteLicenseIcon,
     mainText: "ライセンス",
+    link: "/",
   },
   {
     icon: RedPresentIcon,
     hoveredIcon: WhitePresentIcon,
     mainText: "ガチャ",
+    link: "/gatya",
   },
 ];
 
