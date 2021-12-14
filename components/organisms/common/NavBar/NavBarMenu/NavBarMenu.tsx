@@ -63,12 +63,11 @@ const NavBarMenu: React.FC<Props> = ({
     <Wrapper runStartAnimation={runStartAnimation}>
       {contentDataList.map(({ icon, mainText, hoveredIcon, link }, i) => {
         return (
-          <Link href={link}>
+          <Link href={link} key={mainText}>
             <AnimateListWrapper
               runStartAnimation={runStartAnimation}
               runCloseAnimation={runCloseAnimation}
               order={i}
-              key={mainText}
             >
               <ListRow
                 mainText={mainText}

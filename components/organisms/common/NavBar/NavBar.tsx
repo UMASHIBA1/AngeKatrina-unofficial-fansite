@@ -145,7 +145,10 @@ const NavBar: React.FC<Props> = ({ isOpen, onClose }) => {
         runStartAnimation={isOpen}
         animationOrder="second"
       />
-      <NavBarLeft runStartAnimation={isOpen} />
+      <NavBarLeft
+        runStartAnimation={isOpen}
+        runCloseAnimation={runCloseAnimation}
+      />
       <NavWrapper isOpen={isOpen} runCloseAnimation={runCloseAnimation}>
         <NavBarTop
           runStartAnimation={isOpen}
