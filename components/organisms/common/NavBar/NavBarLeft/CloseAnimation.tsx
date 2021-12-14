@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { ANGE_RED } from "../../../../../constants/colors";
+import { ANGE_LIVE_BACK_COLOR } from "../../../../../constants/colors";
 import { translate } from "../../../../../styles/commonAnimation";
 
 interface Props {
@@ -24,7 +24,7 @@ const Main = styled.div<Pick<Props, "runCloseAnimation">>`
     width: 100%;
     height: 100%;
     content: "";
-    background-color: ${ANGE_RED};
+    background-color: ${ANGE_LIVE_BACK_COLOR};
     ${({ runCloseAnimation }) =>
       runCloseAnimation &&
       css`
