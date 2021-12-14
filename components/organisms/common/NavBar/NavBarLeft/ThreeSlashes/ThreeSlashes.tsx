@@ -41,7 +41,7 @@ const Wrapper = styled.div<Props>`
   ${({ runStartAnimation }) =>
     !runStartAnimation &&
     css`
-      display: hidden;
+      display: none;
     `}
 `;
 
