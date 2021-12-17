@@ -1,22 +1,49 @@
 import React from "react";
 import LogoImg from "../../../public/svgs/home/logo.svg";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { sm_breakpoint } from "../../../constants/breakpoints";
+import { ANGE_LIVE_BACK_COLOR } from "../../../constants/colors";
 
-const Wrapper = styled.span`
+const common = css`
+  position: relative;
+  top: 10px;
+  left: 10px;
   width: 150px;
-  margin: 10px 0 0 10px;
+  max-height: 100px;
   @media (min-width: ${sm_breakpoint}px) {
     width: 300px;
   }
 `;
 
-const Logo: React.FC = () => {
-  return (
-    <Wrapper>
-      <LogoImg />
-    </Wrapper>
-  );
+const TransparentBG = styled.div`
+  ${common}
+`;
+
+const RedBG = styled.div`
+  ${common}
+  background-color: ${ANGE_LIVE_BACK_COLOR};
+  border-radius: 8px;
+  padding: 8px;
+`;
+
+interface Props {
+  bgColor: "red" | "transparent";
+}
+
+const Logo: React.VFC<Props> = ({ bgColor = "transparent" }) => {
+  if (bgColor === "transparent") {
+    return (
+      <TransparentBG>
+        <LogoImg />
+      </TransparentBG>
+    );
+  } else {
+    return (
+      <RedBG>
+        <LogoImg />
+      </RedBG>
+    );
+  }
 };
 
 export default Logo;

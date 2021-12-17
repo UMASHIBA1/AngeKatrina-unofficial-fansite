@@ -1,20 +1,20 @@
 import styled from "styled-components";
+import Logo from "../components/atomics/common/Logo";
 import PageWrapper from "../components/templates/PageWrapper";
 import { ANGE_WHITE } from "../constants/colors";
 
 const Wrapper = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   background-color: ${ANGE_WHITE};
 `;
 
 const Info: React.VFC = () => {
   return (
     <PageWrapper>
-      <Wrapper></Wrapper>
+      <Wrapper>
+        <Logo bgColor="red" />
+      </Wrapper>
     </PageWrapper>
   );
 };

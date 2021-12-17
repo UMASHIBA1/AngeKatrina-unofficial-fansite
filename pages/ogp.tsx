@@ -47,7 +47,7 @@ const OGP: React.VFC = () => {
     <OGPPage>
       <BorderWrapper>
         <LogoWrapper>
-          <Logo />
+          <Logo bgColor="transparent" />
         </LogoWrapper>
       </BorderWrapper>
     </OGPPage>
