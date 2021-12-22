@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 import {
   sm_breakpoint,
   tablet_breakpoint,
@@ -11,6 +11,60 @@ import {
 } from "../../../constants/colors";
 import { TA_F1_BLOCK_LINE } from "../../../constants/cssProps";
 import AngeBasicImgPath from "../../../public/imgs/ange-basic.png";
+import AngeheyImgPath from "../../../public/imgs/gatya/ange-hey.png";
+import AngeDoctor from "../../../public/imgs/ange-doctor.png";
+
+const shadowAnimation = keyframes`
+    0% {
+        box-shadow: 0 5px 20px ${RED_SHADOW_COLOR}, inset 0 5px 20px transparent;
+    }
+
+    10% {
+        box-shadow: 0 5px 20px transparent, inset 0 5px 20px ${RED_SHADOW_COLOR};
+    }
+
+
+    90% {
+        box-shadow: 0 5px 20px transparent, inset 0 5px 20px ${RED_SHADOW_COLOR};
+    }
+
+    100% {
+        box-shadow: 0 5px 20px ${RED_SHADOW_COLOR}, inset 0 5px 20px transparent;
+    }
+
+`;
+
+const scaleAngeAnimation = keyframes`
+    0% {
+        transform: scale(1);
+    }
+
+    20% {
+        transform: scale(0.2);
+    }
+
+    80% {
+        transform: scale(0.2)
+    }
+
+    100% {
+        transform: scale(1);
+    }
+`;
+
+const moveAnimation = keyframes`
+    0% {
+        transform: translate(0);
+    }
+
+    100% {
+        transform: translate(-50%);
+    }
+`;
+
+interface AnimationProps {
+  runAnimation: boolean;
+}
 
 const Wrapper = styled.div`
   position: absolute;
@@ -29,10 +83,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const Background = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: start;
+const Background = styled.div<AnimationProps>`
+  position: relative;
+  top: 0;
+  left: 0;
   background-color: ${ANGE_WHITE};
   border: 4px ${ANGE_LIVE_BACK_COLOR} solid;
   border-radius: 50%;
@@ -40,16 +94,49 @@ const Background = styled.div`
   overflow: hidden;
   width: 40vw;
   height: 40vw;
+  cursor: pointer;
+
+  ${({ runAnimation }) =>
+    runAnimation &&
+    css`
+      animation: ${shadowAnimation} 1000ms ease-in forwards;
+    `}
+
   @media (min-width: ${tablet_breakpoint}px) {
     width: 25vw;
     height: 25vw;
   }
 `;
 
-const AngeImg = styled.img`
-  width: 80%;
-  margin-top: 20%;
+const ImgWrapper = styled.div<AnimationProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  width: 200%;
+  height: 100%;
+
+  ${({ runAnimation }) =>
+    runAnimation &&
+    css`
+      animation: ${moveAnimation} 600ms ease-in-out 200ms forwards;
+    `}
+`;
+
+const AngeImg = styled.img<AnimationProps>`
+  width: 50%;
+  margin-top: 5%;
   object-fit: cover;
+  transform-origin: top;
+
+  ${({ runAnimation }) =>
+    runAnimation &&
+    css`
+      animation: ${scaleAngeAnimation} 1000ms ease-in forwards;
+    `}
 `;
 
 const AngeName = styled.p`
@@ -68,11 +155,55 @@ const AngeName = styled.p`
   }
 `;
 
+const useAngeImages = () => {
+  const [imageIndex, changeImageIndex] = useState(0);
+
+  const angeImages = [AngeBasicImgPath, AngeheyImgPath, AngeDoctor];
+
+  const toNextImage = () => {
+    const nextIndex = (imageIndex + 1) % angeImages.length;
+    changeImageIndex(nextIndex);
+  };
+
+  const nowAngeImage = angeImages[imageIndex];
+  const nextAngeImage = angeImages[(imageIndex + 1) % angeImages.length];
+
+  return [nowAngeImage, nextAngeImage, toNextImage] as [
+    string,
+    string,
+    () => void
+  ];
+};
+
 const AngeIcon: React.VFC = () => {
+  const [runnningAnimation, changeRunningAnimation] = useState(false);
+  const [nowAngeImage, nextAngeImage, toNextImage] = useAngeImages();
+
   return (
     <Wrapper>
-      <Background>
-        <AngeImg src={AngeBasicImgPath} alt="アンジュ画像" />
+      <Background
+        key="tmp"
+        runAnimation={runnningAnimation}
+        onClick={() => {
+          changeRunningAnimation(true);
+        }}
+      >
+        <ImgWrapper key="tmp" runAnimation={runnningAnimation}>
+          <AngeImg
+            runAnimation={runnningAnimation}
+            src={nowAngeImage}
+            alt="アンジュ画像"
+          />
+          <AngeImg
+            runAnimation={runnningAnimation}
+            onAnimationEnd={() => {
+              toNextImage();
+              changeRunningAnimation(false);
+            }}
+            src={nextAngeImage}
+            alt="アンジュ画像"
+          />
+        </ImgWrapper>
       </Background>
       <AngeName>アンジュ・カトリーナ</AngeName>
     </Wrapper>
