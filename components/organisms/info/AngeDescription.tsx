@@ -8,7 +8,8 @@ const Wrapper = styled.div`
   position: absolute;
   top: 10%;
   left: 40%;
-  width: 40%;
+  width: 50%;
+  max-width: 760px;
   color: ${ANGE_LIVE_BACK_COLOR};
   ${BUNKYU_MIDASHI_GO_STD}
 `;
@@ -41,9 +42,9 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  font-size: 1.4rem;
-  padding: 24px 0 0 0;
-  line-height: 2.8rem;
+  font-size: 1.3rem;
+  padding: 16px 0 0 0;
+  line-height: 2.6rem;
 `;
 
 const AngeDescription = () => {
