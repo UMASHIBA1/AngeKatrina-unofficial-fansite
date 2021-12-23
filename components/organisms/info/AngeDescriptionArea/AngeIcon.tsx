@@ -82,8 +82,8 @@ const Background = styled.div<AnimationProps>`
   border-radius: 50%;
   box-shadow: 0 5px 20px ${RED_SHADOW_COLOR};
   overflow: hidden;
-  width: 40vw;
-  height: 40vw;
+  width: 60vw;
+  height: 60vw;
   cursor: pointer;
 
   ${({ runAnimation }) =>
@@ -91,6 +91,11 @@ const Background = styled.div<AnimationProps>`
     css`
       animation: ${shadowAnimation} 1000ms ease-in forwards;
     `}
+
+  @media (min-width: ${sm_breakpoint}px) {
+    width: 40vw;
+    height: 40vw;
+  }
 
   @media (min-width: ${tablet_breakpoint}px) {
     width: 28vw;
