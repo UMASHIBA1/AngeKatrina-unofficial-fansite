@@ -3,8 +3,17 @@ import styled from "styled-components";
 import AngeDescription from "./AngeDescription";
 import AngeIcon from "./AngeIcon";
 import AngeProfile from "./AngeProfile";
+import BackGround from "./Background";
 
 const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+`;
+
+const Contents = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -12,7 +21,7 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(2, 50%);
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding: 0 5%;
 `;
 
@@ -51,15 +60,18 @@ const ProfileWrapper = styled.div`
 const AngeDescriptionArea = () => {
   return (
     <Wrapper>
-      <IconWrapper>
-        <AngeIcon />
-      </IconWrapper>
-      <DescriptionWrapper>
-        <AngeDescription />
-      </DescriptionWrapper>
-      <ProfileWrapper>
-        <AngeProfile />
-      </ProfileWrapper>
+      <BackGround />
+      <Contents>
+        <IconWrapper>
+          <AngeIcon />
+        </IconWrapper>
+        <DescriptionWrapper>
+          <AngeDescription />
+        </DescriptionWrapper>
+        <ProfileWrapper>
+          <AngeProfile />
+        </ProfileWrapper>
+      </Contents>
     </Wrapper>
   );
 };
