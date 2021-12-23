@@ -1,16 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { ANGE_LIVE_BACK_COLOR } from "../../../constants/colors";
-import { BUNKYU_MIDASHI_GO_STD } from "../../../constants/cssProps";
+import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 
 const Wrapper = styled.div`
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
   display: flex;
   flex-direction: column;
-  width: 40%;
-  padding: 1% 0 5% 3%;
+  width: 100%;
+  padding: 4% 0 10% 8%;
   color: ${ANGE_LIVE_BACK_COLOR};
   ${BUNKYU_MIDASHI_GO_STD}
   border: 4px solid ${ANGE_LIVE_BACK_COLOR};

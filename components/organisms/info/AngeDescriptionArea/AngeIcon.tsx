@@ -3,16 +3,16 @@ import styled, { css, keyframes } from "styled-components";
 import {
   sm_breakpoint,
   tablet_breakpoint,
-} from "../../../constants/breakpoints";
+} from "../../../../constants/breakpoints";
 import {
   ANGE_LIVE_BACK_COLOR,
   ANGE_WHITE,
   RED_SHADOW_COLOR,
-} from "../../../constants/colors";
-import { TA_F1_BLOCK_LINE } from "../../../constants/cssProps";
-import AngeBasicImgPath from "../../../public/imgs/ange-basic.png";
-import AngeheyImgPath from "../../../public/imgs/gatya/ange-hey.png";
-import AngeDoctor from "../../../public/imgs/ange-doctor.png";
+} from "../../../../constants/colors";
+import { TA_F1_BLOCK_LINE } from "../../../../constants/cssProps";
+import AngeBasicImgPath from "../../../../public/imgs/ange-basic.png";
+import AngeheyImgPath from "../../../../public/imgs/gatya/ange-hey.png";
+import AngeDoctor from "../../../../public/imgs/ange-doctor.png";
 
 const shadowAnimation = keyframes`
     0% {
@@ -67,20 +67,10 @@ interface AnimationProps {
 }
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 70%;
-
-  @media (min-width: ${tablet_breakpoint}px) {
-    width: 45%;
-    height: 100%;
-  }
 `;
 
 const Background = styled.div<AnimationProps>`
@@ -103,8 +93,8 @@ const Background = styled.div<AnimationProps>`
     `}
 
   @media (min-width: ${tablet_breakpoint}px) {
-    width: 25vw;
-    height: 25vw;
+    width: 28vw;
+    height: 28vw;
   }
 `;
 
