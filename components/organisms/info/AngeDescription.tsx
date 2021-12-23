@@ -2,36 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../constants/cssProps";
-import commentMarkPath from "../../../public/imgs/info/comment-mark.png";
 
 const Wrapper = styled.div`
   position: absolute;
   top: 10%;
-  left: 40%;
-  width: 50%;
-  max-width: 760px;
-  color: ${ANGE_LIVE_BACK_COLOR};
-  ${BUNKYU_MIDASHI_GO_STD}
-`;
-
-const CommentMark = styled.img.attrs({
-  src: commentMarkPath,
-  alt: "コメントマーク",
-})`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-`;
-
-const TextWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+  left: 50%;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: 7% 7% 0 15%;
+  width: 40%;
+  padding: 3% 3% 3% 3%;
+  ${BUNKYU_MIDASHI_GO_STD}
+  color: ${ANGE_LIVE_BACK_COLOR};
+  border: 4px solid ${ANGE_LIVE_BACK_COLOR};
+  border-radius: 16px;
 `;
 
 const Title = styled.h1`
@@ -50,13 +33,10 @@ const Description = styled.p`
 const AngeDescription = () => {
   return (
     <Wrapper>
-      <CommentMark />
-      <TextWrapper>
-        <Title>アンジュ・カトリーナ</Title>
-        <Description>
-          ボロボロの小屋で時間を忘れて錬金術の研究に明け暮れている。大人っぽい女性的な体に憧れており、実はその研究をしているとかしていないとか。
-        </Description>
-      </TextWrapper>
+      <Title>アンジュ・カトリーナ</Title>
+      <Description>
+        ボロボロの小屋で時間を忘れて錬金術の研究に明け暮れている。大人っぽい女性的な体に憧れており、実はその研究をしているとかしていないとか。
+      </Description>
     </Wrapper>
   );
 };
