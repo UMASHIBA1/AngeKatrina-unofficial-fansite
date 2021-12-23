@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { sm_breakpoint } from "../../../../constants/breakpoints";
 import {
   ANGE_LIVE_BACK_COLOR,
   ANGE_WHITE_TRANSLUCENT,
@@ -19,12 +20,16 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: 1.5rem;
+
+  @media (min-width: ${sm_breakpoint}px) {
+    font-size: 2rem;
+  }
 `;
 
 const Description = styled.p`
-  font-size: 1.3rem;
-  line-height: 3rem;
+  font-size: 1rem;
+  line-height: 2rem;
   padding: 5% 0 0 7%;
 `;
 
