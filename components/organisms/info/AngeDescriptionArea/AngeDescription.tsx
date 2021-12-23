@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { sm_breakpoint } from "../../../../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 
@@ -15,16 +16,25 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 0 0 10px 0;
   border: solid ${ANGE_LIVE_BACK_COLOR};
   border-width: 0 0 2px 0;
+
+  @media (min-width: ${sm_breakpoint}px) {
+    font-size: 2rem;
+  }
 `;
 
 const Description = styled.p`
-  font-size: 1.3rem;
+  font-size: 1rem;
+  line-height: 2rem;
   padding: 16px 0 0 0;
-  line-height: 2.6rem;
+
+  @media (min-width: ${sm_breakpoint}px) {
+    font-size: 1.3rem;
+    line-height: 2.6rem;
+  }
 `;
 
 const AngeDescription = () => {
