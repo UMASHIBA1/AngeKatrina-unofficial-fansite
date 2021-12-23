@@ -31,6 +31,11 @@ const Description = styled.p`
   font-size: 1rem;
   line-height: 2rem;
   padding: 5% 0 0 7%;
+
+  @media (min-width: ${sm_breakpoint}px) {
+    font-size: 1.3rem;
+    line-height: 3rem;
+  }
 `;
 
 const AngeProfile = () => {
