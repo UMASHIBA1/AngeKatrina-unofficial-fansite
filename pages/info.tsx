@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Logo from "../components/atomics/common/Logo";
 import AngeDescriptionArea from "../components/organisms/info/AngeDescriptionArea/AngeDescriptionArea";
+import WhatIsSanbakaArea from "../components/organisms/info/WhatIsSanbakaArea/WhatIsSanbakaArea";
 import PageWrapper from "../components/templates/PageWrapper";
 import { ANGE_WHITE } from "../constants/colors";
 
@@ -26,6 +27,7 @@ const Info: React.VFC = () => {
           <Logo bgColor="red" />
         </LogoWrapper>
         <AngeDescriptionArea />
+        <WhatIsSanbakaArea />
       </Wrapper>
     </PageWrapper>
   );
