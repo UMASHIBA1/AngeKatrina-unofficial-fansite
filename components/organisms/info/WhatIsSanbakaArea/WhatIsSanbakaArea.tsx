@@ -6,6 +6,10 @@ import VTuberIconAndName from "../../../molecules/info/VTuberIconAndName/VTuberI
 import angeImg from "../../../../public/imgs/ange-basic.png";
 import inuiImg from "../../../../public/imgs/inui-toko.png";
 import rizeImg from "../../../../public/imgs/rize-heruesta.png";
+import {
+  sm_breakpoint,
+  tablet_breakpoint,
+} from "../../../../constants/breakpoints";
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,27 +20,48 @@ const Wrapper = styled.div`
 `;
 
 const WhatSanbakaText = styled.h1`
-  font-size: 2rem;
+  font-size: 1.5rem;
   ${BUNKYU_MIDASHI_GO_STD}
   color: ${ANGE_LIVE_BACK_COLOR};
+  @media (min-width: ${sm_breakpoint}px) {
+    font-size: 2rem;
+  }
 `;
 
 const SanbakaIcons = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 80px 0;
+  margin: 40px 0;
 
   > div {
-    margin: 0 8%;
+    margin: 15% 0;
+  }
+
+  @media (min-width: ${sm_breakpoint}px) {
+    flex-direction: row;
+    margin: 80px 0;
+    > div {
+      margin: 0 4%;
+    }
+  }
+
+  @media (min-width: ${tablet_breakpoint}px) {
+    > div {
+      margin: 0 8%;
+    }
   }
 `;
 
 const SanbakaDescriptionText = styled.p`
-  font-size: 1.5rem;
+  font-size: 1rem;
   ${BUNKYU_MIDASHI_GO_STD}
   color: ${ANGE_LIVE_BACK_COLOR};
+
+  @media (min-width: ${sm_breakpoint}px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const WhatIsSanbakaArea: React.VFC = () => {
@@ -52,7 +77,7 @@ const WhatIsSanbakaArea: React.VFC = () => {
         <VTuberIconAndName
           imgPath={angeImg}
           imgAlt="アンジュ画像"
-          vtuberName="アンジュカトリーナ"
+          vtuberName="アンジュ・カトリーナ"
         />
         <VTuberIconAndName
           imgPath={inuiImg}
