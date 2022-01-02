@@ -23,6 +23,13 @@ const useYouTubeHeight = () => {
 
   useDidMount(() => {
     calcAndChangeHeight();
+
+    ref.current &&
+      (function () {
+        const iframes = ref.current.getElementsByTagName("iframe");
+        iframes[0].setAttribute("width", "100%");
+        iframes[0].setAttribute("height", "100%");
+      })();
   });
 
   useEffect(() => {
