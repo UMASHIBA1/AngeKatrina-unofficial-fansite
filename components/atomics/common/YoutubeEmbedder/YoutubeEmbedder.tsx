@@ -3,7 +3,7 @@ import styled from "styled-components";
 import useDidMount from "../../../../hooks/useDidMount";
 
 export interface YouTubeEmbedderProps {
-  children: ReactNode; // expected width: 100%, height: 100% iframe
+  children: ReactNode;
 }
 
 const videoRatio = 0.5625; //  315 / 560 youtube video ratio
