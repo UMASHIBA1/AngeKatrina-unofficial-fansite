@@ -1,9 +1,5 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import {
-  sm_breakpoint,
-  tablet_breakpoint,
-} from "../../../../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 
@@ -23,14 +19,6 @@ const Wrapper = styled.section`
   border-radius: 24px;
   overflow-x: hidden;
   padding: 16px;
-
-  @media (min-width: ${sm_breakpoint}px) {
-    margin: 0 48px;
-  }
-
-  @media (min-width: ${tablet_breakpoint}px) {
-    margin: 0 64px;
-  }
 `;
 
 const Title = styled.h1`
@@ -43,7 +31,6 @@ const Title = styled.h1`
 
 const EmbedContent = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
