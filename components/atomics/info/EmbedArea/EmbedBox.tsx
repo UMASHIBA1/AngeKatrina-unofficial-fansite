@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 
-export interface EmbededAreaProps {
+export interface EmbededBoxProps {
   children: ReactNode;
   title: string;
 }
@@ -37,7 +37,7 @@ const EmbedContent = styled.div`
   margin: 24px;
 `;
 
-const EmbedArea: React.VFC<EmbededAreaProps> = ({ title, children }) => {
+const EmbedBox: React.VFC<EmbededBoxProps> = ({ title, children }) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
@@ -46,4 +46,4 @@ const EmbedArea: React.VFC<EmbededAreaProps> = ({ title, children }) => {
   );
 };
 
-export default EmbedArea;
+export default EmbedBox;

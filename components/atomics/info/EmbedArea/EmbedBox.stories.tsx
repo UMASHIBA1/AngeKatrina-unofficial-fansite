@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react";
-import EmbedArea, { EmbededAreaProps } from "./EmbedArea";
+import EmbedBox, { EmbededBoxProps } from "./EmbedBox";
 import styled from "styled-components";
 import { ANGE_WHITE } from "../../../../constants/colors";
 import {
@@ -47,16 +47,16 @@ const YouTubeWrapper = styled.div`
 `;
 
 export default {
-  title: "info/EmbedArea",
-  component: EmbedArea,
+  title: "info/EmbedBox",
+  component: EmbedBox,
   args: {
     title: "サンプルタイトル",
   },
-} as Meta<EmbededAreaProps>;
+} as Meta<EmbededBoxProps>;
 
-const Template: Story<EmbededAreaProps> = (args) => (
+const Template: Story<EmbededBoxProps> = (args) => (
   <Wrapper>
-    <EmbedArea title={args.title}>
+    <EmbedBox title={args.title}>
       <YouTubeWrapper>
         <YoutubeEmbedder>
           <SampleEmbedElement />
@@ -65,7 +65,7 @@ const Template: Story<EmbededAreaProps> = (args) => (
           <SampleEmbedElement />
         </YoutubeEmbedder>
       </YouTubeWrapper>
-    </EmbedArea>
+    </EmbedBox>
   </Wrapper>
 );
 
