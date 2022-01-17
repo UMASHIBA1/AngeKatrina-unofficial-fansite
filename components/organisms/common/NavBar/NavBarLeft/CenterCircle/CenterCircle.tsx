@@ -39,7 +39,7 @@ const SVGWrapper = styled.div<{
     `}
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ runStartAnimation: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -49,6 +49,11 @@ const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   width: 240px;
   height: 240px;
+  ${({ runStartAnimation }) =>
+    !runStartAnimation &&
+    css`
+      display: none;
+    `}
 `;
 
 const CenterText = styled.p<{ runStartAnimation: boolean }>`
@@ -98,7 +103,7 @@ const TextWrapper = styled.div<{ runStartAnimation: boolean }>`
 
 const CenterCircle: React.VFC<Props> = ({ runStartAnimation }) => {
   return (
-    <Wrapper>
+    <Wrapper runStartAnimation={runStartAnimation}>
       <OutsideRotateLine
         runStartAnimation={runStartAnimation}
         diameter={470}
