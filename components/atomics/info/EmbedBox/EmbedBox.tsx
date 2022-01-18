@@ -2,13 +2,8 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { sm_breakpoint } from "../../../../constants/breakpoints";
 import {
-  ANGE_BLACK,
   ANGE_LIVE_BACK_COLOR,
-  DEEP_GREY,
   GREY_SHADOW_COLOR,
-  RED_SHADOW_COLOR,
-  SECOND_DEEP_GREY,
-  THIRD_DEEP_GREY,
 } from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 
