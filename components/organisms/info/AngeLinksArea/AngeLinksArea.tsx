@@ -31,8 +31,9 @@ const LinksWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 60px 80px;
-  width: 560px;
+  max-width: 560px;
 `;
 
 const ThumbnailWrapper = styled.div<{ color: string }>`
@@ -75,6 +76,22 @@ const AngeLinksArea: React.VFC = () => {
       <Title>リンク集</Title>
       <LinksWrapper>
         <ThumbnailLink
+          description="アンジュのチャンネル"
+          link="https://www.youtube.com/channel/UCHVXbQzkl3rDfsXWo8xi2qw"
+        >
+          <RedThumbnailWrapper>
+            <RedThumbnail src={rectangle} alt="Youtubeロゴ" />
+          </RedThumbnailWrapper>
+        </ThumbnailLink>
+        <ThumbnailLink
+          description="アンジュのTwitter"
+          link="https://twitter.com/Ange_Katrina_"
+        >
+          <ThumbnailWrapper color={twitterColor}>
+            <Thumbnail height="30%" src={twitterLogo} alt="アンジュのTwitter" />
+          </ThumbnailWrapper>
+        </ThumbnailLink>
+        <ThumbnailLink
           description="アンジュのマシュマロ"
           link="https://marshmallow-qa.com/ange_katrina_"
         >
@@ -96,22 +113,6 @@ const AngeLinksArea: React.VFC = () => {
         >
           <ThumbnailWrapper color={white}>
             <Thumbnail src={NijisanjiWikiLogo} alt="非公式Wiki" />
-          </ThumbnailWrapper>
-        </ThumbnailLink>
-        <ThumbnailLink
-          description="アンジュのチャンネル"
-          link="https://www.youtube.com/channel/UCHVXbQzkl3rDfsXWo8xi2qw"
-        >
-          <RedThumbnailWrapper>
-            <RedThumbnail src={rectangle} alt="Youtubeロゴ" />
-          </RedThumbnailWrapper>
-        </ThumbnailLink>
-        <ThumbnailLink
-          description="アンジュのTwitter"
-          link="https://twitter.com/Ange_Katrina_"
-        >
-          <ThumbnailWrapper color={twitterColor}>
-            <Thumbnail height="30%" src={twitterLogo} alt="アンジュのTwitter" />
           </ThumbnailWrapper>
         </ThumbnailLink>
       </LinksWrapper>
