@@ -1,7 +1,15 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { sm_breakpoint } from "../../../../constants/breakpoints";
-import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import {
+  ANGE_BLACK,
+  ANGE_LIVE_BACK_COLOR,
+  DEEP_GREY,
+  GREY_SHADOW_COLOR,
+  RED_SHADOW_COLOR,
+  SECOND_DEEP_GREY,
+  THIRD_DEEP_GREY,
+} from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 
 export interface EmbededBoxProps {
@@ -20,6 +28,7 @@ const Wrapper = styled.section`
   border-radius: 24px;
   overflow-x: hidden;
   padding: 16px 16px 32px 16px;
+  box-shadow: 0 10px 20px ${GREY_SHADOW_COLOR};
 
   @media (min-width: ${sm_breakpoint}px) {
     padding: 16px 16px 64px 16px;
