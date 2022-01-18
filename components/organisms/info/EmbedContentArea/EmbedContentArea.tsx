@@ -62,20 +62,11 @@ const EmbedContentArea: React.VFC = () => {
             </YoutubeEmbedder>
           </YouTubeWrapper>
         </EmbedBox>
-        <EmbedBox title="最新動画">
+        <EmbedBox title="初配信">
           <YouTubeWrapper>
             <YoutubeEmbedder>
               <iframe
-                src="https://www.youtube.com/embed/7iEGMLhyBw8"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </YoutubeEmbedder>
-            <YoutubeEmbedder>
-              <iframe
-                src="https://www.youtube.com/embed/0ahLYNIW8ZY"
+                src="https://www.youtube.com/embed/Z_bichz5-4A"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
