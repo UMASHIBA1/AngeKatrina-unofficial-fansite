@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 24px;
   max-width: 900px;
   width: 100%;
 `;
@@ -53,6 +54,28 @@ const EmbedContentArea: React.VFC = () => {
             <YoutubeEmbedder>
               <iframe
                 src="https://www.youtube.com/embed/s2IBPDWqlr4"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </YoutubeEmbedder>
+          </YouTubeWrapper>
+        </EmbedBox>
+        <EmbedBox title="最新動画">
+          <YouTubeWrapper>
+            <YoutubeEmbedder>
+              <iframe
+                src="https://www.youtube.com/embed/7iEGMLhyBw8"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </YoutubeEmbedder>
+            <YoutubeEmbedder>
+              <iframe
+                src="https://www.youtube.com/embed/0ahLYNIW8ZY"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
