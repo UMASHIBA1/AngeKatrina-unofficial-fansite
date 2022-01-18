@@ -1,7 +1,7 @@
 import { Meta, Story } from "@storybook/react";
 import ThumbnailLink from "./ThumbnailLink";
 import { ThumbnailLinkProps } from "./ThumbnailLink";
-import MashmellowLogoImg from "../../../../public/imgs/mashmellow-logo.png";
+import MashmellowLogoImg from "../../../../public/imgs/info/mashmellow-logo.png";
 import styled from "styled-components";
 
 const MashmellowThumbnail = styled.div`
