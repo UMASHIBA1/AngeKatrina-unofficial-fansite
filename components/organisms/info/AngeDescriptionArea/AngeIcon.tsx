@@ -13,6 +13,7 @@ import { TA_F1_BLOCK_LINE } from "../../../../constants/cssProps";
 import AngeBasicImgPath from "../../../../public/imgs/ange-basic.png";
 import AngeheyImgPath from "../../../../public/imgs/gatya/ange-hey.png";
 import AngeDoctor from "../../../../public/imgs/ange-doctor.png";
+import { fadein, scale } from "../../../../styles/commonAnimation";
 
 const shadowAnimation = keyframes`
     0% {
@@ -62,6 +63,8 @@ const moveAnimation = keyframes`
     }
 `;
 
+const firstViewBaseDelay = 100;
+
 interface AnimationProps {
   runAnimation: boolean;
 }
@@ -71,6 +74,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform: scale(0);
+  animation: ${scale(1)} 600ms forwards ${firstViewBaseDelay}ms ease-out;
 `;
 
 const Background = styled.div<AnimationProps>`
@@ -101,6 +106,13 @@ const Background = styled.div<AnimationProps>`
     width: 28vw;
     height: 28vw;
   }
+`;
+
+const FadeinAnimationWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: ${fadein(1)} 600ms ease-in ${firstViewBaseDelay + 100}ms forwards;
 `;
 
 const ImgWrapper = styled.div<AnimationProps>`
@@ -183,22 +195,24 @@ const AngeIcon: React.VFC = () => {
           changeRunningAnimation(true);
         }}
       >
-        <ImgWrapper key="tmp" runAnimation={runnningAnimation}>
-          <AngeImg
-            runAnimation={runnningAnimation}
-            src={nowAngeImage}
-            alt="アンジュ画像"
-          />
-          <AngeImg
-            runAnimation={runnningAnimation}
-            onAnimationEnd={() => {
-              toNextImage();
-              changeRunningAnimation(false);
-            }}
-            src={nextAngeImage}
-            alt="アンジュ画像"
-          />
-        </ImgWrapper>
+        <FadeinAnimationWrapper>
+          <ImgWrapper key="tmp" runAnimation={runnningAnimation}>
+            <AngeImg
+              runAnimation={runnningAnimation}
+              src={nowAngeImage}
+              alt="アンジュ画像"
+            />
+            <AngeImg
+              runAnimation={runnningAnimation}
+              onAnimationEnd={() => {
+                changeRunningAnimation(false);
+                toNextImage();
+              }}
+              src={nextAngeImage}
+              alt="アンジュ画像"
+            />
+          </ImgWrapper>
+        </FadeinAnimationWrapper>
       </Background>
       <AngeName>アンジュ・カトリーナ</AngeName>
     </Wrapper>
