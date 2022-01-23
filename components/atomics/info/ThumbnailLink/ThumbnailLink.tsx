@@ -25,6 +25,12 @@ const Wrapper = styled.a`
   width: 240px;
   height: 200px;
   overflow: hidden;
+  transition: transform 300ms, box-shadow 300ms;
+
+  :hover {
+    box-shadow: 0 5px 25px ${RED_SHADOW_COLOR};
+    transform: scale(1.1);
+  }
 `;
 
 const ThumnailArea = styled.div`
