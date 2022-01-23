@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * 要素が画面に入ったかを検知する
- * ファーストビューで要素が画面にいてもスクロールするまでは発火しないように
- * 初回のスクロールのみscrollイベントを使う
  */
 const useIntersectionObserver = <T extends HTMLElement>({
   once = true,
@@ -34,16 +32,7 @@ const useIntersectionObserver = <T extends HTMLElement>({
       { rootMargin: `0px 0px -${margin}px` }
     );
 
-    const handleScroll = () => {
-      if (targetRef.current === null) {
-        return;
-      }
-
-      observer.observe(targetRef.current);
-      // 初回スクロールでイベントリストを切る
-      window.removeEventListener("scroll", handleScroll);
-    };
-    window.addEventListener("scroll", handleScroll);
+    observer.observe(targetRef.current);
 
     return () => observer.disconnect();
   }, [margin, once]);
