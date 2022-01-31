@@ -1,18 +1,20 @@
 import React, { ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { sm_breakpoint } from "../../../../constants/breakpoints";
 import {
   ANGE_LIVE_BACK_COLOR,
   GREY_SHADOW_COLOR,
 } from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
+import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
+import { fadein } from "../../../../styles/commonAnimation";
 
 export interface EmbededBoxProps {
   children: ReactNode;
   title: string;
 }
 
-const Wrapper = styled.section`
+const Wrapper = styled.section<{ isStartAnimation: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,6 +26,13 @@ const Wrapper = styled.section`
   overflow-x: hidden;
   padding: 16px 16px 32px 16px;
   box-shadow: 0 10px 20px ${GREY_SHADOW_COLOR};
+  opacity: 0;
+
+  ${({ isStartAnimation }) =>
+    isStartAnimation &&
+    css`
+      animation: ${fadein(1)} ease-in 400ms forwards;
+    `}
 
   @media (min-width: ${sm_breakpoint}px) {
     padding: 16px 16px 64px 16px;
@@ -47,8 +56,10 @@ const EmbedContent = styled.div`
 `;
 
 const EmbedBox: React.VFC<EmbededBoxProps> = ({ title, children }) => {
+  const [ref, isStartAnimation] = useIntersectionObserver({});
+
   return (
-    <Wrapper>
+    <Wrapper ref={ref} isStartAnimation={isStartAnimation}>
       <Title>{title}</Title>
       <EmbedContent>{children}</EmbedContent>
     </Wrapper>
