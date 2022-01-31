@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 import VTuberIconAndName from "../../../molecules/info/VTuberIconAndName/VTuberIconAndName";
@@ -10,6 +10,8 @@ import {
   sm_breakpoint,
   tablet_breakpoint,
 } from "../../../../constants/breakpoints";
+import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
+import { fadein } from "../../../../styles/commonAnimation";
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,16 +21,22 @@ const Wrapper = styled.div`
   margin: 120px 0 0 0;
 `;
 
-const WhatSanbakaText = styled.h1`
+const WhatSanbakaText = styled.h1<{ isStartAnimation: boolean }>`
   font-size: 1.5rem;
   ${BUNKYU_MIDASHI_GO_STD}
   color: ${ANGE_LIVE_BACK_COLOR};
+  opacity: 0;
+  ${({ isStartAnimation }) =>
+    isStartAnimation &&
+    css`
+      animation: ${fadein(1)} 400ms ease-in forwards;
+    `}
   @media (min-width: ${sm_breakpoint}px) {
     font-size: 2rem;
   }
 `;
 
-const SanbakaIcons = styled.div`
+const SanbakaIcons = styled.div<{ isStartAnimation: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,6 +45,23 @@ const SanbakaIcons = styled.div`
 
   > div {
     margin: 15% 0;
+    opacity: 0;
+
+    ${({ isStartAnimation }) =>
+      isStartAnimation &&
+      css`
+        :first-child {
+          animation: ${fadein(1)} 400ms ease-in forwards 200ms;
+        }
+
+        :nth-child(2) {
+          animation: ${fadein(1)} 400ms ease-in forwards 400ms;
+        }
+
+        :nth-child(3) {
+          animation: ${fadein(1)} 400ms ease-in forwards 600ms;
+        }
+      `}
   }
 
   @media (min-width: ${sm_breakpoint}px) {
@@ -54,10 +79,17 @@ const SanbakaIcons = styled.div`
   }
 `;
 
-const SanbakaDescriptionText = styled.p`
+const SanbakaDescriptionText = styled.p<{ isStartAnimation: boolean }>`
   font-size: 1rem;
   ${BUNKYU_MIDASHI_GO_STD}
   color: ${ANGE_LIVE_BACK_COLOR};
+
+  opacity: 0;
+  ${({ isStartAnimation }) =>
+    isStartAnimation &&
+    css`
+      animation: ${fadein(1)} 400ms ease-in forwards;
+    `}
 
   @media (min-width: ${sm_breakpoint}px) {
     font-size: 1.5rem;
@@ -65,10 +97,28 @@ const SanbakaDescriptionText = styled.p`
 `;
 
 const WhatIsSanbakaArea: React.VFC = () => {
+  const [
+    firstTextref,
+    isStartFirstTextAnimation,
+  ] = useIntersectionObserver<HTMLHeadingElement>({});
+  const [
+    iconsRef,
+    isStartIconsAnimation,
+  ] = useIntersectionObserver<HTMLDivElement>({});
+  const [
+    lastTextRef,
+    isStartLastTextAnimation,
+  ] = useIntersectionObserver<HTMLParagraphElement>({});
+
   return (
     <Wrapper>
-      <WhatSanbakaText>さんばかとは？</WhatSanbakaText>
-      <SanbakaIcons>
+      <WhatSanbakaText
+        ref={firstTextref}
+        isStartAnimation={isStartFirstTextAnimation}
+      >
+        さんばかとは？
+      </WhatSanbakaText>
+      <SanbakaIcons ref={iconsRef} isStartAnimation={isStartIconsAnimation}>
         <VTuberIconAndName
           imgPath={rizeImg}
           imgAlt="リゼ画像"
@@ -85,7 +135,12 @@ const WhatIsSanbakaArea: React.VFC = () => {
           vtuberName="戌亥とこ"
         />
       </SanbakaIcons>
-      <SanbakaDescriptionText>の仲良し同期三人組</SanbakaDescriptionText>
+      <SanbakaDescriptionText
+        ref={lastTextRef}
+        isStartAnimation={isStartLastTextAnimation}
+      >
+        の仲良し同期三人組
+      </SanbakaDescriptionText>
     </Wrapper>
   );
 };
