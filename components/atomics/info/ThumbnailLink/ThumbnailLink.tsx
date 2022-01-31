@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ReactNode } from "react";
 import {
   ANGE_RED,
@@ -7,6 +7,8 @@ import {
   RED_SHADOW_COLOR,
 } from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
+import { fadein } from "../../../../styles/commonAnimation";
+import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
 
 export interface ThumbnailLinkProps {
   description: string;
@@ -14,7 +16,7 @@ export interface ThumbnailLinkProps {
   link: string;
 }
 
-const Wrapper = styled.a`
+const Wrapper = styled.a<{ isStartAnimation: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +28,13 @@ const Wrapper = styled.a`
   height: 200px;
   overflow: hidden;
   transition: transform 300ms, box-shadow 300ms;
+  opacity: 0;
+
+  ${({ isStartAnimation }) =>
+    isStartAnimation &&
+    css`
+      animation: ${fadein(1)} 400ms ease-in forwards;
+    `}
 
   :hover {
     box-shadow: 0 5px 25px ${RED_SHADOW_COLOR};
@@ -59,8 +68,18 @@ const ThumbnailLink: React.VFC<ThumbnailLinkProps> = ({
   link,
   children,
 }) => {
+  const [ref, isStartAnimation] = useIntersectionObserver<HTMLAnchorElement>(
+    {}
+  );
+
   return (
-    <Wrapper href={link} target="_blank" rel="noopener noreferrer">
+    <Wrapper
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      ref={ref}
+      isStartAnimation={isStartAnimation}
+    >
       <ThumnailArea>{children}</ThumnailArea>
       <Description>{description}</Description>
     </Wrapper>
