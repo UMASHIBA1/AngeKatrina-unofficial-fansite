@@ -1,10 +1,10 @@
 import React from "react";
-import LogoImg from "../../../public/svgs/home/logo.svg";
-import styled, { css } from "styled-components";
+import WhiteLogoImg from "../../../public/svgs/home/logo.svg";
+import RedLogoImg from "../../../public/svgs/home/red-logo.svg";
+import styled from "styled-components";
 import { sm_breakpoint } from "../../../constants/breakpoints";
-import { ANGE_LIVE_BACK_COLOR } from "../../../constants/colors";
 
-const common = css`
+const Wrapper = styled.div`
   position: relative;
   top: 10px;
   left: 10px;
@@ -15,35 +15,18 @@ const common = css`
   }
 `;
 
-const TransparentBG = styled.div`
-  ${common}
-`;
-
-const RedBG = styled.div`
-  ${common}
-  background-color: ${ANGE_LIVE_BACK_COLOR};
-  border-radius: 8px;
-  padding: 8px;
-`;
-
 interface Props {
-  bgColor: "red" | "transparent";
+  bgColor: "red" | "white";
 }
 
-const Logo: React.VFC<Props> = ({ bgColor = "transparent" }) => {
-  if (bgColor === "transparent") {
-    return (
-      <TransparentBG>
-        <LogoImg />
-      </TransparentBG>
-    );
-  } else {
-    return (
-      <RedBG>
-        <LogoImg />
-      </RedBG>
-    );
-  }
+const Logo: React.VFC<Props> = ({ bgColor = "white" }) => {
+  const LogoImg = bgColor === "white" ? WhiteLogoImg : RedLogoImg;
+
+  return (
+    <Wrapper>
+      <LogoImg />
+    </Wrapper>
+  );
 };
 
 export default Logo;

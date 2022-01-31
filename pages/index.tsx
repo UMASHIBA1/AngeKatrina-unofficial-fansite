@@ -24,7 +24,7 @@ const Home: React.FC = () => {
       <Wrapper>
         <HomeBG>
           <CircleSlide />
-          <Logo bgColor="transparent" />
+          <Logo bgColor="white" />
           <HomeAnge />
           <HamburgerMenu
             onClickFC={() => {
