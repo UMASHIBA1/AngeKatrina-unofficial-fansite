@@ -32,7 +32,7 @@ const contentData = [
     icon: RedInfoIcon,
     hoveredIcon: WhiteInfoIcon,
     mainText: "アンジュ情報",
-    link: "/",
+    link: "/info",
   },
   {
     icon: RedLicenseIcon,
