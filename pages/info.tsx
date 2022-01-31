@@ -6,6 +6,9 @@ import EmbedContentArea from "../components/organisms/info/EmbedContentArea/Embe
 import WhatIsSanbakaArea from "../components/organisms/info/WhatIsSanbakaArea/WhatIsSanbakaArea";
 import PageWrapper from "../components/templates/PageWrapper";
 import { ANGE_WHITE } from "../constants/colors";
+import HamburgerMenu from "../components/atomics/common/HamburgerMenu/HamburgerMenu";
+import NavBar from "../components/organisms/common/NavBar/NavBar";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   position: relative;
@@ -22,6 +25,8 @@ const LogoWrapper = styled.div`
 `;
 
 const Info: React.VFC = () => {
+  const [isOpenNavBar, changeIsOpenNavBar] = useState(false);
+
   return (
     <PageWrapper>
       <Wrapper>
@@ -32,6 +37,17 @@ const Info: React.VFC = () => {
         <WhatIsSanbakaArea />
         <EmbedContentArea />
         <AngeLinksArea />
+        <HamburgerMenu
+          onClickFC={() => {
+            changeIsOpenNavBar(true);
+          }}
+        />
+        <NavBar
+          isOpen={isOpenNavBar}
+          onClose={() => {
+            changeIsOpenNavBar(false);
+          }}
+        />
       </Wrapper>
     </PageWrapper>
   );
