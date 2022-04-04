@@ -7,6 +7,9 @@ import { ANGE_WHITE } from "../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../constants/cssProps";
 import NijisanjiLogo from "../public/imgs/common/nijisanji-logo.png";
 import GitHubLogo from "../public/imgs/common/github-logo.png";
+import NavBar from "../components/organisms/common/NavBar/NavBar";
+import HamburgerMenu from "../components/atomics/common/HamburgerMenu/HamburgerMenu";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   position: relative;
@@ -18,6 +21,7 @@ const Wrapper = styled.div`
   width: 100%;
   background-color: ${ANGE_WHITE};
   ${BUNKYU_MIDASHI_GO_STD}
+  padding-bottom: 120px;
 `;
 
 const LogoWrapper = styled.div`
@@ -36,6 +40,8 @@ const ContentWrapper = styled.div`
 `;
 
 const License: React.VFC = () => {
+  const [isOpenNavBar, changeIsOpenNavBar] = useState(false);
+
   return (
     <PageWrapper>
       <Wrapper>
@@ -69,6 +75,17 @@ const License: React.VFC = () => {
             }}
           />
         </ContentWrapper>
+        <HamburgerMenu
+          onClickFC={() => {
+            changeIsOpenNavBar(true);
+          }}
+        />
+        <NavBar
+          isOpen={isOpenNavBar}
+          onClose={() => {
+            changeIsOpenNavBar(false);
+          }}
+        />
       </Wrapper>
     </PageWrapper>
   );

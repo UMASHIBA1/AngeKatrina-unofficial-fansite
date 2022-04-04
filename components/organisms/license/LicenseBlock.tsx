@@ -65,7 +65,7 @@ const Description = styled.p<{ isStartAnimation: boolean }>`
   top: 0;
   left: 0;
   font-size: 1.2rem;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   text-align: center;
   overflow: hidden;
   color: ${ANGE_WHITE};
