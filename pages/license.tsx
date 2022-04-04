@@ -5,7 +5,7 @@ import LicenseBlock from "../components/organisms/license/LicenseBlock";
 import PageWrapper from "../components/templates/PageWrapper";
 import { ANGE_WHITE } from "../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../constants/cssProps";
-import NijisanjiLogo from "../public/imgs/info/nijisanji-logo.png";
+import NijisanjiLogo from "../public/imgs/common/nijisanji-logo.png";
 import GitHubLogo from "../public/imgs/common/github-logo.png";
 
 const Wrapper = styled.div`
