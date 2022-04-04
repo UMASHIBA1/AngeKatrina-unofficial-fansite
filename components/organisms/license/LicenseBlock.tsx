@@ -1,8 +1,13 @@
 import React from "react";
-import styled from "styled-components";
-import { ANGE_LIVE_BACK_COLOR } from "../../../constants/colors";
+import styled, { css } from "styled-components";
+import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../constants/colors";
+import { colorChange, translate } from "../../../styles/commonAnimation";
 import ThumbnailLink from "../../atomics/info/ThumbnailLink/ThumbnailLink";
+import useIntersectionObserver from "../../../hooks/useIntersectionObserver";
 
+const animationDuration = 300;
+
+const animationDelay = 100;
 interface Props {
   title: string;
   description: string;
@@ -24,15 +29,68 @@ const Wrapper = styled.div`
   padding: 32px;
 `;
 
-const Title = styled.h1`
+const Title = styled.h1<{ isStartAnimation: boolean }>`
+  position: relative;
+  top: 0;
+  left: 0;
   font-size: 2rem;
   margin-bottom: 48px;
+  overflow: hidden;
+  color: ${ANGE_WHITE};
+  ${({ isStartAnimation }) =>
+    isStartAnimation &&
+    css`
+      animation: ${colorChange(ANGE_WHITE, ANGE_LIVE_BACK_COLOR)} 0ms
+        ease-in-out ${animationDuration / 2 + animationDelay}ms forwards;
+    `}
+  ::after {
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: ${ANGE_LIVE_BACK_COLOR};
+    ${({ isStartAnimation }) =>
+      isStartAnimation &&
+      css`
+        animation: ${translate({ x: 0, y: 0 }, { x: "-200%", y: 0 })}
+          ${animationDuration}ms ease-in-out ${animationDelay}ms forwards;
+      `}
+  }
 `;
 
-const Description = styled.p`
+const Description = styled.p<{ isStartAnimation: boolean }>`
+  position: relative;
+  top: 0;
+  left: 0;
   font-size: 1.2rem;
   margin-bottom: 100px;
   text-align: center;
+  overflow: hidden;
+  color: ${ANGE_WHITE};
+  ${({ isStartAnimation }) =>
+    isStartAnimation &&
+    css`
+      animation: ${colorChange(ANGE_WHITE, ANGE_LIVE_BACK_COLOR)} 0ms
+        ease-in-out ${animationDuration / 2 + animationDelay}ms forwards;
+    `}
+
+  ::after {
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: ${ANGE_LIVE_BACK_COLOR};
+    ${({ isStartAnimation }) =>
+      isStartAnimation &&
+      css`
+        animation: ${translate({ x: 0, y: 0 }, { x: "-200%", y: 0 })}
+          ${animationDuration}ms ease-in-out ${animationDelay}ms forwards;
+      `}
+  }
 `;
 
 const Thumbnail = styled.img<{ height?: string; width?: string }>`
@@ -57,10 +115,18 @@ const LicenseBlock: React.VFC<Props> = ({
   link,
   thumbnail,
 }) => {
+  const [ref, isStartAnimation] = useIntersectionObserver<HTMLHeadingElement>(
+    {}
+  );
+
   return (
     <Wrapper>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
+      <Title ref={ref} isStartAnimation={isStartAnimation}>
+        {title}
+      </Title>
+      <Description isStartAnimation={isStartAnimation}>
+        {description}
+      </Description>
       <ThumbnailLink description={link.name} link={link.src}>
         <ThumbnailWrapper>
           <Thumbnail src={thumbnail.imgPath} alt={thumbnail.alt} />
