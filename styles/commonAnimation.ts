@@ -131,6 +131,18 @@ export const bgColorChange = (from: string, to: string) => {
     `;
 };
 
+export const colorChange = (from: string, to: string) => {
+  return keyframes`
+        from {
+            color: ${from};
+        }
+
+        to {
+            color: ${to};
+        }
+    `;
+};
+
 export const bounceToX = (from: string, to: string, maxBounce: string) => {
   // NOTE maxBounce_percentは最大の跳ね返りを5%にしたいなら5%を指定する
   return keyframes`

@@ -1,17 +1,27 @@
 import React from "react";
-import LogoImg from "../../../public/svgs/home/logo.svg";
+import WhiteLogoImg from "../../../public/svgs/home/logo.svg";
+import RedLogoImg from "../../../public/svgs/home/red-logo.svg";
 import styled from "styled-components";
 import { sm_breakpoint } from "../../../constants/breakpoints";
 
-const Wrapper = styled.span`
+const Wrapper = styled.div`
+  position: relative;
+  top: 10px;
+  left: 10px;
   width: 150px;
-  margin: 10px 0 0 10px;
+  max-height: 100px;
   @media (min-width: ${sm_breakpoint}px) {
     width: 300px;
   }
 `;
 
-const Logo: React.FC = () => {
+interface Props {
+  bgColor: "red" | "white";
+}
+
+const Logo: React.VFC<Props> = ({ bgColor = "white" }) => {
+  const LogoImg = bgColor === "white" ? WhiteLogoImg : RedLogoImg;
+
   return (
     <Wrapper>
       <LogoImg />

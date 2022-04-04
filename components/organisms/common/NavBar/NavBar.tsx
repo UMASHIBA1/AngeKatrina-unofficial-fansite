@@ -32,7 +32,7 @@ const contentData = [
     icon: RedInfoIcon,
     hoveredIcon: WhiteInfoIcon,
     mainText: "アンジュ情報",
-    link: "/",
+    link: "/info",
   },
   {
     icon: RedLicenseIcon,
@@ -90,7 +90,7 @@ const NavWrapper = styled.nav<{ isOpen: boolean; runCloseAnimation: boolean }>`
 `;
 
 const Wrapper = styled.div<{ isOpen: boolean; runCloseAnimation: boolean }>`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: ${navBarZindex};
