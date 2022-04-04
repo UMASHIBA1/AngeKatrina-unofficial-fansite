@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import MashmellowLogo from "../../../../public/imgs/info/mashmellow-logo.png";
 import ThumbnailLink from "../../../atomics/info/ThumbnailLink/ThumbnailLink";
-import NijisanjiLogo from "../../../../public/imgs/info/nijisanji-logo.png";
+import NijisanjiLogo from "../../../../public/imgs/common/nijisanji-logo.png";
 import NijisanjiWikiLogo from "../../../../public/imgs/info/nijisanji-wiki.png";
 import rectangle from "../../../../public/imgs/info/rectangle.png";
 import twitterLogo from "../../../../public/imgs/info/twitter-logo.png";
