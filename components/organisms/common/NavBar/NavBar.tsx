@@ -38,7 +38,7 @@ const contentData = [
     icon: RedLicenseIcon,
     hoveredIcon: WhiteLicenseIcon,
     mainText: "ライセンス",
-    link: "/",
+    link: "/license",
   },
   {
     icon: RedPresentIcon,
