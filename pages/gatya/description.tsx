@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../components/atomics/common/Logo";
 import PageWrapper from "../../components/templates/PageWrapper";
 import styled from "styled-components";
 import { ANGE_WHITE } from "../../constants/colors";
 import DescriptionMain from "../../components/organisms/gatya/description/DecriptionMain";
+import HamburgerMenu from "../../components/atomics/common/HamburgerMenu/HamburgerMenu";
+import NavBar from "../../components/organisms/common/NavBar/NavBar";
 
 const LogoWrapper = styled.div`
   position: absolute;
@@ -26,6 +28,8 @@ const Wrapper = styled.div`
 `;
 
 const Gatya: React.VFC = () => {
+  const [isOpenNavBar, changeIsOpenNavBar] = useState(false);
+
   return (
     <PageWrapper>
       <Wrapper>
@@ -33,6 +37,17 @@ const Gatya: React.VFC = () => {
           <Logo bgColor="red" />
         </LogoWrapper>
         <DescriptionMain />
+        <HamburgerMenu
+          onClickFC={() => {
+            changeIsOpenNavBar(true);
+          }}
+        />
+        <NavBar
+          isOpen={isOpenNavBar}
+          onClose={() => {
+            changeIsOpenNavBar(false);
+          }}
+        />
       </Wrapper>
     </PageWrapper>
   );
