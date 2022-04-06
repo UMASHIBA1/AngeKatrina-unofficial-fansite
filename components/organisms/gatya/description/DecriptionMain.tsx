@@ -5,6 +5,7 @@ import AngeLightDressImg from "../../../../public/imgs/gatya/ange-light-dress.pn
 import AngeBasicImg from "../../../../public/imgs/ange-basic.png";
 import AngeHeyImg from "../../../../public/imgs/gatya/ange-hey.png";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
+import { sm_breakpoint } from "../../../../constants/breakpoints";
 
 const Wrapper = styled.div`
   position: relative;
@@ -54,7 +55,7 @@ const DescriptionText = styled.p`
 `;
 
 const StartButton = styled.button`
-  width: 360px;
+  width: 300px;
   height: 82px;
   border: 2px solid ${ANGE_LIVE_BACK_COLOR};
   border-radius: 12px;
@@ -68,6 +69,10 @@ const StartButton = styled.button`
   :hover {
     background-color: ${ANGE_LIVE_BACK_COLOR};
     color: ${ANGE_WHITE};
+  }
+
+  @media (min-width: ${sm_breakpoint}px) {
+    width: 360px;
   }
 `;
 

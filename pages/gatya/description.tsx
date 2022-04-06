@@ -21,6 +21,8 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${ANGE_WHITE};
+  padding: 0 8px;
+  padding-top: 52px;
 `;
 
 const Gatya: React.VFC = () => {
@@ -28,7 +30,7 @@ const Gatya: React.VFC = () => {
     <PageWrapper>
       <Wrapper>
         <LogoWrapper>
-          <Logo bgColor="white" />
+          <Logo bgColor="red" />
         </LogoWrapper>
         <DescriptionMain />
       </Wrapper>
