@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../../constants/colors";
 import AngeLightDressImg from "../../../../public/imgs/gatya/ange-light-dress.png";
 import AngeBasicImg from "../../../../public/imgs/ange-basic.png";
 import AngeHeyImg from "../../../../public/imgs/gatya/ange-hey.png";
+import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 
 const Wrapper = styled.div`
   position: relative;
@@ -26,6 +27,60 @@ const BackgroundImg = styled.img<{ top: string; left: string; rotate: string }>`
   object-fit: "contain";
 `;
 
+const DescriptionContent = styled.main`
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  ${BUNKYU_MIDASHI_GO_STD}
+  color: ${ANGE_LIVE_BACK_COLOR};
+`;
+
+const Title = styled.h1`
+  width: 100%;
+  font-size: 1.75rem;
+  padding: 32px 0 0px 48px;
+`;
+
+const DescriptionText = styled.p`
+  width: 94%;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 2.5rem;
+`;
+
+const StartButton = styled.button`
+  width: 360px;
+  height: 82px;
+  border: 2px solid ${ANGE_LIVE_BACK_COLOR};
+  border-radius: 12px;
+  font-size: 28px;
+  background-color: ${ANGE_WHITE};
+  color: ${ANGE_LIVE_BACK_COLOR};
+  box-sizing: border-box;
+  padding-left: 24px;
+  cursor: pointer;
+  transition: background-color 200ms, color 200ms;
+  :hover {
+    background-color: ${ANGE_LIVE_BACK_COLOR};
+    color: ${ANGE_WHITE};
+  }
+`;
+
+const WarningText = styled.p`
+  font-size: 0.875rem;
+  text-align: center;
+  font-weight: 400;
+  margin: 0 8px 8px;
+  background-color: ${ANGE_WHITE};
+  border-radius: 8px;
+  padding: 4px;
+`;
+
 const DescriptionMain: React.VFC = () => {
   return (
     <Wrapper>
@@ -39,7 +94,7 @@ const DescriptionMain: React.VFC = () => {
       />
       <BackgroundImg
         height="400px"
-        top="58%"
+        top="70%"
         left="-10%"
         rotate="30deg"
         alt="アンジュ基本ローブ姿の画像"
@@ -53,6 +108,20 @@ const DescriptionMain: React.VFC = () => {
         alt="アンジュてを掲げてるローブ姿の画像"
         src={AngeHeyImg}
       />
+      <DescriptionContent>
+        <Title>アンジュガチャ！</Title>
+        <DescriptionText>
+          お楽しみ要素としてアンジュが出てくるガチャガチャを作ったよ！
+          <br />
+          出てくるアンジュの衣装は3種類！
+          <br />
+          ぜひ遊んでみてね！
+        </DescriptionText>
+        <StartButton>ガチャスタート！</StartButton>
+        <WarningText>
+          ※だいぶ処理が重いガチャガチャになっちゃったからスペックの高いPC,スマホで遊んでね！
+        </WarningText>
+      </DescriptionContent>
     </Wrapper>
   );
 };
