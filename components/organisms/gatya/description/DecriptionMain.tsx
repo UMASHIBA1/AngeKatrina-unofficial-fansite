@@ -41,10 +41,18 @@ const DescriptionContent = styled.main`
   color: ${ANGE_LIVE_BACK_COLOR};
 `;
 
-const Title = styled.h1`
+const TitleArea = styled.div`
   width: 100%;
-  font-size: 1.75rem;
   padding: 32px 0 0px 48px;
+`;
+
+const Title = styled.h1`
+  width: 240px;
+  font-size: 1.75rem;
+  border: solid ${ANGE_LIVE_BACK_COLOR};
+  border-width: 0 0 2px 0;
+  text-align: center;
+  padding: 4px 0;
 `;
 
 const DescriptionText = styled.p`
@@ -114,7 +122,9 @@ const DescriptionMain: React.VFC = () => {
         src={AngeHeyImg}
       />
       <DescriptionContent>
-        <Title>アンジュガチャ！</Title>
+        <TitleArea>
+          <Title>アンジュガチャ！</Title>
+        </TitleArea>
         <DescriptionText>
           お楽しみ要素としてアンジュが出てくるガチャガチャを作ったよ！
           <br />
@@ -124,7 +134,7 @@ const DescriptionMain: React.VFC = () => {
         </DescriptionText>
         <StartButton>ガチャスタート！</StartButton>
         <WarningText>
-          ※だいぶ処理が重いガチャガチャになっちゃったからスペックの高いPC,スマホで遊んでね！
+          ※だいぶ処理が重いガチャガチャになっちゃったからスペックの高いPC/スマホで遊んでね！
         </WarningText>
       </DescriptionContent>
     </Wrapper>
