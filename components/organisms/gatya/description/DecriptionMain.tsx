@@ -6,6 +6,7 @@ import AngeBasicImg from "../../../../public/imgs/ange-basic.png";
 import AngeHeyImg from "../../../../public/imgs/gatya/ange-hey.png";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 import { sm_breakpoint } from "../../../../constants/breakpoints";
+import Link from "next/link";
 
 const Wrapper = styled.div`
   position: relative;
@@ -132,7 +133,9 @@ const DescriptionMain: React.VFC = () => {
           <br />
           ぜひ遊んでみてね！
         </DescriptionText>
-        <StartButton>ガチャスタート！</StartButton>
+        <Link href="/gatya">
+          <StartButton>ガチャスタート！</StartButton>
+        </Link>
         <WarningText>
           ※だいぶ処理が重いガチャガチャになっちゃったからスペックの高いPC/スマホで遊んでね！
         </WarningText>

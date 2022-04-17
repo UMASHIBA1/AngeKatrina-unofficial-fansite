@@ -44,7 +44,7 @@ const contentData = [
     icon: RedPresentIcon,
     hoveredIcon: WhitePresentIcon,
     mainText: "ガチャ",
-    link: "/gatya",
+    link: "/gatya/description",
   },
 ];
 
