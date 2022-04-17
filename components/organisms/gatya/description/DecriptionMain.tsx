@@ -8,10 +8,8 @@ import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
 import { sm_breakpoint } from "../../../../constants/breakpoints";
 import Link from "next/link";
 import {
-  boundExpand,
   colorChange,
   fadein,
-  multiBoundExpand,
   scale,
   translate,
 } from "../../../../styles/commonAnimation";
