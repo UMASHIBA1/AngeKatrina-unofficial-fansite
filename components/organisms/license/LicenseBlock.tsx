@@ -46,7 +46,7 @@ const Title = styled.h1<{ isStartAnimation: boolean }>`
   ::after {
     position: absolute;
     top: 0%;
-    left: 100%;
+    left: -100%;
     content: "";
     width: 100%;
     height: 100%;
@@ -54,7 +54,7 @@ const Title = styled.h1<{ isStartAnimation: boolean }>`
     ${({ isStartAnimation }) =>
       isStartAnimation &&
       css`
-        animation: ${translate({ x: 0, y: 0 }, { x: "-200%", y: 0 })}
+        animation: ${translate({ x: 0, y: 0 }, { x: "200%", y: 0 })}
           ${animationDuration}ms ease-in-out ${animationDelay}ms forwards;
       `}
   }
@@ -79,7 +79,7 @@ const Description = styled.p<{ isStartAnimation: boolean }>`
   ::after {
     position: absolute;
     top: 0%;
-    left: 100%;
+    left: -100%;
     content: "";
     width: 100%;
     height: 100%;
@@ -87,7 +87,7 @@ const Description = styled.p<{ isStartAnimation: boolean }>`
     ${({ isStartAnimation }) =>
       isStartAnimation &&
       css`
-        animation: ${translate({ x: 0, y: 0 }, { x: "-200%", y: 0 })}
+        animation: ${translate({ x: 0, y: 0 }, { x: "200%", y: 0 })}
           ${animationDuration}ms ease-in-out ${animationDelay}ms forwards;
       `}
   }
