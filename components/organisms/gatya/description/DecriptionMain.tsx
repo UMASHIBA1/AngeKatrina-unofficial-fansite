@@ -21,7 +21,7 @@ const backgroundAnimation: AnimationProps = {
 };
 
 const titleAnimation: AnimationProps = {
-  delay_ms: backgroundAnimation.delay_ms,
+  delay_ms: backgroundAnimation.delay_ms + 200,
   duration_ms: 300,
 };
 
@@ -51,8 +51,11 @@ const Wrapper = styled.div`
   max-height: 600px;
   border: 4px solid ${ANGE_LIVE_BACK_COLOR};
   border-radius: 24px;
+  transform: scale(0);
   animation: ${fadein(1)} ${backgroundAnimation.duration_ms - 100}ms both
-    ${backgroundAnimation.delay_ms - 100}ms linear;
+      ${backgroundAnimation.delay_ms - 100}ms ease-out,
+    ${scale(1)} ${backgroundAnimation.duration_ms - 100}ms forwards
+      ${backgroundAnimation.delay_ms - 100}ms ease-out;
 `;
 
 const BackgroundImg = styled.img<{
