@@ -1,13 +1,46 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { RedBlackYellow } from "../../../../typing/Color";
+import React, { useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 import { ANGE_BLACK, ANGE_YELLOW } from "../../../../constants/colors";
 
-const Square = styled.div<{ color: RedBlackYellow }>`
+const rotateSquare = keyframes`
+    0% {
+        transform: rotate(0);
+    }
+
+    25%, 75% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(90deg);
+    }
+`;
+
+const squareColorChange = keyframes`
+    0% {
+        background-color: ${ANGE_YELLOW};
+    }
+
+    25%,75% {
+        background-color: ${ANGE_BLACK};
+    }
+
+    100% {
+        background-color: ${ANGE_YELLOW};
+    }
+`;
+
+const Square = styled.div<{ runAnimation: boolean }>`
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background-color: ${({ color }) => color};
+  background-color: ${ANGE_YELLOW};
+  ${({ runAnimation }) =>
+    runAnimation &&
+    css`
+      animation: ${rotateSquare} 600ms ease-in-out both,
+        ${squareColorChange} 600ms forwards;
+    `}
 `;
 
 const Wrapper = styled.div`
@@ -17,29 +50,41 @@ const Wrapper = styled.div`
   gap: 20px;
 `;
 
-const useSquareColor = () => {
-  const [colors, setColors] = useState<
-    [RedBlackYellow, RedBlackYellow, RedBlackYellow]
-  >([ANGE_BLACK, ANGE_YELLOW, ANGE_YELLOW]);
+const useAnimation = () => {
+  const [runAnimation, setRunningAnimation] = useState<
+    [boolean, boolean, boolean]
+  >([true, false, false]);
 
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setColors([colors[2], colors[0], colors[1]]);
-    }, 600);
-    return () => clearTimeout(id);
-  });
+  const changeRunAnimation = () => {
+    setRunningAnimation([runAnimation[2], runAnimation[0], runAnimation[1]]);
+  };
 
-  return colors;
+  return [runAnimation, changeRunAnimation] as [
+    typeof runAnimation,
+    typeof changeRunAnimation
+  ];
 };
 
 const ThreeSquares: React.VFC = () => {
-  const [firstColor, secondColor, thirdColor] = useSquareColor();
+  const [
+    [runFirst, runSecond, runThird],
+    changeRunningAnimation,
+  ] = useAnimation();
 
   return (
     <Wrapper>
-      <Square color={firstColor} />
-      <Square color={secondColor} />
-      <Square color={thirdColor} />
+      <Square
+        runAnimation={runFirst}
+        onAnimationEnd={runFirst ? changeRunningAnimation : () => {}}
+      />
+      <Square
+        runAnimation={runSecond}
+        onAnimationEnd={runSecond ? changeRunningAnimation : () => {}}
+      />
+      <Square
+        runAnimation={runThird}
+        onAnimationEnd={runThird ? changeRunningAnimation : () => {}}
+      />
     </Wrapper>
   );
 };
