@@ -7,7 +7,7 @@ const rotateSquare = keyframes`
         transform: rotate(0);
     }
 
-    25%, 75% {
+    45%, 55% {
         transform: rotate(45deg);
     }
 
@@ -25,21 +25,20 @@ const squareColorChange = keyframes`
         background-color: ${ANGE_BLACK};
     }
 
-    100% {
+    76%, 100% {
         background-color: ${ANGE_YELLOW};
     }
 `;
 
-const Square = styled.div<{ runAnimation: boolean }>`
+const Square = styled.div<{ delayMs: number }>`
   width: 32px;
   height: 32px;
   border-radius: 8px;
   background-color: ${ANGE_YELLOW};
-  ${({ runAnimation }) =>
-    runAnimation &&
+  ${({ delayMs }) =>
     css`
-      animation: ${rotateSquare} 600ms ease-in-out both,
-        ${squareColorChange} 600ms forwards;
+      animation: ${rotateSquare} 600ms ease-in-out both ${delayMs}ms,
+        ${squareColorChange} 600ms forwards ${delayMs}ms;
     `}
 `;
 
@@ -51,40 +50,23 @@ const Wrapper = styled.div`
 `;
 
 const useAnimation = () => {
-  const [runAnimation, setRunningAnimation] = useState<
-    [boolean, boolean, boolean]
-  >([true, false, false]);
+  const [key, changeKey] = useState(0);
 
-  const changeRunAnimation = () => {
-    setRunningAnimation([runAnimation[2], runAnimation[0], runAnimation[1]]);
+  const restartAnimation = () => {
+    changeKey(key + 1);
   };
 
-  return [runAnimation, changeRunAnimation] as [
-    typeof runAnimation,
-    typeof changeRunAnimation
-  ];
+  return [key, restartAnimation] as [typeof key, typeof restartAnimation];
 };
 
 const ThreeSquares: React.VFC = () => {
-  const [
-    [runFirst, runSecond, runThird],
-    changeRunningAnimation,
-  ] = useAnimation();
+  const [key, restartAnimation] = useAnimation();
 
   return (
-    <Wrapper>
-      <Square
-        runAnimation={runFirst}
-        onAnimationEnd={runFirst ? changeRunningAnimation : () => {}}
-      />
-      <Square
-        runAnimation={runSecond}
-        onAnimationEnd={runSecond ? changeRunningAnimation : () => {}}
-      />
-      <Square
-        runAnimation={runThird}
-        onAnimationEnd={runThird ? changeRunningAnimation : () => {}}
-      />
+    <Wrapper key={key}>
+      <Square delayMs={200} />
+      <Square delayMs={600} />
+      <Square delayMs={1000} onAnimationEnd={restartAnimation} />
     </Wrapper>
   );
 };
