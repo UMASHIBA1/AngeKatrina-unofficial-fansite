@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import { ANGE_BLACK, ANGE_YELLOW } from "../../../../constants/colors";
+import useAnimationRestarter from "../../../../hooks/useAnimationRestarter";
 
 const rotateSquare = keyframes`
     0% {
@@ -49,18 +50,8 @@ const Wrapper = styled.div`
   gap: 20px;
 `;
 
-const useAnimation = () => {
-  const [key, changeKey] = useState(0);
-
-  const restartAnimation = () => {
-    changeKey(key + 1);
-  };
-
-  return [key, restartAnimation] as [typeof key, typeof restartAnimation];
-};
-
 const ThreeSquares: React.VFC = () => {
-  const [key, restartAnimation] = useAnimation();
+  const [key, restartAnimation] = useAnimationRestarter();
 
   return (
     <Wrapper key={key}>
