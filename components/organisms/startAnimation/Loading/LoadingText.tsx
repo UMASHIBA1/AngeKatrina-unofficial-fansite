@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { ANGE_BLACK } from "../../../../constants/colors";
 import { HWT_MARDELL_FONT_PROP } from "../../../../constants/cssProps";
-import useAnimationRestarter from "../../../../hooks/useAnimationRestarter";
 
 const textAnimation = keyframes`
     0% {
