@@ -22,12 +22,12 @@ const Wrapper = styled.div`
 
 const Text = styled.p<{ delayMs: number }>`
   display: inline-block;
-  animation: ${textAnimation} 800ms ease-out ${({ delayMs }) => delayMs}ms both;
+  animation: ${textAnimation} 600ms ease-out ${({ delayMs }) => delayMs}ms both;
 `;
 
 const loadingText = "Loading";
 
-const delayInterval = 200;
+const delayInterval = 100;
 
 const LoadingText: React.VFC = () => {
   const [key, restartAnimation] = useAnimationRestarter();
@@ -35,10 +35,10 @@ const LoadingText: React.VFC = () => {
   return (
     <Wrapper key={key}>
       {loadingText.split("").map((char, i) => {
-        return <Text delayMs={delayInterval * i}>{char}</Text>;
+        return <Text delayMs={delayInterval * i + 300}>{char}</Text>;
       })}
       <Text
-        delayMs={delayInterval * loadingText.length}
+        delayMs={delayInterval * loadingText.length + 300}
         onAnimationEnd={restartAnimation}
       >
         ...
