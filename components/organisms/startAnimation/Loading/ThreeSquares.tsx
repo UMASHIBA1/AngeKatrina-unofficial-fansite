@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { ANGE_BLACK, ANGE_YELLOW } from "../../../../constants/colors";
-import { leftRotate, translate } from "../../../../styles/commonAnimation";
+import { translate } from "../../../../styles/commonAnimation";
 import AnimationProps from "../../../../typing/AnimationProps";
 
 type animationKind = "loading" | "disappear";
@@ -32,6 +32,20 @@ const squareColorChange = keyframes`
     76%, 100% {
         background-color: ${ANGE_YELLOW};
     }
+`;
+
+const rotateAndExpand = keyframes`
+  0% {
+    transform: rotate(0) scale(1);
+  }
+
+  20% {
+    transform: rotate(0.2turn) scale(1.2);
+  }
+
+  100% {
+    transform: rotate(1turn) scale(1);
+  }
 `;
 
 const disappearAnimationProps: AnimationProps = {
@@ -102,9 +116,8 @@ const LeftRightSquareWrapper = styled.div<{
   ${({ isStartDisappearAnimation }) =>
     isStartDisappearAnimation &&
     css`
-      animation: ${leftRotate("0", "1turn")}
-        ${disappearAnimationProps.duration_ms}ms ease-out
-        ${disappearAnimationProps.delay_ms}ms both;
+      animation: ${rotateAndExpand} ${disappearAnimationProps.duration_ms}ms
+        ease-out ${disappearAnimationProps.delay_ms}ms both;
     `}
 `;
 
