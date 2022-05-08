@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { ANGE_BLACK, ANGE_YELLOW } from "../../../../constants/colors";
+import { leftRotate, translate } from "../../../../styles/commonAnimation";
+import AnimationProps from "../../../../typing/AnimationProps";
 
 type animationKind = "loading" | "disappear";
 
@@ -32,15 +34,10 @@ const squareColorChange = keyframes`
     }
 `;
 
-const toCenter = (toX: string) => keyframes`
-  0% {
-    transform: translateX(0) rotate(0);
-  }
-
-  100% {
-    transform: translateX(${toX}) rotate(2turn);
-  }
-`;
+const disappearAnimationProps: AnimationProps = {
+  delay_ms: 200,
+  duration_ms: 600,
+};
 
 const Square = styled.div<{ animationKind: animationKind; delayMs: number }>`
   width: 32px;
@@ -53,29 +50,62 @@ const Square = styled.div<{ animationKind: animationKind; delayMs: number }>`
       animation: ${rotateSquare} 600ms ease-in-out both ${delayMs}ms,
         ${squareColorChange} 600ms forwards ${delayMs}ms;
     `}
-  ${({ animationKind, delayMs }) =>
+  ${({ animationKind }) =>
     animationKind === "disappear" &&
     css`
-      animation: ${rotateSquare} 600ms ease-in-out both ${delayMs}ms,
-        ${squareColorChange} 600ms forwards ${delayMs}ms;
-
       :nth-child(1) {
         transform-origin: 52px 0;
-        animation: ${toCenter("52px")} 400ms ease-out 1200ms both;
+        animation: ${translate({ x: 0, y: 0 }, { x: "52px", y: 0 })}
+          ${disappearAnimationProps.duration_ms}ms ease-out
+          ${disappearAnimationProps.delay_ms}ms both;
       }
 
-      :nth-child(3) {
+      :nth-child(2) {
         transform-origin: -52px 0;
-        animation: ${toCenter("-52px")} 400ms ease-out 1200ms both;
+        animation: ${translate({ x: 0, y: 0 }, { x: "-52px", y: 0 })}
+          ${disappearAnimationProps.duration_ms}ms ease-out
+          ${disappearAnimationProps.delay_ms}ms both;
       }
     `}
 `;
 
 const Wrapper = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 132px;
+  height: 32px;
+`;
+
+const CenterSquareWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LeftRightSquareWrapper = styled.div<{
+  isStartDisappearAnimation: boolean;
+}>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 72px;
+
+  ${({ isStartDisappearAnimation }) =>
+    isStartDisappearAnimation &&
+    css`
+      animation: ${leftRotate("0", "1turn")}
+        ${disappearAnimationProps.duration_ms}ms ease-out
+        ${disappearAnimationProps.delay_ms}ms both;
+    `}
 `;
 
 const useAnimation = () => {
@@ -98,13 +128,19 @@ const ThreeSquares: React.VFC = () => {
 
   return (
     <Wrapper>
-      <Square animationKind={animationKind} delayMs={200} />
-      <Square animationKind={animationKind} delayMs={600} />
-      <Square
-        animationKind={animationKind}
-        delayMs={1000}
-        onAnimationEnd={toNextAnimation}
-      />
+      <CenterSquareWrapper>
+        <Square animationKind={"loading"} delayMs={600} />
+      </CenterSquareWrapper>
+      <LeftRightSquareWrapper
+        isStartDisappearAnimation={animationKind === "disappear"}
+      >
+        <Square animationKind={animationKind} delayMs={200} />
+        <Square
+          animationKind={animationKind}
+          delayMs={1000}
+          onAnimationEnd={toNextAnimation}
+        />
+      </LeftRightSquareWrapper>
     </Wrapper>
   );
 };
