@@ -4,6 +4,10 @@ import { ANGE_BLACK, ANGE_YELLOW } from "../../../../constants/colors";
 import { translate } from "../../../../styles/commonAnimation";
 import AnimationProps from "../../../../typing/AnimationProps";
 
+interface Props {
+  toNextAnimation: () => void;
+}
+
 type animationKind = "loading" | "disappear";
 
 const rotateSquare = keyframes`
@@ -53,36 +57,6 @@ const disappearAnimationProps: AnimationProps = {
   duration_ms: 600,
 };
 
-const Square = styled.div<{ animationKind: animationKind; delayMs: number }>`
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background-color: ${ANGE_YELLOW};
-  ${({ animationKind, delayMs }) =>
-    animationKind === "loading" &&
-    css`
-      animation: ${rotateSquare} 600ms ease-in-out both ${delayMs}ms,
-        ${squareColorChange} 600ms forwards ${delayMs}ms;
-    `}
-  ${({ animationKind }) =>
-    animationKind === "disappear" &&
-    css`
-      :nth-child(1) {
-        transform-origin: 52px 0;
-        animation: ${translate({ x: 0, y: 0 }, { x: "52px", y: 0 })}
-          ${disappearAnimationProps.duration_ms}ms ease-out
-          ${disappearAnimationProps.delay_ms}ms both;
-      }
-
-      :nth-child(2) {
-        transform-origin: -52px 0;
-        animation: ${translate({ x: 0, y: 0 }, { x: "-52px", y: 0 })}
-          ${disappearAnimationProps.duration_ms}ms ease-out
-          ${disappearAnimationProps.delay_ms}ms both;
-      }
-    `}
-`;
-
 const Wrapper = styled.div`
   position: relative;
   top: 0;
@@ -121,13 +95,49 @@ const LeftRightSquareWrapper = styled.div<{
     `}
 `;
 
-const useAnimation = () => {
+const Square = styled.div<{ animationKind: animationKind; delayMs: number }>`
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: ${ANGE_YELLOW};
+  ${({ animationKind, delayMs }) =>
+    animationKind === "loading" &&
+    css`
+      animation: ${rotateSquare} 600ms ease-in-out both ${delayMs}ms,
+        ${squareColorChange} 600ms forwards ${delayMs}ms;
+    `}
+  ${({ animationKind }) =>
+    animationKind === "disappear" &&
+    css`
+      :nth-child(1) {
+        transform-origin: 52px 0;
+        animation: ${translate({ x: 0, y: 0 }, { x: "52px", y: 0 })}
+          ${disappearAnimationProps.duration_ms}ms ease-out
+          ${disappearAnimationProps.delay_ms}ms both;
+      }
+
+      :nth-child(2) {
+        transform-origin: -52px 0;
+        animation: ${translate({ x: 0, y: 0 }, { x: "-52px", y: 0 })}
+          ${disappearAnimationProps.duration_ms}ms ease-out
+          ${disappearAnimationProps.delay_ms}ms both;
+      }
+    `}
+`;
+
+const useAnimation = (toNext: () => void) => {
   const [animationKind, changeAnimationKind] = useState<animationKind>(
     "loading"
   );
+  const [toNextCount, changeToNextCount] = useState<number>(0);
 
   const toNextAnimation = () => {
-    changeAnimationKind("disappear");
+    changeToNextCount(toNextCount + 1);
+    if (animationKind === "loading") {
+      changeAnimationKind("disappear");
+    } else if (animationKind === "disappear" && toNextCount > 1) {
+      toNext();
+    }
   };
 
   return [animationKind, toNextAnimation] as [
@@ -136,8 +146,8 @@ const useAnimation = () => {
   ];
 };
 
-const ThreeSquares: React.VFC = () => {
-  const [animationKind, toNextAnimation] = useAnimation();
+const ThreeSquares: React.VFC<Props> = ({ toNextAnimation }) => {
+  const [animationKind, toNextAnimationFn] = useAnimation(toNextAnimation);
 
   return (
     <Wrapper>
@@ -151,7 +161,7 @@ const ThreeSquares: React.VFC = () => {
         <Square
           animationKind={animationKind}
           delayMs={1000}
-          onAnimationEnd={toNextAnimation}
+          onAnimationEnd={toNextAnimationFn}
         />
       </LeftRightSquareWrapper>
     </Wrapper>

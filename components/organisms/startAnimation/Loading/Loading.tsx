@@ -1,10 +1,17 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import LoadingText from "./LoadingText";
 import ThreeSquares from "./ThreeSquares";
 
-const Wrapper = styled.div`
+interface Props {
+  toNextAnimation: () => void;
+}
+
+const Wrapper = styled.div<{ hideThis: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,12 +20,24 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   background-color: ${ANGE_LIVE_BACK_COLOR};
+  ${({ hideThis }) =>
+    hideThis &&
+    css`
+      display: none;
+    `}
 `;
 
-const Loading = () => {
+const Loading: React.VFC<Props> = ({ toNextAnimation }) => {
+  const [visibility, changeVisibility] = useState(true);
+
   return (
-    <Wrapper>
-      <ThreeSquares />
+    <Wrapper hideThis={!visibility}>
+      <ThreeSquares
+        toNextAnimation={() => {
+          toNextAnimation();
+          changeVisibility(false);
+        }}
+      />
       <LoadingText />
     </Wrapper>
   );
