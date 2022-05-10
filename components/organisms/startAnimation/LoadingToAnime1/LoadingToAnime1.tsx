@@ -14,6 +14,11 @@ const Wrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
   background-color: ${ANGE_LIVE_BACK_COLOR};
   width: 100%;
   height: 100%;
@@ -26,10 +31,16 @@ const Square = styled.div`
   background-color: ${ANGE_YELLOW};
 `;
 
+const AdjusterText = styled.div`
+  font-size: 1rem;
+  visibility: hidden;
+`;
+
 const LoadingToAnime1: React.VFC<Props> = () => {
   return (
     <Wrapper>
       <Square />
+      <AdjusterText>Loading...</AdjusterText>
     </Wrapper>
   );
 };
