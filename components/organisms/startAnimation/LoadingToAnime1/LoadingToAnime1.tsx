@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  ANGE_LIVE_BACK_COLOR,
-  ANGE_YELLOW,
-} from "../../../../constants/colors";
+import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import AnimateSquare from "./AnimateSquare";
 
 interface Props {
   isStartAnimation: boolean;
@@ -24,22 +22,15 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-const Square = styled.div`
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background-color: ${ANGE_YELLOW};
-`;
-
 const AdjusterText = styled.div`
   font-size: 1rem;
   visibility: hidden;
 `;
 
-const LoadingToAnime1: React.VFC<Props> = () => {
+const LoadingToAnime1: React.VFC<Props> = ({ isStartAnimation }) => {
   return (
     <Wrapper>
-      <Square />
+      <AnimateSquare isStartAnimation={isStartAnimation} />
       <AdjusterText>Loading...</AdjusterText>
     </Wrapper>
   );
