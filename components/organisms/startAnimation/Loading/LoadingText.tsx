@@ -76,6 +76,7 @@ const LoadingText: React.VFC = () => {
       {loadingText.split("").map((char, i) => {
         return (
           <Text
+            key={char}
             animationKind={animationKind}
             delayMs={
               animationKind === "loading"
