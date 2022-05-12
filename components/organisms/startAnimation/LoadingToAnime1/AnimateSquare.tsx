@@ -5,6 +5,7 @@ import {
   tablet_breakpoint,
 } from "../../../../constants/breakpoints";
 import { ANGE_YELLOW } from "../../../../constants/colors";
+import loadingToAnime1Order from "./animationOrder";
 
 interface Props {
   isStartAnimation: boolean;
@@ -60,36 +61,50 @@ const Square = styled.div<{ animationPhase: animationPhase }>`
   ${({ animationPhase }) =>
     animationPhase === "moveToRight" &&
     css`
-      animation: ${moveToRight} 800ms cubic-bezier(0.36, 0.64, 0.46, 1) 200ms
-        both;
+      animation: ${moveToRight}
+        ${loadingToAnime1Order.squareMoveToRight.duration_ms}ms
+        cubic-bezier(0.36, 0.64, 0.46, 1)
+        ${loadingToAnime1Order.squareMoveToRight.delay_ms}ms both;
     `}
   ${({ animationPhase }) =>
     animationPhase === "moveToLeft" &&
     css`
-      animation: ${smpMoveToLeft} 300ms cubic-bezier(0.36, 0.64, 0.46, 1) 0ms
-        both;
+      animation: ${smpMoveToLeft}
+        ${loadingToAnime1Order.squareMoveToLeft.duration_ms}ms
+        cubic-bezier(0.36, 0.64, 0.46, 1)
+        ${loadingToAnime1Order.squareMoveToLeft.delay_ms}ms both;
       @media (min-width: ${sm_breakpoint}px) {
-        animation: ${tabletMoveToLeft} 300ms cubic-bezier(0.36, 0.64, 0.46, 1)
-          0ms both;
+        animation: ${tabletMoveToLeft}
+          ${loadingToAnime1Order.squareMoveToLeft.duration_ms}ms
+          cubic-bezier(0.36, 0.64, 0.46, 1)
+          ${loadingToAnime1Order.squareMoveToLeft.delay_ms}ms both;
       }
       @media (min-width: ${tablet_breakpoint}px) {
-        animation: ${pcMoveToLeft} 300ms cubic-bezier(0.36, 0.64, 0.46, 1) 0ms
-          both;
+        animation: ${pcMoveToLeft}
+          ${loadingToAnime1Order.squareMoveToLeft.duration_ms}ms
+          cubic-bezier(0.36, 0.64, 0.46, 1)
+          ${loadingToAnime1Order.squareMoveToLeft.delay_ms}ms both;
       }
     `}
 
     ${({ animationPhase }) =>
     animationPhase === "openAnime1" &&
     css`
-      animation: ${smpOpenAnime1} 600ms cubic-bezier(0.36, 0.64, 0.46, 1) 100ms
-        both;
+      animation: ${smpOpenAnime1}
+        ${loadingToAnime1Order.squareOpenAnime1.duration_ms}ms
+        cubic-bezier(0.36, 0.64, 0.46, 1)
+        ${loadingToAnime1Order.squareOpenAnime1.delay_ms}ms both;
       @media (min-width: ${sm_breakpoint}px) {
-        animation: ${tabletOpenAnime1} 600ms cubic-bezier(0.36, 0.64, 0.46, 1)
-          100ms both;
+        animation: ${tabletOpenAnime1}
+          ${loadingToAnime1Order.squareOpenAnime1.duration_ms}ms
+          cubic-bezier(0.36, 0.64, 0.46, 1)
+          ${loadingToAnime1Order.squareOpenAnime1.delay_ms}ms both;
       }
       @media (min-width: ${tablet_breakpoint}px) {
-        animation: ${pcOpenAnime1} 600ms cubic-bezier(0.36, 0.64, 0.46, 1) 100ms
-          both;
+        animation: ${pcOpenAnime1}
+          ${loadingToAnime1Order.squareOpenAnime1.duration_ms}ms
+          cubic-bezier(0.36, 0.64, 0.46, 1)
+          ${loadingToAnime1Order.squareOpenAnime1.delay_ms}ms both;
       }
     `}
 `;
