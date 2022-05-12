@@ -18,7 +18,7 @@ const moveToRight = keyframes`
   }
 
   100% {
-    transform: translateX(64px) scale(0.7);
+    transform: translateX(64px) scale(0.7) rotate(45deg);
   }
 `;
 
