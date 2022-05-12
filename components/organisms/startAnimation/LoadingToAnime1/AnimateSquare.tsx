@@ -34,9 +34,23 @@ const moveToLeft = (positionX: string, scale: number) => keyframes`
 
 const smpMoveToLeft = moveToLeft("calc(-50vw + 42px)", 2);
 
-const tabletMoveToLeft = moveToLeft("calc(-50vw + 120px)", 6);
+const tabletMoveToLeft = moveToLeft("calc(-50vw + 42px)", 2);
 
-const pcMoveToLeft = moveToLeft("calc(-50vw + 232px)", 12);
+const pcMoveToLeft = moveToLeft("calc(-50vw + 58px)", 2);
+
+const openAnime1Move = (startPositionX: string, scale: number) => keyframes`
+  0% {
+    transform: translateX(${startPositionX}) scale(${scale}) rotate(-45deg);
+  }
+
+  100% {
+    transform: translateX(calc(50vw + 232px)) scale(0.6) rotate(180deg);
+  }
+`;
+
+const smpOpenAnime1 = openAnime1Move("calc(-50vw + 42px)", 2);
+const tabletOpenAnime1 = openAnime1Move("calc(-50vw + 42px)", 2);
+const pcOpenAnime1 = openAnime1Move("calc(-50vw + 58px)", 2);
 
 const Square = styled.div<{ animationPhase: animationPhase }>`
   width: 32px;
@@ -60,6 +74,21 @@ const Square = styled.div<{ animationPhase: animationPhase }>`
       }
       @media (min-width: ${tablet_breakpoint}px) {
         animation: ${pcMoveToLeft} 300ms cubic-bezier(0.36, 0.64, 0.46, 1) 0ms
+          both;
+      }
+    `}
+
+    ${({ animationPhase }) =>
+    animationPhase === "openAnime1" &&
+    css`
+      animation: ${smpOpenAnime1} 600ms cubic-bezier(0.36, 0.64, 0.46, 1) 100ms
+        both;
+      @media (min-width: ${sm_breakpoint}px) {
+        animation: ${tabletOpenAnime1} 600ms cubic-bezier(0.36, 0.64, 0.46, 1)
+          100ms both;
+      }
+      @media (min-width: ${tablet_breakpoint}px) {
+        animation: ${pcOpenAnime1} 600ms cubic-bezier(0.36, 0.64, 0.46, 1) 100ms
           both;
       }
     `}
