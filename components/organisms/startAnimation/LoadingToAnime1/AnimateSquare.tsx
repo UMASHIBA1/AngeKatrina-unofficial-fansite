@@ -5,7 +5,11 @@ import {
   tablet_breakpoint,
 } from "../../../../constants/breakpoints";
 import { ANGE_YELLOW } from "../../../../constants/colors";
-import loadingToAnime1Order from "./animationOrder";
+import {
+  squareMoveToLeft,
+  squareMoveToRight,
+  squareOpenAnime1,
+} from "./animationOrder";
 
 interface Props {
   isStartAnimation: boolean;
@@ -61,50 +65,36 @@ const Square = styled.div<{ animationPhase: animationPhase }>`
   ${({ animationPhase }) =>
     animationPhase === "moveToRight" &&
     css`
-      animation: ${moveToRight}
-        ${loadingToAnime1Order.squareMoveToRight.duration_ms}ms
-        cubic-bezier(0.36, 0.64, 0.46, 1)
-        ${loadingToAnime1Order.squareMoveToRight.delay_ms}ms both;
+      animation: ${moveToRight} ${squareMoveToRight.duration_ms}ms
+        cubic-bezier(0.36, 0.64, 0.46, 1) ${squareMoveToRight.delay_ms}ms both;
     `}
   ${({ animationPhase }) =>
     animationPhase === "moveToLeft" &&
     css`
-      animation: ${smpMoveToLeft}
-        ${loadingToAnime1Order.squareMoveToLeft.duration_ms}ms
-        cubic-bezier(0.36, 0.64, 0.46, 1)
-        ${loadingToAnime1Order.squareMoveToLeft.delay_ms}ms both;
+      animation: ${smpMoveToLeft} ${squareMoveToLeft.duration_ms}ms
+        cubic-bezier(0.36, 0.64, 0.46, 1) ${squareMoveToLeft.delay_ms}ms both;
       @media (min-width: ${sm_breakpoint}px) {
-        animation: ${tabletMoveToLeft}
-          ${loadingToAnime1Order.squareMoveToLeft.duration_ms}ms
-          cubic-bezier(0.36, 0.64, 0.46, 1)
-          ${loadingToAnime1Order.squareMoveToLeft.delay_ms}ms both;
+        animation: ${tabletMoveToLeft} ${squareMoveToLeft.duration_ms}ms
+          cubic-bezier(0.36, 0.64, 0.46, 1) ${squareMoveToLeft.delay_ms}ms both;
       }
       @media (min-width: ${tablet_breakpoint}px) {
-        animation: ${pcMoveToLeft}
-          ${loadingToAnime1Order.squareMoveToLeft.duration_ms}ms
-          cubic-bezier(0.36, 0.64, 0.46, 1)
-          ${loadingToAnime1Order.squareMoveToLeft.delay_ms}ms both;
+        animation: ${pcMoveToLeft} ${squareMoveToLeft.duration_ms}ms
+          cubic-bezier(0.36, 0.64, 0.46, 1) ${squareMoveToLeft.delay_ms}ms both;
       }
     `}
 
     ${({ animationPhase }) =>
     animationPhase === "openAnime1" &&
     css`
-      animation: ${smpOpenAnime1}
-        ${loadingToAnime1Order.squareOpenAnime1.duration_ms}ms
-        cubic-bezier(0.36, 0.64, 0.46, 1)
-        ${loadingToAnime1Order.squareOpenAnime1.delay_ms}ms both;
+      animation: ${smpOpenAnime1} ${squareOpenAnime1.duration_ms}ms
+        cubic-bezier(0.36, 0.64, 0.46, 1) ${squareOpenAnime1.delay_ms}ms both;
       @media (min-width: ${sm_breakpoint}px) {
-        animation: ${tabletOpenAnime1}
-          ${loadingToAnime1Order.squareOpenAnime1.duration_ms}ms
-          cubic-bezier(0.36, 0.64, 0.46, 1)
-          ${loadingToAnime1Order.squareOpenAnime1.delay_ms}ms both;
+        animation: ${tabletOpenAnime1} ${squareOpenAnime1.duration_ms}ms
+          cubic-bezier(0.36, 0.64, 0.46, 1) ${squareOpenAnime1.delay_ms}ms both;
       }
       @media (min-width: ${tablet_breakpoint}px) {
-        animation: ${pcOpenAnime1}
-          ${loadingToAnime1Order.squareOpenAnime1.duration_ms}ms
-          cubic-bezier(0.36, 0.64, 0.46, 1)
-          ${loadingToAnime1Order.squareOpenAnime1.delay_ms}ms both;
+        animation: ${pcOpenAnime1} ${squareOpenAnime1.duration_ms}ms
+          cubic-bezier(0.36, 0.64, 0.46, 1) ${squareOpenAnime1.delay_ms}ms both;
       }
     `}
 `;
