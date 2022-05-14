@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { translate } from "../../../../styles/commonAnimation";
 import { backgroundAnimation } from "./animationOrder";
@@ -8,9 +8,23 @@ interface Props {
   isStartAnimation: boolean;
 }
 
-const animateBackgroundWidth = 4500;
+type position = "up" | "down";
 
-const wrapperWidth = `calc(${animateBackgroundWidth}vh + 100vw)`;
+const openVerticalAnimation = (position: position) => keyframes`
+  0% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(${position === "up" ? "-60vh" : "60vh"});
+  }
+`;
+
+const wrapperWidth = "300vw";
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   position: absolute;
@@ -23,7 +37,7 @@ const Wrapper = styled.div<{ isStartAnimation: boolean }>`
     isStartAnimation &&
     css`
       animation: ${translate({ x: 0, y: 0 }, { x: wrapperWidth, y: 0 })}
-        ${backgroundAnimation.duration_ms}ms linear
+        ${backgroundAnimation.duration_ms}ms ease-out
         ${backgroundAnimation.delay_ms}ms both;
     `}
 `;
@@ -37,32 +51,60 @@ const BackGround = styled.div`
   background-color: ${ANGE_LIVE_BACK_COLOR};
 `;
 
-const AnimateHalfBackground = styled.div<{ position: "up" | "down" }>`
+const animateBackgroundWidth = 200;
+
+const AnimateHalfBackground = styled.div<{
+  isStartAnimation: boolean;
+  position: position;
+}>`
   position: absolute;
   right: 100vw;
   ${({ position }) =>
     position === "up" &&
     css`
       bottom: 50vh;
-      border-bottom-left-radius: ${animateBackgroundWidth}vh 150vh;
+      border-bottom-left-radius: ${animateBackgroundWidth}vw 30vh;
     `}
   ${({ position }) =>
     position === "down" &&
     css`
       top: 50vh;
-      border-top-left-radius: ${animateBackgroundWidth}vh 150vh;
+      border-top-left-radius: ${animateBackgroundWidth}vw 30vh;
     `}
-  width: max(${animateBackgroundWidth / 3}vh, 100vw);
+  width: 200vw;
   height: 50vh;
   background-color: ${ANGE_LIVE_BACK_COLOR};
+  ${({ isStartAnimation, position }) =>
+    isStartAnimation &&
+    position === "up" &&
+    css`
+      animation: ${openVerticalAnimation("up")}
+        ${backgroundAnimation.duration_ms}ms ease-out
+        ${backgroundAnimation.delay_ms}ms both;
+    `}
+
+  ${({ isStartAnimation, position }) =>
+    isStartAnimation &&
+    position === "down" &&
+    css`
+      animation: ${openVerticalAnimation("down")}
+        ${backgroundAnimation.duration_ms}ms ease-out
+        ${backgroundAnimation.delay_ms}ms both;
+    `}
 `;
 
 const BackgroundAnimation: React.VFC<Props> = ({ isStartAnimation }) => {
   return (
     <Wrapper isStartAnimation={isStartAnimation}>
       <BackGround />
-      <AnimateHalfBackground position="up" />
-      <AnimateHalfBackground position="down" />
+      <AnimateHalfBackground
+        isStartAnimation={isStartAnimation}
+        position="up"
+      />
+      <AnimateHalfBackground
+        isStartAnimation={isStartAnimation}
+        position="down"
+      />
     </Wrapper>
   );
 };
