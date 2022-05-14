@@ -49,7 +49,7 @@ const openAnime1Move = (startPositionX: string, scale: number) => keyframes`
   }
 
   100% {
-    transform: translateX(calc(50vw + 232px)) scale(0.6) rotate(180deg);
+    transform: translateX(calc(50vw + 58px)) scale(0.6) rotate(180deg);
   }
 `;
 

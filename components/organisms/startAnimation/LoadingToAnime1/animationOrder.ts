@@ -12,3 +12,13 @@ export const squareOpenAnime1: AnimationProps = {
   duration_ms: 600,
   delay_ms: 100,
 };
+export const backgroundAnimation: AnimationProps = {
+  duration_ms: squareOpenAnime1.duration_ms + 400,
+  delay_ms:
+    squareMoveToRight.duration_ms +
+    squareMoveToRight.delay_ms +
+    squareMoveToLeft.duration_ms +
+    squareMoveToLeft.delay_ms +
+    squareOpenAnime1.delay_ms +
+    100,
+};
