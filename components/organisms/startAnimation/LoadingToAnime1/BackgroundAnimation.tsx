@@ -48,9 +48,9 @@ const VerticalOpener = styled.div<{ isStartAnimation: boolean; index: number }>`
   top: -24px;
   left: 0;
   width: 10%;
-  height: 120%;
+  height: 130%;
   background-color: ${ANGE_WHITE};
-  border-radius: 5vw;
+  border-radius: 50vw;
   transform: scale(0);
   ${({ isStartAnimation, index }) =>
     isStartAnimation &&
