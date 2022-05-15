@@ -86,15 +86,15 @@ const Square = styled.div<{ animationPhase: animationPhase }>`
     ${({ animationPhase }) =>
     animationPhase === "openAnime1" &&
     css`
-      animation: ${smpOpenAnime1} ${squareOpenAnime1.duration_ms}ms
-        cubic-bezier(0.36, 0.64, 0.46, 1) ${squareOpenAnime1.delay_ms}ms both;
+      animation: ${smpOpenAnime1} ${squareOpenAnime1.duration_ms}ms linear
+        ${squareOpenAnime1.delay_ms}ms both;
       @media (min-width: ${sm_breakpoint}px) {
-        animation: ${tabletOpenAnime1} ${squareOpenAnime1.duration_ms}ms
-          cubic-bezier(0.36, 0.64, 0.46, 1) ${squareOpenAnime1.delay_ms}ms both;
+        animation: ${tabletOpenAnime1} ${squareOpenAnime1.duration_ms}ms linear
+          ${squareOpenAnime1.delay_ms}ms both;
       }
       @media (min-width: ${tablet_breakpoint}px) {
-        animation: ${pcOpenAnime1} ${squareOpenAnime1.duration_ms}ms
-          cubic-bezier(0.36, 0.64, 0.46, 1) ${squareOpenAnime1.delay_ms}ms both;
+        animation: ${pcOpenAnime1} ${squareOpenAnime1.duration_ms}ms linear
+          ${squareOpenAnime1.delay_ms}ms both;
       }
     `}
 `;
