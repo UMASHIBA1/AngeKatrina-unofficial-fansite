@@ -20,5 +20,5 @@ export const backgroundAnimation: AnimationProps = {
     squareMoveToLeft.duration_ms +
     squareMoveToLeft.delay_ms +
     squareOpenAnime1.delay_ms +
-    300,
+    100,
 };
