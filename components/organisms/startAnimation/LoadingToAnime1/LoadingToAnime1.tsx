@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import AnimateSquare from "./AnimateSquare";
 import BackgroundAnimation from "./BackgroundAnimation";
+import PowerWaveCircle from "./PowerWaveCircle";
 
 interface Props {
   isStartAnimation: boolean;
@@ -29,6 +30,12 @@ const LoadingWrapper = styled.div`
   height: 100%;
 `;
 
+const SquareAndCircleWrapper = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+`;
+
 const AdjusterText = styled.div`
   font-size: 1rem;
   visibility: hidden;
@@ -39,7 +46,10 @@ const LoadingToAnime1: React.VFC<Props> = ({ isStartAnimation }) => {
     <Wrapper>
       <BackgroundAnimation isStartAnimation={isStartAnimation} />
       <LoadingWrapper>
-        <AnimateSquare isStartAnimation={isStartAnimation} />
+        <SquareAndCircleWrapper>
+          <PowerWaveCircle isStartAnimation={isStartAnimation} />
+          <AnimateSquare isStartAnimation={isStartAnimation} />
+        </SquareAndCircleWrapper>
         <AdjusterText>Loading...</AdjusterText>
       </LoadingWrapper>
     </Wrapper>

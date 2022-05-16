@@ -4,10 +4,20 @@ export const squareMoveToRight: AnimationProps = {
   duration_ms: 800,
   delay_ms: 300,
 };
+
 export const squareMoveToLeft: AnimationProps = {
   duration_ms: 300,
   delay_ms: 0,
 };
+
+export const powerWave: AnimationProps = {
+  duration_ms: 400,
+  delay_ms:
+    squareMoveToRight.delay_ms +
+    squareMoveToRight.duration_ms +
+    squareMoveToLeft.delay_ms,
+};
+
 export const squareOpenAnime1: AnimationProps = {
   duration_ms: 600,
   delay_ms: 100,
