@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Anime1 from "../components/organisms/startAnimation/Anime1/Anime1";
 import Loading from "../components/organisms/startAnimation/Loading/Loading";
 import LoadingToAnime1 from "../components/organisms/startAnimation/LoadingToAnime1/LoadingToAnime1";
 
-type animationKind = "loading" | "loadingToAnime1";
+type animationKind = "loading" | "loadingToAnime1" | "anime1";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -25,7 +26,10 @@ const useAnimations = () => {
         changeAnimationKind("loadingToAnime1");
         break;
       case "loadingToAnime1":
-        // TODO: 次のアニメーションへ行くようにする
+        changeAnimationKind("anime1");
+        break;
+      case "anime1":
+        //TODO: 次のアニメへ
         break;
     }
   };
@@ -43,9 +47,12 @@ const StartAnimation: React.VFC = () => {
     <Wrapper>
       <LoadingToAnime1
         toNextAnimation={toNextAnimation}
-        isStartAnimation={animationKind === "loadingToAnime1"}
+        isStartAnimation={
+          animationKind === "loadingToAnime1" || animationKind === "anime1"
+        }
       />
-      <Loading toNextAnimation={toNextAnimation} />
+      <Anime1 isStartAnimation={true} />
+      {/* <Loading toNextAnimation={toNextAnimation} /> */}
     </Wrapper>
   );
 };
