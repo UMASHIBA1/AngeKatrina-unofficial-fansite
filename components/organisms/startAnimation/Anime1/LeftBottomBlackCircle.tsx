@@ -23,14 +23,28 @@ const upLayer = keyframes`
   }
 `;
 
+const innerBlackAnimation = keyframes`
+  0% {
+    transform: rotate(0deg) translateX(-80px);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: rotate(-360deg) translateX(120px);
+    opacity: 1;
+  }
+`;
+
 const Wrapper = styled.div`
   position: absolute;
   left: 84px;
   bottom: 64px;
   display: flex;
   flex-direction: row;
-  width: min(20vh, 30vw);
-  height: min(20vh, 30vw);
+  border-radius: 50%;
+  overflow: hidden;
+  width: calc(min(20vh, 30vw) + 2px);
+  height: calc(min(20vh, 30vw) + 2px);
   transform: rotate(-125deg);
 `;
 
@@ -47,7 +61,7 @@ const HideHalfCircle = styled.div`
     both;
 `;
 
-const LeftBlackCircle = styled.div`
+const LeftBlackBorder = styled.div`
   width: 50%;
   height: 100%;
   border: ${ANGE_BLACK} solid;
@@ -57,7 +71,7 @@ const LeftBlackCircle = styled.div`
   animation: ${toVisible} 0ms ease-in-out ${animationTimeMs / 2}ms forwards;
 `;
 
-const RightBlackCircle = styled.div`
+const RightBlackBorder = styled.div`
   width: 50%;
   height: 100%;
   border: ${ANGE_BLACK} solid;
@@ -66,13 +80,25 @@ const RightBlackCircle = styled.div`
   animation: ${upLayer} 1ms ease-in-out ${animationTimeMs / 2}ms both;
 `;
 
+const InnerBlack = styled.div`
+  position: absolute;
+  top: 0%;
+  left: -90%;
+  width: 130%;
+  height: 130%;
+  background-color: ${ANGE_BLACK};
+  transform-origin: 110% center;
+  animation: ${innerBlackAnimation} 800ms ease-in-out 0ms both;
+`;
+
 const LeftBottomBlackCircle: React.VFC<Props> = ({ isStartAnimation }) => {
   if (isStartAnimation) {
     return (
       <Wrapper>
         <HideHalfCircle />
-        <LeftBlackCircle />
-        <RightBlackCircle />
+        <LeftBlackBorder />
+        <RightBlackBorder />
+        <InnerBlack />
       </Wrapper>
     );
   } else {
