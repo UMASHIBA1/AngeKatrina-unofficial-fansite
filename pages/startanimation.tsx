@@ -51,8 +51,8 @@ const StartAnimation: React.VFC = () => {
           animationKind === "loadingToAnime1" || animationKind === "anime1"
         }
       />
-      <Anime1 isStartAnimation={true} />
-      {/* <Loading toNextAnimation={toNextAnimation} /> */}
+      <Anime1 isStartAnimation={animationKind === "anime1"} />
+      <Loading toNextAnimation={toNextAnimation} />
     </Wrapper>
   );
 };

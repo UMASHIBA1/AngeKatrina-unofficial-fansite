@@ -5,6 +5,7 @@ import { backgroundAnimation } from "./animationOrder";
 
 interface Props {
   isStartAnimation: boolean;
+  toNextAnimation: () => void;
 }
 
 const openerAnimation = keyframes`
@@ -60,12 +61,32 @@ const VerticalOpener = styled.div<{ isStartAnimation: boolean; index: number }>`
     `}
 `;
 
-const BackgroundAnimation: React.VFC<Props> = ({ isStartAnimation }) => {
+const BackgroundAnimation: React.VFC<Props> = ({
+  isStartAnimation,
+  toNextAnimation,
+}) => {
   return (
     <Wrapper>
-      {[...Array(10).keys()].map((i) => (
-        <VerticalOpener key={i} isStartAnimation={isStartAnimation} index={i} />
-      ))}
+      {[...Array(10).keys()].map((i) => {
+        if (i === 2) {
+          return (
+            <VerticalOpener
+              key={i}
+              onAnimationEnd={toNextAnimation}
+              isStartAnimation={isStartAnimation}
+              index={i}
+            />
+          );
+        } else {
+          return (
+            <VerticalOpener
+              key={i}
+              isStartAnimation={isStartAnimation}
+              index={i}
+            />
+          );
+        }
+      })}
     </Wrapper>
   );
 };

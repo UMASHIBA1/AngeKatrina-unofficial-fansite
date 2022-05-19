@@ -34,10 +34,16 @@ const AdjusterText = styled.div`
   visibility: hidden;
 `;
 
-const LoadingToAnime1: React.VFC<Props> = ({ isStartAnimation }) => {
+const LoadingToAnime1: React.VFC<Props> = ({
+  isStartAnimation,
+  toNextAnimation,
+}) => {
   return (
     <Wrapper>
-      <BackgroundAnimation isStartAnimation={isStartAnimation} />
+      <BackgroundAnimation
+        toNextAnimation={toNextAnimation}
+        isStartAnimation={isStartAnimation}
+      />
       <LoadingWrapper>
         <AnimateSquare isStartAnimation={isStartAnimation} />
         <AdjusterText>Loading...</AdjusterText>
