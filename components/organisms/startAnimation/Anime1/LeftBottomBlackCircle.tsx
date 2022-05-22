@@ -1,11 +1,7 @@
 import React from "react";
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { ANGE_BLACK, ANGE_WHITE } from "../../../../constants/colors";
-import {
-  leftRotate,
-  rightRotate,
-  toVisible,
-} from "../../../../styles/commonAnimation";
+import { leftRotate, toVisible } from "../../../../styles/commonAnimation";
 
 interface Props {
   isStartAnimation: boolean;
