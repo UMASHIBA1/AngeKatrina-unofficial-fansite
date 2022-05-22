@@ -25,12 +25,12 @@ const upLayer = keyframes`
 
 const innerBlackAnimation = keyframes`
   0% {
-    transform: rotate(0deg) translateX(-80px);
+    transform: scaleX(1);
     opacity: 0.6;
   }
 
   100% {
-    transform: rotate(-360deg) translateX(120px);
+    transform: scaleX(2);
     opacity: 1;
   }
 `;
@@ -80,15 +80,22 @@ const RightBlackBorder = styled.div`
   animation: ${upLayer} 1ms ease-in-out ${animationTimeMs / 2}ms both;
 `;
 
-const InnerBlack = styled.div`
+const InnerBlackRotater = styled.div`
   position: absolute;
   top: 0%;
-  left: -90%;
-  width: 130%;
-  height: 130%;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transform-origin: 150% 50%;
+  animation: ${leftRotate("0", "-360deg")} 800ms ease-in-out 0ms both;
+`;
+
+const InnerBlack = styled.div`
+  width: 100%;
+  height: 100%;
   background-color: ${ANGE_BLACK};
-  transform-origin: 110% center;
   animation: ${innerBlackAnimation} 800ms ease-in-out 0ms both;
+  transform-origin: left center;
 `;
 
 const LeftBottomBlackCircle: React.VFC<Props> = ({ isStartAnimation }) => {
@@ -98,7 +105,9 @@ const LeftBottomBlackCircle: React.VFC<Props> = ({ isStartAnimation }) => {
         <HideHalfCircle />
         <LeftBlackBorder />
         <RightBlackBorder />
-        <InnerBlack />
+        <InnerBlackRotater>
+          <InnerBlack />
+        </InnerBlackRotater>
       </Wrapper>
     );
   } else {
