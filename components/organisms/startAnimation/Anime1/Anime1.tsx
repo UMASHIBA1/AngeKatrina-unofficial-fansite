@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { ANGE_BLACK } from "../../../../constants/colors";
 import LeftBottomBlackCircle from "./LeftBottomBlackCircle";
+import LeftTopCircles from "./LeftTopCircles";
 
 interface Props {
   isStartAnimation: boolean;
@@ -19,6 +19,7 @@ const Wrapper = styled.div`
 const Anime1: React.VFC<Props> = ({ isStartAnimation }) => {
   return (
     <Wrapper>
+      <LeftTopCircles isStartAnimation={isStartAnimation} />
       <LeftBottomBlackCircle isStartAnimation={isStartAnimation} />
     </Wrapper>
   );
