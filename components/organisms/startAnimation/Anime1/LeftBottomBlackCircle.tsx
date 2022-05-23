@@ -31,16 +31,19 @@ const innerBlackAnimation = keyframes`
   }
 `;
 
+const circleDiameterVh = 28;
+const circleDiameterVw = 30;
+
 const Wrapper = styled.div`
   position: absolute;
-  left: 84px;
-  bottom: 64px;
+  left: 48px;
+  bottom: 48px;
   display: flex;
   flex-direction: row;
   border-radius: 50%;
   overflow: hidden;
-  width: calc(min(20vh, 30vw) + 2px);
-  height: calc(min(20vh, 30vw) + 2px);
+  width: calc(min(${circleDiameterVh}vh, ${circleDiameterVw}vw) + 2px);
+  height: calc(min(${circleDiameterVh}vh, ${circleDiameterVw}vw) + 2px);
   transform: rotate(-125deg);
 `;
 
@@ -50,7 +53,8 @@ const HideHalfCircle = styled.div`
   left: 50%;
   width: calc(50% + 2px);
   height: calc(100% + 2px);
-  border-radius: 0 min(10vh, 15vw) min(10vh, 15vw) 0;
+  border-radius: 0 min(${circleDiameterVh / 2}vh, ${circleDiameterVw / 2}vw)
+    min(${circleDiameterVh / 2}vh, ${circleDiameterVw / 2}vw) 0;
   background-color: ${ANGE_WHITE};
   transform-origin: center left;
   animation: ${leftRotate("0", "-1turn")} ${animationTimeMs}ms ease-in-out 0ms
@@ -61,7 +65,8 @@ const LeftBlackBorder = styled.div`
   width: 50%;
   height: 100%;
   border: ${ANGE_BLACK} solid;
-  border-radius: min(10vh, 15vw) 0 0 min(10vh, 15vw);
+  border-radius: min(${circleDiameterVh / 2}vh, ${circleDiameterVw / 2}vw) 0 0
+    min(${circleDiameterVh / 2}vh, ${circleDiameterVw / 2}vw);
   border-width: 2px 0 2px 2px;
   visibility: hidden;
   animation: ${toVisible} 0ms ease-in-out ${animationTimeMs / 2}ms forwards;
@@ -71,7 +76,8 @@ const RightBlackBorder = styled.div`
   width: 50%;
   height: 100%;
   border: ${ANGE_BLACK} solid;
-  border-radius: 0 min(10vh, 15vw) min(10vh, 15vw) 0;
+  border-radius: 0 min(${circleDiameterVh / 2}vh, ${circleDiameterVw / 2}vw)
+    min(${circleDiameterVh / 2}vh, ${circleDiameterVw / 2}vw) 0;
   border-width: 2px 2px 2px 0;
   animation: ${upLayer} 1ms ease-in-out ${animationTimeMs / 2}ms both;
 `;
