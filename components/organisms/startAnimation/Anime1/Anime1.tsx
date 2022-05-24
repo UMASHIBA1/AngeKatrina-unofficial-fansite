@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import LeftBottomBlackCircle from "./LeftBottomBlackCircle";
 import LeftTopCircles from "./LeftTopCircles";
+import RightTopCircles from "./RightTopCircles";
 
 interface Props {
   isStartAnimation: boolean;
@@ -21,6 +22,7 @@ const Anime1: React.VFC<Props> = ({ isStartAnimation }) => {
     <Wrapper>
       <LeftTopCircles isStartAnimation={isStartAnimation} />
       <LeftBottomBlackCircle isStartAnimation={isStartAnimation} />
+      <RightTopCircles isStartAnimation={isStartAnimation} />
     </Wrapper>
   );
 };
