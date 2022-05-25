@@ -73,17 +73,17 @@ const RedCircle = styled.div`
 const BlackCircle = styled.div`
   position: absolute;
   top: 84px;
-  right: 25vw;
+  right: 13.75vw;
   width: 74px;
   height: 74px;
   background-color: ${ANGE_BLACK};
   border-radius: 50%;
   transform: scale(0);
-  /* 0.125 = 25vw / 200vw */
+  /* 0.06875 = 13.75vw / 200vw */
   animation: ${scale(1)} ${blackLineAnimationProps.duration_ms / 2}ms
     ease-in-out
     ${blackLineAnimationProps.delay_ms +
-    blackLineAnimationProps.duration_ms * 0.125}ms
+    blackLineAnimationProps.duration_ms * 0.06875}ms
     forwards;
 `;
 
