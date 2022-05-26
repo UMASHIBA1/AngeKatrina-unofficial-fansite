@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import LeftBottomBlackCircle from "./LeftBottomBlackCircle";
 import LeftTopCircles from "./LeftTopCircles";
+import RightBottomCircle from "./RightBottomCircle";
 import RightTopCircles from "./RightTopCircles";
 
 interface Props {
@@ -20,6 +21,7 @@ const Wrapper = styled.div`
 const Anime1: React.VFC<Props> = ({ isStartAnimation }) => {
   return (
     <Wrapper>
+      <RightBottomCircle isStartAnimation={isStartAnimation} />
       <LeftTopCircles isStartAnimation={isStartAnimation} />
       <LeftBottomBlackCircle isStartAnimation={isStartAnimation} />
       <RightTopCircles isStartAnimation={isStartAnimation} />
