@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import CenterCircles from "./CenterCircles";
 import LeftBottomBlackCircle from "./LeftBottomBlackCircle";
 import LeftTopCircles from "./LeftTopCircles";
 import RightBottomCircle from "./RightBottomCircle";
@@ -25,6 +26,7 @@ const Anime1: React.VFC<Props> = ({ isStartAnimation }) => {
       <LeftTopCircles isStartAnimation={isStartAnimation} />
       <LeftBottomBlackCircle isStartAnimation={isStartAnimation} />
       <RightTopCircles isStartAnimation={isStartAnimation} />
+      <CenterCircles isStartAnimation={isStartAnimation} />
     </Wrapper>
   );
 };
