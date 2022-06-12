@@ -28,7 +28,7 @@ const Anime1: React.VFC<Props> = ({ isStartAnimation }) => {
       <LeftBottomBlackCircle isStartAnimation={isStartAnimation} />
       <RightTopCircles isStartAnimation={isStartAnimation} />
       <CenterCircles isStartAnimation={isStartAnimation} />
-      <CenterText />
+      <CenterText isStartAnimation={isStartAnimation} />
     </Wrapper>
   );
 };
