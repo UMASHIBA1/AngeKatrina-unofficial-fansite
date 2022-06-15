@@ -1,12 +1,78 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
-import { fadein } from "../../../../styles/commonAnimation";
 
 interface Props {
   isStartAnimation: boolean;
 }
+
+interface TextAnimationProp {
+  text: String;
+  animationDelayMs: number;
+}
+
+const flashAnimation = keyframes`
+    0% {
+        visibility: hidden;
+    }
+
+    25%,30% {
+        visibility: visible;
+    }
+
+    31%, 50% {
+        visibility: hidden;
+    }
+
+    51%,56% {
+        visibility: visible;
+    }
+
+    57%, 67% {
+        visibility: hidden;
+    }
+
+    68%, 73% {
+        visibility: visible;
+    }
+
+    74%, 84% {
+        visibility: hidden;
+    }
+
+    85%, 90% {
+        visibility: visible;
+    }
+
+    91%, 96% {
+        visibility: hidden;
+    }
+    
+    97%, 100% {
+        visibility: visible;
+    }
+
+
+`;
+
+const textAnimationProps: TextAnimationProp[] = [
+  { text: "N", animationDelayMs: 400 },
+  { text: "I", animationDelayMs: 500 },
+  { text: "J", animationDelayMs: 350 },
+  { text: "I", animationDelayMs: 550 },
+  { text: "S", animationDelayMs: 450 },
+  { text: "A", animationDelayMs: 300 },
+  { text: "N", animationDelayMs: 400 },
+  { text: "J", animationDelayMs: 450 },
+  { text: "I", animationDelayMs: 500 },
+  { text: "  ", animationDelayMs: 800 },
+  { text: "L", animationDelayMs: 450 },
+  { text: "I", animationDelayMs: 400 },
+  { text: "V", animationDelayMs: 350 },
+  { text: "E", animationDelayMs: 500 },
+  { text: "R", animationDelayMs: 550 },
+];
 
 const Wrapper = styled.div`
   position: absolute;
@@ -20,41 +86,23 @@ const Wrapper = styled.div`
   height: 100vh;
 `;
 
-const AngeText = styled.text`
+const Text = styled.p<{ delayMs: number }>`
   font-size: 10vw;
+  white-space: pre;
+  color: ${ANGE_LIVE_BACK_COLOR};
   ${BUNKYU_MIDASHI_GO_STD}
-`;
-
-const BGAnimateAngeText = styled.text`
-  font-size: 10vw;
-  opacity: 0;
-  ${BUNKYU_MIDASHI_GO_STD}
-  animation: ${fadein(1)} 2000ms forwards ease-out 400ms;
+  animation: ${flashAnimation} 500ms linear ${({ delayMs }) => delayMs}ms both;
 `;
 
 const CenterText: React.VFC<Props> = ({ isStartAnimation }) => {
   if (isStartAnimation) {
     return (
       <Wrapper>
-        <svg width="100%" height="100%" xmlns="http://www.w3c.org/2000/svg">
-          <AngeText
-            stroke={ANGE_LIVE_BACK_COLOR}
-            x="50%"
-            y="52%"
-            textAnchor="middle"
-            fill="transparent"
-          >
-            NIJISANJI LIVER
-          </AngeText>
-          <BGAnimateAngeText
-            x="50%"
-            y="52%"
-            textAnchor="middle"
-            fill={ANGE_LIVE_BACK_COLOR}
-          >
-            NIJISANJI LIVER
-          </BGAnimateAngeText>
-        </svg>
+        {textAnimationProps.map(
+          ({ text, animationDelayMs: animationDelay }) => (
+            <Text delayMs={animationDelay}>{text}</Text>
+          )
+        )}
       </Wrapper>
     );
   } else {
