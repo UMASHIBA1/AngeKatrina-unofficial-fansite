@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import {
   ANGE_BLACK,
   ANGE_LIVE_BACK_COLOR,
+  ANGE_WHITE,
   ANGE_YELLOW,
 } from "../../../../constants/colors";
 import AnimationProps from "../../../../typing/AnimationProps";
@@ -46,6 +47,7 @@ const BlackCircle = styled.div`
   height: 32px;
   background-color: ${ANGE_BLACK};
   border-radius: 50%;
+  border: 1px ${ANGE_WHITE} solid;
   animation: ${toCenterAnimation} ${centerCircleAnimationProps.duration_ms}ms
     cubic-bezier(0.25, 0, 0, 1.2) ${centerCircleAnimationProps.delay_ms + 200}ms
     both;
@@ -56,6 +58,7 @@ const RedCircle = styled.div`
   height: 32px;
   background-color: ${ANGE_LIVE_BACK_COLOR};
   border-radius: 50%;
+  border: 1px ${ANGE_WHITE} solid;
   animation: ${toCenterAnimation} ${centerCircleAnimationProps.duration_ms}ms
     cubic-bezier(0.25, 0, 0, 1.2) ${centerCircleAnimationProps.delay_ms + 100}ms
     both;
@@ -66,6 +69,7 @@ const YellowCircle = styled.div`
   height: 32px;
   background-color: ${ANGE_YELLOW};
   border-radius: 50%;
+  border: 1px ${ANGE_WHITE} solid;
   animation: ${toCenterAnimation} ${centerCircleAnimationProps.duration_ms}ms
     cubic-bezier(0.25, 0, 0, 1.2) ${centerCircleAnimationProps.delay_ms}ms both;
 `;
