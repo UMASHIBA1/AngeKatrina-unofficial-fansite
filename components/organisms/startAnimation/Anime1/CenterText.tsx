@@ -57,21 +57,21 @@ const flashAnimation = keyframes`
 `;
 
 const textAnimationProps: TextAnimationProp[] = [
-  { text: "N", animationDelayMs: 400 },
-  { text: "I", animationDelayMs: 500 },
-  { text: "J", animationDelayMs: 350 },
-  { text: "I", animationDelayMs: 550 },
-  { text: "S", animationDelayMs: 450 },
-  { text: "A", animationDelayMs: 300 },
-  { text: "N", animationDelayMs: 400 },
-  { text: "J", animationDelayMs: 450 },
-  { text: "I", animationDelayMs: 500 },
-  { text: "  ", animationDelayMs: 800 },
-  { text: "L", animationDelayMs: 450 },
-  { text: "I", animationDelayMs: 400 },
-  { text: "V", animationDelayMs: 350 },
-  { text: "E", animationDelayMs: 500 },
-  { text: "R", animationDelayMs: 550 },
+  { text: "N", animationDelayMs: 300 },
+  { text: "I", animationDelayMs: 330 },
+  { text: "J", animationDelayMs: 360 },
+  { text: "I", animationDelayMs: 390 },
+  { text: "S", animationDelayMs: 420 },
+  { text: "A", animationDelayMs: 450 },
+  { text: "N", animationDelayMs: 480 },
+  { text: "J", animationDelayMs: 510 },
+  { text: "I", animationDelayMs: 540 },
+  { text: "  ", animationDelayMs: 570 },
+  { text: "L", animationDelayMs: 600 },
+  { text: "I", animationDelayMs: 630 },
+  { text: "V", animationDelayMs: 660 },
+  { text: "E", animationDelayMs: 690 },
+  { text: "R", animationDelayMs: 720 },
 ];
 
 const Wrapper = styled.div`
