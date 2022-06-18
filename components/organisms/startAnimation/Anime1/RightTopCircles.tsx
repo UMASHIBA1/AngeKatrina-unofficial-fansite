@@ -51,7 +51,7 @@ const YellowCircle = styled.div`
     ease-in-out
     ${yellowLineAnimationProps.delay_ms +
     yellowLineAnimationProps.duration_ms * 0.225}ms
-    forwards;
+    forwards 2 alternate;
 `;
 
 const RedCircle = styled.div`
@@ -67,7 +67,7 @@ const RedCircle = styled.div`
   animation: ${scale(1)} ${redLineAnimationProps.duration_ms / 2}ms ease-in-out
     ${redLineAnimationProps.delay_ms +
     redLineAnimationProps.duration_ms * 0.375}ms
-    forwards;
+    forwards 2 alternate;
 `;
 
 const BlackCircle = styled.div`
@@ -84,7 +84,7 @@ const BlackCircle = styled.div`
     ease-in-out
     ${blackLineAnimationProps.delay_ms +
     blackLineAnimationProps.duration_ms * 0.06875}ms
-    forwards;
+    forwards 2 alternate;
 `;
 
 const YellowLine = styled.div`
@@ -96,7 +96,7 @@ const YellowLine = styled.div`
   background-color: ${ANGE_YELLOW};
   animation: ${translate({ x: 0, y: 0 }, { x: "200vw", y: 0 })}
     ${yellowLineAnimationProps.duration_ms}ms linear
-    ${yellowLineAnimationProps.delay_ms}ms both;
+    ${yellowLineAnimationProps.delay_ms}ms both 2 alternate;
 `;
 
 const RedLine = styled.div`
@@ -108,7 +108,7 @@ const RedLine = styled.div`
   background-color: ${ANGE_LIVE_BACK_COLOR};
   animation: ${translate({ x: 0, y: 0 }, { x: 0, y: "-200vh" })}
     ${redLineAnimationProps.duration_ms}ms linear
-    ${redLineAnimationProps.delay_ms}ms both;
+    ${redLineAnimationProps.delay_ms}ms both 2 alternate;
 `;
 
 const BlackLine = styled.div`
@@ -120,7 +120,7 @@ const BlackLine = styled.div`
   background-color: ${ANGE_BLACK};
   animation: ${translate({ x: 0, y: 0 }, { x: "-200vw", y: 0 })}
     ${blackLineAnimationProps.duration_ms}ms linear
-    ${blackLineAnimationProps.delay_ms}ms both;
+    ${blackLineAnimationProps.delay_ms}ms both 2 alternate;
 `;
 
 const RightTopCircles: React.VFC<Props> = ({ isStartAnimation }) => {
