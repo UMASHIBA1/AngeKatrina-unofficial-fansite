@@ -147,7 +147,6 @@ const useAnimationProps = () => {
     TextAnimationProp[]
   >(textAnimationPropsData);
   const toDisappearAnimation = (index: number) => {
-    console.log("run toDisappear animation");
     const thisTextAnimationProp = { ...textAnimationProps[index] };
     thisTextAnimationProp.isStartDisappear = true;
     const nextTextAnimationProps = [...textAnimationProps];
