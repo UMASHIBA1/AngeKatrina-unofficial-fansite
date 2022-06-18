@@ -133,7 +133,7 @@ const HideCircle = styled.div<{ isStartDisappear: boolean }>`
         `
       : css`
           animation: ${leftRotate("-90deg", "0")} 500ms ease-out
-            ${delayMs + 500}ms both;
+            ${delayMs + 300}ms both;
         `}
 `;
 
@@ -151,7 +151,7 @@ const YellowCircle = styled.div<{ isStartDisappear: boolean }>`
           animation: ${flashToVisible} 500ms linear ${delayMs}ms both;
         `
       : css`
-          animation: ${flashToInvisible} 500ms linear ${delayMs}ms both;
+          animation: ${flashToInvisible} 300ms linear ${delayMs}ms both;
         `}
 `;
 
