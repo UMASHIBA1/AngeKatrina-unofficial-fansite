@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 import { ANGE_WHITE, ANGE_YELLOW } from "../../../../constants/colors";
 import { leftRotate, toVisible } from "../../../../styles/commonAnimation";
 
@@ -7,7 +7,7 @@ interface Props {
   isStartAnimation: boolean;
 }
 
-const flashAnimation = keyframes`
+const flashToVisible = keyframes`
     0% {
         visibility: hidden;
     }
@@ -47,6 +47,48 @@ const flashAnimation = keyframes`
     97%, 100% {
         visibility: visible;
     }
+`;
+
+const flashToInvisible = keyframes`
+    0% {
+        visibility: visible;
+    }
+
+    25%,30% {
+        visibility: hidden;
+    }
+
+    31%, 50% {
+        visibility: visible;
+    }
+
+    51%,56% {
+        visibility: hidden;
+    }
+
+    57%, 67% {
+        visibility: visible;
+    }
+
+    68%, 73% {
+        visibility: hidden;
+    }
+
+    74%, 84% {
+        visibility: visible;
+    }
+
+    85%, 90% {
+        visibility: hidden;
+    }
+
+    91%, 96% {
+        visibility: visible;
+    }
+    
+    97%, 100% {
+        visibility: hidden;
+    }
 
 
 `;
@@ -73,7 +115,7 @@ const BorderCircle = styled.div`
   border-radius: 50%;
 `;
 
-const HideCircle = styled.div`
+const HideCircle = styled.div<{ isStartDisappear: boolean }>`
   position: absolute;
   bottom: 0;
   right: 0;
@@ -83,10 +125,19 @@ const HideCircle = styled.div`
   border: 1px solid ${ANGE_WHITE};
   border-top-left-radius: 100%;
   transform-origin: bottom right;
-  animation: ${leftRotate("0", "-90deg")} 300ms ease-out ${delayMs}ms both;
+  ${({ isStartDisappear }) =>
+    !isStartDisappear
+      ? css`
+          animation: ${leftRotate("0", "-90deg")} 300ms ease-out ${delayMs}ms
+            both;
+        `
+      : css`
+          animation: ${leftRotate("-90deg", "0")} 500ms ease-out
+            ${delayMs + 500}ms both;
+        `}
 `;
 
-const YellowCircle = styled.div`
+const YellowCircle = styled.div<{ isStartDisappear: boolean }>`
   position: absolute;
   bottom: -76vh;
   right: -76vh;
@@ -94,16 +145,30 @@ const YellowCircle = styled.div`
   height: 152vh;
   background-color: ${ANGE_YELLOW};
   border-radius: 50%;
-  animation: ${flashAnimation} 500ms linear ${delayMs}ms both;
+  ${({ isStartDisappear }) =>
+    !isStartDisappear
+      ? css`
+          animation: ${flashToVisible} 500ms linear ${delayMs}ms both;
+        `
+      : css`
+          animation: ${flashToInvisible} 500ms linear ${delayMs}ms both;
+        `}
 `;
 
 const RightBottomCircle: React.VFC<Props> = ({ isStartAnimation }) => {
+  const [isStartDisappear, changeIsStartDisappear] = useState<boolean>(false);
+
   if (isStartAnimation) {
     return (
       <Wrapper>
         <BorderCircle />
-        <HideCircle />
-        <YellowCircle />
+        <HideCircle isStartDisappear={isStartDisappear} />
+        <YellowCircle
+          isStartDisappear={isStartDisappear}
+          onAnimationEnd={() =>
+            setTimeout(() => changeIsStartDisappear(true), 100)
+          }
+        />
       </Wrapper>
     );
   } else {
