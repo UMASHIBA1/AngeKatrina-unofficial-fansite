@@ -1,15 +1,20 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
 import {
   ANGE_BLACK,
   ANGE_LIVE_BACK_COLOR,
   ANGE_YELLOW,
 } from "../../../../constants/colors";
-import { multiBoundExpand } from "../../../../styles/commonAnimation";
+import {
+  multiBoundExpand,
+  boundShrink,
+} from "../../../../styles/commonAnimation";
 
 interface Props {
   isStartAnimation: boolean;
 }
+
+const disappearBaseDelay = 50;
 
 const Wrapper = styled.div`
   position: absolute;
@@ -19,7 +24,7 @@ const Wrapper = styled.div`
   height: 45vw;
 `;
 
-const RedCircle = styled.div`
+const RedCircle = styled.div<{ isStartDisappear: boolean }>`
   position: absolute;
   top: -25%;
   left: -20%;
@@ -27,10 +32,18 @@ const RedCircle = styled.div`
   width: 65%;
   height: 65%;
   border-radius: 50%;
-  animation: ${multiBoundExpand(1.2)} 500ms ease-in-out 300ms both;
+  ${({ isStartDisappear }) =>
+    isStartDisappear
+      ? css`
+          animation: ${boundShrink()} 500ms ease-in-out
+            ${disappearBaseDelay + 300}ms both;
+        `
+      : css`
+          animation: ${multiBoundExpand(1.2)} 500ms ease-in-out 300ms both;
+        `}
 `;
 
-const BlackCircle = styled.div`
+const BlackCircle = styled.div<{ isStartDisappear: boolean }>`
   position: absolute;
   top: 25%;
   left: 38%;
@@ -38,10 +51,18 @@ const BlackCircle = styled.div`
   width: 25%;
   height: 25%;
   border-radius: 50%;
-  animation: ${multiBoundExpand(1.2)} 500ms ease-in-out 150ms both;
+  ${({ isStartDisappear }) =>
+    isStartDisappear
+      ? css`
+          animation: ${boundShrink()} 500ms ease-in-out
+            ${disappearBaseDelay + 150}ms both;
+        `
+      : css`
+          animation: ${multiBoundExpand(1.2)} 500ms ease-in-out 150ms both;
+        `}
 `;
 
-const YellowCircle = styled.div`
+const YellowCircle = styled.div<{ isStartDisappear: boolean }>`
   position: absolute;
   top: 50%;
   left: 30%;
@@ -49,16 +70,29 @@ const YellowCircle = styled.div`
   width: 10%;
   height: 10%;
   border-radius: 50%;
-  animation: ${multiBoundExpand(1.2)} 500ms ease-in-out 0ms both;
+  ${({ isStartDisappear }) =>
+    isStartDisappear
+      ? css`
+          animation: ${boundShrink()} 500ms ease-in-out
+            ${disappearBaseDelay + 0}ms both;
+        `
+      : css`
+          animation: ${multiBoundExpand(1.2)} 500ms ease-in-out 0ms both;
+        `}
 `;
 
 const LeftTopCircles: React.VFC<Props> = ({ isStartAnimation }) => {
+  const [isStartDisappear, changeIsStartDisappear] = useState<boolean>(false);
+
   if (isStartAnimation) {
     return (
       <Wrapper>
-        <YellowCircle />
-        <BlackCircle />
-        <RedCircle />
+        <YellowCircle isStartDisappear={isStartDisappear} />
+        <BlackCircle isStartDisappear={isStartDisappear} />
+        <RedCircle
+          isStartDisappear={isStartDisappear}
+          onAnimationEnd={() => changeIsStartDisappear(true)}
+        />
       </Wrapper>
     );
   } else {
