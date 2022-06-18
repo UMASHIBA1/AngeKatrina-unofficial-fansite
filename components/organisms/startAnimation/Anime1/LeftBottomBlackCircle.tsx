@@ -1,13 +1,17 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 import { ANGE_BLACK, ANGE_WHITE } from "../../../../constants/colors";
-import { leftRotate, toVisible } from "../../../../styles/commonAnimation";
+import {
+  leftRotate,
+  toVisible,
+  translate,
+} from "../../../../styles/commonAnimation";
 
 interface Props {
   isStartAnimation: boolean;
 }
 
-const animationTimeMs = 500;
+const animationTimeMs = 700;
 
 const upLayer = keyframes`
   0% {
@@ -45,9 +49,19 @@ const Wrapper = styled.div`
   width: calc(min(${circleDiameterVh}vh, ${circleDiameterVw}vw) + 2px);
   height: calc(min(${circleDiameterVh}vh, ${circleDiameterVw}vw) + 2px);
   transform: rotate(-125deg);
+  animation: ${translate(
+      {
+        x: 0,
+        y: `calc(min(${circleDiameterVh}vh, ${circleDiameterVw}vw) + 50px)`,
+      },
+      { x: 0, y: 0 }
+    )}
+    ${animationTimeMs}ms cubic-bezier(0, 0, 0.5, 1.75) 0ms both;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
 `;
 
-const HideHalfCircle = styled.div`
+const HideHalfCircle = styled.div<{ isDisappear: boolean }>`
   position: absolute;
   top: 0;
   left: 50%;
@@ -59,9 +73,11 @@ const HideHalfCircle = styled.div`
   transform-origin: center left;
   animation: ${leftRotate("0", "-1turn")} ${animationTimeMs}ms ease-in-out 0ms
     both;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
 `;
 
-const LeftBlackBorder = styled.div`
+const LeftBlackBorder = styled.div<{ isDisappear: boolean }>`
   width: 50%;
   height: 100%;
   border: ${ANGE_BLACK} solid;
@@ -70,9 +86,11 @@ const LeftBlackBorder = styled.div`
   border-width: 2px 0 2px 2px;
   visibility: hidden;
   animation: ${toVisible} 0ms ease-in-out ${animationTimeMs / 2}ms forwards;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
 `;
 
-const RightBlackBorder = styled.div`
+const RightBlackBorder = styled.div<{ isDisappear: boolean }>`
   width: 50%;
   height: 100%;
   border: ${ANGE_BLACK} solid;
@@ -80,9 +98,11 @@ const RightBlackBorder = styled.div`
     min(${circleDiameterVh / 2}vh, ${circleDiameterVw / 2}vw) 0;
   border-width: 2px 2px 2px 0;
   animation: ${upLayer} 1ms ease-in-out ${animationTimeMs / 2}ms both;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
 `;
 
-const InnerBlackRotater = styled.div`
+const InnerBlackRotater = styled.div<{ isDisappear: boolean }>`
   position: absolute;
   top: 0%;
   left: -100%;
@@ -90,25 +110,33 @@ const InnerBlackRotater = styled.div`
   height: 100%;
   transform-origin: 150% 50%;
   animation: ${leftRotate("0", "-360deg")} 800ms ease-in-out 0ms both;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
 `;
 
-const InnerBlack = styled.div`
+const InnerBlack = styled.div<{ isDisappear: boolean }>`
   width: 100%;
   height: 100%;
   background-color: ${ANGE_BLACK};
   animation: ${innerBlackAnimation} 800ms ease-in-out 0ms both;
+  animation-direction: alternate;
+  animation-iteration-count: 2;
   transform-origin: left center;
 `;
 
 const LeftBottomBlackCircle: React.VFC<Props> = ({ isStartAnimation }) => {
+  const [isDisappear, changeIsDisappear] = useState<boolean>(false);
   if (isStartAnimation) {
     return (
       <Wrapper>
-        <HideHalfCircle />
-        <LeftBlackBorder />
-        <RightBlackBorder />
-        <InnerBlackRotater>
-          <InnerBlack />
+        <HideHalfCircle isDisappear={isDisappear} />
+        <LeftBlackBorder isDisappear={isDisappear} />
+        <RightBlackBorder isDisappear={isDisappear} />
+        <InnerBlackRotater isDisappear={isDisappear}>
+          <InnerBlack
+            isDisappear={isDisappear}
+            onAnimationEnd={() => changeIsDisappear(true)}
+          />
         </InnerBlackRotater>
       </Wrapper>
     );
