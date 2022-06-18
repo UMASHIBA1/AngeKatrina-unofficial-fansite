@@ -167,15 +167,15 @@ const RightTopCircles: React.VFC<Props> = ({ isStartAnimation }) => {
     return (
       <Wrapper>
         <YellowLine
-          key={`${isStartDisappear}`}
+          key={`yellow${isStartDisappear}`}
           isStartDisappear={isStartDisappear}
         />
         <RedLine
-          key={`${isStartDisappear}`}
+          key={`red${isStartDisappear}`}
           isStartDisappear={isStartDisappear}
         />
         <BlackLine
-          key={`${isStartDisappear}`}
+          key={`black${isStartDisappear}`}
           isStartDisappear={isStartDisappear}
         />
         <RedCircle isStartDisappear={isStartDisappear} />
