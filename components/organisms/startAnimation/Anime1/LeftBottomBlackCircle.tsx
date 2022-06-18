@@ -132,7 +132,7 @@ const LeftBottomBlackCircle: React.VFC<Props> = ({ isStartAnimation }) => {
         <LeftBlackBorder />
         <RightBlackBorder />
         <InnerBlackRotater>
-          <InnerBlack onAnimationEnd={() => changeIsDisappear(true)} />
+          <InnerBlack />
         </InnerBlackRotater>
       </Wrapper>
     );
