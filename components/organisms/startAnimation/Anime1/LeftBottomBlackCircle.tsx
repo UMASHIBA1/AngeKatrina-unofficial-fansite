@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 import { ANGE_BLACK, ANGE_WHITE } from "../../../../constants/colors";
 import {
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
   animation-iteration-count: 2;
 `;
 
-const HideHalfCircle = styled.div<{ isDisappear: boolean }>`
+const HideHalfCircle = styled.div`
   position: absolute;
   top: 0;
   left: 50%;
@@ -77,7 +77,7 @@ const HideHalfCircle = styled.div<{ isDisappear: boolean }>`
   animation-iteration-count: 2;
 `;
 
-const LeftBlackBorder = styled.div<{ isDisappear: boolean }>`
+const LeftBlackBorder = styled.div`
   width: 50%;
   height: 100%;
   border: ${ANGE_BLACK} solid;
@@ -90,7 +90,7 @@ const LeftBlackBorder = styled.div<{ isDisappear: boolean }>`
   animation-iteration-count: 2;
 `;
 
-const RightBlackBorder = styled.div<{ isDisappear: boolean }>`
+const RightBlackBorder = styled.div`
   width: 50%;
   height: 100%;
   border: ${ANGE_BLACK} solid;
@@ -102,7 +102,7 @@ const RightBlackBorder = styled.div<{ isDisappear: boolean }>`
   animation-iteration-count: 2;
 `;
 
-const InnerBlackRotater = styled.div<{ isDisappear: boolean }>`
+const InnerBlackRotater = styled.div`
   position: absolute;
   top: 0%;
   left: -100%;
@@ -114,7 +114,7 @@ const InnerBlackRotater = styled.div<{ isDisappear: boolean }>`
   animation-iteration-count: 2;
 `;
 
-const InnerBlack = styled.div<{ isDisappear: boolean }>`
+const InnerBlack = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${ANGE_BLACK};
@@ -125,18 +125,14 @@ const InnerBlack = styled.div<{ isDisappear: boolean }>`
 `;
 
 const LeftBottomBlackCircle: React.VFC<Props> = ({ isStartAnimation }) => {
-  const [isDisappear, changeIsDisappear] = useState<boolean>(false);
   if (isStartAnimation) {
     return (
       <Wrapper>
-        <HideHalfCircle isDisappear={isDisappear} />
-        <LeftBlackBorder isDisappear={isDisappear} />
-        <RightBlackBorder isDisappear={isDisappear} />
-        <InnerBlackRotater isDisappear={isDisappear}>
-          <InnerBlack
-            isDisappear={isDisappear}
-            onAnimationEnd={() => changeIsDisappear(true)}
-          />
+        <HideHalfCircle />
+        <LeftBlackBorder />
+        <RightBlackBorder />
+        <InnerBlackRotater>
+          <InnerBlack onAnimationEnd={() => changeIsDisappear(true)} />
         </InnerBlackRotater>
       </Wrapper>
     );
