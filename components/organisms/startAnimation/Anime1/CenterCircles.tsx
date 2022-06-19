@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 import {
   ANGE_BLACK,
   ANGE_LIVE_BACK_COLOR,
@@ -12,7 +12,7 @@ interface Props {
   isStartAnimation: boolean;
 }
 
-const toCenterAnimation = keyframes`
+const toCenterVerticalAnimation = keyframes`
     0% {
         transform: translateY(60vh);
     }
@@ -21,6 +21,29 @@ const toCenterAnimation = keyframes`
         transform: translateY(0);
     }
 
+`;
+
+const toCenterHorizontalAnimation = (toXPx: number) => keyframes`
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(${toXPx}px, 0) scale(1.2);
+  }
+`;
+
+const centerExpandAnimation = keyframes`
+  0% {
+    transform: scale(1);
+    isolation: auto;
+  }
+
+  100% {
+    transform: scale(6);
+    isolation: isolate;
+    z-index: 5;
+  }
 `;
 
 const centerCircleAnimationProps: AnimationProps = {
@@ -42,45 +65,77 @@ const Wrapper = styled.div`
   gap: 18px;
 `;
 
-const BlackCircle = styled.div`
+const BlackCircle = styled.div<{ isStartDisappear: boolean }>`
   width: 32px;
   height: 32px;
   background-color: ${ANGE_BLACK};
   border-radius: 50%;
-  border: 1px ${ANGE_WHITE} solid;
-  animation: ${toCenterAnimation} ${centerCircleAnimationProps.duration_ms}ms
-    cubic-bezier(0.25, 0, 0, 1.2) ${centerCircleAnimationProps.delay_ms + 200}ms
-    both;
+  border: 2px ${ANGE_WHITE} solid;
+  ${({ isStartDisappear }) =>
+    !isStartDisappear
+      ? css`
+          animation: ${toCenterVerticalAnimation}
+            ${centerCircleAnimationProps.duration_ms}ms
+            cubic-bezier(0.25, 0, 0, 1.2)
+            ${centerCircleAnimationProps.delay_ms + 200}ms both;
+        `
+      : css`
+          animation: ${toCenterHorizontalAnimation(-50)} 500ms
+            cubic-bezier(0.75, -0.5, 0, 1) 300ms both;
+        `}
 `;
 
-const RedCircle = styled.div`
+const RedCircle = styled.div<{ isStartDisappear: boolean }>`
   width: 32px;
   height: 32px;
   background-color: ${ANGE_LIVE_BACK_COLOR};
   border-radius: 50%;
-  border: 1px ${ANGE_WHITE} solid;
-  animation: ${toCenterAnimation} ${centerCircleAnimationProps.duration_ms}ms
-    cubic-bezier(0.25, 0, 0, 1.2) ${centerCircleAnimationProps.delay_ms + 100}ms
-    both;
+  border: 2px ${ANGE_WHITE} solid;
+  ${({ isStartDisappear }) =>
+    !isStartDisappear
+      ? css`
+          animation: ${toCenterVerticalAnimation}
+            ${centerCircleAnimationProps.duration_ms}ms
+            cubic-bezier(0.25, 0, 0, 1.2)
+            ${centerCircleAnimationProps.delay_ms + 100}ms both;
+        `
+      : css`
+          animation: ${centerExpandAnimation} 500ms
+            cubic-bezier(0.75, -0.5, 0, 1) 300ms both;
+        `}
 `;
 
-const YellowCircle = styled.div`
+const YellowCircle = styled.div<{ isStartDisappear: boolean }>`
   width: 32px;
   height: 32px;
   background-color: ${ANGE_YELLOW};
   border-radius: 50%;
-  border: 1px ${ANGE_WHITE} solid;
-  animation: ${toCenterAnimation} ${centerCircleAnimationProps.duration_ms}ms
-    cubic-bezier(0.25, 0, 0, 1.2) ${centerCircleAnimationProps.delay_ms}ms both;
+  border: 2px ${ANGE_WHITE} solid;
+  ${({ isStartDisappear }) =>
+    !isStartDisappear
+      ? css`
+          animation: ${toCenterVerticalAnimation}
+            ${centerCircleAnimationProps.duration_ms}ms
+            cubic-bezier(0.25, 0, 0, 1.2)
+            ${centerCircleAnimationProps.delay_ms}ms both;
+        `
+      : css`
+          animation: ${toCenterHorizontalAnimation(50)} 500ms
+            cubic-bezier(0.75, -0.5, 0, 1) 300ms both;
+        `}
 `;
 
 const CenterCircles: React.VFC<Props> = ({ isStartAnimation }) => {
+  const [isStartDisappear, changeIsStartDisapper] = useState<boolean>(false);
   if (isStartAnimation) {
     return (
       <Wrapper>
-        <YellowCircle />
-        <RedCircle />
-        <BlackCircle />
+        <YellowCircle isStartDisappear={isStartDisappear} />
+        <RedCircle isStartDisappear={isStartDisappear} />
+        <BlackCircle
+          isStartDisappear={isStartDisappear}
+          onAnimationEnd={() => changeIsStartDisapper(true)}
+        />
       </Wrapper>
     );
   } else {
