@@ -10,6 +10,7 @@ import AnimationProps from "../../../../typing/AnimationProps";
 
 interface Props {
   isStartAnimation: boolean;
+  toNextAnimation: () => void;
 }
 
 const toCenterVerticalAnimation = keyframes`
@@ -125,13 +126,33 @@ const YellowCircle = styled.div<{ isStartDisappear: boolean }>`
         `}
 `;
 
-const CenterCircles: React.VFC<Props> = ({ isStartAnimation }) => {
+const useToNextAnimation = (toNextAnimation: Props["toNextAnimation"]) => {
+  const [animationEndCount, changeAnimationEndCount] = useState<number>(0);
+  const toNextAnimationFc = () => {
+    if (animationEndCount === 1) {
+      toNextAnimation();
+    } else {
+      changeAnimationEndCount(animationEndCount + 1);
+    }
+  };
+
+  return [toNextAnimationFc];
+};
+
+const CenterCircles: React.VFC<Props> = ({
+  isStartAnimation,
+  toNextAnimation,
+}) => {
   const [isStartDisappear, changeIsStartDisapper] = useState<boolean>(false);
+  const [toNextAnimationFc] = useToNextAnimation(toNextAnimation);
   if (isStartAnimation) {
     return (
       <Wrapper>
         <YellowCircle isStartDisappear={isStartDisappear} />
-        <RedCircle isStartDisappear={isStartDisappear} />
+        <RedCircle
+          isStartDisappear={isStartDisappear}
+          onAnimationEnd={toNextAnimationFc}
+        />
         <BlackCircle
           isStartDisappear={isStartDisappear}
           onAnimationEnd={() => changeIsStartDisapper(true)}

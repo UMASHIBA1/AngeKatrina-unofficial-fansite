@@ -9,6 +9,7 @@ import RightTopCircles from "./RightTopCircles";
 
 interface Props {
   isStartAnimation: boolean;
+  toNextAnimation: () => void;
 }
 
 const Wrapper = styled.div`
@@ -20,14 +21,17 @@ const Wrapper = styled.div`
   background-color: transparent;
 `;
 
-const Anime1: React.VFC<Props> = ({ isStartAnimation }) => {
+const Anime1: React.VFC<Props> = ({ isStartAnimation, toNextAnimation }) => {
   return (
     <Wrapper>
       <RightBottomCircle isStartAnimation={isStartAnimation} />
       <LeftTopCircles isStartAnimation={isStartAnimation} />
       <LeftBottomBlackCircle isStartAnimation={isStartAnimation} />
       <RightTopCircles isStartAnimation={isStartAnimation} />
-      <CenterCircles isStartAnimation={isStartAnimation} />
+      <CenterCircles
+        isStartAnimation={isStartAnimation}
+        toNextAnimation={toNextAnimation}
+      />
       <CenterText isStartAnimation={isStartAnimation} />
     </Wrapper>
   );
