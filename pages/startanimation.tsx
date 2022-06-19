@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Anime1 from "../components/organisms/startAnimation/Anime1/Anime1";
+import Anime2 from "../components/organisms/startAnimation/Anime2/Anime2";
 import Loading from "../components/organisms/startAnimation/Loading/Loading";
 import LoadingToAnime1 from "../components/organisms/startAnimation/LoadingToAnime1/LoadingToAnime1";
 
@@ -58,6 +59,7 @@ const StartAnimation: React.VFC = () => {
         isStartAnimation={animationKind === "anime1"}
         toNextAnimation={toNextAnimation}
       />
+      <Anime2 isStartAnimation={animationKind === "anime2"} />
       <Loading toNextAnimation={toNextAnimation} />
     </Wrapper>
   );
