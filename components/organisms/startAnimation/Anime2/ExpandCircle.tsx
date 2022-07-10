@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import {
   ANGE_BLACK,
@@ -8,10 +8,6 @@ import {
 } from "../../../../constants/colors";
 import { scale } from "../../../../styles/commonAnimation";
 import { RedBlackYellow } from "../../../../typing/Color";
-
-interface Props {
-  children?: ReactNode;
-}
 
 const Circle = styled.div<{
   color: RedBlackYellow | typeof ANGE_LIVE_BACK_COLOR | typeof ANGE_WHITE;
@@ -51,7 +47,7 @@ const Circle = styled.div<{
   `}
 `;
 
-const ExpandCircle: React.VFC<Props> = ({ children }) => {
+const ExpandCircle: React.VFC = () => {
   return (
     <>
       <Circle
@@ -62,9 +58,7 @@ const ExpandCircle: React.VFC<Props> = ({ children }) => {
       />
       <Circle color={ANGE_BLACK} position="left" delayMs={100} />
       <Circle color={ANGE_YELLOW} position="right" delayMs={200} />
-      <Circle color={ANGE_WHITE} position="center" delayMs={300}>
-        {children}
-      </Circle>
+      <Circle color={ANGE_WHITE} position="center" delayMs={300} />
     </>
   );
 };
