@@ -2,6 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { ANGE_WHITE } from "../../../../constants/colors";
 import { toVisible } from "../../../../styles/commonAnimation";
+import CenterWave from "./CenterWave";
 
 const bgToWhite = keyframes`
   0% {
@@ -27,7 +28,11 @@ const Wrapper = styled.div`
 `;
 
 const WaveScreen: React.VFC = () => {
-  return <Wrapper>abcdefg</Wrapper>;
+  return (
+    <Wrapper>
+      <CenterWave />
+    </Wrapper>
+  );
 };
 
 export default WaveScreen;
