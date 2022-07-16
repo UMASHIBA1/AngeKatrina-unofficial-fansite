@@ -21,33 +21,21 @@ const WaveLine = styled.div`
 
 const waveTranslate = keyframes`
     0% {
-        transform: scale(5,2) translateX(33.333%);
+        transform: scale(5,2) translateX(41.666%);
     }
 
     100% {
-        transform: scale(5,2) translateX(0);
+        transform: scale(5,2) translateX(8.333%);
     }
 `;
 
 const centerCircleAnimation = keyframes`
     0% {
-        transform: translateY(0);
-    }
-
-    25% {
-        transform: translateY(-34px);
-    }
-
-    50% {
-        transform: translateY(0);
-    }
-
-    75% {
         transform: translateY(34px);
     }
 
     100% {
-        transform: translateY(0);
+        transform: translateY(-34px);
     }
 `;
 
@@ -83,7 +71,8 @@ const CenterCircle = styled.div`
   height: 32px;
   border-radius: 50%;
   background-color: ${ANGE_LIVE_BACK_COLOR};
-  animation: ${centerCircleAnimation} 750ms linear 200ms both infinite;
+  animation: ${centerCircleAnimation} 375ms ease-in-out 200ms both alternate
+    infinite;
 `;
 
 const CenterWave: React.VFC = () => {
