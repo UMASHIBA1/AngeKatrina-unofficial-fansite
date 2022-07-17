@@ -10,12 +10,25 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
+interface TextProps {
+  text: string;
+  fontSize: string;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+}
+
+const textProps: TextProps[] = [
+  { text: "ドコドコドコドコ！", fontSize: "3rem", top: "120px", left: "10vw" },
+];
+
 const WaveBG: React.VFC = () => {
   return (
     <Wrapper>
-      <BGBorderText fontSize="5rem" top="100px" left="100px">
-        ドコドコドコドコ！
-      </BGBorderText>
+      {textProps.map(({ text, ...props }) => (
+        <BGBorderText {...props}>{text}</BGBorderText>
+      ))}
     </Wrapper>
   );
 };
