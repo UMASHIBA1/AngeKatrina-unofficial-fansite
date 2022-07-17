@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../../constants/colors";
 import RedWave from "../../../../public/svgs/startanimation/red-wave.svg";
 
-const WaveLine = styled.div`
+const WaveWrapper = styled.div`
   position: relative;
   top: 0;
   left: 0;
@@ -77,12 +77,12 @@ const CenterCircle = styled.div`
 
 const CenterWave: React.VFC = () => {
   return (
-    <WaveLine>
+    <WaveWrapper>
       <WaveAnimater>
         <RedWave />
       </WaveAnimater>
       <CenterCircle />
-    </WaveLine>
+    </WaveWrapper>
   );
 };
 
