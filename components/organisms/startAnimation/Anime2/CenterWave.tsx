@@ -21,11 +21,11 @@ const WaveWrapper = styled.div`
 
 const waveTranslate = keyframes`
     0% {
-        transform: scale(5,2) translateX(41.666%);
+      transform: translateX(41.666%);
     }
 
     100% {
-        transform: scale(5,2) translateX(8.333%);
+      transform: translateX(8.333%);
     }
 `;
 
@@ -46,20 +46,12 @@ const WaveAnimater = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-50%);
+  transform-origin: right;
+  transform: translateY(-50%) scale(5, 2);
+  overflow-x: hidden;
   > svg {
     transform-origin: right;
     animation: ${waveTranslate} 750ms linear 200ms both infinite;
-  }
-
-  ::after {
-    position: absolute;
-    top: -50vh;
-    left: 100%;
-    content: "";
-    width: 70vw;
-    height: 150vh;
-    background-color: ${ANGE_WHITE};
   }
 `;
 
@@ -71,6 +63,7 @@ const CenterCircle = styled.div`
   height: 32px;
   border-radius: 50%;
   background-color: ${ANGE_LIVE_BACK_COLOR};
+  transform: translateY(34px);
   animation: ${centerCircleAnimation} 375ms ease-in-out 200ms both alternate
     infinite;
 `;

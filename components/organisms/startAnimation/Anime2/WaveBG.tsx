@@ -20,7 +20,7 @@ interface TextProps {
 }
 
 const textProps: TextProps[] = [
-  { text: "ドコドコドコドコ！", fontSize: "3rem", top: "120px", left: "10vw" },
+  { text: "ドコドコドコドコ！", fontSize: "3rem", top: "120px", left: "60vw" },
 ];
 
 const WaveBG: React.VFC = () => {
