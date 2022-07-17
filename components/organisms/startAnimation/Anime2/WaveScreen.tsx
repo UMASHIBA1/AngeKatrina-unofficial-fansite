@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { ANGE_WHITE } from "../../../../constants/colors";
 import { toVisible } from "../../../../styles/commonAnimation";
 import CenterWave from "./CenterWave";
+import WaveBG from "./WaveBG";
 
 const bgToWhite = keyframes`
   0% {
@@ -30,6 +31,7 @@ const Wrapper = styled.div`
 const WaveScreen: React.VFC = () => {
   return (
     <Wrapper>
+      <WaveBG />
       <CenterWave />
     </Wrapper>
   );
