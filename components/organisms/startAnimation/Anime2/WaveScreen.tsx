@@ -2,6 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { ANGE_WHITE } from "../../../../constants/colors";
 import { toVisible } from "../../../../styles/commonAnimation";
+import BottomWave from "./BottomWave";
 import CenterWave from "./CenterWave";
 import WaveBG from "./WaveBG";
 
@@ -32,6 +33,7 @@ const WaveScreen: React.VFC = () => {
   return (
     <Wrapper>
       <WaveBG />
+      <BottomWave />
       <CenterWave />
     </Wrapper>
   );

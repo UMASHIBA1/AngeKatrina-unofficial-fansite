@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../../constants/colors";
-import RedWave from "../../../../public/svgs/startanimation/red-wave.svg";
+import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
+import RedWave from "../../../../public/svgs/startanimation/wave.svg";
 
 const WaveWrapper = styled.div`
   position: relative;
