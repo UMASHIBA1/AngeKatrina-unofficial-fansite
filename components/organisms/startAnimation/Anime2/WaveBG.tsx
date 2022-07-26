@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   left: 0;
   width: 200%;
   height: 100%;
-  animation: ${translate({ x: 0, y: 0 }, { x: "-50%", y: 0 })} 2000ms linear
+  animation: ${translate({ x: 0, y: 0 }, { x: "-50%", y: 0 })} 4000ms ease-out
     200ms both;
 `;
 

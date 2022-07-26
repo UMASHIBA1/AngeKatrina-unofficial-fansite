@@ -1,9 +1,10 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
-import RedWave from "../../../../public/svgs/startanimation/wave.svg";
+import Wave from "../../../../public/svgs/startanimation/wave.svg";
+import { translate } from "../../../../styles/commonAnimation";
 
-const WaveWrapper = styled.div`
+const WaveWrapper = styled.div<{ animationKind: "in" | "out" }>`
   position: relative;
   top: 0;
   left: 0;
@@ -13,19 +14,27 @@ const WaveWrapper = styled.div`
   flex-direction: row;
   width: 100%;
   height: 30%;
-  > svg {
-    transform: scale(5, 2);
-    transform-origin: right;
-  }
+  ${({ animationKind }) =>
+    animationKind === "in" &&
+    css`
+      animation: ${translate({ x: "-60%", y: "-60%" }, { x: 0, y: 0 })} 800ms
+        ease-out 500ms both;
+    `}
+  ${({ animationKind }) =>
+    animationKind === "out" &&
+    css`
+      animation: ${translate({ x: 0, y: 0 }, { x: "60%", y: 0 })} 1000ms ease-in
+        1400ms both;
+    `}
 `;
 
 const waveTranslate = keyframes`
     0% {
-      transform: translateX(41.666%);
+      transform: translateX(41.666666%);
     }
 
     100% {
-      transform: translateX(8.333%);
+      transform: translateX(8.3333333%);
     }
 `;
 
@@ -42,12 +51,12 @@ const centerCircleAnimation = keyframes`
 const WaveAnimater = styled.div`
   position: absolute;
   top: 50%;
-  right: calc(50% + 10px);
+  right: calc(50%);
   display: flex;
   justify-content: center;
   align-items: center;
   transform-origin: right;
-  transform: translateY(-50%) scale(5, 2);
+  transform: translateY(-50%) scale(10, 2);
   overflow-x: hidden;
   > svg {
     transform-origin: right;
@@ -68,11 +77,26 @@ const CenterCircle = styled.div`
     infinite;
 `;
 
+const useWaveAnimation = () => {
+  const [animationKind, changeAnimationKind] = useState<"in" | "out">("in");
+
+  const toNextAnimation = () => {
+    changeAnimationKind("out");
+  };
+
+  return [animationKind, toNextAnimation] as [
+    typeof animationKind,
+    typeof toNextAnimation
+  ];
+};
+
 const CenterWave: React.VFC = () => {
+  const [animationKind, toNextAnimation] = useWaveAnimation();
+
   return (
-    <WaveWrapper>
+    <WaveWrapper animationKind={animationKind} onAnimationEnd={toNextAnimation}>
       <WaveAnimater>
-        <RedWave />
+        <Wave />
       </WaveAnimater>
       <CenterCircle />
     </WaveWrapper>
