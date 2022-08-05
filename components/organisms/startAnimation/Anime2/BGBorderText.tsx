@@ -45,7 +45,7 @@ const Text = styled.div<{
       bottom: ${bottom};
     `}
     ${({ fontSize }) => css`
-    font-size: ${fontSize};
+    font-size: min(max(${fontSize}, 4vh), 30vh);
   `}
   text-shadow: 1px 0px ${ANGE_LIVE_BACK_COLOR}, 
   0px 1px ${ANGE_LIVE_BACK_COLOR},
@@ -87,7 +87,7 @@ const Text = styled.div<{
     `}
     color: ${ANGE_WHITE};
     ${({ fontSize }) => css`
-      font-size: ${fontSize};
+      font-size: min(max(${fontSize}, 4vh), 30vh);
     `}
     ${BUNKYU_MIDASHI_GO_STD}
   }
@@ -101,9 +101,7 @@ const BGBorderText: React.VFC<Props> = ({
   bottom,
   children,
 }) => {
-  const [ref, isStartAnimation] = useIntersectionObserver<HTMLDivElement>({
-    margin: 400,
-  });
+  const [ref, isStartAnimation] = useIntersectionObserver<HTMLDivElement>({});
 
   useEffect(() => {
     console.log("run text animation");
