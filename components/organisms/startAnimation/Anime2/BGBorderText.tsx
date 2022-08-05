@@ -103,10 +103,6 @@ const BGBorderText: React.VFC<Props> = ({
 }) => {
   const [ref, isStartAnimation] = useIntersectionObserver<HTMLDivElement>({});
 
-  useEffect(() => {
-    console.log("run text animation");
-  }, [isStartAnimation]);
-
   return (
     <Text
       isStartAnimation={isStartAnimation}
