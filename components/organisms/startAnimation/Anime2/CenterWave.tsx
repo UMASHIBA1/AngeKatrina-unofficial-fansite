@@ -17,14 +17,14 @@ const WaveWrapper = styled.div<{ animationKind: "in" | "out" }>`
   ${({ animationKind }) =>
     animationKind === "in" &&
     css`
-      animation: ${translate({ x: "-60%", y: "-60%" }, { x: 0, y: 0 })} 800ms
+      animation: ${translate({ x: "-60%", y: "-60%" }, { x: 0, y: 0 })} 700ms
         ease-out 500ms both;
     `}
   ${({ animationKind }) =>
     animationKind === "out" &&
     css`
-      animation: ${translate({ x: 0, y: 0 }, { x: "60%", y: 0 })} 1000ms ease-in
-        1400ms both;
+      animation: ${translate({ x: 0, y: 0 }, { x: "60%", y: 0 })} 700ms ease-in
+        1300ms both;
     `}
 `;
 
