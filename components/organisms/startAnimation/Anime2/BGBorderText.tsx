@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../../../../constants/cssProps";
+import useIntersectionObserver from "../../../../hooks/useIntersectionObserver";
+import { toVisible, translate } from "../../../../styles/commonAnimation";
 
 interface Props {
   fontSize: string;
@@ -19,6 +21,7 @@ const Text = styled.div<{
   right?: Props["right"];
   bottom?: Props["bottom"];
   text: Props["children"];
+  isStartAnimation: boolean;
 }>`
   position: absolute;
   ${({ top }) =>
@@ -50,6 +53,30 @@ const Text = styled.div<{
   0px -1px ${ANGE_LIVE_BACK_COLOR};
   color: ${ANGE_LIVE_BACK_COLOR};
   ${BUNKYU_MIDASHI_GO_STD}
+  overflow: hidden;
+  visibility: hidden;
+  ${({ isStartAnimation }) =>
+    isStartAnimation &&
+    css`
+      animation: ${toVisible} 200ms ease-in-out both 300ms;
+    `}
+
+  ::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${ANGE_LIVE_BACK_COLOR};
+    z-index: 1;
+    ${({ isStartAnimation }) =>
+      isStartAnimation &&
+      css`
+        animation: ${translate({ x: "-100%", y: 0 }, { x: "101%", y: 0 })} 400ms
+          ease-in-out both 300ms;
+      `}
+  }
 
   ::after {
     position: absolute;
@@ -74,8 +101,18 @@ const BGBorderText: React.VFC<Props> = ({
   bottom,
   children,
 }) => {
+  const [ref, isStartAnimation] = useIntersectionObserver<HTMLDivElement>({
+    margin: 400,
+  });
+
+  useEffect(() => {
+    console.log("run text animation");
+  }, [isStartAnimation]);
+
   return (
     <Text
+      isStartAnimation={isStartAnimation}
+      ref={ref}
       fontSize={fontSize}
       top={top}
       left={left}
