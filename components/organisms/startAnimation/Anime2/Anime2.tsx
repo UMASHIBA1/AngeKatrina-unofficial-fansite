@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ANGE_WHITE } from "../../../../constants/colors";
+import CloseAnime2 from "./CloseAnime2";
 import ExpandCircle from "./ExpandCircle";
 import WaveScreen from "./WaveScreen";
 
@@ -23,6 +24,7 @@ const Anime2: React.VFC<Props> = ({ isStartAnimation }) => {
       <Wrapper>
         <ExpandCircle />
         <WaveScreen />
+        <CloseAnime2 />
       </Wrapper>
     );
   } else {
