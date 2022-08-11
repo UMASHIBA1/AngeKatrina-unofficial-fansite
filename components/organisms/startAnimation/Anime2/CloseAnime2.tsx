@@ -7,6 +7,10 @@ import {
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { leftRotate } from "../../../../styles/commonAnimation";
 
+interface Props {
+  onCloseAnime2: () => void;
+}
+
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
   position: absolute;
   top: -100%;
@@ -92,12 +96,16 @@ const RedCloser = styled.div<{
     `}
 `;
 
-const useAnimation = () => {
+const useAnimation = (onCloseAnime2: () => void) => {
   const [animationkind, changeAnimationKind] = useState<"inScreen" | "closing">(
     "inScreen"
   );
   const toNextAnimation = () => {
-    changeAnimationKind("closing");
+    if (animationkind === "inScreen") {
+      changeAnimationKind("closing");
+    } else {
+      onCloseAnime2();
+    }
   };
 
   return [animationkind, toNextAnimation] as [
@@ -106,8 +114,8 @@ const useAnimation = () => {
   ];
 };
 
-const CloseAnime2: React.VFC = () => {
-  const [animationKind, toNextAnimation] = useAnimation();
+const CloseAnime2: React.VFC<Props> = ({ onCloseAnime2 }) => {
+  const [animationKind, toNextAnimation] = useAnimation(onCloseAnime2);
 
   return (
     <Wrapper isStartAnimation={animationKind === "closing"}>

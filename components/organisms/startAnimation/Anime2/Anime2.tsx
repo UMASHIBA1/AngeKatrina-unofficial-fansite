@@ -7,6 +7,7 @@ import WaveScreen from "./WaveScreen";
 
 interface Props {
   isStartAnimation: boolean;
+  toNextAnimation: () => void;
 }
 
 const Wrapper = styled.div`
@@ -18,13 +19,13 @@ const Wrapper = styled.div`
   background-color: ${ANGE_WHITE};
 `;
 
-const Anime2: React.VFC<Props> = ({ isStartAnimation }) => {
+const Anime2: React.VFC<Props> = ({ isStartAnimation, toNextAnimation }) => {
   if (isStartAnimation) {
     return (
       <Wrapper>
         <ExpandCircle />
         <WaveScreen />
-        <CloseAnime2 />
+        <CloseAnime2 onCloseAnime2={toNextAnimation} />
       </Wrapper>
     );
   } else {
