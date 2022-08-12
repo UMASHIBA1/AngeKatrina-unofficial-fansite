@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../../constants/colors";
+import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { translate } from "../../../../styles/commonAnimation";
 
 const Wrapper = styled.div`
@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   width: 300%;
   height: 300%;
   transform: rotate(-36deg);
-  background-color: ${ANGE_WHITE};
 `;
 
 const RedOpener = styled.div<{
