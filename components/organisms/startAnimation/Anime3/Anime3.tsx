@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import AngeImage from "./AngeImage";
+import AngeName from "./AngeName";
 import OpenAnime3 from "./OpenAnime3";
 
 interface Props {
@@ -24,6 +25,7 @@ const Anime3: React.VFC<Props> = ({ isStartAnimation }) => {
       <Wrapper>
         <AngeImage />
         <OpenAnime3 />
+        <AngeName />
       </Wrapper>
     );
   } else {
