@@ -5,7 +5,7 @@ import {
   tablet_breakpoint,
 } from "../../../../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
-import { leftRotate } from "../../../../styles/commonAnimation";
+import { leftRotate, toUnvisible } from "../../../../styles/commonAnimation";
 
 interface Props {
   onCloseAnime2: () => void;
@@ -58,11 +58,12 @@ const closingAnimation = (position: "left" | "right", stopPercent: number) => {
 
 const RedCloser = styled.div<{
   position: "left" | "right";
-  animationKind: "inScreen" | "closing";
+  animationKind: "inScreen" | "closing" | "invisibleForBG";
 }>`
   width: 50%;
   height: 100%;
   background-color: ${ANGE_LIVE_BACK_COLOR};
+  visibility: visible;
   ${({ animationKind, position }) =>
     animationKind === "inScreen" &&
     css`
@@ -94,17 +95,23 @@ const RedCloser = styled.div<{
           both;
       }
     `}
+    ${({ animationKind }) =>
+    animationKind === "invisibleForBG" &&
+    css`
+      animation: ${toUnvisible} 0ms 0ms forwards;
+    `}
 `;
 
 const useAnimation = (onCloseAnime2: () => void) => {
-  const [animationkind, changeAnimationKind] = useState<"inScreen" | "closing">(
-    "inScreen"
-  );
+  const [animationkind, changeAnimationKind] = useState<
+    "inScreen" | "closing" | "invisibleForBG"
+  >("inScreen");
   const toNextAnimation = () => {
     if (animationkind === "inScreen") {
       changeAnimationKind("closing");
     } else {
       onCloseAnime2();
+      changeAnimationKind("invisibleForBG");
     }
   };
 
