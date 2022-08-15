@@ -8,7 +8,7 @@ const Img = styled.img`
   height: 120%;
   margin-top: 30%;
   transform-origin: center;
-  animation: ${scale(1.2)} 200ms ease-out 1200ms 2 alternate both;
+  animation: ${scale(1.6)} 200ms ease-out 1200ms 2 alternate both;
 `;
 const AngeImage: React.VFC = () => {
   return <Img src={angeHey} alt="アンジュのかわいい立ち絵" />;
