@@ -9,6 +9,7 @@ import { leftRotate, toUnvisible } from "../../../../styles/commonAnimation";
 
 interface Props {
   onCloseAnime2: () => void;
+  mode: "main" | "background";
 }
 
 const Wrapper = styled.div<{ isStartAnimation: boolean }>`
@@ -58,13 +59,15 @@ const closingAnimation = (position: "left" | "right", stopPercent: number) => {
 
 const RedCloser = styled.div<{
   position: "left" | "right";
-  animationKind: "inScreen" | "closing" | "invisibleForBG";
+  animationKind: "inScreen" | "closing";
+  mode: Props["mode"];
 }>`
   width: 50%;
   height: 100%;
   background-color: ${ANGE_LIVE_BACK_COLOR};
   visibility: visible;
-  ${({ animationKind, position }) =>
+  ${({ animationKind, position, mode }) =>
+    mode === "main" &&
     animationKind === "inScreen" &&
     css`
       animation: ${inScreenAnimation(position, 50)} 600ms
@@ -80,7 +83,8 @@ const RedCloser = styled.div<{
           cubic-bezier(0.1, 0.46, 0.22, 1) 2000ms both;
       }
     `}
-  ${({ animationKind, position }) =>
+  ${({ animationKind, position, mode }) =>
+    mode === "main" &&
     animationKind === "closing" &&
     css`
       animation: ${closingAnimation(position, 50)} 400ms ease-in-out 400ms both;
@@ -95,23 +99,22 @@ const RedCloser = styled.div<{
           both;
       }
     `}
-    ${({ animationKind }) =>
-    animationKind === "invisibleForBG" &&
+    ${({ mode }) =>
+    mode === "background" &&
     css`
       animation: ${toUnvisible} 0ms 0ms forwards;
     `}
 `;
 
 const useAnimation = (onCloseAnime2: () => void) => {
-  const [animationkind, changeAnimationKind] = useState<
-    "inScreen" | "closing" | "invisibleForBG"
-  >("inScreen");
+  const [animationkind, changeAnimationKind] = useState<"inScreen" | "closing">(
+    "inScreen"
+  );
   const toNextAnimation = () => {
     if (animationkind === "inScreen") {
       changeAnimationKind("closing");
     } else {
       onCloseAnime2();
-      changeAnimationKind("invisibleForBG");
     }
   };
 
@@ -121,17 +124,18 @@ const useAnimation = (onCloseAnime2: () => void) => {
   ];
 };
 
-const CloseAnime2: React.VFC<Props> = ({ onCloseAnime2 }) => {
+const CloseAnime2: React.VFC<Props> = ({ onCloseAnime2, mode }) => {
   const [animationKind, toNextAnimation] = useAnimation(onCloseAnime2);
 
   return (
     <Wrapper isStartAnimation={animationKind === "closing"}>
       <RedCloser
+        mode={mode}
         position="left"
         animationKind={animationKind}
         onAnimationEnd={toNextAnimation}
       />
-      <RedCloser position="right" animationKind={animationKind} />
+      <RedCloser mode={mode} position="right" animationKind={animationKind} />
     </Wrapper>
   );
 };

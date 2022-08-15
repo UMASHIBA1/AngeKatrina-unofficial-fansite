@@ -66,6 +66,7 @@ const StartAnimation: React.VFC = () => {
         toNextAnimation={toNextAnimation}
       />
       <Anime2
+        mode={animationKind === "anime2" ? "main" : "background"}
         isStartAnimation={
           animationKind === "anime2" || animationKind === "anime3"
         }
