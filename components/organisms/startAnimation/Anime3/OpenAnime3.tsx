@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import {
+  sm_breakpoint,
+  tablet_breakpoint,
+} from "../../../../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import { translate } from "../../../../styles/commonAnimation";
 
@@ -32,8 +36,16 @@ const RedOpener = styled.div<{
     position === "left" &&
     animationKind === "expand" &&
     css`
-      animation: ${translate({ x: "-32px", y: 0 }, { x: "-25%", y: 0 })} 200ms
+      animation: ${translate({ x: "-32px", y: 0 }, { x: "-40%", y: 0 })} 200ms
         cubic-bezier(0, 1, 0.5, 1.25) 400ms both;
+      @media (min-width: ${sm_breakpoint}px) {
+        animation: ${translate({ x: "-32px", y: 0 }, { x: "-35%", y: 0 })} 200ms
+          cubic-bezier(0, 1, 0.5, 1.25) 400ms both;
+      }
+      @media (min-width: ${tablet_breakpoint}px) {
+        animation: ${translate({ x: "-32px", y: 0 }, { x: "-25%", y: 0 })} 200ms
+          cubic-bezier(0, 1, 0.5, 1.25) 400ms both;
+      }
     `}
   ${({ position, animationKind }) =>
     position === "right" &&
@@ -43,12 +55,21 @@ const RedOpener = styled.div<{
         400ms both;
     `}
     ${({ position, animationKind }) =>
-    position === "right" &&
-    animationKind === "expand" &&
-    css`
-      animation: ${translate({ x: "32px", y: 0 }, { x: "25%", y: 0 })} 200ms
+      position === "right" &&
+      animationKind === "expand" &&
+      css`
+        animation: ${translate({ x: "32px", y: 0 }, { x: "40%", y: 0 })} 200ms
+        cubic-bezier(0, 1, 0.5, 1.25) 400ms both;
+  @media (min-width: ${sm_breakpoint}px) {
+    animation: ${translate({ x: "32px", y: 0 }, { x: "35%", y: 0 })} 200ms
+        cubic-bezier(0, 1, 0.5, 1.25) 400ms both;
+  }
+  @media (min-width: ${tablet_breakpoint}px) {
+    animation: ${translate({ x: "32px", y: 0 }, { x: "25%", y: 0 })} 200ms
         cubic-bezier(0, 1, 0.5, 1.25) 400ms both;
     `}
+  }
+
 `;
 
 const useAnimation = () => {
