@@ -5,6 +5,7 @@ import {
   tablet_breakpoint,
 } from "../../../../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../../../../constants/colors";
+import { fadein } from "../../../../styles/commonAnimation";
 import BGBorderText from "./BGBorderText";
 
 const TextBG = styled.span`
@@ -27,8 +28,7 @@ const TextBG = styled.span`
   color: ${ANGE_LIVE_BACK_COLOR};
   text-align: center;
   vertical-align: middle;
-  opacity: 0.8;
-  font-size: 1rem;
+  animation: ${fadein(0.8)} 300ms ease-in 1200ms both;
 `;
 
 const AngeName: React.VFC = () => {
