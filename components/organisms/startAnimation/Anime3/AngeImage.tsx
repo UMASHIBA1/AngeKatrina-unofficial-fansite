@@ -9,7 +9,8 @@ const Img = styled.img`
   height: 120%;
   margin-top: 30%;
   transform-origin: center;
-  animation: ${scale(1.3)} 200ms ease-out 1200ms 2 alternate both;
+  animation: ${scale(1.4)} 300ms cubic-bezier(0.25, 1, 0.25, 1) 1250ms 2
+    alternate both;
 `;
 
 const particleDiameter = 80;
@@ -69,7 +70,7 @@ const ParticleWrapper = styled.div`
   width: ${particleDiameter}vh;
   height: ${particleDiameter}vh;
   transform-origin: left top;
-  animation: ${particleAnimation} 300ms ease-out 1600ms both;
+  animation: ${particleAnimation} 300ms ease-out 1900ms both;
 `;
 const Wrapper = styled.div`
   position: relative;
