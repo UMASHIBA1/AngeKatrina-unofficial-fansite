@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import angeHey from "../../../../public/imgs/gatya/ange-hey.png";
 import { scale } from "../../../../styles/commonAnimation";
@@ -41,6 +41,25 @@ const Particle = styled.div<{
     createParticleTransform(particleTotalNum, particleIndex)}
 `;
 
+const particleAnimation = keyframes`
+  0% {
+    opacity: 1;
+    visibility: hidden;
+    transform: scale(0.5) translate(-50%, -50%);
+  }
+  1% {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(0.5) translate(-50%, -50%);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: visible;
+    transform: scale(1.2) translate(-50%, -50%);
+  }
+`;
+
 const ParticleWrapper = styled.div`
   position: absolute;
   top: 50%;
@@ -49,6 +68,8 @@ const ParticleWrapper = styled.div`
   transform: translate(-50%, -50%);
   width: ${particleDiameter}vh;
   height: ${particleDiameter}vh;
+  transform-origin: left top;
+  animation: ${particleAnimation} 300ms ease-out 1600ms both;
 `;
 const Wrapper = styled.div`
   position: relative;
