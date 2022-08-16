@@ -28,7 +28,7 @@ const TextBG = styled.span`
   color: ${ANGE_LIVE_BACK_COLOR};
   text-align: center;
   vertical-align: middle;
-  animation: ${fadein(0.8)} 300ms ease-in 1200ms both;
+  animation: ${fadein(0.8)} 300ms ease-in 1600ms both;
 `;
 
 const AngeName: React.VFC = () => {
