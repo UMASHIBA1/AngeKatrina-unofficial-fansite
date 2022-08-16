@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
 import styled from "styled-components";
 import Anime1 from "../components/organisms/startAnimation/Anime1/Anime1";
@@ -52,6 +53,7 @@ const useAnimations = () => {
 
 const StartAnimation: React.VFC = () => {
   const [animationKind, toNextAnimation] = useAnimations();
+  const router = useRouter();
 
   return (
     <Wrapper>
@@ -72,7 +74,10 @@ const StartAnimation: React.VFC = () => {
         }
         toNextAnimation={toNextAnimation}
       />
-      <Anime3 isStartAnimation={animationKind === "anime3"} />
+      <Anime3
+        isStartAnimation={animationKind === "anime3"}
+        onFinishAnimation={() => router.push("/")}
+      />
       <Loading toNextAnimation={toNextAnimation} />
     </Wrapper>
   );

@@ -8,13 +8,17 @@ import HomeAnge from "../components/organisms/home/HomeAnge/HomeAnge";
 import CircleSlide from "../components/organisms/home/CircleSlide/CircleSlide";
 import NavBar from "../components/organisms/common/NavBar/NavBar";
 import HamburgerMenu from "../components/atomics/common/HamburgerMenu/HamburgerMenu";
+import OpenerFromStartAnimation from "../components/organisms/home/OpenerFromStartAnimation";
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   position: absolute;
+  top: 0;
+  left: 0;
   background-color: ${ANGE_LIVE_BACK_COLOR};
+  overflow: hidden;
 `;
 
 const Home: React.FC = () => {
@@ -38,6 +42,7 @@ const Home: React.FC = () => {
             }}
           />
         </HomeBG>
+        <OpenerFromStartAnimation />
       </Wrapper>
     </PageWrapper>
   );
