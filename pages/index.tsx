@@ -8,17 +8,38 @@ import HomeAnge from "../components/organisms/home/HomeAnge/HomeAnge";
 import CircleSlide from "../components/organisms/home/CircleSlide/CircleSlide";
 import NavBar from "../components/organisms/common/NavBar/NavBar";
 import HamburgerMenu from "../components/atomics/common/HamburgerMenu/HamburgerMenu";
+import OpenerFromStartAnimation from "../components/organisms/home/OpenerFromStartAnimation";
+import { DispatchType, useTypedSelector } from "../redux/store";
+import { useRouter } from "next/dist/client/router";
+import { useDispatch } from "react-redux";
+import { toAfterRun, toRunning } from "../redux/modules/startAnimation";
+import useDidMount from "../hooks/useDidMount";
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   position: absolute;
+  top: 0;
+  left: 0;
   background-color: ${ANGE_LIVE_BACK_COLOR};
+  overflow: hidden;
 `;
 
 const Home: React.FC = () => {
   const [isOpenNavBar, changeIsOpenNavBar] = useState(false);
+  const router = useRouter();
+  const [startAnimation] = useTypedSelector((state) => [state.startAnimation]);
+  const dispatch: DispatchType = useDispatch();
+
+  useDidMount(() => {
+    if (startAnimation === "beforeRun") {
+      router.push("/startanimation").then(() => {
+        dispatch(toRunning());
+      });
+    }
+  });
+
   return (
     <PageWrapper>
       <Wrapper>
@@ -38,6 +59,9 @@ const Home: React.FC = () => {
             }}
           />
         </HomeBG>
+        {startAnimation === "running" && (
+          <OpenerFromStartAnimation onOpen={() => dispatch(toAfterRun())} />
+        )}
       </Wrapper>
     </PageWrapper>
   );
