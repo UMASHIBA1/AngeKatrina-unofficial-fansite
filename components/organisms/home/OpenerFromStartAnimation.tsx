@@ -2,6 +2,10 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { ANGE_YELLOW } from "../../../constants/colors";
 
+interface Props {
+  onOpen: () => void;
+}
+
 const opening = keyframes`
     0% {
         transform: rotate(-45deg) translateY(0);
@@ -24,8 +28,8 @@ const YellowOpener = styled.div`
   z-index: 110;
 `;
 
-const OpenerFromStartAnimation: React.VFC = () => {
-  return <YellowOpener />;
+const OpenerFromStartAnimation: React.VFC<Props> = ({ onOpen }) => {
+  return <YellowOpener onAnimationEnd={onOpen} />;
 };
 
 export default OpenerFromStartAnimation;
