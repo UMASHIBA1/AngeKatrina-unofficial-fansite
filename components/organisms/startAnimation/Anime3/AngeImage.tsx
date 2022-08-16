@@ -90,7 +90,7 @@ const AngeImage: React.VFC = () => {
     <Wrapper>
       <ParticleWrapper>
         {[...Array(PARTICLE_NUM).keys()].map((i) => (
-          <Particle particleTotalNum={PARTICLE_NUM} particleIndex={i} />
+          <Particle key={i} particleTotalNum={PARTICLE_NUM} particleIndex={i} />
         ))}
       </ParticleWrapper>
       <Img src={angeHey} alt="アンジュのかわいい立ち絵" />
