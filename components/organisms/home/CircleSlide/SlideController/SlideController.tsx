@@ -36,14 +36,14 @@ const changeSlideAnimation = keyframes`
 `;
 
 const Controller = styled.div`
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: ${ANGE_WHITE};
-  overflow: hidden;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  isolation: isolate;
 `;
 
 const Slider = styled.div<{ isChangeSlide: boolean }>`

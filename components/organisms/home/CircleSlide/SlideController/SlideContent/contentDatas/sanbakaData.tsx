@@ -26,6 +26,7 @@ const createStyledImg = (src: string, alt: string) =>
     alt,
   })`
     height: 80%;
+    object-fit: contain;
   `;
 
 const StyledAngeImg = createStyledImg(AngeImg, "アンジュカトリーナ画像");
