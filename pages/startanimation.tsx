@@ -13,6 +13,7 @@ import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../constants/cssProps";
 import { toAfterRun } from "../redux/modules/startAnimation";
 import { DispatchType } from "../redux/store";
+import angeHeyImg from "../public/imgs/gatya/ange-hey.png";
 
 type animationKind =
   | "loading"
@@ -146,6 +147,7 @@ const StartAnimation: React.VFC = () => {
           </SkipButton>
         )}
       </Wrapper>
+      <link rel="preload" as="image" href={angeHeyImg} />
     </PageWrapper>
   );
 };
