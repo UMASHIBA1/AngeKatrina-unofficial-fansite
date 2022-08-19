@@ -1,9 +1,10 @@
-# アンジュカトリーナ非公式ファンサイト「アンゲ・カワイーナ」:balance_scale: 
+# アンジュカトリーナ非公式ファンサイト「アンゲ・カワイーナ」:balance_scale:
 
-にじさんじライバー アンジュカトリーナさんの非公式ファンサイトです。  
+[ENGLISH README](./README_EN.md)
+
+にじさんじライバー アンジュカトリーナさんの非公式ファンサイトです。
 
 https://ange-kawaina.vercel.app/
-
 
 <img width="600" alt="アンジュカトリーナ非公式ファンサイト「アンゲ・カワイーナ」サムネイル" src="https://user-images.githubusercontent.com/49422601/185644334-f08b87f5-7599-495f-9857-44fca65f61a8.png">
 
@@ -15,7 +16,6 @@ https://ange-kawaina.vercel.app/
 特にスタートアニメーション、サイドバーアニメーション、ガチャのアニメーションはこだわって作ったのでぜひ PC で開いて見てみてください！
 
 https://user-images.githubusercontent.com/49422601/185646059-12fb82af-5c1f-4ba7-a29a-c2c4a5f75935.mov
-
 
 # LICENSE
 
