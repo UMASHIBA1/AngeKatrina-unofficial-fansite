@@ -4,7 +4,7 @@
 
 にじさんじライバー アンジュカトリーナさんの非公式ファンサイトです。
 
-https://ange-kawaina.vercel.app/
+https://ange-kawaina.umashiba.dev/
 
 <img width="600" alt="アンジュカトリーナ非公式ファンサイト「アンゲ・カワイーナ」サムネイル" src="https://user-images.githubusercontent.com/49422601/185644334-f08b87f5-7599-495f-9857-44fca65f61a8.png">
 
