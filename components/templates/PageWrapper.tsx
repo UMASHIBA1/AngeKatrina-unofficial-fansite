@@ -44,7 +44,6 @@ const PageWrapper: React.FC<Props> = (props: Props) => {
   useDispatchSize(dispatch);
 
   useDidMount(() => {
-    console.log(location.pathname);
     if (location.pathname !== "/" && location.pathname !== "/startanimation") {
       dispatch(toAfterRun());
     }

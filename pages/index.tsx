@@ -13,7 +13,6 @@ import { DispatchType, useTypedSelector } from "../redux/store";
 import { useRouter } from "next/dist/client/router";
 import { useDispatch } from "react-redux";
 import { toAfterRun } from "../redux/modules/startAnimation";
-import useDidMount from "../hooks/useDidMount";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -32,37 +31,39 @@ const Home: React.FC = () => {
   const [startAnimation] = useTypedSelector((state) => [state.startAnimation]);
   const dispatch: DispatchType = useDispatch();
 
-  useDidMount(() => {
-    if (startAnimation === "beforeRun") {
-      router.push("/startanimation");
-    }
-  });
+  if (startAnimation === "beforeRun") {
+    router.push("/startanimation");
+  }
 
-  return (
-    <PageWrapper>
-      <Wrapper>
-        <HomeBG>
-          <CircleSlide />
-          <Logo bgColor="white" />
-          <HomeAnge />
-          <HamburgerMenu
-            onClickFC={() => {
-              changeIsOpenNavBar(true);
-            }}
-          />
-          <NavBar
-            isOpen={isOpenNavBar}
-            onClose={() => {
-              changeIsOpenNavBar(false);
-            }}
-          />
-        </HomeBG>
-        {startAnimation === "running" && (
-          <OpenerFromStartAnimation onOpen={() => dispatch(toAfterRun())} />
-        )}
-      </Wrapper>
-    </PageWrapper>
-  );
+  if (startAnimation === "beforeRun") {
+    return <Wrapper></Wrapper>;
+  } else {
+    return (
+      <PageWrapper>
+        <Wrapper>
+          <HomeBG>
+            <CircleSlide />
+            <Logo bgColor="white" />
+            <HomeAnge />
+            <HamburgerMenu
+              onClickFC={() => {
+                changeIsOpenNavBar(true);
+              }}
+            />
+            <NavBar
+              isOpen={isOpenNavBar}
+              onClose={() => {
+                changeIsOpenNavBar(false);
+              }}
+            />
+          </HomeBG>
+          {startAnimation === "running" && (
+            <OpenerFromStartAnimation onOpen={() => dispatch(toAfterRun())} />
+          )}
+        </Wrapper>
+      </PageWrapper>
+    );
+  }
 };
 
 export default Home;
