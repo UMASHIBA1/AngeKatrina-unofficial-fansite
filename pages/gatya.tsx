@@ -14,6 +14,7 @@ import AngeCard from "../components/organisms/gatya/AngeCard/AngeCard";
 import CloseButton from "../components/atomics/common/CloseButton/CloseButton";
 import { useRouter } from "next/dist/client/router";
 import { appearCloseButtonOrder } from "../constants/gatya/animation_order";
+import { useTypedSelector } from "../redux/store";
 
 const Main = styled.main`
   width: 100%;
@@ -37,6 +38,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
 const IndexPage = ({ randomInt }: Props) => {
   const router = useRouter();
+  const [isStartSummonAnimation] = useTypedSelector((state) => [
+    state.isStartSummonAnimation,
+  ]);
 
   return (
     <PageWrapper>
@@ -49,16 +53,18 @@ const IndexPage = ({ randomInt }: Props) => {
         <Flash />
         <ShowAngeCard />
         <AngeCard randomInt={randomInt} />
-        <CloseButton
-          top="16px"
-          left="16px"
-          displayAnimationDelay={appearCloseButtonOrder.delay_ms}
-          disableAnimationDelay={500}
-          runDisplayAnimation={true}
-          runCloseAnimation={false}
-          onClickFC={() => router.push("/gatya/description")}
-          zIndex={110}
-        />
+        {isStartSummonAnimation && (
+          <CloseButton
+            top="16px"
+            left="16px"
+            displayAnimationDelay={appearCloseButtonOrder.delay_ms}
+            disableAnimationDelay={500}
+            runDisplayAnimation={true}
+            runCloseAnimation={false}
+            onClickFC={() => router.push("/gatya/description")}
+            zIndex={110}
+          />
+        )}
       </Main>
     </PageWrapper>
   );
