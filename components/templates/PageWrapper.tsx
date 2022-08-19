@@ -1,4 +1,3 @@
-import { useRouter } from "next/dist/client/router";
 import React, { ReactNode } from "react";
 import { useDispatch } from "react-redux";
 import { sm_breakpoint, tablet_breakpoint } from "../../constants/breakpoints";
