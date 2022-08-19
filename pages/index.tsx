@@ -34,9 +34,7 @@ const Home: React.FC = () => {
 
   useDidMount(() => {
     if (startAnimation === "beforeRun") {
-      router.push("/startanimation").then(() => {
-        dispatch(toRunning());
-      });
+      router.push("/startanimation");
     }
   });
 

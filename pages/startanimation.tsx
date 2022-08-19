@@ -7,6 +7,7 @@ import Anime2 from "../components/organisms/startAnimation/Anime2/Anime2";
 import Anime3 from "../components/organisms/startAnimation/Anime3/Anime3";
 import Loading from "../components/organisms/startAnimation/Loading/Loading";
 import LoadingToAnime1 from "../components/organisms/startAnimation/LoadingToAnime1/LoadingToAnime1";
+import PageWrapper from "../components/templates/PageWrapper";
 import { sm_breakpoint } from "../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../constants/cssProps";
@@ -107,42 +108,45 @@ const StartAnimation: React.VFC = () => {
   const dispatch: DispatchType = useDispatch();
 
   return (
-    <Wrapper>
-      <LoadingToAnime1
-        toNextAnimation={toNextAnimation}
-        isStartAnimation={
-          animationKind === "loadingToAnime1" || animationKind === "anime1"
-        }
-      />
+    <PageWrapper>
+      <Wrapper>
+        <LoadingToAnime1
+          toNextAnimation={toNextAnimation}
+          isStartAnimation={
+            animationKind === "loadingToAnime1" || animationKind === "anime1"
+          }
+        />
 
-      <Anime1
-        isStartAnimation={animationKind === "anime1"}
-        toNextAnimation={toNextAnimation}
-      />
-      <Anime2
-        mode={animationKind === "anime2" ? "main" : "background"}
-        isStartAnimation={
-          animationKind === "anime2" || animationKind === "anime3"
-        }
-        toNextAnimation={toNextAnimation}
-      />
-      <Anime3
-        isStartAnimation={animationKind === "anime3"}
-        onFinishAnimation={() => router.push("/")}
-      />
-      <Loading toNextAnimation={toNextAnimation} />
-      {(animationKind === "loading" || animationKind === "loadingToAnime1") && (
-        <SkipButton
-          onClick={() => {
-            dispatch(toAfterRun());
-            router.push("/");
-          }}
-          nowAnimationKind={animationKind}
-        >
-          SKIP！
-        </SkipButton>
-      )}
-    </Wrapper>
+        <Anime1
+          isStartAnimation={animationKind === "anime1"}
+          toNextAnimation={toNextAnimation}
+        />
+        <Anime2
+          mode={animationKind === "anime2" ? "main" : "background"}
+          isStartAnimation={
+            animationKind === "anime2" || animationKind === "anime3"
+          }
+          toNextAnimation={toNextAnimation}
+        />
+        <Anime3
+          isStartAnimation={animationKind === "anime3"}
+          onFinishAnimation={() => router.push("/")}
+        />
+        <Loading toNextAnimation={toNextAnimation} />
+        {(animationKind === "loading" ||
+          animationKind === "loadingToAnime1") && (
+          <SkipButton
+            onClick={() => {
+              dispatch(toAfterRun());
+              router.push("/");
+            }}
+            nowAnimationKind={animationKind}
+          >
+            SKIP！
+          </SkipButton>
+        )}
+      </Wrapper>
+    </PageWrapper>
   );
 };
 
