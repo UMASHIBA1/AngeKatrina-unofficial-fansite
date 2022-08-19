@@ -29,6 +29,31 @@ class MyDocument extends Document {
             property="og:description"
             content="にじさんじライバー アンジュカトリーナさんの非公式ファンサイトです。楽しんでいってね！"
           />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="favicons/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="favicons/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="favicons/favicon-16x16.png"
+          />
+          <link rel="manifest" href="favicons/site.webmanifest" />
+          <link
+            rel="mask-icon"
+            href="favicons/safari-pinned-tab.svg"
+            color="#c73b32"
+          />
+          <meta name="msapplication-TileColor" content="#ffffff" />
+          <meta name="theme-color" content="#ffffff"></meta>
           <script src="/load-adobe-fonts.js" />
         </Head>
         <body>

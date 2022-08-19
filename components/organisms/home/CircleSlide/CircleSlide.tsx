@@ -8,7 +8,6 @@ import CircleMain from "./CircleMain";
 import meritAndDemeritData from "./SlideController/SlideContent/contentDatas/meritAndDemeritData";
 import SlideController from "./SlideController/SlideController";
 import sanbakaData from "./SlideController/SlideContent/contentDatas/sanbakaData";
-import testData from "./SlideController/SlideContent/contentDatas/testData";
 import streamingStyleData from "./SlideController/SlideContent/contentDatas/streamingStyle";
 
 const Wrapper = styled.div`
@@ -38,10 +37,9 @@ const CircleSlide: React.FC = () => {
       <CircleMain>
         <SlideController
           slideContents={{
-            id0: testData,
-            id1: meritAndDemeritData,
-            id2: sanbakaData,
-            id3: streamingStyleData,
+            id0: meritAndDemeritData,
+            id1: sanbakaData,
+            id2: streamingStyleData,
           }}
         />
       </CircleMain>

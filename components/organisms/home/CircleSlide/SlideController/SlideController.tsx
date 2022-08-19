@@ -6,7 +6,6 @@ import {
 } from "../../../../../constants/colors";
 import SlideContent from "./SlideContent/SlideContent";
 import contentDataType from "./SlideContent/contentDatas/contentDataType";
-import { circleSlideSlider } from "../../../../../constants/home/zindex";
 
 const sliderAnimationDuration_ms = 800;
 
@@ -21,12 +20,10 @@ interface Props {
 const changeSlideAnimation = keyframes`
 
 	50% {
-		height: 100%;
 		transform: translate(0, 0) rotate(45deg);		
 	}
 
 	55% {
-		height: 100%;
 		transform: translate(0, 0) rotate(45deg);		
 	}
 
@@ -36,21 +33,21 @@ const changeSlideAnimation = keyframes`
 `;
 
 const Controller = styled.div`
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: ${ANGE_WHITE};
-  overflow: hidden;
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 const Slider = styled.div<{ isChangeSlide: boolean }>`
-  z-index: ${circleSlideSlider};
   position: absolute;
-  left: 0;
   bottom: 0;
+  left: 0;
   background-color: ${ANGE_LIVE_BACK_COLOR};
   width: 100%;
   height: 100%;

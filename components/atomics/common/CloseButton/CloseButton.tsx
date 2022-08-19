@@ -13,6 +13,7 @@ export interface CloseButtonProps {
   right?: string;
   bottom?: string;
   left?: string;
+  zIndex?: number | string;
 }
 
 const Wrapper = styled.div<Required<Omit<CloseButtonProps, "onClickFC">>>`
@@ -24,6 +25,7 @@ const Wrapper = styled.div<Required<Omit<CloseButtonProps, "onClickFC">>>`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: ${({ zIndex }) => zIndex};
   width: 55px;
   height: 55px;
   ${({ runDisplayAnimation, displayAnimationDelay }) =>
@@ -102,6 +104,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({
   right = "auto",
   bottom = "auto",
   left = "auto",
+  zIndex = "auto",
   displayAnimationDelay,
   disableAnimationDelay,
   runDisplayAnimation,
@@ -111,6 +114,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({
 
   return (
     <Wrapper
+      zIndex={zIndex}
       runDisplayAnimation={runDisplayAnimation}
       runCloseAnimation={runCloseAnimation}
       top={top}

@@ -7,10 +7,13 @@ import Anime2 from "../components/organisms/startAnimation/Anime2/Anime2";
 import Anime3 from "../components/organisms/startAnimation/Anime3/Anime3";
 import Loading from "../components/organisms/startAnimation/Loading/Loading";
 import LoadingToAnime1 from "../components/organisms/startAnimation/LoadingToAnime1/LoadingToAnime1";
+import PageWrapper from "../components/templates/PageWrapper";
+import { sm_breakpoint } from "../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../constants/cssProps";
 import { toAfterRun } from "../redux/modules/startAnimation";
 import { DispatchType } from "../redux/store";
+import angeHeyImg from "../public/imgs/gatya/ange-hey.png";
 
 type animationKind =
   | "loading"
@@ -21,7 +24,7 @@ type animationKind =
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: relative;
   top: 0;
   left: 0;
@@ -32,20 +35,29 @@ const SkipButton = styled.button<{
   nowAnimationKind: "loading" | "loadingToAnime1";
 }>`
   position: absolute;
-  bottom: 64px;
-  right: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 48px;
-  border-radius: 24px;
   background-color: ${ANGE_WHITE};
-  border: 8px double ${ANGE_LIVE_BACK_COLOR};
   transform: scale(1);
   color: ${ANGE_LIVE_BACK_COLOR};
-  font-size: 2rem;
   ${BUNKYU_MIDASHI_GO_STD}
   cursor: pointer;
+  bottom: 32px;
+  right: 24px;
+  font-size: 1.2rem;
+  padding: 12px 32px;
+  border-radius: 12px;
+  border: 4px double ${ANGE_LIVE_BACK_COLOR};
+  @media (min-width: ${sm_breakpoint}px) {
+    bottom: 64px;
+    right: 48px;
+    font-size: 2rem;
+    padding: 12px 48px;
+    border-radius: 24px;
+    border: 8px double ${ANGE_LIVE_BACK_COLOR};
+  }
+
   ${({ nowAnimationKind }) =>
     nowAnimationKind === "loading" &&
     css`
@@ -97,42 +109,46 @@ const StartAnimation: React.VFC = () => {
   const dispatch: DispatchType = useDispatch();
 
   return (
-    <Wrapper>
-      <LoadingToAnime1
-        toNextAnimation={toNextAnimation}
-        isStartAnimation={
-          animationKind === "loadingToAnime1" || animationKind === "anime1"
-        }
-      />
+    <PageWrapper>
+      <Wrapper>
+        <LoadingToAnime1
+          toNextAnimation={toNextAnimation}
+          isStartAnimation={
+            animationKind === "loadingToAnime1" || animationKind === "anime1"
+          }
+        />
 
-      <Anime1
-        isStartAnimation={animationKind === "anime1"}
-        toNextAnimation={toNextAnimation}
-      />
-      <Anime2
-        mode={animationKind === "anime2" ? "main" : "background"}
-        isStartAnimation={
-          animationKind === "anime2" || animationKind === "anime3"
-        }
-        toNextAnimation={toNextAnimation}
-      />
-      <Anime3
-        isStartAnimation={animationKind === "anime3"}
-        onFinishAnimation={() => router.push("/")}
-      />
-      <Loading toNextAnimation={toNextAnimation} />
-      {(animationKind === "loading" || animationKind === "loadingToAnime1") && (
-        <SkipButton
-          onClick={() => {
-            dispatch(toAfterRun());
-            router.push("/");
-          }}
-          nowAnimationKind={animationKind}
-        >
-          SKIP！
-        </SkipButton>
-      )}
-    </Wrapper>
+        <Anime1
+          isStartAnimation={animationKind === "anime1"}
+          toNextAnimation={toNextAnimation}
+        />
+        <Anime2
+          mode={animationKind === "anime2" ? "main" : "background"}
+          isStartAnimation={
+            animationKind === "anime2" || animationKind === "anime3"
+          }
+          toNextAnimation={toNextAnimation}
+        />
+        <Anime3
+          isStartAnimation={animationKind === "anime3"}
+          onFinishAnimation={() => router.push("/")}
+        />
+        <Loading toNextAnimation={toNextAnimation} />
+        {(animationKind === "loading" ||
+          animationKind === "loadingToAnime1") && (
+          <SkipButton
+            onClick={() => {
+              dispatch(toAfterRun());
+              router.push("/");
+            }}
+            nowAnimationKind={animationKind}
+          >
+            SKIP！
+          </SkipButton>
+        )}
+      </Wrapper>
+      <link rel="preload" as="image" href={angeHeyImg} />
+    </PageWrapper>
   );
 };
 

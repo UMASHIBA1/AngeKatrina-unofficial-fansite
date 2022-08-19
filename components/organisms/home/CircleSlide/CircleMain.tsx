@@ -13,12 +13,12 @@ const pcDiameter = "70vh";
 const redBorderWidth = 4;
 
 const Outline = styled.div`
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background-color: ${ANGE_WHITE};
+  overflow: hidden;
   width: calc(${smDiameter} + ${redBorderWidth + 2}px);
   height: calc(${smDiameter} + ${redBorderWidth + 2}px);
   @media (min-width: ${sm_breakpoint}px) {
@@ -34,15 +34,18 @@ const Outline = styled.div`
 
 const StyledCircleMain = styled.div`
   position: absolute;
+  top: auto;
+  left: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${ANGE_WHITE};
   border-radius: 50%;
+  background-color: ${ANGE_WHITE};
   border: solid ${redBorderWidth}px ${ANGE_LIVE_BACK_COLOR};
   width: ${smDiameter};
   height: ${smDiameter};
   overflow: hidden;
+  z-index: 1;
 
   @media (min-width: ${sm_breakpoint}px) {
     width: ${tabletDiameter};

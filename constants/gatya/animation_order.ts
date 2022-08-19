@@ -148,3 +148,8 @@ export const appearAngeCardOrder: AnimationProps = {
   duration_ms: 0,
   delay_ms: showAngeCardOrder.delay_ms,
 };
+
+export const appearCloseButtonOrder: AnimationProps = {
+  duration_ms: 0,
+  delay_ms: appearAngeCardOrder.delay_ms + 1000,
+};

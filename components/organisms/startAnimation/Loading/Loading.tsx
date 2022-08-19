@@ -18,7 +18,7 @@ const Wrapper = styled.div<{ hideThis: boolean }>`
   align-items: center;
   gap: 24px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: ${ANGE_LIVE_BACK_COLOR};
   ${({ hideThis }) =>
     hideThis &&
