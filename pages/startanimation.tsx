@@ -7,6 +7,7 @@ import Anime2 from "../components/organisms/startAnimation/Anime2/Anime2";
 import Anime3 from "../components/organisms/startAnimation/Anime3/Anime3";
 import Loading from "../components/organisms/startAnimation/Loading/Loading";
 import LoadingToAnime1 from "../components/organisms/startAnimation/LoadingToAnime1/LoadingToAnime1";
+import { sm_breakpoint } from "../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR, ANGE_WHITE } from "../constants/colors";
 import { BUNKYU_MIDASHI_GO_STD } from "../constants/cssProps";
 import { toAfterRun } from "../redux/modules/startAnimation";
@@ -32,20 +33,29 @@ const SkipButton = styled.button<{
   nowAnimationKind: "loading" | "loadingToAnime1";
 }>`
   position: absolute;
-  bottom: 64px;
-  right: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 48px;
-  border-radius: 24px;
   background-color: ${ANGE_WHITE};
-  border: 8px double ${ANGE_LIVE_BACK_COLOR};
   transform: scale(1);
   color: ${ANGE_LIVE_BACK_COLOR};
-  font-size: 2rem;
   ${BUNKYU_MIDASHI_GO_STD}
   cursor: pointer;
+  bottom: 32px;
+  right: 24px;
+  font-size: 1.2rem;
+  padding: 12px 32px;
+  border-radius: 12px;
+  border: 4px double ${ANGE_LIVE_BACK_COLOR};
+  @media (min-width: ${sm_breakpoint}px) {
+    bottom: 64px;
+    right: 48px;
+    font-size: 2rem;
+    padding: 12px 48px;
+    border-radius: 24px;
+    border: 8px double ${ANGE_LIVE_BACK_COLOR};
+  }
+
   ${({ nowAnimationKind }) =>
     nowAnimationKind === "loading" &&
     css`
