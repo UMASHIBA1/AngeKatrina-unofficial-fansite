@@ -12,7 +12,7 @@ import OpenerFromStartAnimation from "../components/organisms/home/OpenerFromSta
 import { DispatchType, useTypedSelector } from "../redux/store";
 import { useRouter } from "next/dist/client/router";
 import { useDispatch } from "react-redux";
-import { toAfterRun, toRunning } from "../redux/modules/startAnimation";
+import { toAfterRun } from "../redux/modules/startAnimation";
 import useDidMount from "../hooks/useDidMount";
 
 const Wrapper = styled.div`
@@ -34,9 +34,7 @@ const Home: React.FC = () => {
 
   useDidMount(() => {
     if (startAnimation === "beforeRun") {
-      router.push("/startanimation").then(() => {
-        dispatch(toRunning());
-      });
+      router.push("/startanimation");
     }
   });
 
