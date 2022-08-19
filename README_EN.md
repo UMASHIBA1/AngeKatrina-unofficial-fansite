@@ -2,7 +2,7 @@
 
 This is unofficial fan site of NIJISANJI streamer Ange Katrina
 
-https://ange-kawaina.vercel.app/
+https://ange-kawaina.umashiba.dev/
 
 <img width="600" alt="Ange Katrina unofficial fan [site Ange Kawaina] thumbnail" src="https://user-images.githubusercontent.com/49422601/185644334-f08b87f5-7599-495f-9857-44fca65f61a8.png">
 
