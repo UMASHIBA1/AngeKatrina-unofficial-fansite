@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background-color: ${ANGE_LIVE_BACK_COLOR};
 `;

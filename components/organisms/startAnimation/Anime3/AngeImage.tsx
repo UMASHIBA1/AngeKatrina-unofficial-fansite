@@ -1,16 +1,22 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
+import { tablet_breakpoint } from "../../../../constants/breakpoints";
 import { ANGE_LIVE_BACK_COLOR } from "../../../../constants/colors";
 import angeHey from "../../../../public/imgs/gatya/ange-hey.png";
 import { scale } from "../../../../styles/commonAnimation";
 
 const Img = styled.img`
   object-fit: contain;
-  height: 120%;
+  height: 100%;
   margin-top: 30%;
   transform-origin: center;
-  animation: ${scale(1.4)} 300ms cubic-bezier(0.25, 1, 0.25, 1) 1250ms 2
+  animation: ${scale(1.2)} 300ms cubic-bezier(0.25, 1, 0.25, 1) 1250ms 2
     alternate both;
+  @media (min-width: ${tablet_breakpoint}px) {
+    height: 120%;
+    animation: ${scale(1.4)} 300ms cubic-bezier(0.25, 1, 0.25, 1) 1250ms 2
+      alternate both;
+  }
 `;
 
 const particleDiameter = 80;

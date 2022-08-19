@@ -13,7 +13,6 @@ const pcDiameter = "70vh";
 const redBorderWidth = 4;
 
 const Outline = styled.div`
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +32,6 @@ const Outline = styled.div`
 `;
 
 const StyledCircleMain = styled.div`
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,6 +41,7 @@ const StyledCircleMain = styled.div`
   width: ${smDiameter};
   height: ${smDiameter};
   overflow: hidden;
+  isolation: isolate;
 
   @media (min-width: ${sm_breakpoint}px) {
     width: ${tabletDiameter};
