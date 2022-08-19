@@ -25,7 +25,7 @@ const createStyledImg = (src: string, alt: string) =>
     src,
     alt,
   })`
-    height: 80%;
+    height: 70%;
     object-fit: contain;
   `;
 
