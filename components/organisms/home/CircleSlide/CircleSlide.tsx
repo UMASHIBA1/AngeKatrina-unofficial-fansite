@@ -8,7 +8,6 @@ import CircleMain from "./CircleMain";
 import meritAndDemeritData from "./SlideController/SlideContent/contentDatas/meritAndDemeritData";
 import SlideController from "./SlideController/SlideController";
 import sanbakaData from "./SlideController/SlideContent/contentDatas/sanbakaData";
-import testData from "./SlideController/SlideContent/contentDatas/testData";
 import streamingStyleData from "./SlideController/SlideContent/contentDatas/streamingStyle";
 
 const Wrapper = styled.div`
