@@ -40,12 +40,14 @@ interface Props {
   isStartSummonAnimation: boolean;
   doAnimations: Animations;
   scaleMagnification?: number;
+  top?: string;
+  left?: string;
 }
 
-const circleCSS = css<{ diameter: Props["diameter"] }>`
+const circleCSS = css`
   position: absolute;
-  width: ${({ diameter }) => diameter}px;
-  height: ${({ diameter }) => diameter}px;
+  width: 100%;
+  height: 100%;
   filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
 `;
 
@@ -89,13 +91,19 @@ const judgeRotateKeyframe = (rotateDirection: Props["rotateDirection"]) => {
   }
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{
+  diameter: Props["diameter"];
+  top: Props["top"];
+  left: Props["left"];
+}>`
   position: absolute;
-  width: 100%;
-  height: 100%;
+  top: ${({ top }) => (top ? top : "auto")};
+  left: ${({ left }) => (left ? left : "auto")};
   display: flex;
   align-items: center;
   justify-content: center;
+  width: ${({ diameter }) => diameter}px;
+  height: ${({ diameter }) => diameter}px;
 `;
 
 const RotateWrapper = styled.div<{ rotateDirection: Props["rotateDirection"] }>`
@@ -114,7 +122,7 @@ const Img = styled.img<Props>`
 `;
 
 const SingleMagicCircle: React.VFC<Props> = (props) => {
-  const { rotateDirection, svgName } = props;
+  const { rotateDirection, top, left, svgName, diameter } = props;
   let usingImg;
   switch (svgName) {
     case "mostIn":
@@ -130,7 +138,7 @@ const SingleMagicCircle: React.VFC<Props> = (props) => {
       usingImg = fourthIn;
   }
   return (
-    <Wrapper>
+    <Wrapper diameter={diameter} top={top} left={left}>
       <RotateWrapper rotateDirection={rotateDirection}>
         <Img {...props} src={usingImg} alt="錬成陣の構成要素" />
       </RotateWrapper>

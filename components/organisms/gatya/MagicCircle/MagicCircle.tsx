@@ -70,6 +70,8 @@ const MagicCircle: React.FC = () => {
   return (
     <Wrapper>
       <SingleMagicCircle
+        top={`calc(50% - ${mostInDiameter / 2}px)`}
+        left={`calc(50% - ${mostInDiameter / 2}px)`}
         isStartSummonAnimation={isStartSummonAnimation}
         svgName="mostIn"
         diameter={mostInDiameter}
@@ -77,6 +79,8 @@ const MagicCircle: React.FC = () => {
         doAnimations={runAnimations}
       />
       <SingleMagicCircle
+        top={`calc(50% - ${mostInDiameter / 2}px)`}
+        left={`calc(50% - ${mostInDiameter / 2}px)`}
         isStartSummonAnimation={isStartSummonAnimation}
         svgName="mostIn"
         diameter={mostInDiameter}
@@ -85,6 +89,8 @@ const MagicCircle: React.FC = () => {
         doAnimations={runAnimations}
       />
       <SingleMagicCircle
+        top={`calc(50% - ${SecondInDiameter / 2}px)`}
+        left={`calc(50% - ${SecondInDiameter / 2}px)`}
         isStartSummonAnimation={isStartSummonAnimation}
         svgName="secondIn"
         diameter={SecondInDiameter}
@@ -93,6 +99,8 @@ const MagicCircle: React.FC = () => {
         doAnimations={runAnimations}
       />
       <SingleMagicCircle
+        top={`calc(50% - ${SecondInDiameter / 2}px)`}
+        left={`calc(50% - ${SecondInDiameter / 2}px)`}
         isStartSummonAnimation={isStartSummonAnimation}
         svgName="secondIn"
         diameter={SecondInDiameter}
@@ -101,6 +109,8 @@ const MagicCircle: React.FC = () => {
         doAnimations={runAnimations}
       />
       <SingleMagicCircle
+        top={`calc(50% - ${ThirdInDiameter / 2}px)`}
+        left={`calc(50% - ${ThirdInDiameter / 2}px)`}
         isStartSummonAnimation={isStartSummonAnimation}
         svgName="thirdIn"
         diameter={ThirdInDiameter}
@@ -109,6 +119,8 @@ const MagicCircle: React.FC = () => {
         doAnimations={runAnimations}
       />
       <SingleMagicCircle
+        top={`calc(50% - ${ThirdInDiameter / 2}px)`}
+        left={`calc(50% - ${ThirdInDiameter / 2}px)`}
         isStartSummonAnimation={isStartSummonAnimation}
         svgName="thirdIn"
         diameter={ThirdInDiameter}
@@ -117,6 +129,8 @@ const MagicCircle: React.FC = () => {
         doAnimations={runAnimations}
       />
       <SingleMagicCircle
+        top={`calc(50% - ${FourthInDiameter / 2}px)`}
+        left={`calc(50% - ${FourthInDiameter / 2}px)`}
         isStartSummonAnimation={isStartSummonAnimation}
         svgName="fourthIn"
         diameter={FourthInDiameter}
@@ -125,6 +139,8 @@ const MagicCircle: React.FC = () => {
         doAnimations={runAnimations}
       />
       <SingleMagicCircle
+        top={`calc(50% - ${FourthInDiameter / 2}px)`}
+        left={`calc(50% - ${FourthInDiameter / 2}px)`}
         isStartSummonAnimation={isStartSummonAnimation}
         svgName="fourthIn"
         diameter={FourthInDiameter}
