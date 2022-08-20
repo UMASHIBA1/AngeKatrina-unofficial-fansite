@@ -166,7 +166,7 @@ const MagicCircle: React.FC = () => {
           svgName="fourthIn"
           diameter={FourthInDiameter}
           rotateDirection="left"
-          scaleMagnification={2}
+          scaleMagnification={5.8}
           doAnimations={runAnimations}
           onAnimationEnd={onAnimationEndFC}
         />
