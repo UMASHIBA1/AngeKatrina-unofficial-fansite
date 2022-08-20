@@ -10,15 +10,15 @@ export interface SmallMagicCircleProps {
   isStartSummonAnimation: boolean;
 }
 
-const Wrapper = styled.div<{ left: number; top: number }>`
+const Wrapper = styled.div<{ left: number; top: number; diameter: number }>`
   position: absolute;
   top: ${({ top }) => top}px;
   left: ${({ left }) => left}px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: ${({ diameter }) => diameter}px;
+  height: ${({ diameter }) => diameter}px;
 `;
 
 const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
@@ -28,8 +28,8 @@ const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
   circleNum,
   isStartSummonAnimation,
 }: SmallMagicCircleProps) => {
-  const mostInDiameter = diameter * 0.5;
-  const secondInDiameter = diameter * 0.78;
+  const mostInDiameter = diameter * 0.58;
+  const secondInDiameter = diameter * 0.75;
 
   const doAnimations = {
     doShadow: false,
@@ -38,7 +38,7 @@ const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
   };
 
   return (
-    <Wrapper top={top} left={left}>
+    <Wrapper top={top} left={left} diameter={diameter}>
       {circleNum >= 3 ? (
         <SingleMagicCircle
           svgName="mostIn"

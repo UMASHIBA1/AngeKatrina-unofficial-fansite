@@ -8,6 +8,8 @@ import sizeTypeJudge from "../../../../systems/sizeTypeJudge";
 
 const Wrapper = styled.div`
   position: absolute;
+  top: 0;
+  left: 0;
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -20,25 +22,25 @@ type SmallMagicCirclePropsData = Omit<
 >;
 
 const SMVerData: SmallMagicCirclePropsData[] = [
-  { top: -250, left: 60, diameter: 80, circleNum: 3 },
-  { top: -300, left: -70, diameter: 50, circleNum: 3 },
-  { top: -200, left: -80, diameter: 30, circleNum: 2 },
-  { top: 300, left: 160, diameter: 100, circleNum: 3 },
-  { top: 200, left: 70, diameter: 40, circleNum: 2 },
-  { top: 200, left: -100, diameter: 70, circleNum: 3 },
-  { top: 350, left: -70, diameter: 40, circleNum: 3 },
+  { top: 160, left: 240, diameter: 80, circleNum: 3 },
+  { top: 130, left: 120, diameter: 50, circleNum: 3 },
+  { top: 250, left: 120, diameter: 30, circleNum: 2 },
+  { top: 680, left: 300, diameter: 100, circleNum: 3 },
+  { top: 610, left: 260, diameter: 40, circleNum: 2 },
+  { top: 600, left: 100, diameter: 70, circleNum: 3 },
+  { top: 780, left: 150, diameter: 40, circleNum: 3 },
 ];
 
 const TabletVerData: SmallMagicCirclePropsData[] = [
-  { top: -300, left: -200, diameter: 80, circleNum: 3 },
-  { top: -370, left: 200, diameter: 100, circleNum: 2 },
-  { top: -160, left: 370, diameter: 70, circleNum: 3 },
-  { top: -380, left: -390, diameter: 120, circleNum: 3 },
-  { top: -100, left: -300, diameter: 60, circleNum: 3 },
-  { top: 130, left: 320, diameter: 60, circleNum: 3 },
-  { top: 360, left: 300, diameter: 140, circleNum: 3 },
-  { top: 280, left: -200, diameter: 100, circleNum: 3 },
-  { top: 380, left: -30, diameter: 60, circleNum: 3 },
+  { top: 260, left: 170, diameter: 80, circleNum: 3 },
+  { top: 130, left: 530, diameter: 100, circleNum: 2 },
+  { top: 360, left: 700, diameter: 70, circleNum: 3 },
+  { top: 140, left: -30, diameter: 120, circleNum: 3 },
+  { top: 450, left: 80, diameter: 60, circleNum: 3 },
+  { top: 700, left: 680, diameter: 60, circleNum: 3 },
+  { top: 880, left: 630, diameter: 140, circleNum: 3 },
+  { top: 800, left: 130, diameter: 100, circleNum: 3 },
+  { top: 900, left: 300, diameter: 60, circleNum: 3 },
 ];
 
 const PCVerData: SmallMagicCirclePropsData[] = [
