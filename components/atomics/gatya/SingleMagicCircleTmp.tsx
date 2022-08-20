@@ -42,6 +42,7 @@ interface Props {
   scaleMagnification?: number;
   top?: string;
   left?: string;
+  onAnimationEnd?: () => void;
 }
 
 const circleCSS = css`
@@ -122,7 +123,14 @@ const Img = styled.img<Props>`
 `;
 
 const SingleMagicCircle: React.VFC<Props> = (props) => {
-  const { rotateDirection, top, left, svgName, diameter } = props;
+  const {
+    rotateDirection,
+    top,
+    left,
+    svgName,
+    diameter,
+    onAnimationEnd,
+  } = props;
   let usingImg;
   switch (svgName) {
     case "mostIn":
@@ -140,7 +148,12 @@ const SingleMagicCircle: React.VFC<Props> = (props) => {
   return (
     <Wrapper diameter={diameter} top={top} left={left}>
       <RotateWrapper rotateDirection={rotateDirection}>
-        <Img {...props} src={usingImg} alt="錬成陣の構成要素" />
+        <Img
+          {...props}
+          onAnimationEnd={onAnimationEnd}
+          src={usingImg}
+          alt="錬成陣の構成要素"
+        />
       </RotateWrapper>
     </Wrapper>
   );
