@@ -101,6 +101,7 @@ const StyledMostIn = styled(SVGWrap(MostIn))`
   ${circleCSS}
   ${circleAnimationCSS}
 `;
+
 const StyledSecondIn = styled(SVGWrap(SecondIn))`
   ${circleCSS}
   ${circleAnimationCSS}
