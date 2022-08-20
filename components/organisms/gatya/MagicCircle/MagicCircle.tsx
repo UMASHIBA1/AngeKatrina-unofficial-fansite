@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircleTmp";
+import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircle";
 import SummonText from "./SummonText";
 import { useTypedSelector, DispatchType } from "../../../../redux/store";
 import { SizeType } from "../../../../typing/SizeType";
