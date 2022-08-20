@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircleTmp";
 
 export interface SmallMagicCircleProps {
@@ -12,13 +12,18 @@ export interface SmallMagicCircleProps {
 
 const Wrapper = styled.div<{ left: number; top: number; diameter: number }>`
   position: absolute;
-  top: ${({ top }) => top}px;
-  left: ${({ left }) => left}px;
+  top: 50%;
+  left: 50%;
+  ${({ top, left }) => css`
+    transform: translate(calc(-50% + ${left}px), calc(-50% + ${top}px));
+  `}
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  ${({ diameter }) => css`
+    width: ${diameter}px;
+    height: ${diameter}px;
+  `}
 `;
 
 const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
