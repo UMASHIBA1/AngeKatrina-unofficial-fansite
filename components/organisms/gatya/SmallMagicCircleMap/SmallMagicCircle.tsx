@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircle";
+import styled, { css } from "styled-components";
+import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircleTmp";
 
 export interface SmallMagicCircleProps {
   top: number;
@@ -10,15 +10,20 @@ export interface SmallMagicCircleProps {
   isStartSummonAnimation: boolean;
 }
 
-const Wrapper = styled.div<{ left: number; top: number }>`
+const Wrapper = styled.div<{ left: number; top: number; diameter: number }>`
   position: absolute;
-  top: ${({ top }) => top}px;
-  left: ${({ left }) => left}px;
+  top: 50%;
+  left: 50%;
+  ${({ top, left }) => css`
+    transform: translate(calc(-50% + ${left}px), calc(-50% + ${top}px));
+  `}
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  ${({ diameter }) => css`
+    width: ${diameter}px;
+    height: ${diameter}px;
+  `}
 `;
 
 const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
@@ -28,8 +33,8 @@ const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
   circleNum,
   isStartSummonAnimation,
 }: SmallMagicCircleProps) => {
-  const mostInDiameter = diameter * 0.5;
-  const secondInDiameter = diameter * 0.78;
+  const mostInDiameter = diameter * 0.58;
+  const secondInDiameter = diameter * 0.75;
 
   const doAnimations = {
     doShadow: false,
@@ -38,7 +43,7 @@ const SmallMagicCircle: React.FC<SmallMagicCircleProps> = ({
   };
 
   return (
-    <Wrapper top={top} left={left}>
+    <Wrapper top={top} left={left} diameter={diameter}>
       {circleNum >= 3 ? (
         <SingleMagicCircle
           svgName="mostIn"

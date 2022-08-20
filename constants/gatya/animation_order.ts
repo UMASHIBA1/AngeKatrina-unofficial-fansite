@@ -53,7 +53,7 @@ export const magicCircleExpandOrder: AnimationProps = {
 export const blackCircleExpandOrder: AnimationProps = {
   duration_ms: 600,
   delay_ms:
-    magicCircleExpandOrder.duration_ms + magicCircleExpandOrder.delay_ms + 500,
+    magicCircleExpandOrder.duration_ms + magicCircleExpandOrder.delay_ms + 300,
 };
 
 // angeTriangle
