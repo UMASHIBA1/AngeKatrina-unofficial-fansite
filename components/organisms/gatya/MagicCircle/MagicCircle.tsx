@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircle";
+import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircleTmp";
 import SummonText from "./SummonText";
 import { useTypedSelector, DispatchType } from "../../../../redux/store";
 import { SizeType } from "../../../../typing/SizeType";
@@ -21,26 +21,45 @@ const judgeEachDiameter = (size: SizeType) => {
   return sizeTypeJudge(size)(
     {
       mostInDiameter: 120,
-      SecondInDiameter: 200,
-      ThirdInDiameter: 280,
-      FourthInDiameter: 360,
+      SecondInDiameter: 160,
+      ThirdInDiameter: 210,
+      FourthInDiameter: 280,
       summonTextDiameter: 100,
     },
     {
-      mostInDiameter: 220,
-      SecondInDiameter: 350,
-      ThirdInDiameter: 450,
-      FourthInDiameter: 570,
+      mostInDiameter: 190,
+      SecondInDiameter: 250,
+      ThirdInDiameter: 320,
+      FourthInDiameter: 430,
       summonTextDiameter: 150,
     },
     {
       mostInDiameter: 350,
-      SecondInDiameter: 550,
-      ThirdInDiameter: 700,
-      FourthInDiameter: 900,
+      SecondInDiameter: 450,
+      ThirdInDiameter: 580,
+      FourthInDiameter: 780,
       summonTextDiameter: 280,
     }
   );
+};
+
+const useIsShow = () => {
+  const [isShowMagicCircle, changeIsShowMagicCircle] = useState(true);
+  const [animationCount, changeAnimationCount] = useState(0);
+
+  const onAnimationEndFC = () => {
+    if (animationCount === 2) {
+      setTimeout(() => {
+        changeIsShowMagicCircle(false);
+      }, 500);
+    }
+    changeAnimationCount(animationCount + 1);
+  };
+
+  return [isShowMagicCircle, onAnimationEndFC] as [
+    typeof isShowMagicCircle,
+    typeof onAnimationEndFC
+  ];
 };
 
 const MagicCircle: React.FC = () => {
@@ -56,6 +75,7 @@ const MagicCircle: React.FC = () => {
     FourthInDiameter,
     summonTextDiameter,
   } = judgeEachDiameter(size);
+  const [isShowMagicCircle, onAnimationEndFC] = useIsShow();
 
   const initSummonAnimation = () => {
     dispatch(startSummonAnimation());
@@ -67,78 +87,99 @@ const MagicCircle: React.FC = () => {
     doFadeout: false,
   };
 
-  return (
-    <Wrapper>
-      <SingleMagicCircle
-        isStartSummonAnimation={isStartSummonAnimation}
-        svgName="mostIn"
-        diameter={mostInDiameter}
-        rotateDirection="right"
-        doAnimations={runAnimations}
-      />
-      <SingleMagicCircle
-        isStartSummonAnimation={isStartSummonAnimation}
-        svgName="mostIn"
-        diameter={mostInDiameter}
-        rotateDirection="right"
-        scaleMagnification={size === "sm" ? 2.15 : 2.0}
-        doAnimations={runAnimations}
-      />
-      <SingleMagicCircle
-        isStartSummonAnimation={isStartSummonAnimation}
-        svgName="secondIn"
-        diameter={SecondInDiameter}
-        rotateDirection="left"
-        scaleMagnification={1.1}
-        doAnimations={runAnimations}
-      />
-      <SingleMagicCircle
-        isStartSummonAnimation={isStartSummonAnimation}
-        svgName="secondIn"
-        diameter={SecondInDiameter}
-        rotateDirection="left"
-        scaleMagnification={2.2}
-        doAnimations={runAnimations}
-      />
-      <SingleMagicCircle
-        isStartSummonAnimation={isStartSummonAnimation}
-        svgName="thirdIn"
-        diameter={ThirdInDiameter}
-        rotateDirection="right"
-        scaleMagnification={2.4}
-        doAnimations={runAnimations}
-      />
-      <SingleMagicCircle
-        isStartSummonAnimation={isStartSummonAnimation}
-        svgName="thirdIn"
-        diameter={ThirdInDiameter}
-        rotateDirection="right"
-        scaleMagnification={4.8}
-        doAnimations={runAnimations}
-      />
-      <SingleMagicCircle
-        isStartSummonAnimation={isStartSummonAnimation}
-        svgName="fourthIn"
-        diameter={FourthInDiameter}
-        rotateDirection="left"
-        scaleMagnification={2.85}
-        doAnimations={runAnimations}
-      />
-      <SingleMagicCircle
-        isStartSummonAnimation={isStartSummonAnimation}
-        svgName="fourthIn"
-        diameter={FourthInDiameter}
-        rotateDirection="left"
-        scaleMagnification={5.8}
-        doAnimations={runAnimations}
-      />
-      <SummonText
-        diameter={summonTextDiameter}
-        isPushedButton={isStartSummonAnimation}
-        onClickFC={initSummonAnimation}
-      />
-    </Wrapper>
-  );
+  if (isShowMagicCircle) {
+    return (
+      <Wrapper>
+        <SingleMagicCircle
+          top={`calc(50% - ${mostInDiameter / 2}px)`}
+          left={`calc(50% - ${mostInDiameter / 2}px)`}
+          isStartSummonAnimation={isStartSummonAnimation}
+          svgName="mostIn"
+          diameter={mostInDiameter}
+          rotateDirection="right"
+          doAnimations={runAnimations}
+        />
+        <SingleMagicCircle
+          top={`calc(50% - ${mostInDiameter / 2}px)`}
+          left={`calc(50% - ${mostInDiameter / 2}px)`}
+          isStartSummonAnimation={isStartSummonAnimation}
+          svgName="mostIn"
+          diameter={mostInDiameter}
+          rotateDirection="right"
+          scaleMagnification={size === "sm" ? 2.15 : 2.0}
+          doAnimations={runAnimations}
+        />
+        <SingleMagicCircle
+          top={`calc(50% - ${SecondInDiameter / 2}px)`}
+          left={`calc(50% - ${SecondInDiameter / 2}px)`}
+          isStartSummonAnimation={isStartSummonAnimation}
+          svgName="secondIn"
+          diameter={SecondInDiameter}
+          rotateDirection="left"
+          scaleMagnification={1.1}
+          doAnimations={runAnimations}
+        />
+        <SingleMagicCircle
+          top={`calc(50% - ${SecondInDiameter / 2}px)`}
+          left={`calc(50% - ${SecondInDiameter / 2}px)`}
+          isStartSummonAnimation={isStartSummonAnimation}
+          svgName="secondIn"
+          diameter={SecondInDiameter}
+          rotateDirection="left"
+          scaleMagnification={2.2}
+          doAnimations={runAnimations}
+        />
+        <SingleMagicCircle
+          top={`calc(50% - ${ThirdInDiameter / 2}px)`}
+          left={`calc(50% - ${ThirdInDiameter / 2}px)`}
+          isStartSummonAnimation={isStartSummonAnimation}
+          svgName="thirdIn"
+          diameter={ThirdInDiameter}
+          rotateDirection="right"
+          scaleMagnification={2.4}
+          doAnimations={runAnimations}
+        />
+        <SingleMagicCircle
+          top={`calc(50% - ${ThirdInDiameter / 2}px)`}
+          left={`calc(50% - ${ThirdInDiameter / 2}px)`}
+          isStartSummonAnimation={isStartSummonAnimation}
+          svgName="thirdIn"
+          diameter={ThirdInDiameter}
+          rotateDirection="right"
+          scaleMagnification={4.8}
+          doAnimations={runAnimations}
+        />
+        <SingleMagicCircle
+          top={`calc(50% - ${FourthInDiameter / 2}px)`}
+          left={`calc(50% - ${FourthInDiameter / 2}px)`}
+          isStartSummonAnimation={isStartSummonAnimation}
+          svgName="fourthIn"
+          diameter={FourthInDiameter}
+          rotateDirection="left"
+          scaleMagnification={2.85}
+          doAnimations={runAnimations}
+        />
+        <SingleMagicCircle
+          top={`calc(50% - ${FourthInDiameter / 2}px)`}
+          left={`calc(50% - ${FourthInDiameter / 2}px)`}
+          isStartSummonAnimation={isStartSummonAnimation}
+          svgName="fourthIn"
+          diameter={FourthInDiameter}
+          rotateDirection="left"
+          scaleMagnification={2}
+          doAnimations={runAnimations}
+          onAnimationEnd={onAnimationEndFC}
+        />
+        <SummonText
+          diameter={summonTextDiameter}
+          isPushedButton={isStartSummonAnimation}
+          onClickFC={initSummonAnimation}
+        />
+      </Wrapper>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 export default MagicCircle;
