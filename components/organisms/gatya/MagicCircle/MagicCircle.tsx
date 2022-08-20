@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircle";
+import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircleTmp";
 import SummonText from "./SummonText";
 import { useTypedSelector, DispatchType } from "../../../../redux/store";
 import { SizeType } from "../../../../typing/SizeType";
@@ -21,23 +21,23 @@ const judgeEachDiameter = (size: SizeType) => {
   return sizeTypeJudge(size)(
     {
       mostInDiameter: 120,
-      SecondInDiameter: 200,
-      ThirdInDiameter: 280,
-      FourthInDiameter: 360,
+      SecondInDiameter: 160,
+      ThirdInDiameter: 210,
+      FourthInDiameter: 280,
       summonTextDiameter: 100,
     },
     {
-      mostInDiameter: 220,
-      SecondInDiameter: 350,
-      ThirdInDiameter: 450,
-      FourthInDiameter: 570,
+      mostInDiameter: 190,
+      SecondInDiameter: 250,
+      ThirdInDiameter: 320,
+      FourthInDiameter: 430,
       summonTextDiameter: 150,
     },
     {
       mostInDiameter: 350,
-      SecondInDiameter: 550,
-      ThirdInDiameter: 700,
-      FourthInDiameter: 900,
+      SecondInDiameter: 450,
+      ThirdInDiameter: 580,
+      FourthInDiameter: 780,
       summonTextDiameter: 280,
     }
   );
