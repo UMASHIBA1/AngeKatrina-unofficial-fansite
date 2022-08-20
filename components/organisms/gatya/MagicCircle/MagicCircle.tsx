@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircleTmp";
+import SingleMagicCircle from "../../../atomics/gatya/SingleMagicCircle";
 import SummonText from "./SummonText";
 import { useTypedSelector, DispatchType } from "../../../../redux/store";
 import { SizeType } from "../../../../typing/SizeType";
@@ -166,7 +166,7 @@ const MagicCircle: React.FC = () => {
           svgName="fourthIn"
           diameter={FourthInDiameter}
           rotateDirection="left"
-          scaleMagnification={2}
+          scaleMagnification={5.8}
           doAnimations={runAnimations}
           onAnimationEnd={onAnimationEndFC}
         />
