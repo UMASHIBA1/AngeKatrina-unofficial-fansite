@@ -1,24 +1,24 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import {
-  rightRotate,
-  leftRotate,
-  toDeepDropShadow,
-  scale,
-  fadeout,
-  removeDeepDropShadow,
-} from "../../../styles/commonAnimation";
 import { ANGE_RED } from "../../../constants/colors";
 import {
   magicCircleDropShadowOrder,
+  magicCircleExpandOrder,
   magicCircleRemoveDropShadowOrder,
   magicCricleFadeoutOrder,
-  magicCircleExpandOrder,
 } from "../../../constants/gatya/animation_order";
-import MostIn from "../../../public/svgs/gatya/most_in.svg";
-import SecondIn from "../../../public/svgs/gatya/second_in.svg";
-import ThirdIn from "../../../public/svgs/gatya/third_in.svg";
-import FourthIn from "../../../public/svgs/gatya/fourth_in.svg";
+import {
+  fadeout,
+  removeDeepDropShadow,
+  scale,
+  toDeepDropShadow,
+  rightRotate,
+  leftRotate,
+} from "../../../styles/commonAnimation";
+import mostIn from "../../../public/imgs/gatya/most_in.png";
+import secondIn from "../../../public/imgs/gatya/second_in.png";
+import thirdIn from "../../../public/imgs/gatya/third_in.png";
+import fourthIn from "../../../public/imgs/gatya/fourth_in.png";
 
 interface Animations {
   doShadow: boolean;
@@ -27,10 +27,10 @@ interface Animations {
 }
 
 const AvailableSVGs = {
-  mostIn: MostIn,
-  secondIn: SecondIn,
-  thirdIn: ThirdIn,
-  fourthIn: FourthIn,
+  mostIn: mostIn,
+  secondIn: secondIn,
+  thirdIn: thirdIn,
+  fourthIn: fourthIn,
 };
 
 interface Props {
@@ -40,12 +40,15 @@ interface Props {
   isStartSummonAnimation: boolean;
   doAnimations: Animations;
   scaleMagnification?: number;
+  top?: string;
+  left?: string;
+  onAnimationEnd?: () => void;
 }
 
-const circleCSS = css<{ diameter: Props["diameter"] }>`
+const circleCSS = css`
   position: absolute;
-  width: ${({ diameter }) => diameter}px;
-  height: ${({ diameter }) => diameter}px;
+  width: 100%;
+  height: 100%;
   filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.5));
 `;
 
@@ -81,48 +84,6 @@ const circleAnimationCSS = css<
       ${magicCricleFadeoutOrder.delay_ms}ms forwards;
 `;
 
-// NOTE styled-componentsで要素にstyleを付与するのにコンポーネント化が必要だったが
-// MostInComponentみたいにいちいち定義してコンポーネント化するのが面倒だったのでカリーを使用
-const SVGWrap = (
-  SVGElement: React.StatelessComponent<React.SVGAttributes<SVGElement>>
-): React.FC<Props> => {
-  return ({
-    svgName,
-    diameter,
-    rotateDirection,
-    isStartSummonAnimation,
-    doAnimations,
-    scaleMagnification,
-    ...props
-  }: Props) => <SVGElement {...props} />;
-};
-
-const StyledMostIn = styled(SVGWrap(MostIn))`
-  ${circleCSS}
-  ${circleAnimationCSS}
-`;
-const StyledSecondIn = styled(SVGWrap(SecondIn))`
-  ${circleCSS}
-  ${circleAnimationCSS}
-`;
-const StyledThirdIn = styled(SVGWrap(ThirdIn))`
-  ${circleCSS}
-  ${circleAnimationCSS}
-`;
-const StyledFourthIn = styled(SVGWrap(FourthIn))`
-  ${circleCSS}
-  ${circleAnimationCSS}
-`;
-
-const Wrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 const judgeRotateKeyframe = (rotateDirection: Props["rotateDirection"]) => {
   if (rotateDirection === "right") {
     return rightRotate();
@@ -131,7 +92,24 @@ const judgeRotateKeyframe = (rotateDirection: Props["rotateDirection"]) => {
   }
 };
 
+const Wrapper = styled.div<{
+  diameter: Props["diameter"];
+  top: Props["top"];
+  left: Props["left"];
+}>`
+  position: absolute;
+  top: ${({ top }) => (top ? top : "auto")};
+  left: ${({ left }) => (left ? left : "auto")};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${({ diameter }) => diameter}px;
+  height: ${({ diameter }) => diameter}px;
+`;
+
 const RotateWrapper = styled.div<{ rotateDirection: Props["rotateDirection"] }>`
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,30 +117,46 @@ const RotateWrapper = styled.div<{ rotateDirection: Props["rotateDirection"] }>`
     20s linear infinite;
 `;
 
-const SingleMagicCircle: React.FC<Props> = (props: Props) => {
-  const { rotateDirection, svgName } = props;
+const Img = styled.img<Props>`
+  ${circleCSS}
+  ${circleAnimationCSS}
+`;
 
-  let AnimateStyledSVG;
+const SingleMagicCircle: React.VFC<Props> = (props) => {
+  const {
+    rotateDirection,
+    top,
+    left,
+    svgName,
+    diameter,
+    onAnimationEnd,
+  } = props;
+  let usingImg;
   switch (svgName) {
     case "mostIn":
-      AnimateStyledSVG = StyledMostIn;
+      usingImg = mostIn;
       break;
     case "secondIn":
-      AnimateStyledSVG = StyledSecondIn;
+      usingImg = secondIn;
       break;
     case "thirdIn":
-      AnimateStyledSVG = StyledThirdIn;
+      usingImg = thirdIn;
       break;
     case "fourthIn":
-      AnimateStyledSVG = StyledFourthIn;
+      usingImg = fourthIn;
   }
-
   return (
-    <Wrapper>
+    <Wrapper diameter={diameter} top={top} left={left}>
       <RotateWrapper rotateDirection={rotateDirection}>
-        <AnimateStyledSVG {...props} />
+        <Img
+          {...props}
+          onAnimationEnd={onAnimationEnd}
+          src={usingImg}
+          alt="錬成陣の構成要素"
+        />
       </RotateWrapper>
     </Wrapper>
   );
 };
+
 export default SingleMagicCircle;
