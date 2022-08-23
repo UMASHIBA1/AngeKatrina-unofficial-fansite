@@ -31,19 +31,19 @@ interface ImgProps {
 
 const imgProps = {
   basic: {
-    src: AngeBasicImg,
+    src: AngeBasicImg.src,
     alt: "アンジュ通常画像",
     smTabletHeight: "95%",
     pcMarginTop: "50px",
   },
   hey: {
-    src: AngeHeyImg,
+    src: AngeHeyImg.src,
     alt: "アンジュ斜めポージング画像",
     smTabletHeight: "95%",
     pcMarginTop: "0",
   },
   "light-dress": {
-    src: AngeLightDressImg,
+    src: AngeLightDressImg.src,
     alt: "アンジュ薄いドレス画像",
     smTabletHeight: "95%",
     pcMarginTop: "70px",
